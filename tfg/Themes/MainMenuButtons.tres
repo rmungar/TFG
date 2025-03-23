@@ -1,0 +1,45 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bk03gqon2xhhq"]
+
+[sub_resource type="SystemFont" id="SystemFont_00i46"]
+font_names = PackedStringArray("Road Rage")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loo7a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if7li"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrcx7"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh7cp"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8e205"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7467j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/colors/font_color = Color(0.976471, 0.886275, 0.470588, 1)
+Button/colors/font_disabled_color = Color(0.502484, 0.434364, 0.0801302, 1)
+Button/colors/font_focus_color = Color(0.976471, 0.886275, 0.470588, 1)
+Button/colors/font_hover_color = Color(0.775783, 0.673445, 0.136146, 1)
+Button/colors/font_hover_pressed_color = Color(0.976471, 0.886275, 0.470588, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 0)
+Button/colors/font_pressed_color = Color(0.976471, 0.886275, 0.470588, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/font_sizes/font_size = 30
+Button/fonts/font = SubResource("SystemFont_00i46")
+Button/styles/disabled = SubResource("StyleBoxFlat_loo7a")
+Button/styles/focus = SubResource("StyleBoxFlat_if7li")
+Button/styles/hover = SubResource("StyleBoxFlat_rrcx7")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_fh7cp")
+Button/styles/normal = SubResource("StyleBoxFlat_8e205")
+Button/styles/pressed = SubResource("StyleBoxFlat_7467j")
