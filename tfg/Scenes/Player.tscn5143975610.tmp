@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://k7dan74tnrbw"]
+
+[ext_resource type="Script" uid="uid://bi2wsg354crl3" path="res://Scripts/Player/Player.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="1_rpqav"]
+
+[sub_resource type="Animation" id="Animation_kyqiw"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gntrk"]
+_data = {
+&"Idle": SubResource("Animation_kyqiw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
+size = Vector2(14, 23)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 524288
+script = ExtResource("1_kyqiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -13)
+texture = ExtResource("1_rpqav")
+hframes = 12
+region_enabled = true
+region_rect = Rect2(0, 8, 1488, 56)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gntrk")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_rpqav")
