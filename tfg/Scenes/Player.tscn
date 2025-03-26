@@ -151,10 +151,6 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 524288
 script = ExtResource("1_kyqiw")
-SPEED = null
-JUMP_VELOCITY = null
-GRAVITY = null
-DELECERATION = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -178,4 +174,4 @@ libraries = {
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -13)
+position = Vector2(0, -62)

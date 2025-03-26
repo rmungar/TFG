@@ -299,4 +299,5 @@ scale = Vector2(1.66667, 2.07895)
 sprite_frames = SubResource("SpriteFrames_524f0")
 animation = &"default1"
 autoplay = "default2"
-frame_progress = 0.756531
+frame = 4
+frame_progress = 0.781958
