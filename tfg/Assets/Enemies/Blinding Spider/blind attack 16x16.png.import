@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pmxndvnj8mq3"
-path="res://.godot/imported/death 32x32.png-36c0b5e230a20160ecd0d2a9263c11d6.ctex"
+uid="uid://btfb432e0lqf8"
+path="res://.godot/imported/blind attack 16x16.png-1577574b5011e7fe992b1788de316818.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Flower Enemy/death 32x32.png"
-dest_files=["res://.godot/imported/death 32x32.png-36c0b5e230a20160ecd0d2a9263c11d6.ctex"]
+source_file="res://Assets/Enemies/Blinding Spider/blind attack 16x16.png"
+dest_files=["res://.godot/imported/blind attack 16x16.png-1577574b5011e7fe992b1788de316818.ctex"]
 
 [params]
 

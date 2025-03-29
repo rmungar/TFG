@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chgd6nycxrjpv"
-path="res://.godot/imported/damaged 16x16.png-e6bbe4b4ee2a81b931734ea2d00bcf89.ctex"
+uid="uid://bvtnf72gtdjp7"
+path="res://.godot/imported/wake 112x26.png-2a6712f7000663458f71bcad610ef0e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Blinding Spider/damaged 16x16.png"
-dest_files=["res://.godot/imported/damaged 16x16.png-e6bbe4b4ee2a81b931734ea2d00bcf89.ctex"]
+source_file="res://Assets/Enemies/Wheel Bot/wake 112x26.png"
+dest_files=["res://.godot/imported/wake 112x26.png-2a6712f7000663458f71bcad610ef0e1.ctex"]
 
 [params]
 

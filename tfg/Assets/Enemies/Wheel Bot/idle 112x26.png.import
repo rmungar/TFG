@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmtvgdk8kjypw"
-path="res://.godot/imported/prep blind attack 16x16.png-462b1f79247b02c65f4276dddbde11fa.ctex"
+uid="uid://did4fvq2lh12l"
+path="res://.godot/imported/idle 112x26.png-67473390ef16181f04be8125228f5abf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Blinding Spider/prep blind attack 16x16.png"
-dest_files=["res://.godot/imported/prep blind attack 16x16.png-462b1f79247b02c65f4276dddbde11fa.ctex"]
+source_file="res://Assets/Enemies/Wheel Bot/idle 112x26.png"
+dest_files=["res://.godot/imported/idle 112x26.png-67473390ef16181f04be8125228f5abf.ctex"]
 
 [params]
 

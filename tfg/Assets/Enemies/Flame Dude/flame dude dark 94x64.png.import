@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt647epn6pkut"
-path="res://.godot/imported/damaged 112x26.png-211a5833c759b37a119cbdc92af016a5.ctex"
+uid="uid://cl2wkwd6c4tnm"
+path="res://.godot/imported/flame dude dark 94x64.png-769a52ab9774230b387c570a847aaf8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Wheel Bot/damaged 112x26.png"
-dest_files=["res://.godot/imported/damaged 112x26.png-211a5833c759b37a119cbdc92af016a5.ctex"]
+source_file="res://Assets/Enemies/Flame Dude/flame dude dark 94x64.png"
+dest_files=["res://.godot/imported/flame dude dark 94x64.png-769a52ab9774230b387c570a847aaf8f.ctex"]
 
 [params]
 

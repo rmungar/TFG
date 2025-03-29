@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iboj33soenvg"
-path="res://.godot/imported/move 112x26.png-9dfaccc25c88fd780e00904a2c0b48c8.ctex"
+uid="uid://djuwp2he71eg4"
+path="res://.godot/imported/hit 92x36.png-73192f12ddd4d03ac4cf3d2ad1c08cc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Wheel Bot/move 112x26.png"
-dest_files=["res://.godot/imported/move 112x26.png-9dfaccc25c88fd780e00904a2c0b48c8.ctex"]
+source_file="res://Assets/Enemies/Hell Bot DARK/hit 92x36.png"
+dest_files=["res://.godot/imported/hit 92x36.png-73192f12ddd4d03ac4cf3d2ad1c08cc0.ctex"]
 
 [params]
 

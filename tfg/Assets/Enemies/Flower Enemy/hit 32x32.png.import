@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdlxlv6lvn16v"
-path="res://.godot/imported/fire dash 112x26.png-f84706ed5686fd3e463417125b76eb32.ctex"
+uid="uid://ciwugf63qrijn"
+path="res://.godot/imported/hit 32x32.png-a04c83da2103cf0e7096ad83288c5e83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Wheel Bot/fire dash 112x26.png"
-dest_files=["res://.godot/imported/fire dash 112x26.png-f84706ed5686fd3e463417125b76eb32.ctex"]
+source_file="res://Assets/Enemies/Flower Enemy/hit 32x32.png"
+dest_files=["res://.godot/imported/hit 32x32.png-a04c83da2103cf0e7096ad83288c5e83.ctex"]
 
 [params]
 

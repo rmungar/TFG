@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6mpkvb2to4fm"
-path="res://.godot/imported/charge 112x26.png-466c4d8c45fdf9f7ca7512e8751b2614.ctex"
+uid="uid://bt647epn6pkut"
+path="res://.godot/imported/damaged 112x26.png-622b6b10bc2ce3e4e40354d25c87298f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Wheel Bot/charge 112x26.png"
-dest_files=["res://.godot/imported/charge 112x26.png-466c4d8c45fdf9f7ca7512e8751b2614.ctex"]
+source_file="res://Assets/Enemies/Wheel Bot/damaged 112x26.png"
+dest_files=["res://.godot/imported/damaged 112x26.png-622b6b10bc2ce3e4e40354d25c87298f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1ki8lkbb82o1"
-path="res://.godot/imported/attack 92x36.png-ee04acff9278785f2d1270b36bdfd64e.ctex"
+uid="uid://cmtvgdk8kjypw"
+path="res://.godot/imported/prep blind attack 16x16.png-5a2717311530046a7daecbf1851e76c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Hell Bot DARK/attack 92x36.png"
-dest_files=["res://.godot/imported/attack 92x36.png-ee04acff9278785f2d1270b36bdfd64e.ctex"]
+source_file="res://Assets/Enemies/Blinding Spider/prep blind attack 16x16.png"
+dest_files=["res://.godot/imported/prep blind attack 16x16.png-5a2717311530046a7daecbf1851e76c4.ctex"]
 
 [params]
 

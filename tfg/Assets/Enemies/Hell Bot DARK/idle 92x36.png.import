@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4rnnduomi8ju"
-path="res://.godot/imported/run 92x36.png-54a41c2ad09fcb1c4c20091eb3b06582.ctex"
+uid="uid://b61mtuajsi61a"
+path="res://.godot/imported/idle 92x36.png-6ae1a4d4ff4277c0a8ee2d6de506197c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Hell Bot DARK/run 92x36.png"
-dest_files=["res://.godot/imported/run 92x36.png-54a41c2ad09fcb1c4c20091eb3b06582.ctex"]
+source_file="res://Assets/Enemies/Hell Bot DARK/idle 92x36.png"
+dest_files=["res://.godot/imported/idle 92x36.png-6ae1a4d4ff4277c0a8ee2d6de506197c.ctex"]
 
 [params]
 

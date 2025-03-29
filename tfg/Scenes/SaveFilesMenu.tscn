@@ -322,43 +322,44 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SkyBackground" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(2.88, 3.375)
+position = Vector2(240, 135)
+scale = Vector2(1.2, 1.40625)
 texture = SubResource("AtlasTexture_xmgkj")
 metadata/_edit_lock_ = true
 
 [node name="Moon" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(576.5, 272)
-scale = Vector2(2.8725, 2.80208)
+position = Vector2(291, 88)
+scale = Vector2(1.1525, 1.1875)
 texture = SubResource("AtlasTexture_sex7m")
 flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="Fog" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(576, 324.5)
-scale = Vector2(2.88, 3.36979)
+position = Vector2(240, 135.5)
+scale = Vector2(1.2, 1.40104)
 texture = SubResource("AtlasTexture_0i2jj")
 metadata/_edit_lock_ = true
 
 [node name="CityBackground" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(576.5, 324)
-scale = Vector2(2.8775, 3.375)
+position = Vector2(240.5, 135)
+scale = Vector2(1.1975, 1.40625)
 texture = SubResource("AtlasTexture_q8u7t")
 metadata/_edit_lock_ = true
 
 [node name="CityForeground" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(576, 371)
-scale = Vector2(2.88, 2.88542)
+position = Vector2(240, 159)
+scale = Vector2(1.2, 1.15625)
 texture = SubResource("AtlasTexture_jqlkh")
 metadata/_edit_lock_ = true
 
 [node name="Assasin" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(631, 160)
+position = Vector2(263, 74.625)
+scale = Vector2(0.28125, 0.355263)
 sprite_frames = SubResource("SpriteFrames_v7v4n")
 autoplay = "default"
 frame_progress = 0.393605
@@ -366,7 +367,8 @@ metadata/_edit_lock_ = true
 
 [node name="OrbMage" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(42, 501)
+position = Vector2(18, 210)
+scale = Vector2(0.555556, 0.5)
 sprite_frames = SubResource("SpriteFrames_tqt3l")
 autoplay = "default"
 frame_progress = 0.444394
@@ -374,7 +376,8 @@ metadata/_edit_lock_ = true
 
 [node name="ShockSweeper" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(823, 503)
+position = Vector2(371, 211)
+scale = Vector2(0.5, 0.483333)
 sprite_frames = SubResource("SpriteFrames_ibp07")
 autoplay = "default"
 frame_progress = 0.31141
@@ -383,7 +386,8 @@ metadata/_edit_lock_ = true
 
 [node name="Ghoul" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(174, 546)
+position = Vector2(71, 229)
+scale = Vector2(0.435484, 0.409091)
 sprite_frames = SubResource("SpriteFrames_qchuq")
 autoplay = "default"
 frame_progress = 0.0857302
@@ -391,7 +395,8 @@ metadata/_edit_lock_ = true
 
 [node name="Spitter" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1104, 434)
+position = Vector2(463, 182)
+scale = Vector2(0.535088, 0.525641)
 sprite_frames = SubResource("SpriteFrames_00cme")
 autoplay = "default"
 frame_progress = 0.696981
@@ -400,7 +405,8 @@ metadata/_edit_lock_ = true
 
 [node name="Summoner" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(582, 587)
+position = Vector2(241, 242)
+scale = Vector2(0.521738, 0.511364)
 sprite_frames = SubResource("SpriteFrames_7t8h5")
 autoplay = "default"
 frame_progress = 0.582906

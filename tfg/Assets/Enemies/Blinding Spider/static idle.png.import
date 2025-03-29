@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dypxbc7hct8su"
-path="res://.godot/imported/walk 16x16.png-afa6c6ef41460624dbb2d0c5fc49603f.ctex"
+uid="uid://cahh8eta03d6q"
+path="res://.godot/imported/static idle.png-fd34054a68ed784b921dcc990eb678da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Blinding Spider/walk 16x16.png"
-dest_files=["res://.godot/imported/walk 16x16.png-afa6c6ef41460624dbb2d0c5fc49603f.ctex"]
+source_file="res://Assets/Enemies/Blinding Spider/static idle.png"
+dest_files=["res://.godot/imported/static idle.png-fd34054a68ed784b921dcc990eb678da.ctex"]
 
 [params]
 

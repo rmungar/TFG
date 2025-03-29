@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://did4fvq2lh12l"
-path="res://.godot/imported/idle 112x26.png-3e4da3248ae0ebdfeda9c664783630b7.ctex"
+uid="uid://6aiyt81qxogj"
+path="res://.godot/imported/move 32x32.png-b26cbccb8526d593d6fce4ce88f7af98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Wheel Bot/idle 112x26.png"
-dest_files=["res://.godot/imported/idle 112x26.png-3e4da3248ae0ebdfeda9c664783630b7.ctex"]
+source_file="res://Assets/Enemies/Flower Enemy/move 32x32.png"
+dest_files=["res://.godot/imported/move 32x32.png-b26cbccb8526d593d6fce4ce88f7af98.ctex"]
 
 [params]
 

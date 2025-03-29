@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cahh8eta03d6q"
-path="res://.godot/imported/static idle.png-8f7a1eec17b666dbe7ee42939ed0d30d.ctex"
+uid="uid://d1qa6bydgpydp"
+path="res://.godot/imported/death 92x36.png-409a72c58f3e944c75008e47e4d3d6fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Blinding Spider/static idle.png"
-dest_files=["res://.godot/imported/static idle.png-8f7a1eec17b666dbe7ee42939ed0d30d.ctex"]
+source_file="res://Assets/Enemies/Hell Bot DARK/death 92x36.png"
+dest_files=["res://.godot/imported/death 92x36.png-409a72c58f3e944c75008e47e4d3d6fc.ctex"]
 
 [params]
 

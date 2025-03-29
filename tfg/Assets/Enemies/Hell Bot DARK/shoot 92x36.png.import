@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvtnf72gtdjp7"
-path="res://.godot/imported/wake 112x26.png-3e4e9657a063544438292058e498b702.ctex"
+uid="uid://d13tmk1h4w6fn"
+path="res://.godot/imported/shoot 92x36.png-d729ccc9b7ee1498f91a3018d26a366b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Wheel Bot/wake 112x26.png"
-dest_files=["res://.godot/imported/wake 112x26.png-3e4e9657a063544438292058e498b702.ctex"]
+source_file="res://Assets/Enemies/Hell Bot DARK/shoot 92x36.png"
+dest_files=["res://.godot/imported/shoot 92x36.png-d729ccc9b7ee1498f91a3018d26a366b.ctex"]
 
 [params]
 

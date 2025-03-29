@@ -377,7 +377,6 @@ scroll_offset = Vector2(1, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1152, 0)
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountains"]
 position = Vector2(576, 324)
@@ -478,11 +477,6 @@ scale = Vector2(3.32143, 4.02632)
 sprite_frames = SubResource("SpriteFrames_grj4f")
 autoplay = "default"
 frame_progress = 0.91802
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(576, 556)
-scale = Vector2(3.32143, 4.02632)
-offset = Vector2(0, -232)
 
 [node name="Buttons" type="VBoxContainer" parent="CharacterBody2D"]
 texture_filter = 1

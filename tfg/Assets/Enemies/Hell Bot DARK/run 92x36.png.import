@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btfb432e0lqf8"
-path="res://.godot/imported/blind attack 16x16.png-f08368c2fc372fb76ab8a146f3545ee5.ctex"
+uid="uid://c4rnnduomi8ju"
+path="res://.godot/imported/run 92x36.png-1c23329abc05eae99a0dfb33a36c0ba3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Blinding Spider/blind attack 16x16.png"
-dest_files=["res://.godot/imported/blind attack 16x16.png-f08368c2fc372fb76ab8a146f3545ee5.ctex"]
+source_file="res://Assets/Enemies/Hell Bot DARK/run 92x36.png"
+dest_files=["res://.godot/imported/run 92x36.png-1c23329abc05eae99a0dfb33a36c0ba3.ctex"]
 
 [params]
 

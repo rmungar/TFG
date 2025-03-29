@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciwugf63qrijn"
-path="res://.godot/imported/hit 32x32.png-c6b2b77395cfe460329e41d7e6acc69a.ctex"
+uid="uid://bewuwi035qs0s"
+path="res://.godot/imported/death 112x26.png-b2bf7e9bf9420fe0021ee35e97503acc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/DARK Edition/Sprites/Flower Enemy/hit 32x32.png"
-dest_files=["res://.godot/imported/hit 32x32.png-c6b2b77395cfe460329e41d7e6acc69a.ctex"]
+source_file="res://Assets/Enemies/Wheel Bot/death 112x26.png"
+dest_files=["res://.godot/imported/death 112x26.png-b2bf7e9bf9420fe0021ee35e97503acc.ctex"]
 
 [params]
 
