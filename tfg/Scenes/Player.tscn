@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bp5naj8de4xho" path="res://Scripts/Player/State/AttackState.gd" id="8_bhhdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
-size = Vector2(14, 23)
+size = Vector2(10, 23)
 
 [sub_resource type="Animation" id="Animation_gntrk"]
 resource_name = "Attack"
@@ -169,7 +169,6 @@ region_enabled = true
 region_rect = Rect2(-0.0174961, 8, 2976.02, 432)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_rpqav")
 
