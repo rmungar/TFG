@@ -1,45 +1,35 @@
-class_name AttackState extends State
+class_name AerialAttackState extends State
 
 @onready var IDLE_STATE: IdleState = $"../IdleState"
 @onready var RUN_STATE: RunState = $"../RunState"
-@onready var JUMP_STATE: JumpState = $"../JumpState"
 @onready var FALL_STATE: FallState = $"../FallState"
-@onready var HEAVY_ATTACK_STATE: HeavyAttackState = $"../HeavyAttackState"
+@onready var JUMP_STATE: JumpState = $"../JumpState"
 
+# What happens whenever our character enters the state
 func enter() -> void:
-	PLAYER.velocity.x = 0
 	PLAYER.ANIMATION_PLAYER.play("Attack")
 	await PLAYER.ANIMATION_PLAYER.animation_finished
 
 # What happens whenever our character leaves a state
 func exit() -> void:
 	pass
-	
 
 # Function called EVERY frame during _process
 func process(delta: float) -> State:
-	if PLAYER.ANIMATION_PLAYER.is_playing():
-		return
-	else:
-		if PLAYER.FACINGDIRECTION != 0:
-			return RUN_STATE
-		else:
-			return IDLE_STATE
-	if not PLAYER.is_on_floor():
-		return FALL_STATE
 	return null
 	
 
 # Function called EVERY frame during _physics_process
 func physics(delta: float) -> State:
+	
+	if PLAYER.is_on_floor():
+		return IDLE_STATE if PLAYER.FACINGDIRECTION == 0 else RUN_STATE
+	else:
+		return FALL_STATE if PLAYER.velocity.y > 0 else null
 	return null
+	
 
 
 # Called when an input event occurs
 func unhandledInput(event: InputEvent) -> State:
-	if event.is_action_pressed("Jump") and PLAYER.is_on_floor():
-		return JUMP_STATE
-	elif Input.is_action_just_pressed("Attack"):
-			return HEAVY_ATTACK_STATE
-	else: 
-		return null
+	return null

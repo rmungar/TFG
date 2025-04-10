@@ -11,4 +11,4 @@ func setCameraLimits(rect: Rect2i) -> void:
 	limit_left = rect.position.x
 	limit_right = (rect.position.x + rect.size.x) * 16
 	limit_bottom = (rect.position.y + rect.size.y) * 16
-	
+	limit_top = rect.position.y

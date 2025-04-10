@@ -1,14 +1,12 @@
-class_name AttackState extends State
-
+class_name HeavyAttackState extends State
 @onready var IDLE_STATE: IdleState = $"../IdleState"
 @onready var RUN_STATE: RunState = $"../RunState"
 @onready var JUMP_STATE: JumpState = $"../JumpState"
 @onready var FALL_STATE: FallState = $"../FallState"
-@onready var HEAVY_ATTACK_STATE: HeavyAttackState = $"../HeavyAttackState"
 
 func enter() -> void:
 	PLAYER.velocity.x = 0
-	PLAYER.ANIMATION_PLAYER.play("Attack")
+	PLAYER.ANIMATION_PLAYER.play("HeavyAttack")
 	await PLAYER.ANIMATION_PLAYER.animation_finished
 
 # What happens whenever our character leaves a state
@@ -39,7 +37,5 @@ func physics(delta: float) -> State:
 func unhandledInput(event: InputEvent) -> State:
 	if event.is_action_pressed("Jump") and PLAYER.is_on_floor():
 		return JUMP_STATE
-	elif Input.is_action_just_pressed("Attack"):
-			return HEAVY_ATTACK_STATE
 	else: 
 		return null

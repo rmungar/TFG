@@ -1,6 +1,7 @@
 class_name JumpState extends State
 
 @onready var FALL_STATE: FallState = $"../FallState"
+@onready var AERIAL_ATTACK_STATE: AerialAttackState = $"../AerialAttackState"
 
 # What happens whenever our character enters the state
 func enter() -> void:
@@ -16,6 +17,8 @@ func exit() -> void:
 
 # Function called EVERY frame during _process
 func process(delta: float) -> State:
+	if Input.is_action_just_pressed("Attack"):
+		return AERIAL_ATTACK_STATE
 	return null
 	
 
