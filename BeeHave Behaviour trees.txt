@@ -1,0 +1,31 @@
+BEEHAVE -> BEHAVIOUR TREES SCHEMAS
+
+2560 x 720
+
+2560 / 20 = 128
+720 / 9 = 80
+
+
+
+
+1- Dagger Bandit
+	
+	A few characteristics:
+		· Relatively low HP total.
+		· High speed / dodge chance.
+		· Baits the enemy.
+		· Close range.
+	
+	Available animations:
+		· Appear
+		· Attack -> Can be split into normal and heavy attack.
+		· Bat fang attack
+		· Death
+		· Fall
+		· Idle
+		· Jump
+		· Run
+		· Vanish
+		
+	The idea is that similar to all the other enemies it will look for the player and then decide if it should attack or run and then attack as a surprise.
+	Look into the option of making the enemy sneak attack or lurk for a while.
