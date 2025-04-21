@@ -4,9 +4,7 @@ class_name IsNearPlayer extends ConditionLeaf
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-	var GAME_NODE = get_parent().get_parent().get_parent().get_parent().get_parent()
-	var PLAYER = GAME_NODE.find_child("Player")
-	blackboard.set_value("player", PLAYER)
+	var PLAYER: Player = blackboard.get_value("player")
 	if not PLAYER:
 		return FAILURE
 		
@@ -14,7 +12,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var DISTANCE = to_PLAYER.length()
 	
 	if DISTANCE > DETECTION_RANGE:
-		$"../../../../AnimationPlayer".play("Idle_Right")
+		actor.get_node("AnimationPlayer").play("Idle_Right")
 		return FAILURE
 	
 	blackboard.set_value("player_position", PLAYER.global_position)

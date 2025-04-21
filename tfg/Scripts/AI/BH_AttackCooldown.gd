@@ -1,4 +1,4 @@
-class_name AttackCooldown extends Decorator
+class_name AttackCooldown extends CooldownDecorator
 
 @export var COOLDOWN: float = 2.0
 var TIME_SINCE_LAST_ATTACK: float = 0.0

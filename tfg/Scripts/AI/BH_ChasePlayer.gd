@@ -13,9 +13,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var DIRECTION_NORMALIZED = (DIRECTION).normalized()
 	blackboard.set_value("directionToPlayer",DIRECTION.x)
 	if DIRECTION.x < 0:
-		$"../../../../AnimationPlayer".play("Run_Left")
+		actor.get_node("AnimationPlayer").play("Run_Left")
 	else:
-		$"../../../../AnimationPlayer".play("Run_Right")
+		actor.get_node("AnimationPlayer").play("Run_Right")
 	actor.global_position.x += DIRECTION_NORMALIZED.x * SPEED * get_physics_process_delta_time()
 	
 	blackboard.set_value("attack_range", RANGE)

@@ -10,6 +10,7 @@ class_name Player extends CharacterBody2D
 @export var GRAVITY: float = 980.0
 @export var DELECERATION: float = 0.2
 var FACINGDIRECTION: float 
+@export var HP: int = 100
 
 func _ready() -> void:
 	STATE_MACHINE.configure(self)

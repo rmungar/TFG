@@ -1,6 +1,6 @@
 class_name IsInAttackRange extends ConditionLeaf
 
-@export var ATTACK_RANGE: float = 50.0
+@export var ATTACK_RANGE: float = 35.0
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var player = blackboard.get_value("player")
