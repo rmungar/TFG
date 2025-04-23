@@ -1,11 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://diekjk3ddagdh"]
+[gd_scene load_steps=35 format=3 uid="uid://diekjk3ddagdh"]
 
 [ext_resource type="Script" uid="uid://bjsmnh4ltr48g" path="res://Scripts/Enemies/DaggerBandit.gd" id="1_eh1pt"]
 [ext_resource type="Texture2D" uid="uid://nykgsy0rhhpb" path="res://Assets/Enemies/Dagger Bandit/Dagger Bandit Full Sprite Sheet.png" id="2_343tk"]
 [ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_3yx7k"]
+[ext_resource type="Script" uid="uid://c4h8me4rbj2of" path="res://Scripts/Hurtbox.gd" id="3_fwqqq"]
 [ext_resource type="Script" uid="uid://cw22yurt5l74k" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="4_8tkje"]
 [ext_resource type="Script" uid="uid://7np33t66fmy8" path="res://Scripts/AI/BH_GetPlayerInstance.gd" id="4_v3k4b"]
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="5_dbu40"]
+[ext_resource type="Script" uid="uid://cn26qr1u25bex" path="res://Scripts/AI/BH_IsAlive.gd" id="6_4yra5"]
 [ext_resource type="Script" uid="uid://2yevedtv5j7y" path="res://Scripts/AI/BH_IsNearPlayer.gd" id="6_8tkje"]
 [ext_resource type="Script" uid="uid://b3tu71gr8n7xv" path="res://Scripts/AI/BH_IsPlayerLowHP.gd" id="6_p2c3r"]
 [ext_resource type="Script" uid="uid://xci1pudxr4qe" path="res://Scripts/AI/BH_IsInSpecialAttackRange.gd" id="6_tmlgb"]
@@ -257,10 +259,70 @@ tracks/1/keys = {
 "values": [Vector2(2, -16)]
 }
 
+[sub_resource type="Animation" id="Animation_4yra5"]
+resource_name = "Death_Right"
+length = 1.6
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 16), Vector2i(1, 16), Vector2i(2, 16), Vector2i(3, 16), Vector2i(4, 16), Vector2i(5, 16), Vector2i(6, 16), Vector2i(7, 16), Vector2i(9, 16), Vector2i(10, 16), Vector2i(11, 16), Vector2i(12, 16), Vector2i(13, 16), Vector2i(14, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_rykvf"]
+resource_name = "Death_Left"
+length = 1.6
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 17), Vector2i(1, 17), Vector2i(2, 17), Vector2i(3, 17), Vector2i(4, 17), Vector2i(5, 17), Vector2i(6, 17), Vector2i(7, 17), Vector2i(8, 17), Vector2i(9, 17), Vector2i(10, 17), Vector2i(11, 17), Vector2i(12, 17), Vector2i(14, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -16)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0jmer"]
 _data = {
 &"Attack_Left": SubResource("Animation_tmlgb"),
 &"Attack_Right": SubResource("Animation_a6koa"),
+&"Death_Left": SubResource("Animation_rykvf"),
+&"Death_Right": SubResource("Animation_4yra5"),
 &"Idle_Left": SubResource("Animation_0lprl"),
 &"Idle_Right": SubResource("Animation_dbu40"),
 &"RESET": SubResource("Animation_8tkje"),
@@ -291,9 +353,10 @@ libraries = {
 }
 autoplay = "Idle_Right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HurtBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_wovta")
+script = ExtResource("3_fwqqq")
 
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_3yx7k")
@@ -305,6 +368,10 @@ metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 [node name="SequenceComposite" type="Node" parent="BeehaveTree"]
 script = ExtResource("5_dbu40")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="IsAlive" type="Node" parent="BeehaveTree/SequenceComposite"]
+script = ExtResource("6_4yra5")
+metadata/_custom_type_script = "uid://cn26qr1u25bex"
 
 [node name="GetPlayerInstance" type="Node" parent="BeehaveTree/SequenceComposite"]
 script = ExtResource("4_v3k4b")
@@ -377,3 +444,5 @@ metadata/_custom_type_script = "uid://2yevedtv5j7y"
 [node name="ChasePlayer" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Chase Sequence"]
 script = ExtResource("7_343tk")
 metadata/_custom_type_script = "uid://dntuu6jh0rbrc"
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

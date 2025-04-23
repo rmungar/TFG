@@ -1,13 +1,13 @@
 class_name IsSpecialAttacking extends ConditionLeaf
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-	var PLAYER: Player = blackboard.get_value("player")
+	var player: Player = blackboard.get_value("player")
 	
-	if not PLAYER:
+	if not player:
 		return FAILURE
 	else:
-		var ANIMATION_PLAYER: AnimationPlayer = actor.get_node("AnimationPlayer")
-		if ANIMATION_PLAYER.current_animation == "SpecialAttack_Left" or ANIMATION_PLAYER.current_animation == "SpecialAttack_Right":
+		var animationPlayer: AnimationPlayer = actor.get_node("AnimationPlayer")
+		if animationPlayer.current_animation == "SpecialAttack_Left" or animationPlayer.current_animation == "SpecialAttack_Right":
 			return SUCCESS
 		else:
 			return FAILURE

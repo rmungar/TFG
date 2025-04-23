@@ -1,8 +1,8 @@
 class_name StateMachine extends Node
 
-var STATES: Array[State] = []
-var CURRENT_STATE: State
-var PREVIOUS_STATE: State
+var states: Array[State] = []
+var currentState: State
+var previousState: State
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,37 +11,37 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	changeState(CURRENT_STATE.process(delta))
+	changeState(currentState.process(delta))
 
 
 func _physics_process(delta: float) -> void:
-	changeState(CURRENT_STATE.physics(delta))
+	changeState(currentState.physics(delta))
 
 func _unhandled_input(event: InputEvent) -> void:
-	changeState(CURRENT_STATE.unhandledInput(event))
+	changeState(currentState.unhandledInput(event))
 
 func configure(player: Player) -> void:
 	
 	for child in get_children():
 		if child is State:
-			STATES.append(child)
-	if not STATES:
+			states.append(child)
+	if not states:
 		return
 	
-	STATES[0].PLAYER = player
-	STATES[0].STATE_MACHINE = self
+	states[0].PLAYER = player
+	states[0].STATE_MACHINE = self
 	
-	changeState(STATES[0])
+	changeState(states[0])
 	process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func changeState(newState: State) -> void:
-	if newState == null or newState == CURRENT_STATE:
+	if newState == null or newState == currentState:
 		return
-	if CURRENT_STATE:
-		CURRENT_STATE.exit()
+	if currentState:
+		currentState.exit()
 		
-	PREVIOUS_STATE = CURRENT_STATE
-	CURRENT_STATE= newState
-	CURRENT_STATE.enter()
+	previousState = currentState
+	currentState= newState
+	currentState.enter()
 	

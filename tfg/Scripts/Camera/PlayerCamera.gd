@@ -1,10 +1,10 @@
 class_name PlayerCamera extends Camera2D
 
-@export var TILEMAP: TileMapLayer
+@export var tileMap: TileMapLayer
 
 
 func _ready() -> void:
-	setCameraLimits(TILEMAP.get_used_rect())
+	setCameraLimits(tileMap.get_used_rect())
 
 
 func setCameraLimits(rect: Rect2i) -> void:

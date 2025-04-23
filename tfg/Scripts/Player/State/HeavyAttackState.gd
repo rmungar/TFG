@@ -1,13 +1,13 @@
 class_name HeavyAttackState extends State
-@onready var IDLE_STATE: IdleState = $"../IdleState"
-@onready var RUN_STATE: RunState = $"../RunState"
-@onready var JUMP_STATE: JumpState = $"../JumpState"
-@onready var FALL_STATE: FallState = $"../FallState"
+@onready var idleState: IdleState = $"../IdleState"
+@onready var runState: RunState = $"../RunState"
+@onready var jumpState: JumpState = $"../JumpState"
+@onready var fallState: FallState = $"../FallState"
 
 func enter() -> void:
-	PLAYER.velocity.x = 0
-	PLAYER.ANIMATION_PLAYER.play("HeavyAttack")
-	await PLAYER.ANIMATION_PLAYER.animation_finished
+	player.velocity.x = 0
+	player.animationPlayer.play("HeavyAttack")
+	await player.animationPlayer.animation_finished
 
 # What happens whenever our character leaves a state
 func exit() -> void:
@@ -16,15 +16,15 @@ func exit() -> void:
 
 # Function called EVERY frame during _process
 func process(delta: float) -> State:
-	if PLAYER.ANIMATION_PLAYER.is_playing():
+	if player.animationPlayer.is_playing():
 		return
 	else:
-		if PLAYER.FACINGDIRECTION != 0:
-			return RUN_STATE
+		if player.facingDirection != 0:
+			return runState
 		else:
-			return IDLE_STATE
-	if not PLAYER.is_on_floor():
-		return FALL_STATE
+			return idleState
+	if not player.is_on_floor():
+		return fallState
 	return null
 	
 
@@ -35,7 +35,7 @@ func physics(delta: float) -> State:
 
 # Called when an input event occurs
 func unhandledInput(event: InputEvent) -> State:
-	if event.is_action_pressed("Jump") and PLAYER.is_on_floor():
-		return JUMP_STATE
+	if event.is_action_pressed("Jump") and player.is_on_floor():
+		return jumpState
 	else: 
 		return null

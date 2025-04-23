@@ -1,14 +1,14 @@
 class_name JumpState extends State
 
-@onready var FALL_STATE: FallState = $"../FallState"
-@onready var AERIAL_ATTACK_STATE: AerialAttackState = $"../AerialAttackState"
+@onready var fallState: FallState = $"../FallState"
+@onready var aerialAttackState: AerialAttackState = $"../AerialAttackState"
 
 # What happens whenever our character enters the state
 func enter() -> void:
-	if PLAYER.FACINGDIRECTION == 0:
-		PLAYER.velocity.x = 0
-	PLAYER.velocity.y = PLAYER.JUMP_STRENGTH
-	PLAYER.ANIMATION_PLAYER.play("Jump")
+	if player.facingDirection == 0:
+		player.velocity.x = 0
+	player.velocity.y = player.jumpStrength
+	player.animationPlayer.play("Jump")
 
 # What happens whenever our character leaves a state
 func exit() -> void:
@@ -18,19 +18,19 @@ func exit() -> void:
 # Function called EVERY frame during _process
 func process(delta: float) -> State:
 	if Input.is_action_just_pressed("Attack"):
-		return AERIAL_ATTACK_STATE
+		return aerialAttackState
 	return null
 	
 
 # Function called EVERY frame during _physics_process
 func physics(delta: float) -> State:
-	if PLAYER.FACINGDIRECTION != 0:
-		PLAYER.velocity.x = lerp(PLAYER.velocity.x, - PLAYER.FACINGDIRECTION * PLAYER.AIR_SPEED, PLAYER.AIR_ACCELERATION)
+	if player.FACINGDIRECTION != 0:
+		player.velocity.x = lerp(player.velocity.x, - player.FACINGDIRECTION * player.AIR_SPEED, player.AIR_ACCELERATION)
 	else:
-		PLAYER.velocity.x = lerp(PLAYER.velocity.x, 0.0, PLAYER.AIR_ACCELERATION * 0.5)
+		player.velocity.x = lerp(player.velocity.x, 0.0, player.AIR_ACCELERATION * 0.5)
 	
-	if PLAYER.velocity.y >= 0:
-		return FALL_STATE
+	if player.velocity.y >= 0:
+		return fallState
 	return null
 	
 

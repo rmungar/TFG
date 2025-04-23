@@ -1,7 +1,7 @@
 class_name State extends Node
 
-static var PLAYER: Player
-static var STATE_MACHINE: StateMachine	
+static var player: Player
+static var stateMachine: StateMachine	
 
 # What happens whenever our character enters the state
 func enter() -> void:
