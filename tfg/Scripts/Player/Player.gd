@@ -3,6 +3,9 @@ class_name Player extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var stateMachine: StateMachine = $StateMachine
+@onready var normalAttackHitbox: Area2D = $NormalAttackHitbox
+
+@export_category("Movement")
 @export var speed: float = 200.0
 @export var airSpeed: float = -150.0
 @export var airAcceleration: float = 0.1
@@ -10,6 +13,7 @@ class_name Player extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var deceleration: float = 0.2
 var facingDirection: float 
+@export_category("Health")
 @export var HP: int = 100
 
 func _ready() -> void:
@@ -20,9 +24,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("MoveLeft"):
 		facingDirection = -1.0
 		sprite.flip_h = true
+		normalAttackHitbox.position.x = -32
+		
 	elif Input.is_action_pressed("MoveRight"):
 		facingDirection = 1.0
 		sprite.flip_h = false
+		normalAttackHitbox.position.x = 0
 	
 	
 

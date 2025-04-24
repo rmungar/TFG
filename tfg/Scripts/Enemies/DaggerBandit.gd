@@ -1,4 +1,4 @@
-class_name DaggerBandit extends CharacterBody2D
+class_name DaggerBandit extends Enemy
 
 @export_category("Health")
 @export var health = 200
@@ -6,14 +6,10 @@ class_name DaggerBandit extends CharacterBody2D
 
 var directionTowardsPlayer = 0
 
-@onready var animationPlayer = $AnimationPlayer
-
-
 func _on_hurt_box_hurt(damageTaken: int) -> void:
 	health -= damageTaken
 	if health <= 0:
 		isAlive = false
-
 
 func isDead():
 	if directionTowardsPlayer == 0:

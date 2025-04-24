@@ -27,7 +27,7 @@ func process(delta: float) -> State:
 
 # Function called EVERY frame during _physics_process
 func physics(delta: float) -> State:
-	player.velocity.x = player.FACINGDIRECTION * player.SPEED
+	player.velocity.x = player.facingDirection * player.speed
 	
 	if not player.is_on_floor():
 		return fallState

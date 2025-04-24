@@ -24,10 +24,10 @@ func process(delta: float) -> State:
 
 # Function called EVERY frame during _physics_process
 func physics(delta: float) -> State:
-	if player.FACINGDIRECTION != 0:
-		player.velocity.x = lerp(player.velocity.x, - player.FACINGDIRECTION * player.AIR_SPEED, player.AIR_ACCELERATION)
+	if player.facingDirection != 0:
+		player.velocity.x = lerp(player.velocity.x, - player.facingDirection * player.airSpeed, player.airAcceleration)
 	else:
-		player.velocity.x = lerp(player.velocity.x, 0.0, player.AIR_ACCELERATION * 0.5)
+		player.velocity.x = lerp(player.velocity.x, 0.0, player.airAcceleration * 0.5)
 	
 	if player.velocity.y >= 0:
 		return fallState

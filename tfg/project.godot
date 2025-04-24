@@ -88,6 +88,8 @@ Attack={
 
 2d_physics/layer_1="Player Level"
 2d_physics/layer_2="Enemy Level"
+2d_physics/layer_3="Hurtboxes"
+2d_physics/layer_4="Hitboxes"
 2d_physics/layer_20="Ground Level"
 
 [rendering]

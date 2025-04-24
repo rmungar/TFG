@@ -21,7 +21,7 @@ func process(delta: float) -> State:
 	if player.animationPlayer.is_playing():
 		return
 	else:
-		if player.FACINGDIRECTION != 0:
+		if player.facingDirection != 0:
 			return runState
 		else:
 			return idleState

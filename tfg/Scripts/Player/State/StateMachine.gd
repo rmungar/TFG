@@ -28,8 +28,8 @@ func configure(player: Player) -> void:
 	if not states:
 		return
 	
-	states[0].PLAYER = player
-	states[0].STATE_MACHINE = self
+	states[0].player = player
+	states[0].stateMachine = self
 	
 	changeState(states[0])
 	process_mode = Node.PROCESS_MODE_INHERIT

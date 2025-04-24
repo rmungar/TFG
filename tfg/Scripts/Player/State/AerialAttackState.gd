@@ -26,8 +26,6 @@ func physics(delta: float) -> State:
 		return idleState if player.FACINGDIRECTION == 0 else runState
 	else:
 		return fallState if player.velocity.y > 0 else null
-	return null
-	
 
 
 # Called when an input event occurs

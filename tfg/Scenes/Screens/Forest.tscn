@@ -1,17 +1,17 @@
 [gd_scene load_steps=17 format=4 uid="uid://d12rjverftlpl"]
 
-[ext_resource type="Texture2D" uid="uid://dbwthp3yeu7cg" path="res://Assets/Tilesets/Dungeon Entrances/block grassy ancient energy.png" id="3_trx64"]
-[ext_resource type="Script" uid="uid://61os4os1kxrl" path="res://Scripts/Camera/PlayerCamera.gd" id="6_cpevq"]
-[ext_resource type="Texture2D" uid="uid://d3qwgfa1nceqq" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset No background.png" id="7_r6l07"]
-[ext_resource type="Texture2D" uid="uid://tvkm8hgohrwj" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset with background.png" id="8_e2fbs"]
-[ext_resource type="Texture2D" uid="uid://caqll5kabky42" path="res://Assets/Tilesets/Camp Sprite Sheet/camp sprite sheet.png" id="9_wjun0"]
-[ext_resource type="PackedScene" uid="uid://k7dan74tnrbw" path="res://Scenes/Player.tscn" id="11_e2fbs"]
+[ext_resource type="Texture2D" uid="uid://d3qwgfa1nceqq" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset No background.png" id="1_okad4"]
+[ext_resource type="Texture2D" uid="uid://tvkm8hgohrwj" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset with background.png" id="2_6h4mx"]
+[ext_resource type="Texture2D" uid="uid://dbwthp3yeu7cg" path="res://Assets/Tilesets/Dungeon Entrances/block grassy ancient energy.png" id="3_ryay2"]
+[ext_resource type="Texture2D" uid="uid://caqll5kabky42" path="res://Assets/Tilesets/Camp Sprite Sheet/camp sprite sheet.png" id="4_qt755"]
+[ext_resource type="PackedScene" uid="uid://k7dan74tnrbw" path="res://Scenes/Player/Player.tscn" id="5_wcq3e"]
+[ext_resource type="Script" uid="uid://61os4os1kxrl" path="res://Scripts/Camera/PlayerCamera.gd" id="6_706c1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trx64"]
-texture = ExtResource("7_r6l07")
+texture = ExtResource("1_okad4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27oxr"]
-texture = ExtResource("8_e2fbs")
+texture = ExtResource("2_6h4mx")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -306,7 +306,7 @@ sources/0 = SubResource("TileSetAtlasSource_trx64")
 sources/1 = SubResource("TileSetAtlasSource_27oxr")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_frj1m"]
-texture = ExtResource("7_r6l07")
+texture = ExtResource("1_okad4")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 1:0/0 = 0
@@ -554,7 +554,7 @@ texture = ExtResource("7_r6l07")
 12:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, -5, 2, -5, 1, -4, 1, -4, 0, 1, 0, 1, 4, 6, 4, 6, 5, 8, 5, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7a3ml"]
-texture = ExtResource("8_e2fbs")
+texture = ExtResource("2_6h4mx")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -890,7 +890,7 @@ texture = ExtResource("8_e2fbs")
 17:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpevq"]
-texture = ExtResource("3_trx64")
+texture = ExtResource("3_ryay2")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -918,7 +918,7 @@ texture = ExtResource("3_trx64")
 9:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2qxmt"]
-texture = ExtResource("9_wjun0")
+texture = ExtResource("4_qt755")
 0:0/0 = 0
 1:0/0 = 0
 3:0/0 = 0
@@ -1085,7 +1085,7 @@ sources/3 = SubResource("TileSetAtlasSource_2qxmt")
 sources/2 = SubResource("TileSetAtlasSource_cpevq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03gy3"]
-texture = ExtResource("8_e2fbs")
+texture = ExtResource("2_6h4mx")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1395,10 +1395,9 @@ position = Vector2(48, 0)
 tile_map_data = PackedByteArray("AAAEAAoAAAADAAYAAAAFAAoAAAAEAAYAAAAFAAsAAAAEAAcAAAAGAAoAAAAFAAYAAAAKAAoAAAADAAYAAAALAAoAAAACAAYAAAAEAA8AAAAMAAoAAAAFAA8AAAANAAoAAAANAA8AAAAKAA0AAAAOAA8AAAALAA0AAAAPAA8AAAAMAA0AAAASAA4AAAAFAAYAAAABAA4AAAAEAAoAAAABAA8AAAAEAAsAAAACAA4AAAAFAAoAAAACAA8AAAAFAAsAAAAIAAwAAAAJAAsAAAAIAA0AAAAJAAwAAAAJAAwAAAAKAAsAAAAJAA0AAAAKAAwAAAAAAAIAAAAJAAsAAAAAAAMAAAAJAAwAAAABAAIAAAAKAAsAAAABAAMAAAAKAAwAAAAQAAYAAAAHAAoAAAACAAMAAAAEAAoAAAACAAQAAAAEAAsAAAADAAMAAAAFAAoAAAADAAQAAAAFAAsAAAARAAwAAAALAAoAAAAUAAoAAAAMAAoAAAAVAAoAAAANAAoAAAAYAAgAAAABAAAAAAAYAAcAAAABAAAAAAAYAAYAAAABAAAAAAAYAAUAAAABAAAAAAAYAAQAAAABAAAAAAAYAAMAAAABAAAAAAAYAAIAAAABAAAAAAAYAAEAAAABAAAAAAAYAAAAAAAKAAIAAAA=")
 tile_set = SubResource("TileSet_8u8ny")
 
-[node name="Player" parent="." instance=ExtResource("11_e2fbs")]
+[node name="Player" parent="." instance=ExtResource("5_wcq3e")]
 position = Vector2(237, 240)
 
-[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("TILEMAP")]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(3, -105)
-script = ExtResource("6_cpevq")
-TILEMAP = NodePath("../../BackGround")
+script = ExtResource("6_706c1")

@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=4 uid="uid://im21yhagkm1"]
 
-[ext_resource type="PackedScene" uid="uid://k7dan74tnrbw" path="res://Scenes/Player.tscn" id="1_5lt6y"]
-[ext_resource type="Texture2D" uid="uid://dwmnfss63bpui" path="res://Assets/Tilesets/Blood Temple/Blood Temple Tileset.png" id="1_b5ayd"]
-[ext_resource type="PackedScene" uid="uid://diekjk3ddagdh" path="res://Scenes/DaggerBandit.tscn" id="3_8k7wh"]
+[ext_resource type="PackedScene" uid="uid://k7dan74tnrbw" path="res://Scenes/Player/Player.tscn" id="1_v6oop"]
+[ext_resource type="Texture2D" uid="uid://dwmnfss63bpui" path="res://Assets/Tilesets/Blood Temple/Blood Temple Tileset.png" id="2_urcy7"]
+[ext_resource type="PackedScene" uid="uid://diekjk3ddagdh" path="res://Scenes/Enemies/DaggerBandit/DaggerBandit.tscn" id="3_j1dkb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lt6y"]
 resource_name = "Blood Temple"
-texture = ExtResource("1_b5ayd")
+texture = ExtResource("2_urcy7")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -263,7 +263,7 @@ sources/0 = SubResource("TileSetAtlasSource_5lt6y")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_5lt6y")]
+[node name="Player" parent="." instance=ExtResource("1_v6oop")]
 position = Vector2(324, 218)
 HP = 19
 
@@ -271,5 +271,5 @@ HP = 19
 tile_map_data = PackedByteArray("AAAAAA8AAAACAAIAAAABAA8AAAACAAIAAAACAA8AAAACAAIAAAADAA8AAAACAAIAAAAEAA8AAAACAAIAAAAFAA8AAAACAAIAAAAGAA8AAAACAAIAAAAHAA8AAAACAAIAAAAIAA8AAAACAAIAAAAJAA8AAAACAAIAAAAKAA8AAAACAAIAAAALAA8AAAACAAIAAAAMAA8AAAACAAIAAAANAA8AAAACAAIAAAAOAA8AAAACAAIAAAAPABAAAAACAAMAAAAQABAAAAACAAMAAAARABAAAAACAAMAAAASABAAAAACAAMAAAATAA8AAAACAAIAAAAUAA8AAAACAAIAAAAPAA8AAAACAAIAAAAQAA8AAAACAAIAAAARAA8AAAACAAIAAAASAA8AAAACAAIAAAAVAA8AAAACAAIAAAAWAA8AAAACAAIAAAAXAA8AAAACAAIAAAAYAA8AAAACAAIAAAAZAA8AAAACAAIAAAAaAA8AAAACAAIAAAAbAA8AAAACAAIAAAAcAA8AAAACAAIAAAAdAA8AAAACAAIAAAAAABAAAAACAAMAAAABABAAAAACAAMAAAACABAAAAACAAMAAAADABAAAAACAAMAAAAEABAAAAACAAMAAAAFABAAAAACAAMAAAAGABAAAAACAAMAAAAHABAAAAACAAMAAAAIABAAAAACAAMAAAAJABAAAAACAAMAAAAKABAAAAACAAMAAAALABAAAAACAAMAAAAMABAAAAACAAMAAAANABAAAAACAAMAAAAOABAAAAACAAMAAAATABAAAAACAAMAAAAUABAAAAACAAMAAAAVABAAAAACAAMAAAAWABAAAAACAAMAAAAXABAAAAACAAMAAAAYABAAAAACAAMAAAAZABAAAAACAAMAAAAaABAAAAACAAMAAAAbABAAAAACAAMAAAAcABAAAAACAAMAAAAdABAAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_8k7wh")
 
-[node name="Enemy" parent="." instance=ExtResource("3_8k7wh")]
+[node name="Enemy" parent="." instance=ExtResource("3_j1dkb")]
 position = Vector2(200, 225)

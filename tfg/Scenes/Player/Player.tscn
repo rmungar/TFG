@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://k7dan74tnrbw"]
+[gd_scene load_steps=22 format=3 uid="uid://k7dan74tnrbw"]
 
 [ext_resource type="Script" uid="uid://bi2wsg354crl3" path="res://Scripts/Player/Player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="1_rpqav"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bp5naj8de4xho" path="res://Scripts/Player/State/AttackState.gd" id="8_bhhdu"]
 [ext_resource type="Script" uid="uid://bk446yi2g0j80" path="res://Scripts/Player/State/AerialAttackState.gd" id="9_megsn"]
 [ext_resource type="Script" uid="uid://dt304083qgjt0" path="res://Scripts/Player/State/HeavyAttackState.gd" id="10_yoq75"]
+[ext_resource type="PackedScene" uid="uid://b3unlwj8ng0l7" path="res://Scenes/Player/NormalAttackHitbox.tscn" id="11_0kmp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
 size = Vector2(10, 23)
@@ -220,3 +221,6 @@ script = ExtResource("9_megsn")
 
 [node name="HeavyAttackState" type="Node" parent="StateMachine"]
 script = ExtResource("10_yoq75")
+
+[node name="NormalAttackHitbox" parent="." instance=ExtResource("11_0kmp4")]
+position = Vector2(0, -11)
