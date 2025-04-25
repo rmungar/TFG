@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ri5qgjmp40k"]
+
+[ext_resource type="Script" uid="uid://bbpepugw67bxv" path="res://Scripts/Enemies/DaggerBandit/DaggerBanditSpecialAttackHitbox.gd" id="1_q1bcb"]
+
+[node name="SpecialAttackHitbox" type="Area2D"]
+collision_layer = 32
+collision_mask = 16
+monitoring = false
+script = ExtResource("1_q1bcb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, -32)
+scale = Vector2(1.89844, 2.03906)
+polygon = PackedVector2Array(-0.526749, -6.37548, -0.526749, 6.8659, 26.8642, 20.5977, 45.8272, 20.5977)
+disabled = true

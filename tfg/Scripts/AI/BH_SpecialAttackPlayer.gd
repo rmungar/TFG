@@ -14,10 +14,20 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if distance > specialAttackRange:
 		return FAILURE  
 	else:
+		
+		var specialAttackHitbox = actor.get_node("SpecialAttackHitbox")
+		specialAttackHitbox.monitoring = true
+		
+		var specialAttackHitboxCollisionShape: CollisionPolygon2D = specialAttackHitbox.get_child(0)
+		specialAttackHitboxCollisionShape.disabled = false
+		
 		if directionToPlayer < 0:
 			actor.get_node("AnimationPlayer").play("SpecialAttack_Left")
 		else:
 			actor.get_node("AnimationPlayer").play("SpecialAttack_Right")
-		# PLAYER.take_damage(specialAttackDamage)
 		blackboard.set_value("timeSinceLastSpecialAttack", Time.get_ticks_msec())
+		
+		specialAttackHitbox.monitoring = false
+		specialAttackHitboxCollisionShape.disabled = true
+		
 		return SUCCESS

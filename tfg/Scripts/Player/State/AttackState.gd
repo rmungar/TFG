@@ -7,9 +7,13 @@ class_name AttackState extends State
 @onready var heavyAttackState: HeavyAttackState = $"../HeavyAttackState"
 
 func enter() -> void:
+	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
+	normalAttackHitbox.monitoring = true
+	normalAttackHitbox.get_child(0).disabled = false
 	player.velocity.x = 0
 	player.animationPlayer.play("Attack")
-	await player.animationPlayer.animation_finished
+	normalAttackHitbox.monitoring = false
+	normalAttackHitbox.get_child(0).disabled = true
 
 # What happens whenever our character leaves a state
 func exit() -> void:

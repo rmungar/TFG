@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://djrllwqt3cdao"]
+
+[ext_resource type="Script" uid="uid://dtcxsm83xqny0" path="res://Scripts/Player/HeavyAttackHitbox.gd" id="1_wpstp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srsf0"]
+size = Vector2(69, 39)
+
+[node name="HeavyAttackHitbox" type="Area2D"]
+script = ExtResource("1_wpstp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -8.5)
+shape = SubResource("RectangleShape2D_srsf0")
+disabled = true

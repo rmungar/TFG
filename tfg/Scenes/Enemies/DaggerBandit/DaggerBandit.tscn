@@ -1,6 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://diekjk3ddagdh"]
+[gd_scene load_steps=38 format=3 uid="uid://diekjk3ddagdh"]
 
-[ext_resource type="Script" uid="uid://bjsmnh4ltr48g" path="res://Scripts/Enemies/DaggerBandit.gd" id="1_eh1pt"]
+[ext_resource type="Script" uid="uid://bjsmnh4ltr48g" path="res://Scripts/Enemies/DaggerBandit/DaggerBandit.gd" id="1_eh1pt"]
 [ext_resource type="Texture2D" uid="uid://nykgsy0rhhpb" path="res://Assets/Enemies/Dagger Bandit/Dagger Bandit Full Sprite Sheet.png" id="2_343tk"]
 [ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_3yx7k"]
 [ext_resource type="Script" uid="uid://cw22yurt5l74k" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="4_8tkje"]
@@ -19,6 +19,9 @@
 [ext_resource type="Script" uid="uid://crkjak4kyv56m" path="res://addons/beehave/nodes/decorators/inverter.gd" id="11_a6koa"]
 [ext_resource type="Script" uid="uid://ctknw057vs4jf" path="res://Scripts/AI/BH_IsSpecialAttacking.gd" id="12_scwyr"]
 [ext_resource type="Script" uid="uid://bcnwfm1dm72as" path="res://Scripts/AI/BH_IsAttacking.gd" id="12_tmlgb"]
+[ext_resource type="Script" uid="uid://c4h8me4rbj2of" path="res://Scripts/Enemies/DaggerBandit/DaggerBanditHurtbox.gd" id="20_txxwi"]
+[ext_resource type="PackedScene" uid="uid://coqr5e3f51esv" path="res://Scenes/Enemies/DaggerBandit/BasicAttackHitbox.tscn" id="21_kobnw"]
+[ext_resource type="PackedScene" uid="uid://c8ri5qgjmp40k" path="res://Scenes/Enemies/DaggerBandit/SpecialAttackHitbox.tscn" id="22_7s4u7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpr8r"]
 atlas = ExtResource("2_343tk")
@@ -334,10 +337,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71qmi"]
 size = Vector2(16, 17)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txxwi"]
+size = Vector2(16, 17)
+
 [node name="DaggerBandit" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 524289
+collision_mask = 524297
 script = ExtResource("1_eh1pt")
+health = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -442,3 +449,22 @@ metadata/_custom_type_script = "uid://dntuu6jh0rbrc"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_71qmi")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("20_txxwi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_txxwi")
+debug_color = Color(0.982366, 0.029952, 0.33587, 0.42)
+
+[node name="BasicAttackHitbox" parent="." instance=ExtResource("21_kobnw")]
+position = Vector2(0, -9)
+
+[node name="SpecialAttackHitbox" parent="." instance=ExtResource("22_7s4u7")]
+position = Vector2(0, -10)
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
+[connection signal="damageTaken" from="HurtBox" to="." method="_on_hurt_box_damage_taken"]

@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("MoveLeft"):
 		facingDirection = -1.0
 		sprite.flip_h = true
-		normalAttackHitbox.position.x = -32
+		normalAttackHitbox.position.x = -36
 		
 	elif Input.is_action_pressed("MoveRight"):
 		facingDirection = 1.0

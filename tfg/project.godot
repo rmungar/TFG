@@ -37,7 +37,7 @@ project/assembly_name="Tfg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/format_on_save/plugin.cfg", "res://addons/function_type_autocomplete/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 
 [input]
 
@@ -88,8 +88,10 @@ Attack={
 
 2d_physics/layer_1="Player Level"
 2d_physics/layer_2="Enemy Level"
-2d_physics/layer_3="Hurtboxes"
-2d_physics/layer_4="Hitboxes"
+2d_physics/layer_3="Enemy_Hurtboxes"
+2d_physics/layer_4="Player_Hitboxes"
+2d_physics/layer_5="Player_Hurtboxes"
+2d_physics/layer_6="Enemy_Hitboxes"
 2d_physics/layer_20="Ground Level"
 
 [rendering]

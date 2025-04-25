@@ -5,7 +5,7 @@ class_name Enemy extends CharacterBody2D
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 
 @export_category("Physics")
-@export var speed: float
+@export var speed: float = 50
 @export var gravity: float = 980.0
 
 @export_category("Health")

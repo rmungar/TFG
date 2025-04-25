@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://coqr5e3f51esv"]
+
+[ext_resource type="Script" uid="uid://bgfdb63v8u2k6" path="res://Scripts/Enemies/DaggerBandit/DaggerBanditBasicAttackHitbox.gd" id="1_8fotg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0jg3"]
+size = Vector2(38, 22)
+
+[node name="BasicAttackHitbox" type="Area2D"]
+collision_layer = 32
+collision_mask = 16
+monitoring = false
+script = ExtResource("1_8fotg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_v0jg3")
+disabled = true
