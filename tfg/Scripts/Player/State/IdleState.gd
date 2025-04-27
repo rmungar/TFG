@@ -9,7 +9,8 @@ class_name IdleState extends State
 # What happens whenever our character enters the state
 func enter() -> void:
 	player.velocity.x = 0
-	player.animationPlayer.play("Idle")	
+	player.animationPlayer.play("Idle")
+	
 
 # What happens whenever our character leaves a state
 func exit() -> void:

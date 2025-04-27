@@ -7,8 +7,18 @@ class_name AerialAttackState extends State
 
 # What happens whenever our character enters the state
 func enter() -> void:
+	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
+	normalAttackHitbox.monitoring = true
+	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
+	normalAttackCollisionShape.disabled = false
+	
+	player.velocity.x *= 0.7
 	player.animationPlayer.play("Attack")
+	
 	await player.animationPlayer.animation_finished
+	
+	normalAttackHitbox.monitoring = false
+	normalAttackCollisionShape.disabled = true
 
 # What happens whenever our character leaves a state
 func exit() -> void:

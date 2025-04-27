@@ -3,6 +3,10 @@ class_name ChasePlayer extends ActionLeaf
 @export var speed: float = 100.0
 @export var range: float = 30.0
 
+@export var attackRange = range              
+@export var comfortZone = range * 0.8       
+@export var panicZone = range * 0.5  
+
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	
 	if actor is Enemy:
@@ -10,32 +14,42 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		if !enemy.is_on_floor():
 			enemy.velocity.y += enemy.gravity * blackboard.get_value("delta")
 	
+	var animationPlayer = actor.get_node("AnimationPlayer")
+	
 	var playerPosition = blackboard.get_value("player_position")
 	if not playerPosition:
 		return FAILURE
+
+	var direction = playerPosition - actor.global_position
+	var horizontalDistance = abs(direction.x)
+	var normalizedDirection = direction.normalized()
+
+	# Movement logic
+	if horizontalDistance > attackRange:
+		# Chase player 
+		actor.global_position.x += normalizedDirection.x * speed * get_physics_process_delta_time()
+	elif horizontalDistance < panicZone:
+		# Back up 
+		actor.global_position.x -= normalizedDirection.x * speed * get_physics_process_delta_time()
+	elif horizontalDistance < comfortZone:
+		# Slow retreat 
+		actor.global_position.x -= normalizedDirection.x * speed * 0.5 * get_physics_process_delta_time()
 	
-	var direction = (playerPosition - actor.global_position)
-	var normalizedDirection = (direction).normalized()
-	blackboard.set_value("directionToPlayer",direction.x)
+	# Animation and facing
 	if direction.x < 0:
-		actor.get_node("AnimationPlayer").play("Run_Left")
+		animationPlayer.play("Run_Left")
 		actor.directionTowardsPlayer = -1
 		setHitboxesDirection(actor, -1)
 	else:
-		actor.get_node("AnimationPlayer").play("Run_Right")
+		animationPlayer.play("Run_Right") 
 		actor.directionTowardsPlayer = 1
 		setHitboxesDirection(actor, 1)
 	
-	
-	actor.global_position.x += normalizedDirection.x * speed * get_physics_process_delta_time()
-	
 	blackboard.set_value("attack_range", range)
+	blackboard.set_value("directionToPlayer", direction.x)
 	
-	var horizontalDistance = abs(actor.global_position.x - playerPosition.x)
-	if horizontalDistance <= range:
-		return SUCCESS
-	
-	return RUNNING
+	return SUCCESS if horizontalDistance <= range else RUNNING
+
 
 
 func setHitboxesDirection(actor: Node, directionTowardsPlayer: int):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://diekjk3ddagdh"]
+[gd_scene load_steps=40 format=3 uid="uid://diekjk3ddagdh"]
 
 [ext_resource type="Script" uid="uid://bjsmnh4ltr48g" path="res://Scripts/Enemies/DaggerBandit/DaggerBandit.gd" id="1_eh1pt"]
 [ext_resource type="Texture2D" uid="uid://nykgsy0rhhpb" path="res://Assets/Enemies/Dagger Bandit/Dagger Bandit Full Sprite Sheet.png" id="2_343tk"]
@@ -19,7 +19,9 @@
 [ext_resource type="Script" uid="uid://crkjak4kyv56m" path="res://addons/beehave/nodes/decorators/inverter.gd" id="11_a6koa"]
 [ext_resource type="Script" uid="uid://ctknw057vs4jf" path="res://Scripts/AI/BH_IsSpecialAttacking.gd" id="12_scwyr"]
 [ext_resource type="Script" uid="uid://bcnwfm1dm72as" path="res://Scripts/AI/BH_IsAttacking.gd" id="12_tmlgb"]
+[ext_resource type="Script" uid="uid://5llb6og77u7k" path="res://Scripts/AI/BH_IsTakingDamage.gd" id="20_7s4u7"]
 [ext_resource type="Script" uid="uid://c4h8me4rbj2of" path="res://Scripts/Enemies/DaggerBandit/DaggerBanditHurtbox.gd" id="20_txxwi"]
+[ext_resource type="Script" uid="uid://d2q3ddshnifto" path="res://Scripts/AI/BH_Stun.gd" id="21_hddwv"]
 [ext_resource type="PackedScene" uid="uid://coqr5e3f51esv" path="res://Scenes/Enemies/DaggerBandit/BasicAttackHitbox.tscn" id="21_kobnw"]
 [ext_resource type="PackedScene" uid="uid://c8ri5qgjmp40k" path="res://Scenes/Enemies/DaggerBandit/SpecialAttackHitbox.tscn" id="22_7s4u7"]
 
@@ -359,90 +361,106 @@ libraries = {
 }
 autoplay = "Idle_Right"
 
-[node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+[node name="DaggerBanditBehaviourTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_3yx7k")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@21895")
+blackboard = NodePath("@Node@100663")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
-[node name="SequenceComposite" type="Node" parent="BeehaveTree"]
+[node name="SequenceComposite" type="Node" parent="DaggerBanditBehaviourTree"]
 script = ExtResource("5_dbu40")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="IsAlive" type="Node" parent="BeehaveTree/SequenceComposite"]
+[node name="IsAlive" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite"]
 script = ExtResource("6_4yra5")
 metadata/_custom_type_script = "uid://cn26qr1u25bex"
 
-[node name="GetPlayerInstance" type="Node" parent="BeehaveTree/SequenceComposite"]
+[node name="GetPlayerInstance" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite"]
 script = ExtResource("4_v3k4b")
 metadata/_custom_type_script = "uid://7np33t66fmy8"
 
-[node name="SelectorComposite" type="Node" parent="BeehaveTree/SequenceComposite"]
+[node name="SelectorReactiveComposite" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite"]
 script = ExtResource("4_8tkje")
 metadata/_custom_type_script = "uid://cw22yurt5l74k"
 
-[node name="Special Atack Sequence" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite"]
+[node name="DamagedBehaviour" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite"]
 script = ExtResource("5_dbu40")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="IsPlayerLowHP" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Special Atack Sequence"]
+[node name="IsTakingDamage" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/DamagedBehaviour"]
+script = ExtResource("20_7s4u7")
+metadata/_custom_type_script = "uid://5llb6og77u7k"
+
+[node name="Stun" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/DamagedBehaviour"]
+script = ExtResource("21_hddwv")
+metadata/_custom_type_script = "uid://d2q3ddshnifto"
+
+[node name="NormalBehaviour" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite"]
+script = ExtResource("4_8tkje")
+metadata/_custom_type_script = "uid://cw22yurt5l74k"
+
+[node name="Special Atack Sequence" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour"]
+script = ExtResource("5_dbu40")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="IsPlayerLowHP" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Special Atack Sequence"]
 script = ExtResource("6_p2c3r")
 metadata/_custom_type_script = "uid://b3tu71gr8n7xv"
 
-[node name="IsInSpecialAttackRange" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Special Atack Sequence"]
+[node name="IsInSpecialAttackRange" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Special Atack Sequence"]
 script = ExtResource("6_tmlgb")
 metadata/_custom_type_script = "uid://xci1pudxr4qe"
 
-[node name="SpecialAttackCooldown" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Special Atack Sequence"]
+[node name="SpecialAttackCooldown" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Special Atack Sequence"]
 script = ExtResource("7_c6b1o")
 metadata/_custom_type_script = "uid://cm6n66pphle1b"
 
-[node name="SpecialAttack" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Special Atack Sequence/SpecialAttackCooldown"]
+[node name="SpecialAttack" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Special Atack Sequence/SpecialAttackCooldown"]
 script = ExtResource("8_scwyr")
 metadata/_custom_type_script = "uid://qnbs45otj5im"
 
-[node name="Attack Sequence" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite"]
+[node name="Attack Sequence" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour"]
 script = ExtResource("5_dbu40")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="IsInAttackRange" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Attack Sequence"]
+[node name="IsInAttackRange" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Attack Sequence"]
 script = ExtResource("7_8tkje")
 metadata/_custom_type_script = "uid://dqudov72sagck"
 
-[node name="AttackCooldown" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Attack Sequence"]
+[node name="AttackCooldown" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Attack Sequence"]
 script = ExtResource("8_0jmer")
 metadata/_custom_type_script = "uid://bh8o8dhjaset6"
 
-[node name="Attack" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Attack Sequence/AttackCooldown"]
+[node name="Attack" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Attack Sequence/AttackCooldown"]
 script = ExtResource("8_0lprl")
 metadata/_custom_type_script = "uid://bdilyjqic41kf"
 
-[node name="Chase Sequence" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite"]
+[node name="Chase Sequence" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour"]
 script = ExtResource("5_dbu40")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="InverterDecorator2" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Chase Sequence"]
+[node name="InverterDecorator2" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Chase Sequence"]
 script = ExtResource("11_a6koa")
 metadata/_custom_type_script = "uid://crkjak4kyv56m"
 
-[node name="IsSpecialAttacking" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Chase Sequence/InverterDecorator2"]
+[node name="IsSpecialAttacking" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Chase Sequence/InverterDecorator2"]
 script = ExtResource("12_scwyr")
 metadata/_custom_type_script = "uid://ctknw057vs4jf"
 
-[node name="InverterDecorator" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Chase Sequence"]
+[node name="InverterDecorator" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Chase Sequence"]
 script = ExtResource("11_a6koa")
 metadata/_custom_type_script = "uid://crkjak4kyv56m"
 
-[node name="IsAttacking" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Chase Sequence/InverterDecorator"]
+[node name="IsAttacking" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Chase Sequence/InverterDecorator"]
 script = ExtResource("12_tmlgb")
 metadata/_custom_type_script = "uid://bcnwfm1dm72as"
 
-[node name="IsNearPlayer" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Chase Sequence"]
+[node name="IsNearPlayer" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Chase Sequence"]
 script = ExtResource("6_8tkje")
 metadata/_custom_type_script = "uid://2yevedtv5j7y"
 
-[node name="ChasePlayer" type="Node" parent="BeehaveTree/SequenceComposite/SelectorComposite/Chase Sequence"]
+[node name="ChasePlayer" type="Node" parent="DaggerBanditBehaviourTree/SequenceComposite/SelectorReactiveComposite/NormalBehaviour/Chase Sequence"]
 script = ExtResource("7_343tk")
 metadata/_custom_type_script = "uid://dntuu6jh0rbrc"
 
@@ -452,7 +470,7 @@ shape = SubResource("RectangleShape2D_71qmi")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 8
+collision_mask = 9
 script = ExtResource("20_txxwi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

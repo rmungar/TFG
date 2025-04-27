@@ -7,8 +7,8 @@ class_name RunState extends State
 
 # What happens whenever our character enters the state
 func enter() -> void:
-	player.animationPlayer.play("Run")	
-	
+	player.animationPlayer.play("Run")
+
 
 # What happens whenever our character leaves a state
 func exit() -> void:

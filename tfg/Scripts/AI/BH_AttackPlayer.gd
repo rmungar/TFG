@@ -17,13 +17,14 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	else:
 		var basicAttackHitbox = actor.get_node("BasicAttackHitbox")
 		basicAttackHitbox.monitoring = true
-		var basicAttackHitboxCollisionShape: CollisionShape2D = basicAttackHitbox.get_child(0)
+		var basicAttackHitboxCollisionShape: CollisionShape2D = basicAttackHitbox.get_node("CollisionShape2D")
 		basicAttackHitboxCollisionShape.disabled = false
 		
 		if direction < 0:
 			actor.get_node("AnimationPlayer").play("Attack_Left")
 		else:
 			actor.get_node("AnimationPlayer").play("Attack_Right")
+			
 		blackboard.set_value("timeSinceLastAttack", Time.get_ticks_msec())
 		
 		basicAttackHitbox.monitoring = false

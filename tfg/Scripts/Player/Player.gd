@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var stateMachine: StateMachine = $StateMachine
 @onready var normalAttackHitbox: Area2D = $NormalAttackHitbox
+@onready var heavyAttackHitbox: HeavyAttackHitbox = $HeavyAttackHitbox
 
 @export_category("Movement")
 @export var speed: float = 200.0
@@ -13,6 +14,7 @@ class_name Player extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var deceleration: float = 0.2
 var facingDirection: float 
+
 @export_category("Health")
 @export var HP: int = 100
 
@@ -25,13 +27,12 @@ func _process(delta: float) -> void:
 		facingDirection = -1.0
 		sprite.flip_h = true
 		normalAttackHitbox.position.x = -36
-		
+		heavyAttackHitbox.position.x = -4
 	elif Input.is_action_pressed("MoveRight"):
 		facingDirection = 1.0
 		sprite.flip_h = false
 		normalAttackHitbox.position.x = 0
-	
-	
+		heavyAttackHitbox.position.x = 4
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -39,3 +40,10 @@ func _physics_process(delta: float) -> void:
 	if not Input.is_action_pressed("MoveLeft") and not Input.is_action_pressed("MoveRight"):
 		facingDirection = 0
 	move_and_slide()
+
+
+func _on_hurbox_damage_taken(damage: int) -> void:
+	HP -= damage
+	if HP <= 0:
+		queue_free()
+	

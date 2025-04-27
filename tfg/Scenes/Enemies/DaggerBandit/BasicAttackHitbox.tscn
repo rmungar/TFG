@@ -8,7 +8,6 @@ size = Vector2(38, 22)
 [node name="BasicAttackHitbox" type="Area2D"]
 collision_layer = 32
 collision_mask = 16
-monitoring = false
 script = ExtResource("1_8fotg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

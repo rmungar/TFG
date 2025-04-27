@@ -9,16 +9,21 @@ class_name AttackState extends State
 func enter() -> void:
 	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
 	normalAttackHitbox.monitoring = true
-	normalAttackHitbox.get_child(0).disabled = false
+	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
+	normalAttackCollisionShape.disabled = false
+	
 	player.velocity.x = 0
 	player.animationPlayer.play("Attack")
+	
+	await player.animationPlayer.animation_finished
+	await get_tree().create_timer(0.2).timeout 
+	
 	normalAttackHitbox.monitoring = false
-	normalAttackHitbox.get_child(0).disabled = true
+	normalAttackCollisionShape.disabled = true
 
 # What happens whenever our character leaves a state
 func exit() -> void:
 	pass
-	
 
 # Function called EVERY frame during _process
 func process(delta: float) -> State:

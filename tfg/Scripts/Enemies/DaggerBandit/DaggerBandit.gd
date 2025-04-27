@@ -1,13 +1,19 @@
 class_name DaggerBandit extends Enemy
 
+@onready var behaviourTree: BeehaveTree = $DaggerBanditBehaviourTree
+
 @export_category("Health")
 @export var health = 200
 @export var isAlive = true
+
 
 var directionTowardsPlayer = 0
 
 func _on_hurt_box_damage_taken(damageTaken: int) -> void:
 	health -= damageTaken
+	behaviourTree.blackboard.set_value("justTookDamage", true)
+	behaviourTree.blackboard.set_value("isInmune", true)
+	behaviourTree.blackboard.set_value("damageTime", Time.get_ticks_msec())
 	print(health)
 	if health <= 0:
 		isAlive = false

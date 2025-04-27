@@ -15,6 +15,14 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		actor.get_node("AnimationPlayer").play("Idle_Right")
 		return FAILURE
 	
+	if distanceToPlayer < 0 and distanceToPlayer > -1:
+		actor.get_node("AnimationPlayer").play("Idle_Left")
+		return FAILURE
+	
+	if distanceToPlayer > 0 and distanceToPlayer < 1:
+		actor.get_node("AnimationPlayer").play("Idle_Right")
+		return FAILURE
+	
 	blackboard.set_value("player_position", player.global_position)
 	blackboard.set_value("player_detected", true)
 	
