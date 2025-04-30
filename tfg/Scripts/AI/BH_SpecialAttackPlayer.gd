@@ -15,19 +15,17 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		return FAILURE  
 	else:
 		
-		var specialAttackHitbox = actor.get_node("SpecialAttackHitbox")
-		specialAttackHitbox.monitoring = true
 		
-		var specialAttackHitboxCollisionShape: CollisionPolygon2D = specialAttackHitbox.get_child(0)
-		specialAttackHitboxCollisionShape.disabled = false
 		
 		if directionToPlayer < 0:
 			actor.get_node("AnimationPlayer").play("SpecialAttack_Left")
 		else:
 			actor.get_node("AnimationPlayer").play("SpecialAttack_Right")
-		blackboard.set_value("timeSinceLastSpecialAttack", Time.get_ticks_msec())
+			
+		var specialAttackHitbox = actor.get_node("SpecialAttackHitbox")
+		var specialAttackHitboxCollisionShape: CollisionPolygon2D = specialAttackHitbox.get_child(0)
+		specialAttackHitboxCollisionShape.disabled = false
 		
-		specialAttackHitbox.monitoring = false
-		specialAttackHitboxCollisionShape.disabled = true
+		blackboard.set_value("timeSinceLastSpecialAttack", Time.get_ticks_msec())
 		
 		return SUCCESS

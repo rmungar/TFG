@@ -16,7 +16,6 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		return FAILURE  
 	else:
 		var basicAttackHitbox = actor.get_node("BasicAttackHitbox")
-		basicAttackHitbox.monitoring = true
 		var basicAttackHitboxCollisionShape: CollisionShape2D = basicAttackHitbox.get_node("CollisionShape2D")
 		basicAttackHitboxCollisionShape.disabled = false
 		
@@ -26,8 +25,5 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			actor.get_node("AnimationPlayer").play("Attack_Right")
 			
 		blackboard.set_value("timeSinceLastAttack", Time.get_ticks_msec())
-		
-		basicAttackHitbox.monitoring = false
-		basicAttackHitboxCollisionShape.disabled = true
 		
 		return SUCCESS

@@ -5,11 +5,14 @@ class_name HeavyAttackState extends State
 @onready var fallState: FallState = $"../FallState"
 
 func enter() -> void:
-	var heavyAttackHitbox = player.get_node("HeavyAttackHitbox")
-	
+	var heavyAttackHitbox: Area2D = player.get_node("HeavyAttackHitbox")
+	var normalAttackHitbox: Area2D = player.get_node("NormalAttackHitbox")
+	normalAttackHitbox.monitoring = false
 	heavyAttackHitbox.monitoring = true
 	var heavyAttackCollisionShape: CollisionShape2D = heavyAttackHitbox.get_node("CollisionShape2D")
+	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
 	heavyAttackCollisionShape.disabled = false
+	normalAttackCollisionShape.disabled = true
 	player.velocity.x = 0
 	player.animationPlayer.play("HeavyAttack")
 	await player.animationPlayer.animation_finished

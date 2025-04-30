@@ -10,11 +10,13 @@ class_name DaggerBandit extends Enemy
 var directionTowardsPlayer = 0
 
 func _on_hurt_box_damage_taken(damageTaken: int) -> void:
-	health -= damageTaken
+	if not $DamageTimer.is_stopped():
+		return
 	behaviourTree.blackboard.set_value("justTookDamage", true)
-	behaviourTree.blackboard.set_value("isInmune", true)
 	behaviourTree.blackboard.set_value("damageTime", Time.get_ticks_msec())
-	print(health)
+	
+	health -= damageTaken
+	$DamageTimer.start()
 	if health <= 0:
 		isAlive = false
 		isDead()

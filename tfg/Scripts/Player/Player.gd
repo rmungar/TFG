@@ -17,33 +17,44 @@ var facingDirection: float
 
 @export_category("Health")
 @export var HP: int = 100
+@export var isAlive: bool = true
+var hitCount = 0
+
 
 func _ready() -> void:
 	stateMachine.configure(self)
 
 func _process(delta: float) -> void:
-	# Handle directions
-	if Input.is_action_pressed("MoveLeft"):
-		facingDirection = -1.0
-		sprite.flip_h = true
-		normalAttackHitbox.position.x = -36
-		heavyAttackHitbox.position.x = -4
-	elif Input.is_action_pressed("MoveRight"):
-		facingDirection = 1.0
-		sprite.flip_h = false
-		normalAttackHitbox.position.x = 0
-		heavyAttackHitbox.position.x = 4
+	
+	if isAlive:
+		if Input.is_action_pressed("MoveLeft"):
+			facingDirection = -1.0
+			sprite.flip_h = true
+			normalAttackHitbox.position.x = -36
+			heavyAttackHitbox.position.x = -4
+		elif Input.is_action_pressed("MoveRight"):
+			facingDirection = 1.0
+			sprite.flip_h = false
+			normalAttackHitbox.position.x = 0
+			heavyAttackHitbox.position.x = 4
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	if not Input.is_action_pressed("MoveLeft") and not Input.is_action_pressed("MoveRight"):
-		facingDirection = 0
-	move_and_slide()
+	if isAlive:
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		if not Input.is_action_pressed("MoveLeft") and not Input.is_action_pressed("MoveRight"):
+			facingDirection = 0
+		move_and_slide()
 
 
 func _on_hurbox_damage_taken(damage: int) -> void:
+	hitCount += 1
+	if not $DamageCooldown.is_stopped():
+		return 
 	HP -= damage
+	$DamageCooldown.start()
 	if HP <= 0:
+		isAlive = false
+		$AnimationPlayer.play("Death")
+		await $AnimationPlayer.animation_finished
 		queue_free()
-	
