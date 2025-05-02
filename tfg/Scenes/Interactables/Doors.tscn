@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://5kxhcbecqc5l"]
+
+[ext_resource type="Script" uid="uid://dakprb2rcreqw" path="res://Scripts/Interactables/Doors.gd" id="1_k03i6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7pe3"]
+size = Vector2(20, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imim6"]
+size = Vector2(20, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k03i6"]
+size = Vector2(20, 33)
+
+[node name="Doors" type="Node2D"]
+script = ExtResource("1_k03i6")
+
+[node name="Door1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1"]
+position = Vector2(96, 64.5)
+shape = SubResource("RectangleShape2D_y7pe3")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="Door2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Door2"]
+position = Vector2(784, 64)
+shape = SubResource("RectangleShape2D_imim6")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="Door3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Door3"]
+position = Vector2(1376, 240)
+shape = SubResource("RectangleShape2D_k03i6")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[connection signal="body_entered" from="Door1" to="." method="onTutorialDoor1Entered"]
+[connection signal="body_exited" from="Door1" to="." method="onTutorialDoor1Exited"]
+[connection signal="body_entered" from="Door2" to="." method="onTutorialDoor2Entered"]
+[connection signal="body_exited" from="Door2" to="." method="onTutorialDoor2Exited"]
+[connection signal="body_entered" from="Door3" to="." method="onTutorialDoor3Entered"]
+[connection signal="body_exited" from="Door3" to="." method="onTutorialDoor3Exited"]

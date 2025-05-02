@@ -1,17 +1,20 @@
-class_name IdleState extends State
+class_name HealingState extends State
 
 @onready var runState: RunState = $"../RunState"
 @onready var jumpState: JumpState = $"../JumpState"
 @onready var fallState: FallState = $"../FallState"
 @onready var attackState: AttackState = $"../AttackState"
-@onready var healingState: HealingState = $"../HealingState"
+@onready var idleState: IdleState = $"../IdleState"
+@onready var interactingState: Node = $"../InteractingState"
+@onready var healingState: HealingState = $"."
+
 
 
 # What happens whenever our character enters the state
 func enter() -> void:
 	player.velocity.x = 0
-	player.animationPlayer.play("Idle")
-	
+	var healingEffect: AnimatedSprite2D = player.get_node("HealingEffect")
+	healingEffect.play("default")
 
 # What happens whenever our character leaves a state
 func exit() -> void:

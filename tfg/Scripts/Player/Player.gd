@@ -18,8 +18,7 @@ var facingDirection: float
 @export_category("Health")
 @export var HP: int = 100
 @export var isAlive: bool = true
-var hitCount = 0
-
+var isInteracting: bool = false
 
 func _ready() -> void:
 	stateMachine.configure(self)
@@ -48,7 +47,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hurbox_damage_taken(damage: int) -> void:
-	hitCount += 1
 	if not $DamageCooldown.is_stopped():
 		return 
 	HP -= damage
