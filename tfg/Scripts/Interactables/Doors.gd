@@ -2,10 +2,16 @@ class_name TutorialDoorsManager extends Node2D
 
 var playerReference: Player = null
 var currentDoorReference = 0
-@onready var door1: Area2D = get_node("/root/TutorialScene/Doors/Door1")
-@onready var door2: Area2D = get_node("/root/TutorialScene/Doors/Door2")
-@onready var door3: Area2D = get_node("/root/TutorialScene/Doors/Door3")
 @onready var doors: TutorialDoorsManager = $"."
+
+var door1Coordinates: Vector2
+var door2Coordinates: Vector2
+var door3Coordinates: Vector2
+
+func _ready() -> void:
+	door1Coordinates = doors.get_node("Door1").global_position
+	door2Coordinates = doors.get_node("Door2").global_position
+	door3Coordinates = doors.get_node("Door3").global_position
 
 
 func _process(delta: float) -> void:
@@ -17,13 +23,13 @@ func _process(delta: float) -> void:
 		var targetPosition: Vector2
 		match currentDoorReference:
 			1: 
-				targetPosition = door2.global_position
+				targetPosition = door2Coordinates
 				print("Teleporting to Door2 pos: ", targetPosition)
 			2: 
-				targetPosition = door3.global_position
+				targetPosition = door3Coordinates
 				print("Teleporting to Door3 pos: ", targetPosition)
 			3: 
-				targetPosition = door3.global_position
+				targetPosition = door3Coordinates
 				print("Teleporting to Door3 pos: ", targetPosition)
 		
 		playerReference.global_position = targetPosition
@@ -32,7 +38,6 @@ func _process(delta: float) -> void:
 		await get_tree().physics_frame
 		
 		playerReference.collision_mask = originalCollision
-		
 
 
 func onTutorialDoor1Entered(body: Node2D) -> void:

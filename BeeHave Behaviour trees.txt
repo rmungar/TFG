@@ -6,6 +6,10 @@ BEEHAVE -> BEHAVIOUR TREES SCHEMAS
 720 / 9 = 80
 
 
+ DOOR 1 -> (96.0, 64.5)
+ DOOR 2 -> (784.0, 64.0)
+ DOOR 3 -> (1376.0, 240.0)
+
 
 
 1- Dagger Bandit

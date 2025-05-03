@@ -358,7 +358,7 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -19)
+position = Vector2(0, -8)
 texture = ExtResource("1_rpqav")
 hframes = 24
 vframes = 9
@@ -367,12 +367,13 @@ region_enabled = true
 region_rect = Rect2(-0.0174961, 8, 2976.02, 432)
 
 [node name="HealingEffect" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.90735e-06, -13)
+position = Vector2(-1.90735e-06, -1)
 scale = Vector2(0.4375, 0.4375)
 sprite_frames = SubResource("SpriteFrames_wid83")
+frame = 16
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_rpqav")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -412,7 +413,6 @@ script = ExtResource("12_esmjy")
 
 [node name="NormalAttackHitbox" parent="." instance=ExtResource("11_0kmp4")]
 visible = false
-position = Vector2(0, -11)
 collision_layer = 8
 collision_mask = 4
 monitoring = false
@@ -420,12 +420,11 @@ damage = 50
 
 [node name="HeavyAttackHitbox" parent="." instance=ExtResource("12_i5acl")]
 visible = false
-position = Vector2(1, -20)
 collision_layer = 8
 collision_mask = 4
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
+position = Vector2(0, 11.5)
 collision_layer = 16
 collision_mask = 98
 script = ExtResource("13_epg6k")

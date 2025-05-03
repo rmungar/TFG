@@ -22,6 +22,11 @@ GameManager="*res://Scripts/GameManager.gd"
 ScreenManager="*res://Scripts/ScreenManager.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+runtime/advanced/uses_dotnet=true
 
 [display]
 
@@ -37,7 +42,7 @@ project/assembly_name="Tfg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
