@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://k755ms0w3vgn"]
+
+[ext_resource type="Texture2D" uid="uid://cjysnujapmebe" path="res://Assets/Tilesets/DARK Edition/Animated objects/Torch/TorchLight.png" id="1_2h15u"]
+[ext_resource type="Texture2D" uid="uid://ct543uaaefhf2" path="res://Assets/Tilesets/DARK Edition/Animated objects/Torch/Torch 16x16.png" id="2_1tepg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flubc"]
+atlas = ExtResource("2_1tepg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6112"]
+atlas = ExtResource("2_1tepg")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew3lx"]
+atlas = ExtResource("2_1tepg")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wavv"]
+atlas = ExtResource("2_1tepg")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgivl"]
+atlas = ExtResource("2_1tepg")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iale1"]
+atlas = ExtResource("2_1tepg")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27vsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flubc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6112")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew3lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wavv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgivl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iale1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Node2D" type="PointLight2D"]
+scale = Vector2(0.597656, 0.65625)
+texture = ExtResource("1_2h15u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -11)
+scale = Vector2(2.9375, 2.875)
+sprite_frames = SubResource("SpriteFrames_27vsy")
+autoplay = "default"
+frame_progress = 0.960452

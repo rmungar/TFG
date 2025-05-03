@@ -35,9 +35,18 @@ position = Vector2(1376, 240)
 shape = SubResource("RectangleShape2D_k03i6")
 debug_color = Color(1, 1, 0, 0.419608)
 
+[node name="Door4" type="Area2D" parent="."]
+position = Vector2(1696, 241)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Door4"]
+shape = SubResource("RectangleShape2D_k03i6")
+debug_color = Color(1, 1, 0, 0.419608)
+
 [connection signal="body_entered" from="Door1" to="." method="onTutorialDoor1Entered"]
 [connection signal="body_exited" from="Door1" to="." method="onTutorialDoor1Exited"]
 [connection signal="body_entered" from="Door2" to="." method="onTutorialDoor2Entered"]
 [connection signal="body_exited" from="Door2" to="." method="onTutorialDoor2Exited"]
 [connection signal="body_entered" from="Door3" to="." method="onTutorialDoor3Entered"]
 [connection signal="body_exited" from="Door3" to="." method="onTutorialDoor3Exited"]
+[connection signal="body_entered" from="Door4" to="." method="onTutorialDoor4Entered"]
+[connection signal="body_exited" from="Door4" to="." method="onTutorialDoor4Exited"]

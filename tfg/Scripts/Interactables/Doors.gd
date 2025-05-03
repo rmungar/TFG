@@ -7,11 +7,13 @@ var currentDoorReference = 0
 var door1Coordinates: Vector2
 var door2Coordinates: Vector2
 var door3Coordinates: Vector2
+var door4Coordinates: Vector2
 
 func _ready() -> void:
 	door1Coordinates = doors.get_node("Door1").global_position
 	door2Coordinates = doors.get_node("Door2").global_position
 	door3Coordinates = doors.get_node("Door3").global_position
+	door4Coordinates = doors.get_node("Door4").global_position
 
 
 func _process(delta: float) -> void:
@@ -29,8 +31,10 @@ func _process(delta: float) -> void:
 				targetPosition = door3Coordinates
 				print("Teleporting to Door3 pos: ", targetPosition)
 			3: 
-				targetPosition = door3Coordinates
-				print("Teleporting to Door3 pos: ", targetPosition)
+				targetPosition = door4Coordinates
+				print("Teleporting to Door4 pos: ", targetPosition)
+			4: 
+				targetPosition = playerReference.global_position
 		
 		playerReference.global_position = targetPosition
 		playerReference.force_update_transform()
@@ -69,5 +73,16 @@ func onTutorialDoor3Entered(body: Node2D) -> void:
 
 
 func onTutorialDoor3Exited(body: Node2D) -> void:
+	playerReference = null
+	currentDoorReference = 0
+
+
+func onTutorialDoor4Entered(body: Node2D) -> void:
+	if body is Player:
+		playerReference = body
+		currentDoorReference = 4
+
+
+func onTutorialDoor4Exited(body: Node2D) -> void:
 	playerReference = null
 	currentDoorReference = 0

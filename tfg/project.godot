@@ -108,6 +108,8 @@ Heal={
 2d_physics/layer_5="Player_Hurtboxes"
 2d_physics/layer_6="Enemy_Hitboxes"
 2d_physics/layer_7="Doors"
+2d_physics/layer_8="Portals"
+2d_physics/layer_9="Chests"
 2d_physics/layer_20="Ground Level"
 
 [rendering]
