@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c2wpi64xcij6u"
+path="res://.godot/imported/SwordmasterTutorialDialog.dialogue-660a87bda431ca3b2240c204c24378cb.tres"
+
+[deps]
+
+source_file="res://Dialogues/SwordmasterTutorialDialog.dialogue"
+dest_files=["res://.godot/imported/SwordmasterTutorialDialog.dialogue-660a87bda431ca3b2240c204c24378cb.tres"]
+
+[params]
+
+defaults=true

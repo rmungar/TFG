@@ -3,7 +3,7 @@ using Godot.Collections;
 
 namespace DialogueManagerRuntime
 {
-  public partial class ExampleBalloon : CanvasLayer
+  public partial class DialogueBalloon : CanvasLayer
   {
 	[Export] public string NextAction = "ui_accept";
 	[Export] public string SkipAction = "ui_cancel";

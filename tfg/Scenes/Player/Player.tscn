@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://k7dan74tnrbw"]
+[gd_scene load_steps=44 format=3 uid="uid://k7dan74tnrbw"]
 
 [ext_resource type="Script" uid="uid://bi2wsg354crl3" path="res://Scripts/Player/Player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="1_rpqav"]
@@ -348,6 +348,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5acl"]
 size = Vector2(10, 23)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esmjy"]
+size = Vector2(44, 23)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 524514
 script = ExtResource("1_kyqiw")
@@ -433,6 +436,14 @@ script = ExtResource("13_epg6k")
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_i5acl")
 debug_color = Color(0, 0.644179, 0.285993, 0.42)
+
+[node name="ActionableFinder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder"]
+shape = SubResource("RectangleShape2D_esmjy")
+debug_color = Color(0.631739, 0.344739, 1, 0.42)
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="damageTaken" from="Hurtbox" to="." method="_on_hurbox_damage_taken"]

@@ -5,6 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var stateMachine: StateMachine = $StateMachine
 @onready var normalAttackHitbox: Area2D = $NormalAttackHitbox
 @onready var heavyAttackHitbox: HeavyAttackHitbox = $HeavyAttackHitbox
+@onready var actionableFinder: Area2D = $ActionableFinder
+
 
 @export_category("Movement")
 @export var speed: float = 200.0
@@ -56,3 +58,11 @@ func _on_hurbox_damage_taken(damage: int) -> void:
 		$AnimationPlayer.play("Death")
 		await $AnimationPlayer.animation_finished
 		queue_free()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Interact"):
+		var actionables = actionableFinder.get_overlapping_areas()
+		if actionables.size() > 0:
+			actionables[0].action()
+			return

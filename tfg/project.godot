@@ -27,6 +27,8 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 [dialogue_manager]
 
 runtime/advanced/uses_dotnet=true
+runtime/balloon_path="res://Dialogues/Balloon.tscn"
+runtime/warn_about_method_property_or_signal_name_conflicts=true
 
 [display]
 
@@ -35,6 +37,7 @@ window/size/viewport_height=270
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
+window/warn_about_method_property_or_signal_name_conflicts=true
 
 [dotnet]
 
@@ -99,6 +102,10 @@ Heal={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Dialogues/SwordmasterTutorialDialog.dialogue")
+
 [layer_names]
 
 2d_physics/layer_1="Player Level"
@@ -110,6 +117,7 @@ Heal={
 2d_physics/layer_7="Doors"
 2d_physics/layer_8="Portals"
 2d_physics/layer_9="Chests"
+2d_physics/layer_10="Actionables"
 2d_physics/layer_20="Ground Level"
 
 [rendering]

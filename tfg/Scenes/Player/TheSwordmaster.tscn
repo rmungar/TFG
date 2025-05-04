@@ -1,6 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfdngald38hki"]
+[gd_scene load_steps=17 format=3 uid="uid://dfdngald38hki"]
 
 [ext_resource type="Texture2D" uid="uid://y4dshib2nrai" path="res://Assets/Characters/The SwordMaster/Sword Master Sprite Sheet 90x37 without VFX.png" id="1_voisq"]
+[ext_resource type="PackedScene" uid="uid://cwehx5pt81pse" path="res://Scenes/Helpers/Actionable.tscn" id="2_mqvjp"]
+[ext_resource type="Resource" uid="uid://c2wpi64xcij6u" path="res://Dialogues/SwordmasterTutorialDialog.dialogue" id="3_kl5qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqvjp"]
 size = Vector2(11, 23.5)
@@ -301,6 +303,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_mqvjp"]
 resource_name = "Walk_Left"
 length = 0.8
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -342,6 +345,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_voisq"]
 resource_name = "Walk_Right"
 length = 0.8
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -393,7 +397,10 @@ _data = {
 &"Walk_Right": SubResource("Animation_voisq")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl5qn"]
+size = Vector2(40, 23)
+
+[node name="TheSwordMaster" type="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.25)
@@ -411,4 +418,14 @@ frame = 10
 libraries = {
 &"": SubResource("AnimationLibrary_erun6")
 }
-autoplay = "Idle"
+autoplay = "Idle_Left"
+
+[node name="Actionable" parent="." instance=ExtResource("2_mqvjp")]
+collision_layer = 512
+collision_mask = 0
+dialogueResource = ExtResource("3_kl5qn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_kl5qn")
+debug_color = Color(0.389155, 0.471941, 1, 0.42)
