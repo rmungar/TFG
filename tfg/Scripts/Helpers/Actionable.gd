@@ -6,4 +6,5 @@ class_name Actionable extends Area2D
 
 
 func action() -> void:
+	
 	DialogueManager.show_dialogue_balloon(dialogueResource, dialogueStart)

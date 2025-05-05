@@ -1685,4 +1685,8 @@ position = Vector2(3, -105)
 script = ExtResource("8_i0x5g")
 tileMap = NodePath("../../BackGround")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(2676, 247)
+
 [connection signal="unlock" from="SavePoint" to="MechanicalDoor" method="onUnlock"]
+[connection signal="unlocked" from="MechanicalDoor" to="TheSwordMaster" method="_on_mechanical_door_unlocked"]

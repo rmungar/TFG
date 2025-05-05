@@ -2,6 +2,7 @@ extends Node
 
 @onready var screenManager: ScreenManager = ScreenManager
 
+var isDialogInScreen = false
 
 func toSaveFilesScreen():
 	get_tree().change_scene_to_file(screenManager.saveFilesScreen)
@@ -14,3 +15,7 @@ func toOptionsScreen():
 
 func QuitGame():
 	get_tree().quit()
+
+
+func setDialogState(newState: bool):
+	isDialogInScreen = newState

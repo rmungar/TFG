@@ -1,11 +1,15 @@
 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
-## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
-
-## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
+
+
+@onready var balloon: Control = %Balloon
+@onready var character_label: RichTextLabel = %CharacterLabel
+@onready var dialogue_label: DialogueLabel = %DialogueLabel
+@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var portrait: TextureRect = %Portrait
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -39,17 +43,7 @@ var dialogue_line: DialogueLine:
 ## A cooldown timer for delaying the balloon hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
 
-## The base balloon anchor
-@onready var balloon: Control = %Balloon
 
-## The label showing the name of the currently speaking character
-@onready var character_label: RichTextLabel = %CharacterLabel
-
-## The label showing the currently spoken dialogue
-@onready var dialogue_label: DialogueLabel = %DialogueLabel
-
-## The menu of responses
-@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 
 func _ready() -> void:
@@ -97,7 +91,13 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
-
+	var portraitPath: String = "res://Assets/Portraits/%s.png" % dialogue_line.character if dialogue_line.character != "???" else "res://Assets/Portraits/TheSwordmaster.png"
+	
+	if FileAccess.file_exists(portraitPath):
+		portrait.texture = load(portraitPath)
+	else:
+		portrait.texture = null
+	
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
 
