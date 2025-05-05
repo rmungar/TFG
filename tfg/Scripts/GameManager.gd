@@ -2,7 +2,7 @@ extends Node
 
 @onready var screenManager: ScreenManager = ScreenManager
 
-var isDialogInScreen = false
+var isDialogInScreen = true
 
 func toSaveFilesScreen():
 	get_tree().change_scene_to_file(screenManager.saveFilesScreen)

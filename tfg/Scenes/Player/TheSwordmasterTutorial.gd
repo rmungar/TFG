@@ -55,6 +55,9 @@ func _physics_process(delta: float) -> void:
 	if not isActive or hasCompletedPath:
 		return
 	
+	if GameManager.isDialogInScreen:
+		return
+	
 	# Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -103,7 +106,7 @@ func onPathCompleted() -> void:
 	if currentPathPoints == fisrtPathPoints:
 		self.global_position = Vector2(1120,246)
 	elif currentPathPoints == secondPathPoints:
-		self.global_position = Vector2(1741,247)	
+		self.global_position = Vector2(1741,247)
 		$AnimationPlayer.play("Idle_Left")
 
 

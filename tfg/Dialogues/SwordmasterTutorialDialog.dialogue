@@ -1,10 +1,24 @@
 ~ start
 ???: So you finally booted up huh.
-???: Great, in that case lets just speedrun this part, I ain't got the time fo this.
+???: I get your body might be a little stiff at first, but you'll get used to it.
 ???: Having made that clear, what you want?
-- Quick explanation
-	???: You picked the quick explanation.
-- In depth explanation
-	???: You picked the in depth explanation.
-???: For more information see the online documentation.
+- Make it quick then
+	???: Great, in that case lets just speedrun this part, I ain't got the time for this.
+	???: You can move around by using A and D in your keyboard or left joystick in your controller.
+	???: You won't be able to attack or heal until you get the corresponding modules.
+	???: What are modules?
+	???: Upgrades essentially but with a more fancy name.
+	???: You'll learn the rest on your own.
+- I think you can spare some time
+	???: Sigh...
+	???: Alright then, but if we don't make it out of this one it's your fault.
+	???: You can move around by using A and D in your keyboard ot left joystick in your controller.
+	???: You won't be able to attack until you get an AM nor heal till you get a HM.
+	???: What do I mean by AM and HM? First of all, no, it's not pokemon related. 
+	???: AM and HM stand for Attack Module and Healing Module.
+	???: I'll explain how to use them once you have them.
+	???: I believe this is all for now, I'll teach you on the way.
+	???: We gotta get out of this place ASAP.
+	
+do GameManager.isDialogInScreen = false
 => END
