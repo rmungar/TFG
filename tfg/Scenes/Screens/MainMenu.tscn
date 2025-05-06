@@ -1,17 +1,26 @@
-[gd_scene load_steps=66 format=3 uid="uid://c6i4eguqa32h4"]
+[gd_scene load_steps=74 format=3 uid="uid://c6i4eguqa32h4"]
 
 [ext_resource type="Script" uid="uid://caj8fxiqx77gm" path="res://Scripts/MainMenu/MainMenu.gd" id="1_3oy6j"]
 [ext_resource type="Texture2D" uid="uid://l10w704tc4jx" path="res://Assets/Tilesets/Peaks Of Lightning/1- Background - Sky (1).png" id="2_cc4ve"]
 [ext_resource type="Texture2D" uid="uid://cptyk4i1j15i1" path="res://Assets/Tilesets/Peaks Of Lightning/Distant Lightning (32x32).png" id="3_37rdc"]
 [ext_resource type="Texture2D" uid="uid://baiqc5oragdkf" path="res://Assets/Tilesets/Peaks Of Lightning/2 -Background - Mountains (2).png" id="4_6llax"]
-[ext_resource type="Texture2D" uid="uid://xqk34mdqhk0h" path="res://Assets/Tilesets/Peaks Of Lightning/4- Ground (4).png" id="5_ty55h"]
 [ext_resource type="Texture2D" uid="uid://b1s7xm27jo4gq" path="res://Assets/Tilesets/Peaks Of Lightning/3 -Foreground - Mountains (3).png" id="6_qc8n7"]
 [ext_resource type="Texture2D" uid="uid://08mumn2c6ma8" path="res://Assets/Tilesets/Peaks Of Lightning/Large Lightning (64x48).png" id="7_ug8uf"]
 [ext_resource type="Texture2D" uid="uid://bhj6gui7tlj05" path="res://Assets/Tilesets/Peaks Of Lightning/5- Fog (5).png" id="8_4ice4"]
-[ext_resource type="Texture2D" uid="uid://cuby632tuv0vi" path="res://Assets/Tilesets/Parallax/layer 2.png" id="9_4efst"]
+[ext_resource type="Texture2D" path="res://Assets/Tilesets/Parallax/layer 2.png" id="9_4efst"]
 [ext_resource type="Script" uid="uid://c4lxf72eail1m" path="res://Scripts/MainMenu/IntroPlayer.gd" id="10_ag6gj"]
-[ext_resource type="Texture2D" uid="uid://bs0rvwbj8fa3p" path="res://Assets/Characters/Assassin/run with VFX.png" id="11_q8f6b"]
+[ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="11_kpgju"]
+[ext_resource type="Texture2D" uid="uid://chnilealhjrcp" path="res://Assets/UI/UI - Words/Words without BG/UI - Words5.png" id="11_ty55h"]
 [ext_resource type="Theme" uid="uid://bk03gqon2xhhq" path="res://Themes/MainMenuButtons.tres" id="12_io8hu"]
+[ext_resource type="Texture2D" uid="uid://cilsxkcfi16ny" path="res://Assets/UI/UI - Words/Words without BG/UI - Words1.png" id="12_qc8n7"]
+[ext_resource type="Texture2D" uid="uid://dffm61t5pgw6b" path="res://Assets/UI/UI - Words/Words With BG/UI - Words5.png" id="12_ug8uf"]
+[ext_resource type="Texture2D" uid="uid://bnl855k1onnq2" path="res://Assets/UI/UI - Words/Words With BG/UI - Words1.png" id="14_ag6gj"]
+[ext_resource type="Texture2D" uid="uid://sg5b31gbsi8k" path="res://Assets/UI/UI - Words/Words without BG/UI - Words9.png" id="14_ug8uf"]
+[ext_resource type="Texture2D" uid="uid://bl7v4tjhcye28" path="res://Assets/UI/UI - Words/Words without BG/UI - Words6.png" id="15_4ice4"]
+[ext_resource type="Texture2D" uid="uid://qik72clutd8u" path="res://Assets/UI/UI - Words/Words With BG/UI - Words9.png" id="17_q8f6b"]
+[ext_resource type="Texture2D" uid="uid://cc5ntnapakix3" path="res://Assets/UI/UI - Words/Words With BG/UI - Words6.png" id="19_io8hu"]
+[ext_resource type="Texture2D" uid="uid://14iy6ef0f6u" path="res://Assets/UI/UI - Words/Words without BG/UI - Words3.png" id="20_ag6gj"]
+[ext_resource type="Texture2D" uid="uid://wcsh4w1lwjk8" path="res://Assets/UI/UI - Words/Words With BG/UI - Words3.png" id="21_mqkvh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_loo7a"]
 atlas = ExtResource("2_cc4ve")
@@ -152,9 +161,6 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_if7li"]
 atlas = ExtResource("4_6llax")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8um5k"]
-atlas = ExtResource("5_ty55h")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqn0u"]
 atlas = ExtResource("6_qc8n7")
@@ -299,67 +305,67 @@ atlas = ExtResource("8_4ice4")
 [sub_resource type="AtlasTexture" id="AtlasTexture_grj4f"]
 atlas = ExtResource("9_4efst")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lcy8p"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 0, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oy6j"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(0, 55, 124, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhlh1"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 19, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4ve"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(124, 55, 124, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oor3o"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 38, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_37rdc"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(248, 55, 124, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h64ul"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 57, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6llax"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(372, 55, 124, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y41we"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 76, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty55h"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(496, 55, 124, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_drl2p"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 95, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc8n7"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(620, 55, 124, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydj5n"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 114, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug8uf"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(744, 55, 124, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fw7q4"]
-atlas = ExtResource("11_q8f6b")
-region = Rect2(0, 133, 28, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ice4"]
+atlas = ExtResource("11_kpgju")
+region = Rect2(868, 55, 124, 55)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_grj4f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lcy8p")
+"texture": SubResource("AtlasTexture_3oy6j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jhlh1")
+"texture": SubResource("AtlasTexture_cc4ve")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oor3o")
+"texture": SubResource("AtlasTexture_37rdc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h64ul")
+"texture": SubResource("AtlasTexture_6llax")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y41we")
+"texture": SubResource("AtlasTexture_ty55h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_drl2p")
+"texture": SubResource("AtlasTexture_qc8n7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ydj5n")
+"texture": SubResource("AtlasTexture_ug8uf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fw7q4")
+"texture": SubResource("AtlasTexture_4ice4")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 10.0
 }]
 
@@ -376,95 +382,87 @@ script = ExtResource("1_3oy6j")
 scroll_offset = Vector2(1, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1152, 0)
+motion_scale = Vector2(2, 0)
+motion_mirroring = Vector2(480, 0)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountains"]
-position = Vector2(576, 324)
-scale = Vector2(2, 5.0625)
+position = Vector2(240, 135)
+scale = Vector2(0.833333, 2.10938)
 texture = SubResource("AtlasTexture_loo7a")
-metadata/_edit_lock_ = true
 
 [node name="Lightning2" type="AnimatedSprite2D" parent="ParallaxBackground/Mountains"]
 texture_filter = 1
-position = Vector2(723, 343.5)
-scale = Vector2(1.5, 3.15625)
+position = Vector2(50, 161.25)
+scale = Vector2(1.5, 2.95313)
 sprite_frames = SubResource("SpriteFrames_iqn0u")
 autoplay = "default"
-frame_progress = 0.175163
-metadata/_edit_lock_ = true
-
-[node name="Lightning1" type="AnimatedSprite2D" parent="ParallaxBackground/Mountains"]
-texture_filter = 1
-position = Vector2(519, 306)
-scale = Vector2(2, 4.1875)
-sprite_frames = SubResource("SpriteFrames_iqn0u")
-autoplay = "default"
-frame_progress = 0.816407
-metadata/_edit_lock_ = true
+frame_progress = 0.167941
 
 [node name="Lightning5" type="AnimatedSprite2D" parent="ParallaxBackground/Mountains"]
 texture_filter = 1
-position = Vector2(964, 328.75)
+position = Vector2(344, 181)
 scale = Vector2(1.875, 3.04688)
 sprite_frames = SubResource("SpriteFrames_iqn0u")
 autoplay = "default"
-frame_progress = 0.389184
+frame_progress = 0.911927
+
+[node name="Lightning1" type="AnimatedSprite2D" parent="ParallaxBackground/Mountains"]
+texture_filter = 1
+position = Vector2(216, 144)
+scale = Vector2(0.812501, 1.6875)
+sprite_frames = SubResource("SpriteFrames_iqn0u")
+autoplay = "default"
+frame_progress = 0.877982
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Mountains"]
 texture_filter = 1
-position = Vector2(577, 351)
-scale = Vector2(2, 3.71582)
+position = Vector2(240, 163)
+scale = Vector2(0.833333, 1.67187)
 texture = SubResource("AtlasTexture_if7li")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Mountains"]
-texture_filter = 1
-position = Vector2(576, 527)
-scale = Vector2(2, 1.89063)
-texture = SubResource("AtlasTexture_8um5k")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Mountains"]
 texture_filter = 1
-position = Vector2(576, 402)
-scale = Vector2(2, 2.9375)
+position = Vector2(240, 189.5)
+scale = Vector2(0.833333, 1.25781)
 texture = SubResource("AtlasTexture_iqn0u")
-metadata/_edit_lock_ = true
 
 [node name="Lightning3" type="AnimatedSprite2D" parent="ParallaxBackground/Mountains"]
 texture_filter = 1
-position = Vector2(447.5, 434.25)
-scale = Vector2(1.95312, 2.92708)
+position = Vector2(187.5, 200.688)
+scale = Vector2(0.828125, 1.22135)
 sprite_frames = SubResource("SpriteFrames_lcy8p")
 autoplay = "default"
-frame = 1
-frame_progress = 0.883348
+frame_progress = 0.450256
 metadata/_edit_lock_ = true
 
 [node name="Lightning4" type="AnimatedSprite2D" parent="ParallaxBackground/Mountains"]
 texture_filter = 1
-position = Vector2(48, 464)
+position = Vector2(57, 212)
 scale = Vector2(0.46875, 0.708333)
 sprite_frames = SubResource("SpriteFrames_lcy8p")
 autoplay = "default"
-frame_progress = 0.355255
+frame_progress = 0.66607
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Mountains"]
 texture_filter = 1
-position = Vector2(576, 457)
-scale = Vector2(2, 3.90625)
+position = Vector2(240, 215)
+scale = Vector2(0.833333, 0.859375)
 texture = SubResource("AtlasTexture_3u44c")
-metadata/_edit_lock_ = true
 
 [node name="Moon" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Moon"]
 texture_filter = 1
-position = Vector2(1200, 209)
-scale = Vector2(2.3225, 2.30729)
+position = Vector2(240.5, 115)
+scale = Vector2(1.1975, 1.20833)
 texture = SubResource("AtlasTexture_grj4f")
+flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -472,51 +470,84 @@ script = ExtResource("10_ag6gj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(576, 556)
-scale = Vector2(3.32143, 4.02632)
+position = Vector2(110, 212)
+scale = Vector2(1.76152, 2.09593)
 sprite_frames = SubResource("SpriteFrames_grj4f")
-autoplay = "default"
-frame_progress = 0.91802
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.270733
 
 [node name="Buttons" type="VBoxContainer" parent="CharacterBody2D"]
 texture_filter = 1
+layout_direction = 2
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = 257.0
-offset_right = 469.0
-offset_bottom = 373.0
+offset_left = 16.0
+offset_top = 53.0
+offset_right = 109.0
+offset_bottom = 254.0
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 9
 alignment = 1
 
-[node name="Play" type="Button" parent="CharacterBody2D/Buttons"]
+[node name="Play" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("12_io8hu")
-theme_type_variation = &"FlatButton"
-text = "PLAY
-"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_ty55h")
+texture_pressed = ExtResource("12_ug8uf")
+texture_hover = ExtResource("12_ug8uf")
+texture_focused = ExtResource("12_ug8uf")
+stretch_mode = 6
 
-[node name="Options" type="Button" parent="CharacterBody2D/Buttons"]
+[node name="Continue" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("12_io8hu")
-text = "OPTIONS"
+disabled = true
+texture_normal = ExtResource("12_qc8n7")
+texture_pressed = ExtResource("14_ag6gj")
+texture_hover = ExtResource("14_ag6gj")
+texture_focused = ExtResource("14_ag6gj")
+stretch_mode = 6
 
-[node name="Credits" type="Button" parent="CharacterBody2D/Buttons"]
+[node name="Options" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("12_io8hu")
-text = "CREDITS"
+texture_normal = ExtResource("14_ug8uf")
+texture_pressed = ExtResource("17_q8f6b")
+texture_hover = ExtResource("17_q8f6b")
+texture_focused = ExtResource("17_q8f6b")
+stretch_mode = 6
 
-[node name="Quit" type="Button" parent="CharacterBody2D/Buttons"]
+[node name="Credits" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("12_io8hu")
-text = "QUIT"
+texture_normal = ExtResource("15_4ice4")
+texture_pressed = ExtResource("19_io8hu")
+texture_hover = ExtResource("19_io8hu")
+texture_focused = ExtResource("19_io8hu")
+stretch_mode = 6
+
+[node name="Quit" type="TextureButton" parent="CharacterBody2D/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("12_io8hu")
+texture_normal = ExtResource("20_ag6gj")
+texture_pressed = ExtResource("21_mqkvh")
+texture_hover = ExtResource("21_mqkvh")
+texture_focused = ExtResource("21_mqkvh")
+stretch_mode = 6
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(240, 135)
 
 [connection signal="pressed" from="CharacterBody2D/Buttons/Play" to="." method="onPlayButtonPressed"]
+[connection signal="pressed" from="CharacterBody2D/Buttons/Continue" to="." method="onContinueButtonPressed"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Options" to="." method="onOptionsButtonPressed"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Credits" to="." method="onCreditsButtonPressed"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Quit" to="." method="onQuitButtonPressed"]

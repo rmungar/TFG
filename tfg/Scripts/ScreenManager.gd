@@ -1,5 +1,6 @@
 extends Node
 
-var saveFilesScreen = "res://Scenes/SaveFilesMenu.tscn"
-var mainScreen = "res://Scenes/SaveFilesMenu.tscn"
-var loadingScreen = "res://Scenes/LoadingScreen.tscn"
+var saveFilesScreen = "res://Scenes/Screens/SaveFilesMenu.tscn"
+var mainScreen = "res://Scenes/Screens/SaveFilesMenu.tscn"
+var loadingScreen = "res://Scenes/Screens/LoadingScreen.tscn"
+var tutorialScreen = "res://Scenes/Screens/TutotialScreen.tscn"

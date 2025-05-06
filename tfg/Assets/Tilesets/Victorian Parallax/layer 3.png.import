@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuby632tuv0vi"
-path="res://.godot/imported/layer 2.png-aa1cf49b5b2ec914dcebbd04a28c464e.ctex"
+uid="uid://bfo7beljcpwtf"
+path="res://.godot/imported/layer 3.png-550a4a6884cf2d715f666cd71d6fe56b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/Parallax/layer 2.png"
-dest_files=["res://.godot/imported/layer 2.png-aa1cf49b5b2ec914dcebbd04a28c464e.ctex"]
+source_file="res://Assets/Tilesets/Victorian Parallax/layer 3.png"
+dest_files=["res://.godot/imported/layer 3.png-550a4a6884cf2d715f666cd71d6fe56b.ctex"]
 
 [params]
 

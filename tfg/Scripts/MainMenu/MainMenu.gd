@@ -1,11 +1,26 @@
 extends Control
 
+@onready var playButton: TextureButton = $CharacterBody2D/Buttons/Play
+@onready var continueButton: TextureButton = $CharacterBody2D/Buttons/Continue
+@onready var optionsButton: TextureButton = $CharacterBody2D/Buttons/Options
+@onready var creditsButton: TextureButton = $CharacterBody2D/Buttons/Credits
+@onready var quitButton: TextureButton = $CharacterBody2D/Buttons/Quit
+
+
+
 func _ready() -> void:
 	
-	var playButton: Button = $CharacterBody2D/Buttons/Play
-	var optionButton: Button = $CharacterBody2D/Buttons/Options
-	var creditsButton: Button = $CharacterBody2D/Buttons/Credits
-	var quitButton: Button = $CharacterBody2D/Buttons/Quit
+	if playButton.disabled:
+		playButton.visible = false
+	if continueButton.disabled:
+		continueButton.visible = false
+	if optionsButton.disabled:
+		optionsButton.visible = false
+	if creditsButton.disabled:
+		creditsButton.visible = false
+	if quitButton.disabled:
+		quitButton.visible = false
+
 
 
 func onPlayButtonPressed():
@@ -23,3 +38,6 @@ func onCreditsButtonPressed():
 func onQuitButtonPressed():
 	GameManager.QuitGame()
 	
+
+func onContinueButtonPressed() -> void:
+	pass # Replace with function body.
