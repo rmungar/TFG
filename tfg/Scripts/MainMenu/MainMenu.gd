@@ -24,7 +24,7 @@ func _ready() -> void:
 
 
 func onPlayButtonPressed():
-	GameManager.toSaveFilesScreen()
+	GameManager.toTutorialScreen()
 	
 
 func onOptionsButtonPressed():

@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://iau7kl5jnyhc"]
-
-[ext_resource type="Texture2D" uid="uid://cp6xvbd3u1us1" path="res://Assets/Tilesets/Small Cave Holes/Flat Images/Small Cave 1.png" id="1_c58xf"]
+[gd_scene format=3 uid="uid://iau7kl5jnyhc"]
 
 [node name="SaveFilesMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +8,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(240, 135)
-scale = Vector2(2.5, 2.26891)
-texture = ExtResource("1_c58xf")
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

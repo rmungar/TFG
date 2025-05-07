@@ -14,9 +14,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if distance > specialAttackRange:
 		return FAILURE  
 	else:
-		
-		
-		
+
 		if directionToPlayer < 0:
 			actor.get_node("AnimationPlayer").play("SpecialAttack_Left")
 		else:

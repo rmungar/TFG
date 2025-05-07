@@ -16,6 +16,7 @@ class_name Enemy extends CharacterBody2D
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	move_and_slide()
 
 
 func _on_take_damage(amount: int) -> void:

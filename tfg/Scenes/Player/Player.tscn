@@ -359,9 +359,13 @@ script = ExtResource("1_kyqiw")
 wait_time = 0.7
 one_shot = true
 
+[node name="ModulateTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -8)
+position = Vector2(0, -7.5)
 texture = ExtResource("1_rpqav")
 hframes = 24
 vframes = 9
@@ -429,7 +433,7 @@ collision_mask = 260
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, 11.5)
 collision_layer = 16
-collision_mask = 98
+collision_mask = 1122
 script = ExtResource("13_epg6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -446,4 +450,4 @@ shape = SubResource("RectangleShape2D_esmjy")
 debug_color = Color(0.631739, 0.344739, 1, 0.42)
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
-[connection signal="damageTaken" from="Hurtbox" to="." method="_on_hurbox_damage_taken"]
+[connection signal="damageTaken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]

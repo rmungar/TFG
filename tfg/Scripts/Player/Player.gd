@@ -48,9 +48,14 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
-func _on_hurbox_damage_taken(damage: int) -> void:
+func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 	if not $DamageCooldown.is_stopped():
 		return 
+	velocity = knockback
+	self.modulate = Color.RED
+	$ModulateTimer.start()
+	await $ModulateTimer.timeout
+	self.modulate = Color.WHITE
 	HP -= damage
 	$DamageCooldown.start()
 	if HP <= 0:
