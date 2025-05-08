@@ -2,63 +2,54 @@ class_name Chest extends StaticBody2D
 
 @export var itemDropScene: PackedScene
 @export var dropForce: float = 150.0
-@export var canDropMultipleItems: bool = false
-@export var dropTable: Array[Dictionary] = [
-]
+@export var health: int = 3  
+@export var dropItem: PackedScene = load("res://Scenes/Interactables/Item.tscn")
+@export var hitFlashColor: Color = Color.RED
+@export var openColor: Color = Color.DIM_GRAY
 
 var isOpened: bool = false
+var currentHealth: int
 
 func _ready():
-	$Area2D.body_entered.connect(_on_body_entered)
+	currentHealth = health
 
-func _on_body_entered(body):
-	if not isOpened and body.is_in_group("player"):
-		open_chest(body)
+func _on_hitbox_area_entered(area: Area2D):
+	print("!!")
+	if isOpened: 
+		return
+	if area is Hitbox:
+		take_damage(1)
 
-func open_chest(opener: Node2D):
+func take_damage(amount: int):
+	currentHealth -= amount
+	
+	modulate = hitFlashColor
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.2)
+	
+	if currentHealth <= 0:
+		open_chest()
+
+func open_chest():
 	isOpened = true
-	$AnimationPlayer.play("open")
 	
-	var itemsToDrop = get_items_from_drop_table()
+	modulate = Color.BLACK
+	$ModulateTimer.start()
+	await $ModulateTimer.timeout
+	modulate = openColor
 	
-	for itemScene in itemsToDrop:
-		var item = itemScene.instantiate()
-		get_parent().add_child(item)
-		item.global_position = $ItemSpawnPoint.global_position
-		
-		var dropDirection = Vector2(
-			randf_range(-1, 1),
-			randf_range(-0.5, -1.5)
-		).normalized()
+	var item = dropItem.instantiate()
+	get_parent().add_child(item)
+	item.global_position = global_position
+	
+	var dropDirection = Vector2(
+		randf_range(-1, 1),
+		randf_range(-0.5, -1.5)
+	).normalized()
+	
+	if item.has_method("apply_impulse"):
 		item.apply_impulse(dropDirection * dropForce)
-
-func get_items_from_drop_table() -> Array:
-	var drops: Array = []
 	
-	if canDropMultipleItems:
-
-		var totalWeight = dropTable.reduce(func(sum, entry): return sum + entry["weight"], 0)
-		var dropsCount = randi_range(1, 3) 
-		
-		for i in dropsCount:
-			var randomWeight = randf() * totalWeight
-			var cumulativeWeight = 0.0
-			
-			for entry in dropTable:
-				cumulativeWeight += entry["weight"]
-				if randomWeight <= cumulativeWeight:
-					drops.append(entry["item"])
-					break
-	else:
-		
-		var totalWeight = dropTable.reduce(func(sum, entry): return sum + entry["weight"], 0)
-		var randomWeight = randf() * totalWeight
-		var cumulativeWeight = 0.0
-		
-		for entry in dropTable:
-			cumulativeWeight += entry["weight"]
-			if randomWeight <= cumulativeWeight:
-				drops.append(entry["item"])
-				break
-	
-	return drops
+	elif item.has_method("set_velocity"):
+		item.velocity = dropDirection * dropForce
+	$CollisionShape2D.set_deferred("disabled", true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci4kkcg051g6y"]
+[gd_scene load_steps=6 format=3 uid="uid://ci4kkcg051g6y"]
 
 [ext_resource type="Texture2D" uid="uid://caqll5kabky42" path="res://Assets/Tilesets/Camp Sprite Sheet/camp sprite sheet.png" id="1_a7p3l"]
 [ext_resource type="Script" uid="uid://bkh5mt3iyhhqg" path="res://Scripts/Interactables/Chest.gd" id="1_kwnoh"]
@@ -9,6 +9,9 @@ region = Rect2(64.9814, 18.0095, 29.0811, 13.9891)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k88t0"]
 size = Vector2(34, 16.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwnoh"]
+size = Vector2(34, 16)
 
 [node name="Chest" type="StaticBody2D"]
 collision_layer = 256
@@ -22,3 +25,16 @@ texture = SubResource("AtlasTexture_kwnoh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.125)
 shape = SubResource("RectangleShape2D_k88t0")
+
+[node name="ModulateTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="ItemSpawnPoint" type="Marker2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kwnoh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_hitbox_area_entered"]
