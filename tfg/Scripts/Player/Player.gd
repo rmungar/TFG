@@ -16,7 +16,7 @@ class_name Player extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var deceleration: float = 0.2
 var facingDirection: float 
-
+var inventory: Array[Item]
 @export_category("Health")
 @export var HP: int = 100
 @export var isAlive: bool = true
@@ -71,3 +71,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if actionables.size() > 0:
 			actionables[0].action()
 			return
+
+
+func collectItem(item: Item):
+	inventory.append(item)

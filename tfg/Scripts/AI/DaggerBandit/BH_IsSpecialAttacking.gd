@@ -1,4 +1,4 @@
-class_name IsSpecialAttacking extends ConditionLeaf
+class_name DaggerBanditIsSpecialAttacking extends ConditionLeaf
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var player: Player = blackboard.get_value("player")

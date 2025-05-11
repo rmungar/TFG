@@ -1,4 +1,4 @@
-class_name ChasePlayer extends ActionLeaf
+class_name DaggerBanditChasePlayer extends ActionLeaf
 
 @export var speed: float = 100.0
 @export var range: float = 30.0

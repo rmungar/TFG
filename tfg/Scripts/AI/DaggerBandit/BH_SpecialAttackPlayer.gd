@@ -1,4 +1,4 @@
-class_name SpecialAttack extends ActionLeaf
+class_name DaggerBanditSpecialAttack extends ActionLeaf
 
 @export var specialAttackRange: float = 50.0  
 @export var specialAttackDamage: int = 10

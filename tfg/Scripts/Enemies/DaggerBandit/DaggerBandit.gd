@@ -1,6 +1,6 @@
 class_name DaggerBandit extends Enemy
 
-@onready var behaviourTree: BeehaveTree = $DaggerBanditBehaviourTree
+@onready var behaviourTree: BeehaveTree = $DaggerBanditBeehaveTree
 
 @export_category("Health")
 @export var health = 200

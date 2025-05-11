@@ -103,7 +103,8 @@ size = Vector2(11.5, 11.5)
 
 [node name="Item" type="RigidBody2D"]
 collision_layer = 2048
-collision_mask = 9
+collision_mask = 524289
+collision_priority = 100.0
 script = ExtResource("1_b4aix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -121,3 +122,6 @@ shape = SubResource("RectangleShape2D_b4aix")
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
