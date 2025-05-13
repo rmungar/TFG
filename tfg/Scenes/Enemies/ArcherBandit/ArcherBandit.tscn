@@ -291,10 +291,6 @@ metadata/_custom_type_script = "uid://chi3e2k4w4eak"
 script = ExtResource("11_ajw4f")
 metadata/_custom_type_script = "uid://cyajtrab1551x"
 
-[node name="VanishComposite" type="Node" parent="ArcherBanditBeehaveTree/SequenceComposite/SelectorReactiveComposite"]
-script = ExtResource("3_gh6gh")
-metadata/_custom_type_script = "uid://cg016dbe7gs1x"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_gh6gh")
