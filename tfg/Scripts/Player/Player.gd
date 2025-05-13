@@ -51,6 +51,8 @@ func _physics_process(delta: float) -> void:
 func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 	if not $DamageCooldown.is_stopped():
 		return 
+	if knockback == null:
+		pass
 	velocity = knockback
 	self.modulate = Color.RED
 	$ModulateTimer.start()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://nt70xpo04560"]
+[gd_scene load_steps=21 format=3 uid="uid://nt70xpo04560"]
 
 [ext_resource type="Script" uid="uid://dj03n44puinmb" path="res://Scenes/Enemies/ArcherBandit/ArcherBandit.gd" id="1_85il2"]
 [ext_resource type="Texture2D" uid="uid://thsd4aph1ck5" path="res://Assets/Enemies/Archer Bandit/Archer Bandit Sprite Sheet Full.png" id="1_gfho0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dqudov72sagck" path="res://Scripts/AI/Global/BH_IsInAttackRange.gd" id="7_wrtjk"]
 [ext_resource type="Script" uid="uid://chi3e2k4w4eak" path="res://Scripts/AI/ArcherBandit/BH_AttackPlayer.gd" id="9_85il2"]
 [ext_resource type="Script" uid="uid://bh8o8dhjaset6" path="res://Scripts/AI/Global/BH_AttackCooldown.gd" id="9_lsylb"]
+[ext_resource type="Script" uid="uid://cyajtrab1551x" path="res://Scripts/AI/ArcherBandit/BH_Idle.gd" id="11_ajw4f"]
 
 [sub_resource type="Animation" id="Animation_21hr0"]
 resource_name = "Attack_Left"
@@ -248,7 +249,7 @@ libraries = {
 
 [node name="ArcherBanditBeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_hhpxn")
-blackboard = NodePath("@Node@149302")
+blackboard = NodePath("@Node@22438")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
@@ -279,11 +280,16 @@ metadata/_custom_type_script = "uid://dqudov72sagck"
 
 [node name="AttackCooldown" type="Node" parent="ArcherBanditBeehaveTree/SequenceComposite/SelectorReactiveComposite/AttackComposite"]
 script = ExtResource("9_lsylb")
+cooldown = 4.0
 metadata/_custom_type_script = "uid://bh8o8dhjaset6"
 
 [node name="ArcherBanditAttackPlayer" type="Node" parent="ArcherBanditBeehaveTree/SequenceComposite/SelectorReactiveComposite/AttackComposite/AttackCooldown"]
 script = ExtResource("9_85il2")
 metadata/_custom_type_script = "uid://chi3e2k4w4eak"
+
+[node name="ArcherBanditIdle" type="Node" parent="ArcherBanditBeehaveTree/SequenceComposite/SelectorReactiveComposite"]
+script = ExtResource("11_ajw4f")
+metadata/_custom_type_script = "uid://cyajtrab1551x"
 
 [node name="VanishComposite" type="Node" parent="ArcherBanditBeehaveTree/SequenceComposite/SelectorReactiveComposite"]
 script = ExtResource("3_gh6gh")
@@ -292,3 +298,5 @@ metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_gh6gh")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="ArcherBanditBeehaveTree/SequenceComposite/SelectorReactiveComposite/AttackComposite/AttackCooldown/ArcherBanditAttackPlayer" method="_on_animation_player_animation_finished"]

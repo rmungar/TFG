@@ -1747,7 +1747,7 @@ position = Vector2(2242, 256)
 position = Vector2(1716, 176)
 
 [node name="DaggerBandit3" parent="." instance=ExtResource("15_pu0ca")]
-position = Vector2(1901, 128)
+position = Vector2(2026, 176)
 
 [node name="Player" parent="." instance=ExtResource("16_ib4ay")]
 position = Vector2(199, 244)
@@ -1761,9 +1761,9 @@ tileMap = NodePath("../../BackGround")
 position = Vector2(1326, 241)
 
 [node name="ArcherBandit" parent="." instance=ExtResource("19_gvd2m")]
-position = Vector2(262, 256)
+position = Vector2(1934, 128)
 
-[node name="Node2D" type="StaticBody2D" parent="."]
+[node name="Node2D" type="StaticBody2D" parent="." groups=["WorldBundary"]]
 collision_layer = 2147483648
 collision_mask = 0
 

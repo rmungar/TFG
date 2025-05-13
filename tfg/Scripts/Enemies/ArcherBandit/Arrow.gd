@@ -2,37 +2,36 @@ class_name Arrow extends RigidBody2D
 
 @export var arrowDamage: int = 50
 @export var launchForce: float = 800.0
-@export var gravityScale: float = 3.0
-@export var maxLifetime: float = 5.0
 
 var hasImpacted: bool = false
 
 func _ready():
+	# Set up collision detection
+	contact_monitor = true
+	max_contacts_reported = 1
+	body_entered.connect(_on_body_entered)
 	
-	gravityScale = 3.0
+	# Launch arrow
+	gravity_scale = 3.0
 	apply_central_impulse(Vector2.DOWN * launchForce)
 	
+	# Auto-delete after 5 seconds if nothing hit
+	await get_tree().create_timer(5.0).timeout
+	if !hasImpacted:
+		queue_free()
 
-func _physics_process(delta):
-	if hasImpacted:
-		return
-
-func onImpactAreaBodyEntered(body):
-	if hasImpacted or body.is_in_group("ignoreArrows"):
+func _on_body_entered(body: Node):
+	if hasImpacted or body.is_in_group("WorldBoundary"):
 		return
 	
-	hasImpacted = true
-	freeze = true 
+	_handle_impact(body)
 	
+
+func _handle_impact(body: Node):
 	$AnimatedSprite2D.play("default")
-	$ImpactSound.play()
-	
-	if body.has_method("takeDamage"):
-		body.takeDamage(arrowDamage)
+	hasImpacted = true
+	if body.has_method("_on_hurtbox_damage_taken"):
+		body._on_hurtbox_damage_taken(arrowDamage, null)
 	
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
-
-func onLifetimeTimerTimeout():
-	if not hasImpacted:
-		queue_free()
