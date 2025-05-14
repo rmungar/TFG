@@ -9,7 +9,6 @@ func _ready():
 	# Set up collision detection
 	contact_monitor = true
 	max_contacts_reported = 1
-	body_entered.connect(_on_body_entered)
 	
 	# Launch arrow
 	gravity_scale = 3.0
@@ -30,8 +29,9 @@ func _on_body_entered(body: Node):
 func _handle_impact(body: Node):
 	$AnimatedSprite2D.play("default")
 	hasImpacted = true
-	if body.has_method("_on_hurtbox_damage_taken"):
-		body._on_hurtbox_damage_taken(arrowDamage, null)
+	if body is Player:
+		body._on_hurtbox_damage_taken(arrowDamage, Vector2.ZERO)
+		
 	
 	await $AnimatedSprite2D.animation_finished
 	queue_free()

@@ -7,7 +7,6 @@ signal damageTaken(damage: int, knockback: Vector2)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("getDamage"):
-		
 		var direction = sign(area.global_position.x - global_position.x)
 		if area is Hitbox:
 			emit_signal("damageTaken", area.getDamage(), Vector2(-direction * knockbackForce, -upwardForce))

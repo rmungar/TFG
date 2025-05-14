@@ -9,6 +9,16 @@ class_name DaggerBanditChasePlayer extends ActionLeaf
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	
+	var basiclAttackHitbox = actor.get_node("BasicAttackHitbox")
+	if basiclAttackHitbox != null:
+		var basiclAttackHitboxCollisionShape: CollisionShape2D = basiclAttackHitbox.get_node("CollisionShape2D")
+		basiclAttackHitboxCollisionShape.disabled = true
+	
+	var specialAttackHitbox = actor.get_node("SpecialAttackHitbox")
+	if specialAttackHitbox != null:
+		var specialAttackHitboxCollisionShape: CollisionPolygon2D = specialAttackHitbox.get_node("CollisionPolygon2D")
+		specialAttackHitboxCollisionShape.disabled = true
+	
 	if actor is Enemy:
 		var enemy = actor as Enemy
 		if !enemy.is_on_floor():
