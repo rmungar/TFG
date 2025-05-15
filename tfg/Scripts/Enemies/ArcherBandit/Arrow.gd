@@ -31,7 +31,6 @@ func _handle_impact(body: Node):
 	hasImpacted = true
 	if body is Player:
 		body._on_hurtbox_damage_taken(arrowDamage, Vector2.ZERO)
-		
 	
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
