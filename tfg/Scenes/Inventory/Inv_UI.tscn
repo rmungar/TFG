@@ -91,3 +91,67 @@ layout_mode = 2
 
 [node name="Inv_Slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 259.5
+offset_top = 19.5
+offset_right = 316.5
+offset_bottom = 71.5
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Panel"]
+position = Vector2(26.25, 24.75)
+scale = Vector2(1.29762, 1.22619)
+texture = ExtResource("2_ar5ic")
+region_enabled = true
+region_rect = Rect2(259, 67, 42, 42)
+
+[node name="Panel2" type="Panel" parent="NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.0
+offset_top = -57.0
+offset_right = 179.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Panel2"]
+position = Vector2(38.5, 8.5)
+texture = ExtResource("2_ar5ic")
+region_enabled = true
+region_rect = Rect2(207, 40, 66, 12)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 46.0
+offset_right = 402.0
+offset_bottom = 62.0
+
+[node name="Panel3" type="Panel" parent="NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 261.0
+offset_top = 107.0
+offset_right = 409.0
+offset_bottom = 193.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="NinePatchRect/Panel3"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = 2.5
+offset_right = 139.5
+offset_bottom = 78.5
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Panel3"]
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 85.0
+color = Color(0.169245, 0.169245, 0.169245, 1)
