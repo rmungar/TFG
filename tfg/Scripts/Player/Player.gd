@@ -16,11 +16,18 @@ class_name Player extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var deceleration: float = 0.2
 var facingDirection: float 
-var inventory: Array[Item]
+
+
+
 @export_category("Health")
 @export var HP: int = 100
 @export var isAlive: bool = true
 var isInteracting: bool = false
+
+
+@export_category("Inventory")
+@export var inventory: Inventory
+
 
 func _ready() -> void:
 	stateMachine.configure(self)
@@ -76,4 +83,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func collectItem(item: Item):
-	inventory.append(item)
+	pass

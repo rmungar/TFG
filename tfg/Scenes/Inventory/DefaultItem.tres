@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://cvjml7artvr54"]
+
+[ext_resource type="Script" uid="uid://dspkg2rgl3u7p" path="res://Scripts/Inventory/InvItem.gd" id="1_mcbkf"]
+[ext_resource type="Texture2D" uid="uid://bhjlqhwoy0sfa" path="res://Assets/Tilesets/Simple Items/items sheet.png" id="2_64rok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c3ug"]
+atlas = ExtResource("2_64rok")
+region = Rect2(2, 2, 4, 4)
+
+[resource]
+script = ExtResource("1_mcbkf")
+name = "Item"
+texture = SubResource("AtlasTexture_3c3ug")
+metadata/_custom_type_script = "uid://dspkg2rgl3u7p"

@@ -21,3 +21,9 @@ func QuitGame():
 
 func setDialogState(newState: bool):
 	isDialogInScreen = newState
+
+func inventoryOpen():
+	get_tree().paused = true
+
+func inventoryClosed():
+	get_tree().paused = false

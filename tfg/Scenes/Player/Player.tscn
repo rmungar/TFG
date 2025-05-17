@@ -1,7 +1,8 @@
-[gd_scene load_steps=44 format=3 uid="uid://k7dan74tnrbw"]
+[gd_scene load_steps=45 format=3 uid="uid://k7dan74tnrbw"]
 
 [ext_resource type="Script" uid="uid://bi2wsg354crl3" path="res://Scripts/Player/Player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="1_rpqav"]
+[ext_resource type="Resource" uid="uid://d1ifvvil7s8lb" path="res://Scenes/Inventory/PlayerInv.tres" id="2_6tu5v"]
 [ext_resource type="Script" uid="uid://dyuha4yjrpyvl" path="res://Scripts/Player/State/StateMachine.gd" id="3_dewec"]
 [ext_resource type="Script" uid="uid://co5sxfyi7qtct" path="res://Scripts/Player/State/IdleState.gd" id="4_5ixxa"]
 [ext_resource type="Script" uid="uid://c0q3wfhk5th7i" path="res://Scripts/Player/State/RunState.gd" id="5_52ee3"]
@@ -354,6 +355,7 @@ size = Vector2(44, 23)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 529634
 script = ExtResource("1_kyqiw")
+inventory = ExtResource("2_6tu5v")
 
 [node name="DamageCooldown" type="Timer" parent="."]
 wait_time = 0.7

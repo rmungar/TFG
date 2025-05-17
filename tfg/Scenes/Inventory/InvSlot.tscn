@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://br6a2ysnd613v"]
+
+[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_dyex8"]
+[ext_resource type="Script" uid="uid://dgpywwjdwr1r6" path="res://Scenes/Inventory/InvSlot.gd" id="1_r35uc"]
+
+[node name="Inv_Slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -438.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r35uc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dyex8")
+centered = false
+region_enabled = true
+region_rect = Rect2(66.8735, 66.9202, 42.2472, 42.1602)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="itemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+position = Vector2(1, 1)
