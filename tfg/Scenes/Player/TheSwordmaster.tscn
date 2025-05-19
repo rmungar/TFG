@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfdngald38hki"]
+[gd_scene load_steps=17 format=3 uid="uid://dfdngald38hki"]
 
 [ext_resource type="Script" uid="uid://djhdymxro7ete" path="res://Scenes/Player/TheSwordmasterTutorial.gd" id="1_jx3wf"]
 [ext_resource type="Texture2D" uid="uid://y4dshib2nrai" path="res://Assets/Characters/The SwordMaster/Sword Master Sprite Sheet 90x37 without VFX.png" id="1_voisq"]
 [ext_resource type="PackedScene" uid="uid://cwehx5pt81pse" path="res://Scenes/Helpers/Actionable.tscn" id="2_mqvjp"]
-[ext_resource type="Resource" uid="uid://c2wpi64xcij6u" path="res://Dialogues/SwordmasterTutorialDialog.dialogue" id="3_kl5qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqvjp"]
 size = Vector2(11, 23.5)
@@ -426,7 +425,6 @@ autoplay = "Idle_Left"
 [node name="Actionable" parent="." instance=ExtResource("2_mqvjp")]
 collision_layer = 512
 collision_mask = 0
-dialogueResource = ExtResource("3_kl5qn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 position = Vector2(0, -0.5)
