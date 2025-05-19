@@ -1,8 +1,7 @@
 extends Node
 
-
-
 var isDialogInScreen = true
+var isInventoryOpen = false
 
 func toTutorialScreen():
 	get_tree().change_scene_to_file(ScreenManager.tutorialScreen)
@@ -23,7 +22,9 @@ func setDialogState(newState: bool):
 	isDialogInScreen = newState
 
 func inventoryOpen():
+	isInventoryOpen = true
 	get_tree().paused = true
 
 func inventoryClosed():
+	isInventoryOpen = false
 	get_tree().paused = false

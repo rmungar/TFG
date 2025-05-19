@@ -23,6 +23,7 @@ ScreenManager="*res://Scripts/ScreenManager.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+MouseManager="*res://Scripts/MouseManager.gd"
 
 [dialogic]
 
