@@ -44,8 +44,6 @@ func _process(delta: float) -> void:
 		else:
 			open()
 			GameManager.inventoryOpen()
-	
-	# Update cursor position if inventory is open
 	if isOpen and custom_cursor:
 		custom_cursor.global_position = get_viewport().get_mouse_position()
 

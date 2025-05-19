@@ -542,6 +542,9 @@ stretch_mode = 6
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(240, 135)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
 [connection signal="pressed" from="CharacterBody2D/Buttons/Play" to="." method="onPlayButtonPressed"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Continue" to="." method="onContinueButtonPressed"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Options" to="." method="onOptionsButtonPressed"]
