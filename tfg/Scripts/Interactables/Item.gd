@@ -1,7 +1,8 @@
 class_name Item extends RigidBody2D
 
 # Configuration
-@export var itemType: String = "generic"
+@export var itemName: String = ""
+@export var itemTexture: Texture2D
 @export var pickupDelay: float = 0.5
 @export var magnetStrength: float = 0.0  # 0 = no magnet effect
 @export var lifetime: float = 0 # Seconds before auto-removal (0 = infinite)

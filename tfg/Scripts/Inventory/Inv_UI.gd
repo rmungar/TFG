@@ -11,6 +11,7 @@ var isOpen = false
 
 
 func _ready() -> void:
+	inventory.update.connect(updateSlots)
 	center_on_screen()
 	get_viewport().connect("size_changed", center_on_screen)
 	close()
@@ -22,8 +23,8 @@ func center_on_screen():
 
 
 func updateSlots() -> void:
-	for i in range(min(inventory.items.size())):
-		slots[i].update(inventory.items[i])
+	for i in range(min(inventory.slots.size(), slots.size())):
+		slots[i].update(inventory.slots[i])
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Inventory"):

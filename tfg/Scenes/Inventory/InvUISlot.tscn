@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://br6a2ysnd613v"]
 
-[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_dyex8"]
-[ext_resource type="Script" uid="uid://dgpywwjdwr1r6" path="res://Scenes/Inventory/InvSlot.gd" id="1_r35uc"]
+[ext_resource type="Script" uid="uid://dgpywwjdwr1r6" path="res://Scenes/Inventory/InvUISlot.gd" id="1_j2gsh"]
+[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_dork0"]
 
 [node name="Inv_Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -12,10 +12,10 @@ offset_right = -438.0
 offset_bottom = -228.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_r35uc")
+script = ExtResource("1_j2gsh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dyex8")
+texture = ExtResource("2_dork0")
 centered = false
 region_enabled = true
 region_rect = Rect2(66.8735, 66.9202, 42.2472, 42.1602)
@@ -30,3 +30,11 @@ layout_mode = 2
 
 [node name="itemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
 position = Vector2(1, 1)
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -1.0
+offset_right = 20.0
+offset_bottom = 22.0
+horizontal_alignment = 2

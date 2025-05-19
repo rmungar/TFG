@@ -1,7 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddj8ogrp5hv41"]
+[gd_scene load_steps=19 format=3 uid="uid://ddj8ogrp5hv41"]
 
 [ext_resource type="Texture2D" uid="uid://bhjlqhwoy0sfa" path="res://Assets/Tilesets/Simple Items/items sheet.png" id="1_21g80"]
 [ext_resource type="Script" uid="uid://blgmdue3s80yd" path="res://Scripts/Interactables/Item.gd" id="1_b4aix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybhk8"]
+atlas = ExtResource("1_21g80")
+region = Rect2(2, 2, 4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4aix"]
 atlas = ExtResource("1_21g80")
@@ -106,6 +110,7 @@ collision_layer = 2048
 collision_mask = 524289
 collision_priority = 100.0
 script = ExtResource("1_b4aix")
+itemTexture = SubResource("AtlasTexture_ybhk8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.375, 1.375)

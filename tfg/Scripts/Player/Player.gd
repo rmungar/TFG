@@ -83,4 +83,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func collectItem(item: Item):
-	pass
+	var newItem = InventoryItem.new()
+	newItem.name = item.itemName
+	newItem.texture = item.itemTexture
+	inventory.insert(newItem)

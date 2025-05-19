@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1rqj0unbxj40" path="res://Scripts/Inventory/Inv_UI.gd" id="1_qky1y"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_ar5ic"]
-[ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvSlot.tscn" id="3_38mmp"]
+[ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvUISlot.tscn" id="3_38mmp"]
 
 [node name="Inv_UI" type="Control"]
 layout_mode = 3
