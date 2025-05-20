@@ -35,10 +35,10 @@ func physics(delta: float) -> State:
 
 # Called when an input event occurs
 func unhandledInput(event: InputEvent) -> State:
-	if event.is_action_pressed("Jump") and player.is_on_floor():
+	if event.is_action_pressed("Jump") and player.is_on_floor() and !GameManager.isDialogInScreen:
 		return jumpState
 	if event.is_action_pressed("Attack") and player.is_on_floor():
 		return attackState
-	if event.is_action_pressed("Heal"):
+	if event.is_action_pressed("Heal") and !GameManager.isDialogInScreen:
 		return healingState
 	return null

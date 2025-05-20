@@ -1,0 +1,5 @@
+join TheSwordMasterTutorial left
+TheSwordMasterTutorial: I need you to WIPE them out.
+TheSwordMasterTutorial: So take this and go break havoc.
+TheSwordMasterTutorial: Meet me at the end when you're done.
+set {SwordMasterTutorial.ThirdDialog} = true

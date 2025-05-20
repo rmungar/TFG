@@ -74,13 +74,6 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 		queue_free()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Interact"):
-		var actionables = actionableFinder.get_overlapping_areas()
-		if actionables.size() > 0:
-			actionables[0].action()
-			return
-
 
 func collectItem(item: Item):
 	var newItem = InventoryItem.new()

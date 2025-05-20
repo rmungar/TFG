@@ -403,6 +403,7 @@ size = Vector2(40, 23)
 [node name="TheSwordMaster" type="CharacterBody2D"]
 collision_mask = 524289
 script = ExtResource("1_jx3wf")
+jumpVelocity = -400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.25)
@@ -424,9 +425,13 @@ autoplay = "Idle_Left"
 
 [node name="Actionable" parent="." instance=ExtResource("2_mqvjp")]
 collision_layer = 512
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_kl5qn")
 debug_color = Color(0.389155, 0.471941, 1, 0.42)
+
+[connection signal="body_entered" from="Actionable" to="Actionable" method="_on_body_entered"]
+[connection signal="body_exited" from="Actionable" to="Actionable" method="_on_body_exited"]
+[connection signal="playerInRange" from="Actionable" to="." method="_on_actionable_player_in_range"]
+[connection signal="playerOutOfRange" from="Actionable" to="." method="_on_actionable_player_out_of_range"]

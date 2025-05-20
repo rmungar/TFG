@@ -15,22 +15,22 @@ class_name TheSwordMasterTutorial extends CharacterBody2D
 ]
 
 @export var thirdPathPoints: Array[Vector2] = [
-	Vector2(1838,245),
-	Vector2(1933,203),
-	Vector2(2036,169),
-	Vector2(2178,245),
-	Vector2(2439,139),
-	Vector2(2454,145),
-	Vector2(2515,118),
-	Vector2(2599,119),
-	Vector2(2676,245)
+	Vector2(1812,247),
+	Vector2(1865,196),
+	Vector2(1934,196),
+	Vector2(1994,168),
+	Vector2(2057,168),
+	Vector2(2140,247),
+	Vector2(2220,247),
+	Vector2(2241,212),
+	Vector2(2677,247)
 ]
 
 @export var walkSpeed: float = 100.0
 @export var jumpVelocity: float = -350.0
 @export var gravity: float = 1000.0
 @export var startMovingOnReady: bool = true
-@export var debugDrawPath: bool = true
+
 
 var currentTargetIndex: int = 0
 var isActive: bool = false
@@ -38,11 +38,17 @@ var hasCompletedPath: bool = false
 var isJumping: bool = false
 var horizontalDirection: float = 0
 var currentPathPoints = null
+var playerReference: Player
+var justPlayedDialog = 0
 
 func _ready() -> void:
 	currentPathPoints = fisrtPathPoints
 	if startMovingOnReady:
 		startMoving()
+
+func _process(delta: float) -> void:
+	if playerReference and Input.is_action_just_pressed("Interact"):
+		onPlayerInteract()
 
 func startMoving() -> void:
 	if currentPathPoints.size() == 0:
@@ -55,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	if not isActive or hasCompletedPath:
 		return
 	
-	if GameManager.isDialogInScreen:
+	if !Dialogic.VAR.get_variable("SwordMasterTutorial.FirstDialog"):
 		return
 	
 	# Apply gravity
@@ -70,7 +76,7 @@ func _physics_process(delta: float) -> void:
 	var needsToJump = targetPosition.y < global_position.y - 20
 	
 	# Horizontal movement
-	if abs(direction.x) > 0.1:  # Only move if significant horizontal distance
+	if abs(direction.x) > 0.1: 
 		horizontalDirection = sign(direction.x)
 		velocity.x = horizontalDirection * walkSpeed
 		
@@ -105,13 +111,60 @@ func onPathCompleted() -> void:
 	print("NPC has completed its path")
 	if currentPathPoints == fisrtPathPoints:
 		self.global_position = Vector2(1120,246)
+		$AnimationPlayer.play("Idle_Left")
 	elif currentPathPoints == secondPathPoints:
 		self.global_position = Vector2(1741,247)
 		$AnimationPlayer.play("Idle_Left")
+	elif currentPathPoints == thirdPathPoints:
+		$AnimationPlayer.play("Idle")
 
 
-func _on_mechanical_door_unlocked() -> void:
-	hasCompletedPath = false
-	isActive = true
-	currentPathPoints = secondPathPoints
-	currentTargetIndex = 0
+func onPlayerInteract():
+	var FistDialog = Dialogic.VAR.get_variable("SwordMasterTutorial.FirstDialog")
+	var SecondDialog = Dialogic.VAR.get_variable("SwordMasterTutorial.SecondDialog")
+	var ThirdDialog = Dialogic.VAR.get_variable("SwordMasterTutorial.ThirdDialog")
+	var FourthDialog = Dialogic.VAR.get_variable("SwordMasterTutorial.FourthDialog")
+	
+	
+	if !FistDialog and !SecondDialog and !ThirdDialog and !FourthDialog:
+		GameManager.isDialogInScreen = true
+		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterTutorialTimeline.dtl")
+		justPlayedDialog = 1
+	elif FistDialog and !SecondDialog and !ThirdDialog and !FourthDialog:
+		GameManager.isDialogInScreen = true
+		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterCheckpointExplanation.dtl")
+		justPlayedDialog = 2
+	elif FistDialog and SecondDialog and !ThirdDialog and !FourthDialog:
+		GameManager.isDialogInScreen = true
+		Dialogic.start("res://Dialogues/Timelines/TheSwordmasterAMDialogue.dtl")
+		justPlayedDialog = 3
+	elif FistDialog and SecondDialog and ThirdDialog and !FourthDialog:
+		GameManager.isDialogInScreen = true
+		Dialogic.start("")
+		justPlayedDialog = 4
+	else:
+		print("Failure")
+	
+	await Dialogic.timeline_ended
+	
+	if justPlayedDialog == 2:
+		hasCompletedPath = false
+		isActive = true
+		currentPathPoints = secondPathPoints
+		currentTargetIndex = 0
+		
+	elif justPlayedDialog == 3:
+		hasCompletedPath = false
+		isActive = true
+		currentPathPoints = thirdPathPoints
+		currentTargetIndex = 0
+	
+	GameManager.isDialogInScreen = false
+
+
+func _on_actionable_player_in_range(body: Node2D) -> void:
+	playerReference = body
+
+
+func _on_actionable_player_out_of_range() -> void:
+	playerReference = null

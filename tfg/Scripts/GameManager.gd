@@ -1,6 +1,6 @@
 extends Node
 
-var isDialogInScreen = true
+var isDialogInScreen = false
 var isInventoryOpen = false
 
 func toTutorialScreen():

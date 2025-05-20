@@ -7,7 +7,8 @@ signal unlock()
 @export var alreadyInteracted: bool = false
 var playerReference: Player = null
 var interactable: bool = false
-
+var times = 0
+signal Interactable
 
 func _process(delta: float) -> void:
 	if alreadyInteracted == true:
@@ -22,6 +23,9 @@ func _process(delta: float) -> void:
 
 func inInteractionRange(body: Node2D) -> void:
 	interactable = true
+	if times == 0:
+		Interactable.emit()
+		times += 1
 
 func inDetectionRange(body: Node2D) -> void:
 	if body is Player:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://d12rjverftlpl"]
+[gd_scene load_steps=38 format=4 uid="uid://d12rjverftlpl"]
 
 [ext_resource type="Texture2D" uid="uid://d3qwgfa1nceqq" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset No background.png" id="1_fn3i6"]
 [ext_resource type="Texture2D" uid="uid://tvkm8hgohrwj" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset with background.png" id="2_gvd2m"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://px6ufcrdnde8" path="res://Scenes/Npcs/Deer.tscn" id="18_bhgii"]
 [ext_resource type="PackedScene" uid="uid://nt70xpo04560" path="res://Scenes/Enemies/ArcherBandit/ArcherBandit.tscn" id="19_gvd2m"]
 [ext_resource type="PackedScene" uid="uid://blwr6wxet1q1t" path="res://Scenes/Inventory/Inv_UI.tscn" id="21_e4dp3"]
+[ext_resource type="Script" uid="uid://dmgbcya2wk8f6" path="res://Scripts/Helpers/DetectionArea.gd" id="22_njwji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trx64"]
 texture = ExtResource("1_fn3i6")
@@ -1629,6 +1630,9 @@ size = Vector2(270, 11)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gvd2m"]
 distance = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4dp3"]
+size = Vector2(64, 38)
+
 [node name="TutorialScene" type="Node2D"]
 position = Vector2(-8, -1)
 
@@ -1744,6 +1748,8 @@ position = Vector2(1681, 168)
 
 [node name="TheSwordMaster" parent="." instance=ExtResource("13_ar0ii")]
 position = Vector2(105, 244)
+walkSpeed = 150.0
+jumpVelocity = -405.0
 
 [node name="Spikes" type="Area2D" parent="."]
 collision_layer = 1024
@@ -1756,7 +1762,7 @@ shape = SubResource("RectangleShape2D_m5v5x")
 debug_color = Color(0.988767, 0, 0.298245, 0.42)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1114, 240)
+position = Vector2(2241, 212)
 
 [node name="DaggerBandit" parent="." instance=ExtResource("15_pu0ca")]
 position = Vector2(2242, 256)
@@ -1794,6 +1800,17 @@ shape = SubResource("WorldBoundaryShape2D_gvd2m")
 [node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("21_e4dp3")]
 process_mode = 3
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("22_njwji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1696, 237)
+shape = SubResource("RectangleShape2D_e4dp3")
+
+[connection signal="Interactable" from="SavePoint" to="TheSwordMaster" method="onPlayerInteract"]
 [connection signal="unlock" from="SavePoint" to="MechanicalDoor" method="onUnlock"]
 [connection signal="unlocked" from="MechanicalDoor" to="TheSwordMaster" method="_on_mechanical_door_unlocked"]
 [connection signal="unlocked" from="MechanicalDoor" to="Deer" method="_on_door_opened"]
+[connection signal="Detected" from="Area2D" to="TheSwordMaster" method="onPlayerInteract"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,0 +1,5 @@
+join TheSwordMasterTutorial left
+TheSwordMasterTutorial: So you finally booted up huh. Great.
+TheSwordMasterTutorial: You might be feeling a little dizzy at best.
+TheSwordMasterTutorial: We don't have much time left, so get moving.
+set {SwordMasterTutorial.FirstDialog} = true

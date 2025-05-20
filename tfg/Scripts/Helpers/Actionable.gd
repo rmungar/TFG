@@ -1,9 +1,16 @@
 class_name Actionable extends Area2D
 
+signal playerInRange(body:Node2D)
+signal playerOutOfRange
 
 
-@export var dialogueStart: String = "start"
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		playerInRange.emit(body)
 
 
-func action() -> void:
-	pass
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body is Player:
+		playerOutOfRange.emit()

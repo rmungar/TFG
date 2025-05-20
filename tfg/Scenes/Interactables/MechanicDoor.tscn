@@ -156,7 +156,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Open",
-"speed": 10.0
+"speed": 16.0
 }]
 
 [node name="MechanicDoor" type="StaticBody2D"]
@@ -172,6 +172,4 @@ shape = SubResource("RectangleShape2D_t4lgi")
 position = Vector2(3.8147e-06, -1)
 scale = Vector2(3.10366, 5)
 sprite_frames = SubResource("SpriteFrames_y3wv6")
-animation = &"Close"
-frame = 5
-frame_progress = 1.0
+animation = &"Open"
