@@ -1780,7 +1780,7 @@ position = Vector2(1326, 241)
 position = Vector2(1934, 128)
 
 [node name="Player" parent="." instance=ExtResource("16_ib4ay")]
-position = Vector2(199, 244)
+position = Vector2(72, 245)
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tileMap")]
 position = Vector2(3, -107)

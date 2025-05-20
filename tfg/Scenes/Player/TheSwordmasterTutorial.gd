@@ -32,6 +32,9 @@ class_name TheSwordMasterTutorial extends CharacterBody2D
 @export var startMovingOnReady: bool = true
 
 
+@onready var ItemDrop = preload("res://Scenes/Interactables/Item.tscn")
+
+
 var currentTargetIndex: int = 0
 var isActive: bool = false
 var hasCompletedPath: bool = false
@@ -40,15 +43,27 @@ var horizontalDirection: float = 0
 var currentPathPoints = null
 var playerReference: Player
 var justPlayedDialog = 0
+var amountSpawned = 0
+var needsToSpawnItem: bool
+
+
 
 func _ready() -> void:
 	currentPathPoints = fisrtPathPoints
 	if startMovingOnReady:
 		startMoving()
+		
+	needsToSpawnItem = Dialogic.VAR.get_variable("NeedsToSpawnItem")
 
 func _process(delta: float) -> void:
 	if playerReference and Input.is_action_just_pressed("Interact"):
 		onPlayerInteract()
+		
+	if needsToSpawnItem and amountSpawned == 0:
+		await Dialogic.timeline_ended
+		amountSpawned += 1
+		spawnItem()
+		Dialogic.VAR.set_variable("SwordMasterTutorial.NeedsToSpawnItem", false)
 
 func startMoving() -> void:
 	if currentPathPoints.size() == 0:
@@ -164,6 +179,30 @@ func onPlayerInteract():
 
 func _on_actionable_player_in_range(body: Node2D) -> void:
 	playerReference = body
+
+
+func spawnItem():
+	var dropForce: float = 150.0
+	
+	var spawnedItem = ItemDrop.instantiate()
+	var parent = get_parent()
+	if not parent:
+		push_error("Can't spawn the item!")
+		return
+	parent.add_child(spawnedItem)
+	spawnedItem.global_position = global_position + Vector2(0, -16)
+	print("Item position set to: ", spawnedItem.global_position)
+	spawnedItem.itemName = "Attack module"
+	if spawnedItem is RigidBody2D:
+		var direction = Vector2(
+			randf_range(-1, 1),
+			randf_range(-1.5, -0.5)
+		).normalized()
+		spawnedItem.apply_central_impulse(direction * dropForce)
+		print("Impulse applied: ", direction * dropForce)
+	else:
+		push_warning("Item is not a RigidBody2D - can't apply impulse")
+	
 
 
 func _on_actionable_player_out_of_range() -> void:
