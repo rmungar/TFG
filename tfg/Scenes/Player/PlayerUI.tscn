@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkh25p3a8elca"]
+
+[ext_resource type="Script" uid="uid://dv3lw4h8jmnaa" path="res://Scripts/Camera/PlayerHUD.gd" id="1_uyejk"]
+[ext_resource type="Texture2D" uid="uid://ckkjpxl4vlnpw" path="res://Assets/UI/UI - Ammo/UI - Full Heart.png" id="2_b22dx"]
+[ext_resource type="Texture2D" uid="uid://77186jtsyeq6" path="res://Assets/Portraits/Portraits16.png" id="2_fhr5y"]
+[ext_resource type="Texture2D" uid="uid://b1pq8ajvh0xi8" path="res://Assets/UI/UI - Ammo/UI - Half Heart.png" id="3_0t1lg"]
+[ext_resource type="Texture2D" uid="uid://carb7ns0cwkf1" path="res://Assets/UI/UI - Ammo/UI - Empty Heart.png" id="4_27bup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b22dx"]
+atlas = ExtResource("2_b22dx")
+region = Rect2(14, 12, 4, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t1lg"]
+atlas = ExtResource("3_0t1lg")
+region = Rect2(14, 12, 2, 8)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uyejk")
+fullTexture = SubResource("AtlasTexture_b22dx")
+halfTexture = SubResource("AtlasTexture_0t1lg")
+emptyTtexture = ExtResource("4_27bup")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(36, 36)
+texture = ExtResource("2_fhr5y")
+
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 58.0
+offset_top = 29.0
+offset_right = 128.0
+offset_bottom = 46.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 2

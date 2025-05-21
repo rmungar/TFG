@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://d12rjverftlpl"]
+[gd_scene load_steps=39 format=4 uid="uid://d12rjverftlpl"]
 
 [ext_resource type="Texture2D" uid="uid://d3qwgfa1nceqq" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset No background.png" id="1_fn3i6"]
 [ext_resource type="Texture2D" uid="uid://tvkm8hgohrwj" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset with background.png" id="2_gvd2m"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://px6ufcrdnde8" path="res://Scenes/Npcs/Deer.tscn" id="18_bhgii"]
 [ext_resource type="PackedScene" uid="uid://nt70xpo04560" path="res://Scenes/Enemies/ArcherBandit/ArcherBandit.tscn" id="19_gvd2m"]
 [ext_resource type="PackedScene" uid="uid://blwr6wxet1q1t" path="res://Scenes/Inventory/Inv_UI.tscn" id="21_e4dp3"]
+[ext_resource type="PackedScene" uid="uid://bkh25p3a8elca" path="res://Scenes/Player/PlayerUI.tscn" id="21_nvjkw"]
 [ext_resource type="Script" uid="uid://dmgbcya2wk8f6" path="res://Scripts/Helpers/DetectionArea.gd" id="22_njwji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trx64"]
@@ -1748,6 +1749,8 @@ position = Vector2(1681, 168)
 
 [node name="TheSwordMaster" parent="." instance=ExtResource("13_ar0ii")]
 position = Vector2(105, 244)
+collision_layer = 0
+collision_mask = 524288
 walkSpeed = 150.0
 jumpVelocity = -405.0
 
@@ -1780,12 +1783,14 @@ position = Vector2(1326, 241)
 position = Vector2(1934, 128)
 
 [node name="Player" parent="." instance=ExtResource("16_ib4ay")]
-position = Vector2(72, 245)
+position = Vector2(80, 245)
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tileMap")]
 position = Vector2(3, -107)
 script = ExtResource("17_xijgg")
 tileMap = NodePath("../../BackGround")
+
+[node name="PlayerUI" parent="Player/Camera2D" instance=ExtResource("21_nvjkw")]
 
 [node name="Node2D" type="StaticBody2D" parent="." groups=["WorldBundary"]]
 collision_layer = 2147483648
@@ -1812,5 +1817,6 @@ shape = SubResource("RectangleShape2D_e4dp3")
 [connection signal="unlock" from="SavePoint" to="MechanicalDoor" method="onUnlock"]
 [connection signal="unlocked" from="MechanicalDoor" to="TheSwordMaster" method="_on_mechanical_door_unlocked"]
 [connection signal="unlocked" from="MechanicalDoor" to="Deer" method="_on_door_opened"]
+[connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]
 [connection signal="Detected" from="Area2D" to="TheSwordMaster" method="onPlayerInteract"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

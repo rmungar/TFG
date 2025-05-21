@@ -1,10 +1,11 @@
+[style name="NovelStyle"]
 join TheSwordMasterTutorial left
 TheSwordMasterTutorial: So you finally booted up huh. Great.
 TheSwordMasterTutorial: You might be feeling a little dizzy right now.
 TheSwordMasterTutorial: But you'll get used to it.
 TheSwordMasterTutorial: For now, you just need to be able to move.
 - But... how?
-	TheSwordMasterTutorial: Sigh... 
+	TheSwordMasterTutorial: Sigh...
 	TheSwordMasterTutorial: You can move around using "A" or "D".
 	TheSwordMasterTutorial: Or with your left joystick.
 	TheSwordMasterTutorial: I'll let you guess what you need to press to jump.

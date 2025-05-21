@@ -20,16 +20,18 @@ var facingDirection: float
 
 
 @export_category("Health")
+@export var MaxHP: int = 100
 @export var HP: int = 100
 @export var isAlive: bool = true
 var isInteracting: bool = false
-
+signal updateHealth(currentHp, maxHp)
 
 @export_category("Inventory")
 @export var inventory: Inventory
 
 
 func _ready() -> void:
+	updateHealth.emit(HP, MaxHP)
 	stateMachine.configure(self)
 
 func _process(delta: float) -> void:
@@ -67,6 +69,7 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 	self.modulate = Color.WHITE
 	HP -= damage
 	$DamageCooldown.start()
+	updateHealth.emit(HP, MaxHP)
 	if HP <= 0:
 		isAlive = false
 		$AnimationPlayer.play("Death")

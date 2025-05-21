@@ -52,16 +52,18 @@ func _ready() -> void:
 	currentPathPoints = fisrtPathPoints
 	if startMovingOnReady:
 		startMoving()
-		
-	needsToSpawnItem = Dialogic.VAR.get_variable("NeedsToSpawnItem")
+	
 
 func _process(delta: float) -> void:
+	
+	needsToSpawnItem = Dialogic.VAR.get_variable("SwordMasterTutorial.NeedsToSpawnItem")
+	
 	if playerReference and Input.is_action_just_pressed("Interact"):
 		onPlayerInteract()
 		
 	if needsToSpawnItem and amountSpawned == 0:
-		await Dialogic.timeline_ended
 		amountSpawned += 1
+		await Dialogic.timeline_ended
 		spawnItem()
 		Dialogic.VAR.set_variable("SwordMasterTutorial.NeedsToSpawnItem", false)
 
@@ -187,21 +189,16 @@ func spawnItem():
 	var spawnedItem = ItemDrop.instantiate()
 	var parent = get_parent()
 	if not parent:
-		push_error("Can't spawn the item!")
 		return
 	parent.add_child(spawnedItem)
 	spawnedItem.global_position = global_position + Vector2(0, -16)
-	print("Item position set to: ", spawnedItem.global_position)
 	spawnedItem.itemName = "Attack module"
 	if spawnedItem is RigidBody2D:
 		var direction = Vector2(
-			randf_range(-1, 1),
+			-1,
 			randf_range(-1.5, -0.5)
 		).normalized()
 		spawnedItem.apply_central_impulse(direction * dropForce)
-		print("Impulse applied: ", direction * dropForce)
-	else:
-		push_warning("Item is not a RigidBody2D - can't apply impulse")
 	
 
 
