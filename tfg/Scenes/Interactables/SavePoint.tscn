@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdvo8jod3ovhd"]
+[gd_scene load_steps=24 format=3 uid="uid://bdvo8jod3ovhd"]
 
 [ext_resource type="Script" uid="uid://bm3wx7qiukpp0" path="res://Scripts/Interactables/SavePoint.gd" id="1_7ysoo"]
 [ext_resource type="Texture2D" uid="uid://b762s8w2picqk" path="res://Assets/Tilesets/DARK Edition/Animated objects/Save/down 16x19.png" id="1_n57wy"]
 [ext_resource type="Texture2D" uid="uid://byiycr1cf3idb" path="res://Assets/Tilesets/DARK Edition/Animated objects/Save/idle 16x19.png" id="2_7ysoo"]
 [ext_resource type="Texture2D" uid="uid://ckijhv88bph13" path="res://Assets/Tilesets/DARK Edition/Animated objects/Save/start up16x19.png" id="3_qeqkf"]
+[ext_resource type="Texture2D" uid="uid://bidjilhoskuby" path="res://Assets/Mouse/PNG/Basic/Default/mark_question.png" id="5_qeqkf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d051l"]
 atlas = ExtResource("1_n57wy")
@@ -158,6 +159,10 @@ debug_color = Color(0, 0.62242, 0.546233, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_r8m0g")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+position = Vector2(0, -46)
+texture = ExtResource("5_qeqkf")
 
 [connection signal="body_entered" from="DetectionRange" to="." method="inDetectionRange"]
 [connection signal="body_exited" from="DetectionRange" to="." method="leftDetectionRange"]

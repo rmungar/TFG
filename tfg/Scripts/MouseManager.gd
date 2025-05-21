@@ -23,7 +23,7 @@ func _process(_delta):
 		cursor_instance.global_position = get_viewport().get_mouse_position()
 
 func _update_cursor_visibility():
-	var should_show = GameManager.isInventoryOpen
+	var should_show = true if (GameManager.isInventoryOpen or GameManager.isDialogInScreen) else false
 	
 	if should_show and not is_cursor_visible:
 		if not cursor_instance:  

@@ -21,12 +21,16 @@ position = Vector2(96, 64.5)
 shape = SubResource("RectangleShape2D_y7pe3")
 debug_color = Color(1, 1, 0, 0.419608)
 
+[node name="Indicator" type="Sprite2D" parent="Door1"]
+
 [node name="Door2" type="Area2D" parent="."]
 position = Vector2(784, 64)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Door2"]
 shape = SubResource("RectangleShape2D_imim6")
 debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="Indicator" type="Sprite2D" parent="Door2"]
 
 [node name="Door3" type="Area2D" parent="."]
 position = Vector2(1376, 240)
@@ -35,12 +39,16 @@ position = Vector2(1376, 240)
 shape = SubResource("RectangleShape2D_k03i6")
 debug_color = Color(1, 1, 0, 0.419608)
 
+[node name="Indicator" type="Sprite2D" parent="Door3"]
+
 [node name="Door4" type="Area2D" parent="."]
 position = Vector2(1696, 241)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Door4"]
 shape = SubResource("RectangleShape2D_k03i6")
 debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="Indicator" type="Sprite2D" parent="Door4"]
 
 [connection signal="body_entered" from="Door1" to="." method="onTutorialDoor1Entered"]
 [connection signal="body_exited" from="Door1" to="." method="onTutorialDoor1Exited"]

@@ -26,6 +26,7 @@ func inInteractionRange(body: Node2D) -> void:
 	if times == 0:
 		Interactable.emit()
 		times += 1
+	$Indicator.visible = true
 
 func inDetectionRange(body: Node2D) -> void:
 	if body is Player:
@@ -37,6 +38,7 @@ func inDetectionRange(body: Node2D) -> void:
 func leftDetectionRange(body: Node2D) -> void:
 	playerReference = null
 	animatedSprite.play("Close")
+	$Indicator.visible = false
 
 func leftInteractionRange(body: Node2D) -> void:
 	interactable = true
