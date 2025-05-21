@@ -1,6 +1,9 @@
 [style name="NovelStyle"]
 set {SwordMasterTutorial.NeedsToSpawnItem} = true
 join TheSwordMasterTutorial left
+TheSwordMasterTutorial: Looks like we are too late.
 TheSwordMasterTutorial: I need you to WIPE them out.
 TheSwordMasterTutorial: So take this and go break havoc.
 TheSwordMasterTutorial: Meet me at the end when you're done.
+TheSwordMasterTutorial: I'll try to get you out of here.
+TheSwordMasterTutorial: You might be able to help us.

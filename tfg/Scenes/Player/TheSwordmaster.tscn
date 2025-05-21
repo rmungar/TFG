@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfdngald38hki"]
+[gd_scene load_steps=19 format=3 uid="uid://dfdngald38hki"]
 
 [ext_resource type="Script" uid="uid://djhdymxro7ete" path="res://Scenes/Player/TheSwordmasterTutorial.gd" id="1_jx3wf"]
 [ext_resource type="Texture2D" uid="uid://y4dshib2nrai" path="res://Assets/Characters/The SwordMaster/Sword Master Sprite Sheet 90x37 without VFX.png" id="1_voisq"]
 [ext_resource type="PackedScene" uid="uid://cwehx5pt81pse" path="res://Scenes/Helpers/Actionable.tscn" id="2_mqvjp"]
+[ext_resource type="Texture2D" uid="uid://bidjilhoskuby" path="res://Assets/Mouse/PNG/Basic/Default/mark_question.png" id="4_jx3wf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqvjp"]
 size = Vector2(11, 23.5)
@@ -400,6 +401,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kl5qn"]
 size = Vector2(40, 23)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssnw3"]
+atlas = ExtResource("4_jx3wf")
+region = Rect2(0, 0, 32, 32)
+
 [node name="TheSwordMaster" type="CharacterBody2D"]
 collision_mask = 524289
 script = ExtResource("1_jx3wf")
@@ -430,6 +435,11 @@ collision_layer = 512
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_kl5qn")
 debug_color = Color(0.389155, 0.471941, 1, 0.42)
+
+[node name="Indicator" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, -25)
+scale = Vector2(0.640625, 0.640625)
+texture = SubResource("AtlasTexture_ssnw3")
 
 [connection signal="body_entered" from="Actionable" to="Actionable" method="_on_body_entered"]
 [connection signal="body_exited" from="Actionable" to="Actionable" method="_on_body_exited"]

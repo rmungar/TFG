@@ -55,10 +55,14 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	
+	if playerReference:
+		$Indicator.visible = true
+	else:
+		$Indicator.visible = false
 	needsToSpawnItem = Dialogic.VAR.get_variable("SwordMasterTutorial.NeedsToSpawnItem")
 	
 	if playerReference and Input.is_action_just_pressed("Interact"):
+		$Indicator.visible = false
 		onPlayerInteract()
 		
 	if needsToSpawnItem and amountSpawned == 0:

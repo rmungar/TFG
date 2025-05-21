@@ -18,8 +18,10 @@ func updateHealth(current_hp: int, max_hp: int) -> void:
 
 		if unitValue == HPPerHeart:
 			icon.texture = fullTexture
+			icon.modulate = Color.PALE_GREEN
 		elif unitValue >= HPPerHeart / 2:
 			icon.texture = halfTexture
+			icon.modulate = Color.LIGHT_YELLOW
 		else:
 			icon.texture = emptyTtexture
 		
