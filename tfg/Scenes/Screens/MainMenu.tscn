@@ -543,7 +543,6 @@ stretch_mode = 6
 position = Vector2(240, 135)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [connection signal="pressed" from="CharacterBody2D/Buttons/Play" to="." method="onPlayButtonPressed"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Continue" to="." method="onContinueButtonPressed"]

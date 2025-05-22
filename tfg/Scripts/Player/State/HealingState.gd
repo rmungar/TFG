@@ -5,7 +5,6 @@ class_name HealingState extends State
 @onready var fallState: FallState = $"../FallState"
 @onready var attackState: AttackState = $"../AttackState"
 @onready var idleState: IdleState = $"../IdleState"
-@onready var interactingState: Node = $"../InteractingState"
 @onready var healingState: HealingState = $"."
 
 

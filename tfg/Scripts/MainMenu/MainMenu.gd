@@ -19,17 +19,12 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _setup_cursor():
-	var cursor_layer = CanvasLayer.new()
-	cursor_layer.layer = 100
-	add_child(cursor_layer)
-
 	custom_cursor = Sprite2D.new()
 	custom_cursor.texture = cursor_texture
 	custom_cursor.name = "MenuCursor"
 	custom_cursor.z_index = 1000
 	custom_cursor.process_mode = PROCESS_MODE_ALWAYS
-	cursor_layer.add_child(custom_cursor)
-
+	get_node("CanvasLayer").add_child(custom_cursor)
 	custom_cursor.global_position = get_global_mouse_position()
 
 func _update_button_visibility():
@@ -57,9 +52,9 @@ func _set_input_mode(mode: InputMode):
 func _process(delta: float) -> void:
 	if not custom_cursor:
 		return
-
+	print("Mouse Pos: ", get_global_mouse_position(), " | Cursor Pos: ", custom_cursor.global_position)
 	if current_input_mode == InputMode.MOUSE:
-		custom_cursor.global_position = get_global_mouse_position() + Vector2(5, 0)
+		custom_cursor.global_position = get_global_mouse_position() - Vector2(50, 0)
 	elif current_input_mode == InputMode.GAMEPAD:
 		var input_vector = Vector2(
 			Input.get_joy_axis(0, JOY_AXIS_LEFT_X),

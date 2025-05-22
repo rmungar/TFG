@@ -16,3 +16,11 @@ func insert(newInvItem: InventoryItem):
 			emptySlots[0].amount = 1
 			
 	update.emit()
+
+
+func search(itemName: String) -> bool:
+	var itemSlots = slots.filter(func(slot): return slot.item.name == itemName)
+	if itemSlots.is_empty():
+		return false
+	else:
+		return true

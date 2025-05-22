@@ -14,6 +14,11 @@ func _ready() -> void:
 	door2Coordinates = doors.get_node("Door2").global_position
 	door3Coordinates = doors.get_node("Door3").global_position
 	door4Coordinates = doors.get_node("Door4").global_position
+	
+	$Door1/Indicator.visible = false
+	$Door2/Indicator.visible = false
+	$Door3/Indicator.visible = false
+	$Door4/Indicator.visible = false
 
 
 func _process(delta: float) -> void:
@@ -28,8 +33,8 @@ func _process(delta: float) -> void:
 				targetPosition = door2Coordinates
 				print("Teleporting to Door2 pos: ", targetPosition)
 			2: 
-				targetPosition = door3Coordinates
-				print("Teleporting to Door3 pos: ", targetPosition)
+				targetPosition = playerReference.global_position
+				print("Teleporting to pos: ", targetPosition)
 			3: 
 				targetPosition = door4Coordinates
 				print("Teleporting to Door4 pos: ", targetPosition)
@@ -86,3 +91,35 @@ func onTutorialDoor4Entered(body: Node2D) -> void:
 func onTutorialDoor4Exited(body: Node2D) -> void:
 	playerReference = null
 	currentDoorReference = 0
+
+
+func _on_detector1_body_entered(body: Node2D) -> void:
+	$Door1/Indicator.visible = true
+
+
+func _on_detector1_body_exited(body: Node2D) -> void:
+	$Door1/Indicator.visible = false
+
+
+
+func _on_detector2_body_entered(body: Node2D) -> void:
+	$Door2/Indicator.visible = true
+
+func _on_detector2_body_exited(body: Node2D) -> void:
+	$Door2/Indicator.visible = false
+
+
+
+func _on_detector3_body_entered(body: Node2D) -> void:
+	$Door3/Indicator.visible = true
+
+func _on_detector3_body_exited(body: Node2D) -> void:
+	$Door3/Indicator.visible = false
+
+
+
+func _on_detector4_body_entered(body: Node2D) -> void:
+	$Door4/Indicator.visible = true
+
+func _on_detector4_body_exited(body: Node2D) -> void:
+	$Door4/Indicator.visible = false

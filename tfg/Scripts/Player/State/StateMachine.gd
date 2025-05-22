@@ -27,11 +27,25 @@ func configure(player: Player) -> void:
 			states.append(child)
 	if not states:
 		return
-	
-	states[0].player = player
-	states[0].stateMachine = self
-	
-	changeState(states[0])
+		
+	# Asignar player y stateMachine a cada estado
+	for state in states:
+		state.player = player
+		state.stateMachine = self
+		
+	# Buscar el estado de WakeUp
+	var wakeUpState: State = null
+	for state in states:
+		if state is WakeUpState:
+			wakeUpState = state
+			break
+			
+	# Decidir el estado inicial
+	if player.shouldWakeUp and wakeUpState != null:
+		changeState(wakeUpState)
+	else:
+		changeState(states[0]) # o busca IdleState si prefieres
+		
 	process_mode = Node.PROCESS_MODE_INHERIT
 
 

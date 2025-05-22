@@ -6,6 +6,11 @@ class_name PlayerHUD extends Control
 @export var halfTexture: Texture2D
 @export var emptyTtexture: Texture2D
 
+
+func _ready() -> void:
+	$CanvasLayer/SaveIcon.visible = false
+
+
 func updateHealth(current_hp: int, max_hp: int) -> void:
 	var units = int(ceil(max_hp / HPPerHeart))
 	
@@ -35,3 +40,14 @@ func updateHealth(current_hp: int, max_hp: int) -> void:
 func queueFreeChildren():
 	for child in healthContainer.get_children():
 		child.queue_free()
+
+
+func _on_save_point_save() -> void:
+	$CanvasLayer/SaveIcon.visible = true
+	var timer: Timer = Timer.new()
+	add_child(timer)
+	timer.one_shot = true
+	timer.start(2)
+	await timer.timeout
+	$CanvasLayer/SaveIcon.visible = false
+	remove_child(timer)

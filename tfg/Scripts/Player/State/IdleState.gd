@@ -9,6 +9,7 @@ class_name IdleState extends State
 
 # What happens whenever our character enters the state
 func enter() -> void:
+	player.canMove = true
 	player.velocity.x = 0
 	player.animationPlayer.play("Idle")
 	

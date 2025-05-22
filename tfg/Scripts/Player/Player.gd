@@ -16,7 +16,7 @@ class_name Player extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var deceleration: float = 0.2
 var facingDirection: float 
-
+var canMove: bool = true
 
 
 @export_category("Health")
@@ -30,13 +30,16 @@ signal updateHealth(currentHp, maxHp)
 @export var inventory: Inventory
 
 
+var shouldWakeUp: bool = true
+var canAttack: bool = false
+
 func _ready() -> void:
 	updateHealth.emit(HP, MaxHP)
 	stateMachine.configure(self)
 
 func _process(delta: float) -> void:
 	
-	if isAlive:
+	if isAlive and canMove:
 		if Input.is_action_pressed("MoveLeft"):
 			facingDirection = -1.0
 			sprite.flip_h = true

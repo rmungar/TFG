@@ -1,6 +1,7 @@
 class_name SavePoint extends Node2D
 
 signal unlock()
+signal save()
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var requiredItem = ""
@@ -10,14 +11,23 @@ var interactable: bool = false
 var times = 0
 signal Interactable
 
+
+func _ready() -> void:
+	$Indicator.visible = false
+
 func _process(delta: float) -> void:
 	if alreadyInteracted == true:
-		modulate = Color(0.0, 0.74, 1.0, 1.0)
+		self.modulate = Color(0.0, 0.74, 1.0, 1.0)
 	else:
-		modulate = Color(1.0, 1.0, 1.0, 1.0)
+		self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	if playerReference and Input.is_action_just_pressed("Interact"):
+		
+		if alreadyInteracted:
+			save.emit()
+		
 		if requiredItem == "" or playerReference.has_item(requiredItem):
 			alreadyInteracted = true
+			$Indicator.visible = false
 			emit_signal("unlock")
 
 
@@ -26,7 +36,8 @@ func inInteractionRange(body: Node2D) -> void:
 	if times == 0:
 		Interactable.emit()
 		times += 1
-	$Indicator.visible = true
+	if !alreadyInteracted:
+		$Indicator.visible = true
 
 func inDetectionRange(body: Node2D) -> void:
 	if body is Player:
