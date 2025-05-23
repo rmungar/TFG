@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://c6i4eguqa32h4"]
+[gd_scene load_steps=72 format=3 uid="uid://c6i4eguqa32h4"]
 
 [ext_resource type="Script" uid="uid://caj8fxiqx77gm" path="res://Scripts/MainMenu/MainMenu.gd" id="1_3oy6j"]
 [ext_resource type="Texture2D" uid="uid://l10w704tc4jx" path="res://Assets/Tilesets/Peaks Of Lightning/1- Background - Sky (1).png" id="2_cc4ve"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://08mumn2c6ma8" path="res://Assets/Tilesets/Peaks Of Lightning/Large Lightning (64x48).png" id="7_ug8uf"]
 [ext_resource type="Texture2D" uid="uid://bhj6gui7tlj05" path="res://Assets/Tilesets/Peaks Of Lightning/5- Fog (5).png" id="8_4ice4"]
 [ext_resource type="Texture2D" uid="uid://cuby632tuv0vi" path="res://Assets/Tilesets/Victorian Parallax/layer 2.png" id="8_ag6gj"]
-[ext_resource type="Script" uid="uid://c4lxf72eail1m" path="res://Scripts/MainMenu/IntroPlayer.gd" id="10_ag6gj"]
 [ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="11_kpgju"]
 [ext_resource type="Texture2D" uid="uid://chnilealhjrcp" path="res://Assets/UI/UI - Words/Words without BG/UI - Words5.png" id="11_ty55h"]
 [ext_resource type="Theme" uid="uid://bk03gqon2xhhq" path="res://Themes/MainMenuButtons.tres" id="12_io8hu"]
@@ -462,7 +461,6 @@ flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("10_ag6gj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
@@ -538,9 +536,6 @@ texture_pressed = ExtResource("21_mqkvh")
 texture_hover = ExtResource("21_mqkvh")
 texture_focused = ExtResource("21_mqkvh")
 stretch_mode = 6
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(240, 135)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
