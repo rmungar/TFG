@@ -45,7 +45,7 @@ var playerReference: Player
 var justPlayedDialog = 0
 var amountSpawned = 0
 var needsToSpawnItem: bool
-
+var enemiesDead: bool = false
 
 
 func _ready() -> void:
@@ -159,7 +159,7 @@ func onPlayerInteract():
 		GameManager.isDialogInScreen = true
 		Dialogic.start("res://Dialogues/Timelines/TheSwordmasterAMDialogue.dtl")
 		justPlayedDialog = 3
-	elif FistDialog and SecondDialog and ThirdDialog and !FourthDialog:
+	elif FistDialog and SecondDialog and ThirdDialog and !FourthDialog and enemiesDead:
 		GameManager.isDialogInScreen = true
 		Dialogic.start("")
 		justPlayedDialog = 4
@@ -196,7 +196,8 @@ func spawnItem():
 		return
 	parent.add_child(spawnedItem)
 	spawnedItem.global_position = global_position + Vector2(0, -16)
-	spawnedItem.itemName = "Attack module"
+	spawnedItem.itemName = "AttackModule"
+	spawnedItem.itemTexture = load("res://Assets/Tilesets/Simple Items/SwordSprite.png")
 	if spawnedItem is RigidBody2D:
 		var direction = Vector2(
 			-1,
@@ -208,3 +209,7 @@ func spawnItem():
 
 func _on_actionable_player_out_of_range() -> void:
 	playerReference = null
+
+
+func _on_tutorial_scene_tutorial_done() -> void:
+	enemiesDead = true 

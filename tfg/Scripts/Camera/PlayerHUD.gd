@@ -1,6 +1,8 @@
 class_name PlayerHUD extends Control
 
 @onready var healthContainer: HBoxContainer = $CanvasLayer/HealthContainer
+@onready var moneyLabel: Label = $CanvasLayer/MoneyLabel
+
 @export var HPPerHeart: int = 20
 @export var fullTexture: Texture2D
 @export var halfTexture: Texture2D
@@ -51,3 +53,7 @@ func _on_save_point_save() -> void:
 	await timer.timeout
 	$CanvasLayer/SaveIcon.visible = false
 	remove_child(timer)
+
+
+func updateMoney(money: int) -> void:
+	moneyLabel.text = str(money)

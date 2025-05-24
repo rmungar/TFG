@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkh25p3a8elca"]
+[gd_scene load_steps=10 format=3 uid="uid://bkh25p3a8elca"]
 
 [ext_resource type="Script" uid="uid://dv3lw4h8jmnaa" path="res://Scripts/Camera/PlayerHUD.gd" id="1_uyejk"]
 [ext_resource type="Texture2D" uid="uid://ckkjpxl4vlnpw" path="res://Assets/UI/UI - Ammo/UI - Full Heart.png" id="2_b22dx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1pq8ajvh0xi8" path="res://Assets/UI/UI - Ammo/UI - Half Heart.png" id="3_0t1lg"]
 [ext_resource type="Texture2D" uid="uid://carb7ns0cwkf1" path="res://Assets/UI/UI - Ammo/UI - Empty Heart.png" id="4_27bup"]
 [ext_resource type="Texture2D" uid="uid://0ek0vwas4wmp" path="res://Assets/UI/UI - ICONS/UI - Icons13.png" id="6_0t1lg"]
+[ext_resource type="Texture2D" uid="uid://csyoi3sma1g1" path="res://Assets/Tilesets/Simple Items/MoneySprite.png" id="7_27bup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b22dx"]
 atlas = ExtResource("2_b22dx")
@@ -45,3 +46,14 @@ theme_override_constants/separation = 2
 [node name="SaveIcon" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(464, 254)
 texture = ExtResource("6_0t1lg")
+
+[node name="MoneySprite" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(377, 36)
+scale = Vector2(1.125, 1.1875)
+texture = ExtResource("7_27bup")
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
+offset_left = 391.0
+offset_top = 24.0
+offset_right = 473.0
+offset_bottom = 47.0

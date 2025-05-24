@@ -2,6 +2,9 @@ class_name InventoryUI extends Control
 
 @onready var inventory: Inventory = preload("res://Scenes/Inventory/PlayerInv.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+@onready var attackSlot: InventoryUISlot = $AttackSlot
+@onready var abilitySlot: InventoryUISlot = $AbilitySlot
+@onready var healthSlot: InventoryUISlot = $HealthSlot
 
 signal InventoryOpen
 signal InventoryClosed
@@ -40,6 +43,10 @@ func center_on_screen():
 func updateSlots() -> void:
 	for i in range(min(inventory.slots.size(), slots.size())):
 		slots[i].update(inventory.slots[i])
+		
+	healthSlot.update(inventory.slots[9])
+	attackSlot.update(inventory.slots[10])
+	abilitySlot.update(inventory.slots[11])
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

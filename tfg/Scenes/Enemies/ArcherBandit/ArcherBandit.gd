@@ -7,6 +7,8 @@ var arrowScene: PackedScene = preload("res://Scenes/Enemies/ArcherBandit/arrow.t
 var isAlive = true
 @export var health = 100
 
+signal Dead()
+
 var directionTowardsPlayer = 0
 
 func spawnArrow(playerPosition: Vector2):
@@ -67,6 +69,7 @@ func isDead():
 		$AnimationPlayer.play("Death_Left")
 	await $AnimationPlayer.animation_finished
 	await get_tree().create_timer(0.1).timeout
+	Dead.emit()
 	queue_free()
 
 

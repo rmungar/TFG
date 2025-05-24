@@ -40,6 +40,8 @@ func spawnItems():
 	# 2. Create item instance
 	var item = drop.instantiate()
 	print("Item instantiated: ", item)
+	item.itemName = "HealthModule"
+	item.itemTexture = load("res://Assets/Tilesets/Simple Items/HealingModuleSprite.png")
 	
 	# 3. Add to scene tree
 	var parent = get_parent()

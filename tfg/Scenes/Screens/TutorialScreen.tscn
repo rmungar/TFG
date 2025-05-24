@@ -1768,7 +1768,7 @@ shape = SubResource("RectangleShape2D_m5v5x")
 debug_color = Color(0.988767, 0, 0.298245, 0.42)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(2241, 212)
+position = Vector2(1084, 243)
 
 [node name="DaggerBandit" parent="." instance=ExtResource("15_pu0ca")]
 position = Vector2(2242, 256)
@@ -1825,11 +1825,17 @@ shape = SubResource("RectangleShape2D_e4dp3")
 position = Vector2(72, 219)
 texture = ExtResource("24_vvlti")
 
+[connection signal="tutorialDone" from="." to="TheSwordMaster" method="_on_tutorial_scene_tutorial_done"]
 [connection signal="Interactable" from="SavePoint" to="TheSwordMaster" method="onPlayerInteract"]
 [connection signal="save" from="SavePoint" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
 [connection signal="unlock" from="SavePoint" to="MechanicalDoor" method="onUnlock"]
 [connection signal="unlocked" from="MechanicalDoor" to="TheSwordMaster" method="_on_mechanical_door_unlocked"]
 [connection signal="unlocked" from="MechanicalDoor" to="Deer" method="_on_door_opened"]
+[connection signal="Dead" from="DaggerBandit" to="." method="onEnemyDead"]
+[connection signal="Dead" from="DaggerBandit2" to="." method="onEnemyDead"]
+[connection signal="Dead" from="DaggerBandit3" to="." method="onEnemyDead"]
+[connection signal="Dead" from="ArcherBandit" to="." method="onEnemyDead"]
 [connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]
+[connection signal="updateMoney" from="Player" to="Player/Camera2D/PlayerUI" method="updateMoney"]
 [connection signal="Detected" from="Area2D" to="TheSwordMaster" method="onPlayerInteract"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

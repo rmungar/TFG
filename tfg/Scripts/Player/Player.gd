@@ -24,17 +24,19 @@ var canMove: bool = true
 @export var HP: int = 100
 @export var isAlive: bool = true
 var isInteracting: bool = false
-signal updateHealth(currentHp, maxHp)
+signal updateHealth(currentHp: int, maxHp: int)
 
 @export_category("Inventory")
 @export var inventory: Inventory
-
+@export var money: int = 0
+signal updateMoney(money: int)
 
 var shouldWakeUp: bool = true
 var canAttack: bool = false
 
 func _ready() -> void:
 	updateHealth.emit(HP, MaxHP)
+	updateMoney.emit(money)
 	stateMachine.configure(self)
 
 func _process(delta: float) -> void:
@@ -59,7 +61,6 @@ func _physics_process(delta: float) -> void:
 			facingDirection = 0
 		move_and_slide()
 
-
 func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 	if not $DamageCooldown.is_stopped():
 		return 
@@ -78,8 +79,6 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 		$AnimationPlayer.play("Death")
 		await $AnimationPlayer.animation_finished
 		queue_free()
-
-
 
 func collectItem(item: Item):
 	var newItem = InventoryItem.new()

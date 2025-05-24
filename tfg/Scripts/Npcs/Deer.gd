@@ -5,7 +5,7 @@ var hasReachedTarget: bool = false
 var isMoving: bool = false
 
 @export var speed: float = 75.0
-@export var targetPosition: Vector2 = Vector2(1114.0, 240.0)
+@export var targetPosition: Vector2 = Vector2(1084, 243)
 
 func _physics_process(delta: float) -> void:
 	if scared:

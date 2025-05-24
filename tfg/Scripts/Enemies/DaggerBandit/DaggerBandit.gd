@@ -6,6 +6,7 @@ class_name DaggerBandit extends Enemy
 @export var health = 200
 @export var isAlive = true
 
+signal Dead()
 
 var directionTowardsPlayer = 0
 
@@ -33,4 +34,5 @@ func isDead():
 		animationPlayer.play("Death_Left")
 	await animationPlayer.animation_finished
 	await get_tree().create_timer(0.1).timeout
+	Dead.emit()
 	queue_free()

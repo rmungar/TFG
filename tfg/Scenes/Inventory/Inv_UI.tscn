@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://blwr6wxet1q1t"]
+[gd_scene load_steps=5 format=3 uid="uid://blwr6wxet1q1t"]
 
 [ext_resource type="Script" uid="uid://b1rqj0unbxj40" path="res://Scripts/Inventory/Inv_UI.gd" id="1_qky1y"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_ar5ic"]
 [ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvUISlot.tscn" id="3_38mmp"]
+[ext_resource type="Texture2D" uid="uid://bmi7up3mn4rkj" path="res://Assets/Characters/Samurai/Samurai.png" id="4_38mmp"]
 
 [node name="Inv_UI" type="Control"]
 layout_mode = 3
@@ -55,9 +56,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -184.0
+offset_left = -170.0
 offset_top = -72.0
-offset_right = -40.0
+offset_right = -26.0
 offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -93,3 +94,43 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(323, 124)
+scale = Vector2(3.75, 4.1875)
+texture = ExtResource("4_38mmp")
+
+[node name="AttackSlot" parent="." instance=ExtResource("3_38mmp")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 380.0
+offset_top = 157.0
+offset_right = 380.0
+offset_bottom = 157.0
+
+[node name="AbilitySlot" parent="." instance=ExtResource("3_38mmp")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 380.0
+offset_top = 108.0
+offset_right = 380.0
+offset_bottom = 108.0
+
+[node name="HealthSlot" parent="." instance=ExtResource("3_38mmp")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 380.0
+offset_top = 58.0
+offset_right = 380.0
+offset_bottom = 58.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 29.0
+offset_right = 264.0
+offset_bottom = 241.0

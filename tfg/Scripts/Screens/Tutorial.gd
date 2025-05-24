@@ -9,6 +9,9 @@ var isFading := false
 var fadeDirection := -1 
 var fadeTime := 0.0
 
+var aliveEnemies = 4
+signal tutorialDone()
+
 func _ready():
 	
 	# Empezamos con fade-in (pantalla negra)
@@ -53,3 +56,11 @@ func fadeFinished() -> void:
 	while isFading:
 		await get_tree().process_frame
 	return
+
+
+func onEnemyDead() -> void:
+	if aliveEnemies > 0:
+		aliveEnemies -= 1
+		
+	if aliveEnemies == 0:
+		tutorialDone.emit()
