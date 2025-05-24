@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://c6i4eguqa32h4"]
+[gd_scene load_steps=73 format=3 uid="uid://c6i4eguqa32h4"]
 
 [ext_resource type="Script" uid="uid://caj8fxiqx77gm" path="res://Scripts/MainMenu/MainMenu.gd" id="1_3oy6j"]
 [ext_resource type="Texture2D" uid="uid://l10w704tc4jx" path="res://Assets/Tilesets/Peaks Of Lightning/1- Background - Sky (1).png" id="2_cc4ve"]
@@ -365,6 +365,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4efst"]
+size = Vector2(92.8571, 32.8571)
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -372,6 +375,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_3oy6j")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -498,6 +502,15 @@ texture_hover = ExtResource("12_ug8uf")
 texture_focused = ExtResource("12_ug8uf")
 stretch_mode = 6
 
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/Buttons/Play"]
+collision_layer = 536870912
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Play/Area2D"]
+position = Vector2(46.4286, 16.4286)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4efst")
+
 [node name="Continue" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
 disabled = true
@@ -506,6 +519,15 @@ texture_pressed = ExtResource("14_ag6gj")
 texture_hover = ExtResource("14_ag6gj")
 texture_focused = ExtResource("14_ag6gj")
 stretch_mode = 6
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/Buttons/Continue"]
+collision_layer = 536870912
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Continue/Area2D"]
+position = Vector2(46.4286, 16.4286)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4efst")
 
 [node name="Options" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
@@ -517,6 +539,15 @@ texture_hover = ExtResource("17_q8f6b")
 texture_focused = ExtResource("17_q8f6b")
 stretch_mode = 6
 
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/Buttons/Options"]
+collision_layer = 536870912
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Options/Area2D"]
+position = Vector2(46.4286, 16.4286)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4efst")
+
 [node name="Credits" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -526,6 +557,15 @@ texture_pressed = ExtResource("19_io8hu")
 texture_hover = ExtResource("19_io8hu")
 texture_focused = ExtResource("19_io8hu")
 stretch_mode = 6
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/Buttons/Credits"]
+collision_layer = 536870912
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Credits/Area2D"]
+position = Vector2(46.4286, 16.4286)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4efst")
 
 [node name="Quit" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
@@ -537,10 +577,29 @@ texture_hover = ExtResource("21_mqkvh")
 texture_focused = ExtResource("21_mqkvh")
 stretch_mode = 6
 
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/Buttons/Quit"]
+collision_layer = 536870912
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Quit/Area2D"]
+position = Vector2(46.4286, 16.4286)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4efst")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="CharacterBody2D/Buttons/Play" to="." method="onPlayButtonPressed"]
+[connection signal="area_entered" from="CharacterBody2D/Buttons/Play/Area2D" to="." method="_on_play_area_2d_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/Buttons/Play/Area2D" to="." method="_on_play_area_2d_area_exited"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Continue" to="." method="onContinueButtonPressed"]
+[connection signal="area_entered" from="CharacterBody2D/Buttons/Continue/Area2D" to="." method="_on_continue_area_2d_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/Buttons/Continue/Area2D" to="." method="_on_continue_area_2d_area_exited"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Options" to="." method="onOptionsButtonPressed"]
+[connection signal="area_entered" from="CharacterBody2D/Buttons/Options/Area2D" to="." method="_on_play_options_2d_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/Buttons/Options/Area2D" to="." method="_on_play_options_2d_area_exited"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Credits" to="." method="onCreditsButtonPressed"]
+[connection signal="area_entered" from="CharacterBody2D/Buttons/Credits/Area2D" to="." method="_on_play_credits_2d_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/Buttons/Credits/Area2D" to="." method="_on_credits_area_2d_area_exited"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Quit" to="." method="onQuitButtonPressed"]
+[connection signal="area_entered" from="CharacterBody2D/Buttons/Quit/Area2D" to="." method="_on_play_quit_2d_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/Buttons/Quit/Area2D" to="." method="_on_quit_area_2d_area_exited"]

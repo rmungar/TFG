@@ -233,6 +233,8 @@ locale/translations_pot_files=PackedStringArray("res://Dialogues/SwordmasterTuto
 2d_physics/layer_12="Items"
 2d_physics/layer_13="Arrows"
 2d_physics/layer_20="Ground Level"
+2d_physics/layer_30="Buttons"
+2d_physics/layer_31="Cursor"
 2d_physics/layer_32="WorldBoundary"
 
 [rendering]
