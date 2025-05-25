@@ -17,7 +17,7 @@ func exit() -> void:
 
 # Function called EVERY frame during _process
 func process(delta: float) -> State:
-	if Input.is_action_just_pressed("Attack"):
+	if Input.is_action_just_pressed("Attack") and player.canAttack:
 		return aerialAttackState
 	return null
 	

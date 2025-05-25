@@ -40,7 +40,7 @@ func insert(newInvItem: InventoryItem):
 
 
 func search(itemName: String) -> bool:
-	var itemSlots = slots.filter(func(slot): return slot.item.name == itemName)
+	var itemSlots = slots.filter(func(slot): return slot.item and slot.item.name == itemName)
 	if itemSlots.is_empty():
 		return false
 	else:

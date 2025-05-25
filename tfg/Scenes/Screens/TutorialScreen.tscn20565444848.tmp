@@ -1838,7 +1838,6 @@ texture = ExtResource("24_vvlti")
 [connection signal="Dead" from="DaggerBandit2" to="." method="onEnemyDead"]
 [connection signal="Dead" from="DaggerBandit3" to="." method="onEnemyDead"]
 [connection signal="Dead" from="ArcherBandit" to="." method="onEnemyDead"]
-[connection signal="Awake" from="Player" to="TheSwordMaster" method="_on_player_awake"]
 [connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]
 [connection signal="updateMoney" from="Player" to="Player/Camera2D/PlayerUI" method="updateMoney"]
 [connection signal="Detected" from="Area2D" to="TheSwordMaster" method="onPlayerInteract"]

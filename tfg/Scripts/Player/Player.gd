@@ -6,7 +6,9 @@ class_name Player extends CharacterBody2D
 @onready var normalAttackHitbox: Area2D = $NormalAttackHitbox
 @onready var heavyAttackHitbox: HeavyAttackHitbox = $HeavyAttackHitbox
 @onready var actionableFinder: Area2D = $ActionableFinder
+@onready var healChargeTimer: Timer = $HealChargeTimer
 
+################################################################################
 
 @export_category("Movement")
 @export var speed: float = 200.0
@@ -17,19 +19,35 @@ class_name Player extends CharacterBody2D
 @export var deceleration: float = 0.2
 var facingDirection: float 
 var canMove: bool = true
+signal Awake()
 
+################################################################################
 
 @export_category("Health")
 @export var MaxHP: int = 100
 @export var HP: int = 100
 @export var isAlive: bool = true
-var isInteracting: bool = false
 signal updateHealth(currentHp: int, maxHp: int)
+
+################################################################################
+
+var isInteracting: bool = false
+var canHeal: bool = false
+signal updateHeals(current: int, max: int)
+
+var maxHeals: int = 3
+var currentHeals: int = 3
+var healingCD: float = 5.0
+var isRechargingHeals: bool = false
+
+################################################################################
 
 @export_category("Inventory")
 @export var inventory: Inventory
 @export var money: int = 0
 signal updateMoney(money: int)
+
+################################################################################
 
 var shouldWakeUp: bool = true
 var canAttack: bool = false
@@ -37,11 +55,15 @@ var canAttack: bool = false
 func _ready() -> void:
 	updateHealth.emit(HP, MaxHP)
 	updateMoney.emit(money)
+	updateHeals.emit(currentHeals, maxHeals)
 	stateMachine.configure(self)
+	healChargeTimer.timeout.connect(_on_heal_charge_timer_timeout)
 
 func _process(delta: float) -> void:
+	canAttack = inventory.search("AttackModule")
+	canHeal = inventory.search("HealthModule")
 	
-	if isAlive and canMove:
+	if isAlive and canMove and !GameManager.isDialogInScreen:
 		if Input.is_action_pressed("MoveLeft"):
 			facingDirection = -1.0
 			sprite.flip_h = true
@@ -52,6 +74,14 @@ func _process(delta: float) -> void:
 			sprite.flip_h = false
 			normalAttackHitbox.position.x = 0
 			heavyAttackHitbox.position.x = 4
+			
+	if Input.is_action_just_pressed("Heal") and canHeal and currentHeals > 0:
+		onHeal()
+		currentHeals -= 1
+		updateHeals.emit(currentHeals, maxHeals)
+		if not isRechargingHeals:
+			isRechargingHeals = true
+			healChargeTimer.start(healingCD)
 
 func _physics_process(delta: float) -> void:
 	if isAlive:
@@ -85,3 +115,22 @@ func collectItem(item: Item):
 	newItem.name = item.itemName
 	newItem.texture = item.itemTexture
 	inventory.insert(newItem)
+
+func onHeal():
+	if HP + 20 > MaxHP:
+		HP = MaxHP
+	else:
+		HP += 20
+	updateHealth.emit(HP, MaxHP)
+
+func _on_heal_charge_timer_timeout():
+	if currentHeals < maxHeals:
+		currentHeals += 1
+		updateHeals.emit(currentHeals, maxHeals)
+		healChargeTimer.start(healingCD)
+	else:
+		isRechargingHeals = false
+
+
+func WokenUp() -> void:
+	Awake.emit()

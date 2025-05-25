@@ -1,4 +1,4 @@
 [style name="NovelStyle"]
-join TheSwordMasterTutorial left
-TheSwordMasterTutorial: Thats all for now. We'll meet again.
-TheSwordMasterTutorial: Take this teleporter, there's someone that might help you on the other side.
+TheSwordMasterTutorial: Come, quick.
+TheSwordMasterTutorial: Take this teleporter, there's someone that could help you on the other side.
+set {SwordMasterTutorial.FourthDialog} = true

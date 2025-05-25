@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://cht6al2j6bm0m"]
+[gd_scene load_steps=24 format=3 uid="uid://cht6al2j6bm0m"]
 
+[ext_resource type="Script" uid="uid://br8g78l400obm" path="res://Scripts/Interactables/TutorialPortal.gd" id="1_5uir3"]
 [ext_resource type="Texture2D" uid="uid://b0d3ftasy8wia" path="res://Assets/Tilesets/DARK Edition/Animated objects/Portal/idle 28x41.png" id="1_y0clf"]
 [ext_resource type="Texture2D" uid="uid://dmhho7278a5te" path="res://Assets/Tilesets/DARK Edition/Animated objects/Portal/warp 28x41.png" id="2_5uir3"]
 
@@ -147,13 +148,14 @@ size = Vector2(28, 33)
 
 [node name="Portal" type="StaticBody2D"]
 collision_layer = 128
+script = ExtResource("1_5uir3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-14, 18.5, 14, 18.5, 18, 20.5, -18, 20.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_553gt")
-animation = &"Idle"
+animation = &"Warp"
 autoplay = "Idle"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -162,3 +164,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_y0clf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

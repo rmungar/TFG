@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://k7dan74tnrbw"]
+[gd_scene load_steps=46 format=3 uid="uid://k7dan74tnrbw"]
 
 [ext_resource type="Script" uid="uid://bi2wsg354crl3" path="res://Scripts/Player/Player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="1_rpqav"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://bk446yi2g0j80" path="res://Scripts/Player/State/AerialAttackState.gd" id="9_megsn"]
 [ext_resource type="Script" uid="uid://dt304083qgjt0" path="res://Scripts/Player/State/HeavyAttackState.gd" id="10_yoq75"]
 [ext_resource type="PackedScene" uid="uid://b3unlwj8ng0l7" path="res://Scenes/Player/NormalAttackHitbox.tscn" id="11_0kmp4"]
-[ext_resource type="Script" uid="uid://cyotb8tpvpyta" path="res://Scripts/Player/State/HealingState.gd" id="12_esmjy"]
 [ext_resource type="PackedScene" uid="uid://djrllwqt3cdao" path="res://Scenes/Player/HeavyAttackHitbox.tscn" id="12_i5acl"]
 [ext_resource type="Script" uid="uid://bt2rfb2jqeh5x" path="res://Scripts/Player/PlayerHurtbox.gd" id="13_epg6k"]
 [ext_resource type="Script" uid="uid://bojwkr1wj20th" path="res://Scripts/Player/State/WakeUpState.gd" id="13_spxdj"]
@@ -437,9 +436,6 @@ script = ExtResource("10_yoq75")
 [node name="WakingUpState" type="Node" parent="StateMachine"]
 script = ExtResource("13_spxdj")
 
-[node name="HealingState" type="Node" parent="StateMachine"]
-script = ExtResource("12_esmjy")
-
 [node name="NormalAttackHitbox" parent="." instance=ExtResource("11_0kmp4")]
 collision_layer = 8
 collision_mask = 260
@@ -470,5 +466,8 @@ collision_mask = 512
 shape = SubResource("RectangleShape2D_esmjy")
 debug_color = Color(0.631739, 0.344739, 1, 0.42)
 
+[node name="HealChargeTimer" type="Timer" parent="."]
+
+[connection signal="WokenUp" from="StateMachine/WakingUpState" to="." method="WokenUp"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="damageTaken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]

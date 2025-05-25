@@ -1,5 +1,4 @@
 [style name="NovelStyle"]
-join TheSwordMasterTutorial left
 TheSwordMasterTutorial: So you finally booted up huh. Great.
 TheSwordMasterTutorial: You might be feeling a little dizzy right now.
 TheSwordMasterTutorial: But you'll get used to it.
@@ -12,7 +11,7 @@ TheSwordMasterTutorial: For now, you just need to be able to move.
 - Please be quick
 	TheSwordMasterTutorial: Bet.
 	TheSwordMasterTutorial: "A", "D" and Space for keyboard.
-	TheSwordMasterTutorial: Pretty much the same for controller.
-	TheSwordMasterTutorial: Having said that
+	TheSwordMasterTutorial: Left joystck and "B" for controller.
+	TheSwordMasterTutorial: Having said that...
 TheSwordMasterTutorial: We don't have much time left, so get moving.
 set {SwordMasterTutorial.FirstDialog} = true

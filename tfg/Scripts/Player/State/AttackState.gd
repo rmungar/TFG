@@ -7,6 +7,7 @@ class_name AttackState extends State
 @onready var heavyAttackState: HeavyAttackState = $"../HeavyAttackState"
 
 func enter() -> void:
+	print("Ataca")
 	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
 	normalAttackHitbox.monitoring = true
 	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
@@ -46,9 +47,9 @@ func physics(delta: float) -> State:
 
 # Called when an input event occurs
 func unhandledInput(event: InputEvent) -> State:
-	if event.is_action_pressed("Jump") and player.is_on_floor() and !GameManager.isDialogInScreen:
+	if Input.is_action_pressed("Jump") and player.is_on_floor() and !GameManager.isDialogInScreen:
 		return jumpState
-	elif Input.is_action_just_pressed("Attack"):
+	elif Input.is_action_just_pressed("Attack") and !GameManager.isDialogInScreen and player.canAttack:
 			return heavyAttackState
 	else: 
 		return null

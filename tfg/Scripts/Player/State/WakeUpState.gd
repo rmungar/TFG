@@ -2,12 +2,16 @@ class_name WakeUpState extends State
 
 @onready var idleState: IdleState = $"../IdleState"
 
+signal WokenUp()
+
+
 # Llamado al entrar en el estado
 func enter() -> void:
 	player.canMove = false
 	player.animationPlayer.play("WakeUp")
 	await player.animationPlayer.animation_finished
 	player.shouldWakeUp = false
+	WokenUp.emit()
 
 # Llamado al salir del estado
 func exit() -> void:

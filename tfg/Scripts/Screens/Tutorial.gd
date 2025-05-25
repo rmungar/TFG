@@ -13,7 +13,6 @@ var aliveEnemies = 4
 signal tutorialDone()
 
 func _ready():
-	
 	# Empezamos con fade-in (pantalla negra)
 	fadeIn()
 	await fadeFinished()
@@ -23,6 +22,7 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
+	
 	if isFading:
 		fadeTime += delta
 		var t: float = clamp(fadeTime / fadeDuration, 0.0, 1.0)
@@ -59,8 +59,17 @@ func fadeFinished() -> void:
 
 
 func onEnemyDead() -> void:
+	
 	if aliveEnemies > 0:
 		aliveEnemies -= 1
-		
+	print(aliveEnemies)
 	if aliveEnemies == 0:
 		tutorialDone.emit()
+
+func _on_portal_teleport() -> void:
+	fadeOut()
+	$Portal/AnimatedSprite2D.play("Warp")
+	await get_tree().create_timer(0.2).timeout
+	$Player.visible = false
+	await get_tree().create_timer(2).timeout
+	get_tree().quit()

@@ -33,11 +33,12 @@ directories/dch_directory={
 directories/dtl_directory={
 "TheSwordMasterCheckpointExplanation": "res://Dialogues/Timelines/TheSwordMasterCheckpointExplanation.dtl",
 "TheSwordMasterTutorialFinalDialog": "res://Dialogues/Timelines/TheSwordMasterTutorialFinalDialog.dtl",
+"TheSwordMasterTutorialFinale": "res://Dialogues/Timelines/TheSwordMasterTutorialFinale.dtl",
 "TheSwordMasterTutorialTimeline": "res://Dialogues/Timelines/TheSwordMasterTutorialTimeline.dtl",
 "TheSwordmasterAMDialogue": "res://Dialogues/Timelines/TheSwordmasterAMDialogue.dtl"
 }
 layout/style_list=["res://Dialogues/Styles/DefaultStyle.tres", "res://Dialogues/Styles/NovelStyle.tres"]
-layout/default_style="res://Dialogues/Styles/DefaultStyle.tres"
+layout/default_style="res://Dialogues/Styles/NovelStyle.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -60,6 +61,7 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 variables={
 "SwordMasterTutorial": {
+"FinalTutorialDialog": false,
 "FirstDialog": false,
 "FourthDialog": false,
 "NeedsToSpawnItem": false,

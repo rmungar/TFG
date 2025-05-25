@@ -5,6 +5,7 @@ var isInventoryOpen = false
 
 func toTutorialScreen():
 	get_tree().change_scene_to_file(ScreenManager.tutorialScreen)
+	
 
 func toSaveFilesScreen():
 	get_tree().change_scene_to_file(ScreenManager.saveFilesScreen)
