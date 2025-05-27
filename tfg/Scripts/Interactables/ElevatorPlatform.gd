@@ -6,11 +6,13 @@ class_name ElevatorPlatform extends RigidBody2D
 
 
 var playerReference: Player = null
+var currentPosition: Vector2
 
 func _ready() -> void:
+	global_position = topPosition
 	$CollisionShape2D2.disabled = true
 	$CollisionShape2D3.disabled = true
-	
+	currentPosition = topPosition
 
 
 func _process(delta: float) -> void:
