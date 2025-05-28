@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://brcfxtwqtwliu"]
+
+[ext_resource type="Texture2D" uid="uid://cquxb55b130fo" path="res://Assets/NPCs/Gem Merchant/Gem Merchant.png" id="1_yu2a0"]
+[ext_resource type="Script" uid="uid://cgcgykqlh1ep5" path="res://Scripts/Npcs/GemMerchant.gd" id="2_epbl5"]
+[ext_resource type="Texture2D" uid="uid://bidjilhoskuby" path="res://Assets/Mouse/PNG/Basic/Default/mark_question.png" id="3_vhh5n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bms57"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 0, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvn3m"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 37, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pdpa"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 74, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1edt2"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 111, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xhgs"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 148, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5jcl"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 185, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py03g"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 222, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftapf"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 259, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhdyc"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 296, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lqcu"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 333, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pnri"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 370, 101, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t23i"]
+atlas = ExtResource("1_yu2a0")
+region = Rect2(0, 407, 101, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ld8cu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bms57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvn3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pdpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1edt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xhgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5jcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py03g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftapf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhdyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lqcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pnri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t23i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4y2d"]
+size = Vector2(109, 54)
+
+[node name="Merchant" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ld8cu")
+autoplay = "default"
+frame_progress = 0.973002
+script = ExtResource("2_epbl5")
+
+[node name="Interaction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_u4y2d")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+position = Vector2(2.49998, -33)
+scale = Vector2(0.906249, 0.90625)
+texture = ExtResource("3_vhh5n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -100.5
+offset_right = 177.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.678431)
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -82.0
+offset_right = 150.5
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="Interaction" to="." method="_on_interaction_body_entered"]
+[connection signal="body_exited" from="Interaction" to="." method="_on_interaction_body_exited"]

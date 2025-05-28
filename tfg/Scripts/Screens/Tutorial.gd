@@ -1,6 +1,6 @@
 class_name Tutorial extends Node2D
 
-@onready var fadeRect: ColorRect = $CanvasLayer/FadeRect
+@onready var fadeRect: ColorRect = $Player/Camera2D/CanvasLayer/FadeRect
 @onready var player: Player = $Player
 @onready var playerAnimationPlayer: AnimationPlayer = $Player/AnimationPlayer
 

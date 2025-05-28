@@ -75,6 +75,7 @@ func _process(delta: float) -> void:
 			normalAttackHitbox.position.x = 0
 			heavyAttackHitbox.position.x = 4
 			
+			
 	if Input.is_action_just_pressed("Heal") and canHeal and currentHeals > 0:
 		onHeal()
 		currentHeals -= 1

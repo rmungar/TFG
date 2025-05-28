@@ -144,3 +144,23 @@ func _set_input_mode(mode: InputMode):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif mode == InputMode.GAMEPAD:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Number of enemies in the first area: Yet to be decided
+
+
+Money neccessary to buy first gem: 150~200 coins
+
+
+Available respawn points: 2 (1 before the boss)
+
+
+Add Voldemort Script (SAURON). Needs to talk to the player for a while before dissappearing and dropping the player the 

@@ -1793,6 +1793,17 @@ position = Vector2(3, -107)
 script = ExtResource("17_xijgg")
 tileMap = NodePath("../../BackGround")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
+
+[node name="Inv_UI" parent="Player/Camera2D/CanvasLayer" instance=ExtResource("21_e4dp3")]
+process_mode = 3
+
+[node name="FadeRect" type="ColorRect" parent="Player/Camera2D/CanvasLayer"]
+offset_right = 480.0
+offset_bottom = 270.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
 [node name="PlayerUI" parent="Player/Camera2D" instance=ExtResource("21_nvjkw")]
 
 [node name="Node2D" type="StaticBody2D" parent="." groups=["WorldBundary"]]
@@ -1802,17 +1813,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
 position = Vector2(92, 272)
 shape = SubResource("WorldBoundaryShape2D_gvd2m")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("21_e4dp3")]
-process_mode = 3
-
-[node name="FadeRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 480.0
-offset_bottom = 270.0
-mouse_filter = 1
-color = Color(0, 0, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
