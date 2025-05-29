@@ -12,8 +12,11 @@ class_name Enemy extends CharacterBody2D
 @export var maxHP = 3
 @export var currentHP = 3
 
+var lastSafePosition: Vector2
 
 func _physics_process(delta: float) -> void:
+	if is_on_floor(): 
+		lastSafePosition = global_position
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	move_and_slide()
@@ -23,3 +26,8 @@ func _on_take_damage(amount: int) -> void:
 	currentHP -= amount
 	if currentHP <= 0:
 		queue_free()
+
+
+
+func teleport(newPosition: Vector2):
+	global_position = newPosition

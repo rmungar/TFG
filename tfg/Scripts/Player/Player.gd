@@ -21,6 +21,8 @@ var facingDirection: float
 var canMove: bool = true
 signal Awake()
 
+var lastSafePosition: Vector2
+
 ################################################################################
 
 @export_category("Health")
@@ -86,6 +88,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if isAlive:
+		if is_on_floor():
+			lastSafePosition = global_position
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		if not Input.is_action_pressed("MoveLeft") and not Input.is_action_pressed("MoveRight"):
@@ -131,6 +135,9 @@ func _on_heal_charge_timer_timeout():
 		healChargeTimer.start(healingCD)
 	else:
 		isRechargingHeals = false
+
+func teleport(newPosition: Vector2):
+	global_position = newPosition
 
 
 func WokenUp() -> void:

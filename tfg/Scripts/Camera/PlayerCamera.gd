@@ -1,10 +1,23 @@
 class_name PlayerCamera extends Camera2D
 
 @export var tileMap: TileMapLayer
+@export var look_offset: Vector2 = Vector2(0, 100)  # Desplazamiento al mirar hacia abajo
+@export var look_speed: float = 5.0  # Velocidad de interpolación
 
+var target_offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	setCameraLimits(tileMap.get_used_rect())
+
+func _process(delta: float) -> void:
+	# Detectar entrada hacia abajo
+	if Input.is_action_pressed("ui_down"):
+		target_offset = look_offset
+	else:
+		target_offset = Vector2.ZERO
+	# Interpolación suave hacia el objetivo
+	offset = offset.lerp(target_offset, delta * look_speed)
+
 
 
 func setCameraLimits(rect: Rect2i) -> void:

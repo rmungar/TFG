@@ -63,11 +63,29 @@ func fadeFinished() -> void:
 func _on_camera_change_boss_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var camera: PlayerCamera = get_node("Player/Camera2D")
-		var background1: TileMapLayer = get_node("Background1")
-		var background2: TileMapLayer = get_node("Background2")
-		
-		if camera.tileMap.name == "Background1":
+		var background1: TileMapLayer = get_node("FirstZone")
+		var background2: TileMapLayer = get_node("BossZone")
+		if camera.tileMap.name == "FirstZone":
 			camera.changeRect(background2)
 		else:
 			camera.changeRect(background1)
 		
+
+
+func _on_camera_change_castle_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var camera: PlayerCamera = get_node("Player/Camera2D")
+		var background1: TileMapLayer = get_node("FirstZone")
+		var background2: TileMapLayer = get_node("CastleZone")
+		if camera.tileMap.name == "FirstZone":
+			camera.changeRect(background2)
+		else:
+			camera.changeRect(background1)
+
+
+func _on_world_collsion_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body._on_hurtbox_damage_taken(body.MaxHP/5, Vector2(0,0))
+		body.teleport(body.lastSafePosition)
+	if body is Enemy:
+		body.teleport(body.lastSafePosition)
