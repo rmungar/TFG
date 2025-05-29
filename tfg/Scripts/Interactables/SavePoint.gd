@@ -21,13 +21,12 @@ func _process(delta: float) -> void:
 	else:
 		self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	if playerReference and Input.is_action_just_pressed("Interact"):
-		
-		if alreadyInteracted:
-			save.emit()
-		
+		playerReference.lastCheckPoint = global_position
 		if requiredItem == "" or playerReference.has_item(requiredItem):
 			alreadyInteracted = true
 			$Indicator.visible = false
+			save.emit()
+			GameManager.onSave(playerReference)
 			emit_signal("unlock")
 
 

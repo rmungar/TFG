@@ -2,6 +2,8 @@ extends Node
 
 var isDialogInScreen = false
 var isInventoryOpen = false
+var currentSaveFile: int = 1
+
 
 func toTutorialScreen():
 	get_tree().change_scene_to_file(ScreenManager.tutorialScreen)
@@ -29,3 +31,6 @@ func inventoryOpen():
 func inventoryClosed():
 	isInventoryOpen = false
 	get_tree().paused = false
+
+func onSave(player: Player):
+	FileUtils.saveGame(currentSaveFile, player)

@@ -22,6 +22,7 @@ var canMove: bool = true
 signal Awake()
 
 var lastSafePosition: Vector2
+var lastCheckPoint: Vector2
 
 ################################################################################
 
@@ -55,6 +56,10 @@ var shouldWakeUp: bool = true
 var canAttack: bool = false
 
 func _ready() -> void:
+	
+	reloadState()
+	
+	
 	updateHealth.emit(HP, MaxHP)
 	updateMoney.emit(money)
 	updateHeals.emit(currentHeals, maxHeals)
@@ -142,3 +147,6 @@ func teleport(newPosition: Vector2):
 
 func WokenUp() -> void:
 	Awake.emit()
+
+func reloadState():
+	FileUtils.loadGame()

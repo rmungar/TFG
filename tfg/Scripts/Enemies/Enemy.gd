@@ -28,6 +28,5 @@ func _on_take_damage(amount: int) -> void:
 		queue_free()
 
 
-
 func teleport(newPosition: Vector2):
 	global_position = newPosition
