@@ -13,6 +13,12 @@ var aliveEnemies = 4
 signal tutorialDone()
 
 func _ready():
+	
+	if GameManager.isLoadingGame:
+		var data = FileUtils.load_game(GameManager.currentSaveFile)
+		if data:
+			player.apply_saved_data(data)
+	
 	# Empezamos con fade-in (pantalla negra)
 	fadeIn()
 	await fadeFinished()

@@ -148,5 +148,13 @@ func teleport(newPosition: Vector2):
 func WokenUp() -> void:
 	Awake.emit()
 
-func reloadState():
-	FileUtils.loadGame(GameManager.currentSaveFile)
+func apply_saved_data(data: Dictionary):
+	if data.is_empty():
+		return
+	HP = data.get("HP", MaxHP)
+	money = data.get("money", 0)
+	lastCheckPoint = data.get("lastCheckPoint", Vector2.ZERO)
+	canHeal = data.get("canHeal", false)
+	canAttack = data.get("canAttack", false)
+	inventory.deserialize(data.get("inventory", []))
+	teleport(lastCheckPoint)
