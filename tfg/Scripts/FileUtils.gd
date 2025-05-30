@@ -31,5 +31,15 @@ func saveGame(saveFile: int, player: Player):
 			file.store_line(dataJSON)
 
 
-func loadGame():
+func loadGame(saveFile: int):
+	var file: File = null
+	match saveFile:
+		1:
+			file = FileAccess.open("user://gamefile1.save", FileAccess.READ)
+		2:
+			file = FileAccess.open("user://gamefile2.save", FileAccess.READ)
+		3:
+			file = FileAccess.open("user://gamefile3.save", FileAccess.READ)
+		4:
+			file = FileAccess.open("user://gamefile4.save", FileAccess.READ)
 	pass
