@@ -8743,6 +8743,7 @@ flip_v = true
 
 [node name="SavePoint" parent="." instance=ExtResource("28_u4y2d")]
 position = Vector2(1750, 246)
+tutorial_done = true
 
 [node name="CameraChangeBoss" type="Area2D" parent="."]
 position = Vector2(49, 496)

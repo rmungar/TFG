@@ -55,11 +55,9 @@ signal updateMoney(money: int)
 var shouldWakeUp: bool = true
 var canAttack: bool = false
 
+
+
 func _ready() -> void:
-	
-	#reloadState()
-	
-	
 	updateHealth.emit(HP, MaxHP)
 	updateMoney.emit(money)
 	updateHeals.emit(currentHeals, maxHeals)
@@ -153,8 +151,16 @@ func apply_saved_data(data: Dictionary):
 		return
 	HP = data.get("HP", MaxHP)
 	money = data.get("money", 0)
-	lastCheckPoint = data.get("lastCheckPoint", Vector2.ZERO)
+	lastCheckPoint = parse_vector2_from_string(data.get("lastCheckPoint", "(0,0)"))
 	canHeal = data.get("canHeal", false)
 	canAttack = data.get("canAttack", false)
 	inventory.deserialize(data.get("inventory", []))
 	teleport(lastCheckPoint)
+
+
+
+func parse_vector2_from_string(pos_string: String) -> Vector2:
+	var parts = pos_string.lstrip('(').rstrip(')').split(",")
+	if parts.size() == 2:
+		return Vector2(parts[0].to_float(), parts[1].to_float())
+	return Vector2.ZERO

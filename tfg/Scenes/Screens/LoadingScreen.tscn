@@ -18,6 +18,18 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_m6rkq"]
 resource_name = "endLoad"
@@ -33,6 +45,18 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1152, -0.25, 0, 0.271473, -1152.28),
 "times": PackedFloat32Array(0, 0.8)
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_kddo8"]
 resource_name = "startLoad"
@@ -47,6 +71,18 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1152, -0.25, 0, 0.271473, -1152.28, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.8)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6rkq"]
@@ -256,6 +292,7 @@ libraries = {
 autoplay = "startLoad"
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -270,4 +307,4 @@ scale = Vector2(1.66667, 2.07895)
 sprite_frames = SubResource("SpriteFrames_524f0")
 animation = &"default3"
 autoplay = "default1"
-frame_progress = 0.640599
+frame_progress = 0.371293

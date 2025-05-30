@@ -17,17 +17,23 @@ func save_game(save_file: int, player: Player, tutorial_done: bool):
 		"inventory": player.inventory.serialize(),  
 		"tutorialDone": tutorial_done
 	}
-	file.store_line(JSON.stringify(data, "\t"))
+	file.store_line(JSON.stringify(data))
 	file.close()
 
 func load_game(save_file: int) -> Dictionary:
 	var path := "user://gamefile" + str(save_file) + ".save"
 	if not FileAccess.file_exists(path):
+		push_error("Archivo de guardado no encontrado: " + path)
 		return {}
-
-	var file := FileAccess.open(path, FileAccess.READ)
+	var file = FileAccess.open(path, FileAccess.READ)
 	if not file:
-		push_error("No se pudo abrir el archivo.")
+		push_error("No se pudo abrir el archivo: " + path)
 		return {}
-
-	return JSON.parse_string(file.get_line())
+	var line = file.get_line()
+	file.close()
+	var result = JSON.parse_string(line)
+	if result is Dictionary:
+		return result
+	else:
+		push_error("Error al parsear el archivo de guardado.")
+		return {}

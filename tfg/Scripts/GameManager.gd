@@ -1,5 +1,6 @@
 extends Node
 
+var isLoadingGame = false
 var isDialogInScreen = false
 var isInventoryOpen = false
 var currentSaveFile: int = 1
@@ -40,5 +41,5 @@ func inventoryClosed():
 	get_tree().paused = false
 
 
-func onSave(player: Player):
-	FileUtils.saveGame(currentSaveFile, player)
+func onSave(player: Player, tutorialDone: bool):
+	FileUtils.save_game(currentSaveFile, player, tutorialDone)
