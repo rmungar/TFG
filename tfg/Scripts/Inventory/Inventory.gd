@@ -45,3 +45,31 @@ func search(itemName: String) -> bool:
 		return false
 	else:
 		return true
+
+
+func serialize() -> Array:
+	var serializedSlots = []
+	for slot in slots:
+		if slot.item != null:
+			serializedSlots.append({
+				"name": slot.item.name,
+				"texture_path": slot.item.texture.resource_path,
+				"amount": slot.amount
+			})
+		else:
+			serializedSlots.append(null)  # Slot vacío
+	return serializedSlots
+
+
+func deserialize(data: Array) -> void:
+	slots.clear()
+	for entry in data:
+		var slot = InventorySlot.new()
+		if entry != null:
+			var item = InventoryItem.new()
+			item.name = entry.get("name", "")
+			item.texture = load(entry.get("texture_path", ""))
+			slot.item = item
+			slot.amount = entry.get("amount", 1)
+		slots.append(slot)
+	update.emit()

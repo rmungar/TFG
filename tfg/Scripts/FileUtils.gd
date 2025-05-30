@@ -1,45 +1,33 @@
 extends Node
 
 
-func saveGame(saveFile: int, player: Player):
-	
-	
-	var playerData: Dictionary = {
-		HP = player.HP,
-		canHeal = player.canHeal,
-		canAttack = player.canAttack,
-		lasCheckPoint = player.lastCheckPoint,
-		inventory = player.inventory,
-		money = player.money
+func save_game(save_file: int, player: Player, tutorial_done: bool):
+	var path := "user://gamefile" + str(save_file) + ".save"
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if not file:
+		push_error("No se pudo abrir el archivo.")
+		return
+
+	var data := {
+		"HP": player.HP,
+		"canHeal": player.canHeal,
+		"canAttack": player.canAttack,
+		"lastCheckPoint": player.lastCheckPoint,
+		"money": player.money,
+		"inventory": player.inventory.serialize(),  
+		"tutorialDone": tutorial_done
 	}
-	
-	
-	var dataJSON = JSON.stringify(playerData)
-	
-	match saveFile:
-		1: 
-			var file = FileAccess.open("user://gamefile1.save", FileAccess.WRITE)
-			file.store_line(dataJSON)
-		2: 
-			var file = FileAccess.open("user://gamefile2.save", FileAccess.WRITE)
-			file.store_line(dataJSON)
-		3: 
-			var file = FileAccess.open("user://gamefile3.save", FileAccess.WRITE)
-			file.store_line(dataJSON)
-		4: 
-			var file = FileAccess.open("user://gamefile4.save", FileAccess.WRITE)
-			file.store_line(dataJSON)
+	file.store_line(JSON.stringify(data, "\t"))
+	file.close()
 
+func load_game(save_file: int) -> Dictionary:
+	var path := "user://gamefile" + str(save_file) + ".save"
+	if not FileAccess.file_exists(path):
+		return {}
 
-func loadGame(saveFile: int):
-	var file: File = null
-	match saveFile:
-		1:
-			file = FileAccess.open("user://gamefile1.save", FileAccess.READ)
-		2:
-			file = FileAccess.open("user://gamefile2.save", FileAccess.READ)
-		3:
-			file = FileAccess.open("user://gamefile3.save", FileAccess.READ)
-		4:
-			file = FileAccess.open("user://gamefile4.save", FileAccess.READ)
-	pass
+	var file := FileAccess.open(path, FileAccess.READ)
+	if not file:
+		push_error("No se pudo abrir el archivo.")
+		return {}
+
+	return JSON.parse_string(file.get_line())

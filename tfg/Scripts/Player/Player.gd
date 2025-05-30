@@ -149,4 +149,4 @@ func WokenUp() -> void:
 	Awake.emit()
 
 func reloadState():
-	FileUtils.loadGame()
+	FileUtils.loadGame(GameManager.currentSaveFile)

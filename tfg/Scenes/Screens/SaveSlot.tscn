@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbq5q8uce328t"]
+
+[ext_resource type="Script" uid="uid://vwgqiwjtafyl" path="res://Scripts/Screens/SaveSlot.gd" id="1_32wyn"]
+[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_m26d0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32wyn"]
+atlas = ExtResource("1_m26d0")
+region = Rect2(211.988, 67.0102, 40.0356, 41.9789)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wy0s"]
+atlas = ExtResource("1_m26d0")
+region = Rect2(211.94, 66.9674, 40.0783, 42.0646)
+
+[node name="SaveSlot" type="Control"]
+layout_mode = 3
+anchor_right = 0.26
+anchor_bottom = 0.433
+offset_top = -1.0
+offset_right = 0.199989
+offset_bottom = 0.0899887
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_32wyn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.5
+offset_top = -80.0
+offset_right = 58.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -84.0
+offset_right = 61.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_32wyn")
+
+[node name="PlayButton" type="Button" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.5
+offset_top = -31.0
+offset_right = 55.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "PLAY"
+flat = true
+
+[node name="DeleteButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.5
+offset_top = -117.0
+offset_right = 32.5
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "DELETE"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DeleteButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7wy0s")
+
+[node name="ColorRect" type="ColorRect" parent="DeleteButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

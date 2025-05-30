@@ -375,10 +375,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("1_3oy6j")
+gamepad_speed = 50.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
 scroll_offset = Vector2(1, 0)
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -580,8 +581,6 @@ collision_mask = 1073741824
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Quit/Area2D"]
 position = Vector2(46.4286, 16.4286)
 shape = SubResource("RectangleShape2D_4efst")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="CharacterBody2D/Buttons/Play" to="." method="onPlayButtonPressed"]
 [connection signal="area_entered" from="CharacterBody2D/Buttons/Play/Area2D" to="." method="_on_play_area_2d_area_entered"]

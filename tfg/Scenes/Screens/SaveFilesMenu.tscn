@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://iau7kl5jnyhc"]
+[gd_scene load_steps=3 format=3 uid="uid://iau7kl5jnyhc"]
+
+[ext_resource type="Script" uid="uid://dwj02he384hlu" path="res://Scripts/Screens/SaveSelect.gd" id="1_c58xf"]
+[ext_resource type="PackedScene" uid="uid://bbq5q8uce328t" path="res://Scenes/Screens/SaveSlot.tscn" id="2_fy82f"]
 
 [node name="SaveFilesMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c58xf")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -16,3 +20,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Slot0" parent="." instance=ExtResource("2_fy82f")]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 64.0
+offset_right = 20.0
+offset_bottom = 64.0
+
+[node name="Slot1" parent="." instance=ExtResource("2_fy82f")]
+layout_mode = 1
+offset_left = 178.0
+offset_top = 65.0
+offset_right = 178.2
+offset_bottom = 65.0
+
+[node name="Slot2" parent="." instance=ExtResource("2_fy82f")]
+layout_mode = 1
+offset_left = 334.0
+offset_top = 65.0
+offset_right = 334.0
+offset_bottom = 65.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

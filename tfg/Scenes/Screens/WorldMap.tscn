@@ -8781,7 +8781,7 @@ position = Vector2(-6, 30)
 shape = SubResource("RectangleShape2D_dbvfh")
 
 [node name="Player" parent="." instance=ExtResource("10_4v0u4")]
-position = Vector2(2856, 1199)
+position = Vector2(1734, 219)
 collision_mask = 537826
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tileMap")]
@@ -8800,6 +8800,7 @@ texture = SubResource("AtlasTexture_3rbvj")
 [connection signal="body_entered" from="WorldCollsion" to="." method="_on_world_collsion_body_entered"]
 [connection signal="body_entered" from="ElevatorPlatform/Area2D" to="ElevatorPlatform" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ElevatorPlatform/Area2D" to="ElevatorPlatform" method="_on_area_2d_body_exited"]
+[connection signal="save" from="SavePoint" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
 [connection signal="body_entered" from="CameraChangeBoss" to="." method="_on_camera_change_boss_body_entered"]
 [connection signal="body_entered" from="CameraChangeCastle" to="." method="_on_camera_change_castle_body_entered"]
 [connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]
