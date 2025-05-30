@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 	# Detectar entrada hacia abajo
 	if Input.is_action_pressed("ui_down"):
 		target_offset = look_offset
+	elif Input.is_action_pressed("ui_up"):
+		target_offset = -look_offset
 	else:
 		target_offset = Vector2.ZERO
 	# Interpolación suave hacia el objetivo
