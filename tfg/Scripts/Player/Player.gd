@@ -57,7 +57,7 @@ var canAttack: bool = false
 
 func _ready() -> void:
 	
-	reloadState()
+	#reloadState()
 	
 	
 	updateHealth.emit(HP, MaxHP)

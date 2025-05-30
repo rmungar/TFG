@@ -1,15 +1,19 @@
 extends CanvasLayer
 
-signal loadingScreenFullyCovered
+var targetScene: String
 
-@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
-@onready var progressBar : ProgressBar = $Panel/ProgressBar
-
-func updateProgressBar(newProgress: float) -> void:
-	progressBar.set_value_no_signal(newProgress * 100)
+func _ready():
 	
-func startOutroAnimation()-> void:
-	await Signal(animationPlayer, "animation_finished")
-	animationPlayer.play("endLoad")
-	await Signal(animationPlayer, "animation_finished")
-	self.queue_free()
+	
+	var animation = randi_range(1,3)
+	var animationName = "default" + str(animation)
+	$Panel/AnimatedSprite2D.play(animationName)
+	
+	await $AnimationPlayer.animation_finished
+	
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	$AnimationPlayer.play("endLoad")
+	
+	get_tree().change_scene_to_file(targetScene)

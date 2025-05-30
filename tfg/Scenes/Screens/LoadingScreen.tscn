@@ -48,20 +48,6 @@ tracks/0/keys = {
 "points": PackedFloat32Array(1152, -0.25, 0, 0.271473, -1152.28, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.8)
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"loadingScreenFullyCovered"],
-"method": &"emit_signal"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6rkq"]
 _data = {
@@ -277,27 +263,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qjj4j")
 
-[node name="ProgressBar" type="ProgressBar" parent="Panel"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 456.0
-offset_top = 265.0
-offset_right = 509.0
-offset_bottom = 292.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
 texture_filter = 1
-position = Vector2(1118, 597)
+position = Vector2(438, 227)
 scale = Vector2(1.66667, 2.07895)
 sprite_frames = SubResource("SpriteFrames_524f0")
-animation = &"default1"
-autoplay = "default2"
-frame = 4
-frame_progress = 0.781958
+animation = &"default3"
+autoplay = "default1"
+frame_progress = 0.200128

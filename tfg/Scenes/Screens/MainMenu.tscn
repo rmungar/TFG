@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://c6i4eguqa32h4"]
+[gd_scene load_steps=71 format=3 uid="uid://c6i4eguqa32h4"]
 
 [ext_resource type="Script" uid="uid://caj8fxiqx77gm" path="res://Scripts/MainMenu/MainMenu.gd" id="1_3oy6j"]
 [ext_resource type="Texture2D" uid="uid://l10w704tc4jx" path="res://Assets/Tilesets/Peaks Of Lightning/1- Background - Sky (1).png" id="2_cc4ve"]
@@ -11,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c30inosphvffd" path="res://Assets/Characters/Samurai/Sci-fi Samurai with Sword 124x49.png" id="11_kpgju"]
 [ext_resource type="Texture2D" uid="uid://chnilealhjrcp" path="res://Assets/UI/UI - Words/Words without BG/UI - Words5.png" id="11_ty55h"]
 [ext_resource type="Theme" uid="uid://bk03gqon2xhhq" path="res://Themes/MainMenuButtons.tres" id="12_io8hu"]
-[ext_resource type="Texture2D" uid="uid://cilsxkcfi16ny" path="res://Assets/UI/UI - Words/Words without BG/UI - Words1.png" id="12_qc8n7"]
 [ext_resource type="Texture2D" uid="uid://dffm61t5pgw6b" path="res://Assets/UI/UI - Words/Words With BG/UI - Words5.png" id="12_ug8uf"]
-[ext_resource type="Texture2D" uid="uid://bnl855k1onnq2" path="res://Assets/UI/UI - Words/Words With BG/UI - Words1.png" id="14_ag6gj"]
 [ext_resource type="Texture2D" uid="uid://sg5b31gbsi8k" path="res://Assets/UI/UI - Words/Words without BG/UI - Words9.png" id="14_ug8uf"]
 [ext_resource type="Texture2D" uid="uid://bl7v4tjhcye28" path="res://Assets/UI/UI - Words/Words without BG/UI - Words6.png" id="15_4ice4"]
 [ext_resource type="Texture2D" uid="uid://qik72clutd8u" path="res://Assets/UI/UI - Words/Words With BG/UI - Words9.png" id="17_q8f6b"]
@@ -511,23 +509,6 @@ collision_mask = 1073741824
 position = Vector2(46.4286, 16.4286)
 shape = SubResource("RectangleShape2D_4efst")
 
-[node name="Continue" type="TextureButton" parent="CharacterBody2D/Buttons"]
-layout_mode = 2
-disabled = true
-texture_normal = ExtResource("12_qc8n7")
-texture_pressed = ExtResource("14_ag6gj")
-texture_hover = ExtResource("14_ag6gj")
-texture_focused = ExtResource("14_ag6gj")
-stretch_mode = 6
-
-[node name="Area2D" type="Area2D" parent="CharacterBody2D/Buttons/Continue"]
-collision_layer = 536870912
-collision_mask = 1073741824
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Continue/Area2D"]
-position = Vector2(46.4286, 16.4286)
-shape = SubResource("RectangleShape2D_4efst")
-
 [node name="Options" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -585,9 +566,6 @@ shape = SubResource("RectangleShape2D_4efst")
 [connection signal="pressed" from="CharacterBody2D/Buttons/Play" to="." method="onPlayButtonPressed"]
 [connection signal="area_entered" from="CharacterBody2D/Buttons/Play/Area2D" to="." method="_on_play_area_2d_area_entered"]
 [connection signal="area_exited" from="CharacterBody2D/Buttons/Play/Area2D" to="." method="_on_play_area_2d_area_exited"]
-[connection signal="pressed" from="CharacterBody2D/Buttons/Continue" to="." method="onContinueButtonPressed"]
-[connection signal="area_entered" from="CharacterBody2D/Buttons/Continue/Area2D" to="." method="_on_continue_area_2d_area_entered"]
-[connection signal="area_exited" from="CharacterBody2D/Buttons/Continue/Area2D" to="." method="_on_continue_area_2d_area_exited"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Options" to="." method="onOptionsButtonPressed"]
 [connection signal="area_entered" from="CharacterBody2D/Buttons/Options/Area2D" to="." method="_on_play_options_2d_area_entered"]
 [connection signal="area_exited" from="CharacterBody2D/Buttons/Options/Area2D" to="." method="_on_play_options_2d_area_exited"]

@@ -1,7 +1,6 @@
 extends Control
 
 @onready var playButton: TextureButton = $CharacterBody2D/Buttons/Play
-@onready var continueButton: TextureButton = $CharacterBody2D/Buttons/Continue
 @onready var optionsButton: TextureButton = $CharacterBody2D/Buttons/Options
 @onready var creditsButton: TextureButton = $CharacterBody2D/Buttons/Credits
 @onready var quitButton: TextureButton = $CharacterBody2D/Buttons/Quit
@@ -15,12 +14,11 @@ enum InputMode { MOUSE, GAMEPAD }
 func _ready() -> void:
 	_update_button_visibility()
 	# Usamos el cursor nativo con imagen personalizada
-	Input.set_custom_mouse_cursor(cursor_texture)
+	#Input.set_custom_mouse_cursor(cursor_texture)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _update_button_visibility():
 	playButton.visible = not playButton.disabled
-	continueButton.visible = not continueButton.disabled
 	optionsButton.visible = not optionsButton.disabled
 	creditsButton.visible = not creditsButton.disabled
 	quitButton.visible = not quitButton.disabled
@@ -50,7 +48,7 @@ func _process(delta: float) -> void:
 
 
 func onPlayButtonPressed():
-	GameManager.toTutorialScreen()
+	GameManager.toSaveFilesScreen()
 
 func onOptionsButtonPressed():
 	GameManager.toOptionsScreen()
@@ -60,6 +58,3 @@ func onCreditsButtonPressed():
 
 func onQuitButtonPressed():
 	GameManager.QuitGame()
-
-func onContinueButtonPressed() -> void:
-	pass # Replace with function body.

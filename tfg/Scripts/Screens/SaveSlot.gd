@@ -1,17 +1,18 @@
 class_name SaveSlot extends Control
 
 
-
-
+@export var saveFileNumber: int
+signal wantsToDelete(saveFileNumber: int)
+signal wantsToPlay(saveFileNumber: int)
 
 func _ready() -> void:
-	$DeleteButton.visible = false
-	
+	pass
 
 
-func _on_mouse_entered() -> void:
-	$DeleteButton.visible = true
+func _on_delete_button_pressed() -> void:
+	print("Chetos deletos")
+	wantsToDelete.emit(saveFileNumber)
 
 
-func _on_mouse_exited() -> void:
-	$DeleteButton.visible = false
+func _on_play_button_pressed() -> void:
+	wantsToPlay.emit(saveFileNumber)

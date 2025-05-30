@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AutoLoadManager="*res://Scripts/AutoLoadManager.gd"
 GameManager="*res://Scripts/GameManager.gd"
 ScreenManager="*res://Scripts/ScreenManager.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
@@ -85,6 +84,7 @@ window/size/resizable=false
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://dpd87mlboativ"
 window/warn_about_method_property_or_signal_name_conflicts=true
 
 [dotnet]

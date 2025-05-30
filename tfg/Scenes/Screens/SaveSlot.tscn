@@ -1,112 +1,117 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbq5q8uce328t"]
+[gd_scene load_steps=13 format=3 uid="uid://bbq5q8uce328t"]
 
 [ext_resource type="Script" uid="uid://vwgqiwjtafyl" path="res://Scripts/Screens/SaveSlot.gd" id="1_32wyn"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_m26d0"]
+[ext_resource type="Texture2D" uid="uid://cilsxkcfi16ny" path="res://Assets/UI/UI - Words/Words without BG/UI - Words1.png" id="3_0lw1r"]
+[ext_resource type="Texture2D" uid="uid://bnl855k1onnq2" path="res://Assets/UI/UI - Words/Words With BG/UI - Words1.png" id="4_cv286"]
+[ext_resource type="Texture2D" uid="uid://brb33phyi1ebe" path="res://Assets/UI/UI - Words/Words With BG/UI - Words7.png" id="4_n1kic"]
+[ext_resource type="Texture2D" uid="uid://bi0q0m1i5gimh" path="res://Assets/UI/UI - Words/Words without BG/UI - Words7.png" id="6_cv286"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32wyn"]
 atlas = ExtResource("1_m26d0")
 region = Rect2(211.988, 67.0102, 40.0356, 41.9789)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7wy0s"]
-atlas = ExtResource("1_m26d0")
-region = Rect2(211.94, 66.9674, 40.0783, 42.0646)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32wyn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wy0s"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lw1r"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1kic"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_32wyn"]
+Button/styles/hover = SubResource("StyleBoxFlat_32wyn")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_7wy0s")
+Button/styles/normal = SubResource("StyleBoxFlat_0lw1r")
+Button/styles/pressed = SubResource("StyleBoxFlat_n1kic")
 
 [node name="SaveSlot" type="Control"]
 layout_mode = 3
-anchor_right = 0.26
-anchor_bottom = 0.433
-offset_top = -1.0
-offset_right = 0.199989
-offset_bottom = 0.0899887
+anchor_top = 0.152
+anchor_right = 0.933
+anchor_bottom = 0.315
+offset_left = 25.0
+offset_top = -0.0400009
+offset_right = 0.159973
+offset_bottom = -0.0500031
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
 script = ExtResource("1_32wyn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -58.5
-offset_top = -80.0
-offset_right = 58.5
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 1
+offset_left = 1.0
+offset_right = 326.0
+offset_bottom = 43.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -61.5
-offset_top = -84.0
-offset_right = 61.5
-grow_horizontal = 2
-grow_vertical = 0
+offset_top = -3.0
+offset_right = 327.0
+offset_bottom = 44.0
+mouse_filter = 0
 texture = SubResource("AtlasTexture_32wyn")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
 
-[node name="PlayButton" type="Button" parent="NinePatchRect"]
+[node name="PlayButton" type="TextureButton" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -55.5
-offset_top = -31.0
-offset_right = 55.5
+offset_left = 65.5
+offset_top = -40.0
+offset_right = 158.5
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "PLAY"
-flat = true
+texture_normal = ExtResource("3_0lw1r")
+texture_pressed = ExtResource("4_cv286")
+texture_hover = ExtResource("4_cv286")
+texture_disabled = ExtResource("3_0lw1r")
+texture_focused = ExtResource("3_0lw1r")
 
-[node name="DeleteButton" type="Button" parent="."]
-visible = false
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 269.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 14
+text = "EMPTY"
+vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 7.0
+offset_right = 434.0
+offset_bottom = 36.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="DeleteButton" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -33.5
-offset_top = -117.0
-offset_right = 32.5
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "DELETE"
-flat = true
+offset_left = 342.0
+offset_top = 5.0
+offset_right = 435.0
+offset_bottom = 38.0
+theme = SubResource("Theme_32wyn")
+texture_normal = ExtResource("4_n1kic")
+texture_pressed = ExtResource("6_cv286")
+texture_hover = ExtResource("6_cv286")
+texture_disabled = ExtResource("4_n1kic")
+texture_focused = ExtResource("4_n1kic")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="DeleteButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -1.0
-offset_right = 2.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_7wy0s")
-
-[node name="ColorRect" type="ColorRect" parent="DeleteButton"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(0, 0, 0, 1)
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="NinePatchRect/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
