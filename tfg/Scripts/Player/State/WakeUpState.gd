@@ -11,7 +11,7 @@ func enter() -> void:
 	player.animationPlayer.play("WakeUp")
 	await player.animationPlayer.animation_finished
 	player.shouldWakeUp = false
-	if player.lastCheckPoint == null:
+	if player.lastCheckPoint == Vector2(0.0, 0.0):
 		WokenUp.emit()
 	else:
 		pass

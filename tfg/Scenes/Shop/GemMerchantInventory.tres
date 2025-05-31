@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=16 format=3 uid="uid://byhetp5le4sin"]
+
+[ext_resource type="Script" uid="uid://c70ennkklo3ul" path="res://Scripts/Inventory/Inventory.gd" id="1_oi4ys"]
+[ext_resource type="Script" uid="uid://q4fcmbp7u80m" path="res://InvSlot.gd" id="2_4jsgq"]
+[ext_resource type="Script" uid="uid://dspkg2rgl3u7p" path="res://Scripts/Inventory/InvItem.gd" id="3_qt5j6"]
+[ext_resource type="Texture2D" uid="uid://b4mugqg4dyueo" path="res://Assets/Tilesets/Simple Items/DashGem.png" id="4_lhxak"]
+[ext_resource type="Texture2D" uid="uid://dijbkl7h483wj" path="res://Assets/Tilesets/Simple Items/DoubleJumpGem.png" id="5_7y5pr"]
+[ext_resource type="Texture2D" uid="uid://bf8riguuiyrpy" path="res://Assets/Tilesets/Simple Items/WallJumpGem.png" id="6_i25ax"]
+
+[sub_resource type="Resource" id="Resource_ag5e7"]
+script = ExtResource("3_qt5j6")
+name = "Dash Gem"
+texture = ExtResource("4_lhxak")
+metadata/_custom_type_script = "uid://dspkg2rgl3u7p"
+
+[sub_resource type="Resource" id="Resource_oi4ys"]
+script = ExtResource("2_4jsgq")
+item = SubResource("Resource_ag5e7")
+amount = 1
+metadata/_custom_type_script = "uid://q4fcmbp7u80m"
+
+[sub_resource type="Resource" id="Resource_iwjrs"]
+script = ExtResource("3_qt5j6")
+name = "Double Jump Gem"
+texture = ExtResource("5_7y5pr")
+metadata/_custom_type_script = "uid://dspkg2rgl3u7p"
+
+[sub_resource type="Resource" id="Resource_4jsgq"]
+script = ExtResource("2_4jsgq")
+item = SubResource("Resource_iwjrs")
+amount = 1
+metadata/_custom_type_script = "uid://q4fcmbp7u80m"
+
+[sub_resource type="Resource" id="Resource_j1pk8"]
+script = ExtResource("3_qt5j6")
+name = "Wall Jump Gem"
+texture = ExtResource("6_i25ax")
+metadata/_custom_type_script = "uid://dspkg2rgl3u7p"
+
+[sub_resource type="Resource" id="Resource_sw55w"]
+script = ExtResource("2_4jsgq")
+item = SubResource("Resource_j1pk8")
+amount = 1
+metadata/_custom_type_script = "uid://q4fcmbp7u80m"
+
+[sub_resource type="Resource" id="Resource_6171l"]
+script = ExtResource("2_4jsgq")
+amount = 0
+metadata/_custom_type_script = "uid://q4fcmbp7u80m"
+
+[sub_resource type="Resource" id="Resource_qt5j6"]
+script = ExtResource("2_4jsgq")
+amount = 0
+metadata/_custom_type_script = "uid://q4fcmbp7u80m"
+
+[sub_resource type="Resource" id="Resource_lhxak"]
+script = ExtResource("2_4jsgq")
+amount = 0
+metadata/_custom_type_script = "uid://q4fcmbp7u80m"
+
+[resource]
+script = ExtResource("1_oi4ys")
+slots = Array[ExtResource("2_4jsgq")]([SubResource("Resource_oi4ys"), SubResource("Resource_4jsgq"), SubResource("Resource_sw55w"), SubResource("Resource_6171l"), SubResource("Resource_qt5j6"), SubResource("Resource_lhxak")])
+metadata/_custom_type_script = "uid://c70ennkklo3ul"

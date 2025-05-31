@@ -23,11 +23,7 @@ func updateSlotsUi():
 		if FileAccess.file_exists("user://gamefile%d.save" % i):
 			var data = FileUtils.load_game(i)
 			var tutorial_done = data.get("tutorialDone", false)
-			if tutorial_done:
-				pass
-			else:
-				pass
-			slotButtons[i-1].get_node("NinePatchRect").get_node("Label").text = "Partida %d - Tutorial: %s" % [i + 1, "✔" if tutorial_done else "❌"]
+			slotButtons[i-1].get_node("NinePatchRect").get_node("Label").text = "Partida %d - Tutorial: %s" % [i, "✔" if tutorial_done else "❌"]
 		else:
 			slotButtons[i-1].get_node("NinePatchRect").get_node("Label").text = "Empty"
 			var textureButton: TextureButton = slotButtons[i-1].get_node("NinePatchRect").get_node("PlayButton")
@@ -35,6 +31,7 @@ func updateSlotsUi():
 			textureButton.texture_pressed = NewGameTextureBG
 			textureButton.texture_hover = NewGameTextureBG
 			textureButton.texture_focused = NewGameTextureNoBG
+	GameManager.hasLoadedGame = false
 
 
 

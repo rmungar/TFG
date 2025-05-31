@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://r7t4lgqyleda"]
+
+[ext_resource type="Script" uid="uid://blwyhy6al1pgq" path="res://Scripts/Shop/ShopUI.gd" id="1_cy4hf"]
+[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_oxmpc"]
+[ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvUISlot.tscn" id="3_kkty7"]
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cy4hf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -120.0
+offset_right = 211.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 20.0
+offset_right = 256.0
+offset_bottom = 43.0
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -123.0
+offset_right = 214.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_oxmpc")
+region_rect = Rect2(19, 67, 42, 42)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -47.0
+offset_right = 121.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 80
+columns = 3
+
+[node name="Inv_Slot" parent="GridContainer" instance=ExtResource("3_kkty7")]
+layout_mode = 2
+
+[node name="Inv_Slot2" parent="GridContainer" instance=ExtResource("3_kkty7")]
+layout_mode = 2
+index = 1
+
+[node name="Inv_Slot3" parent="GridContainer" instance=ExtResource("3_kkty7")]
+layout_mode = 2
+index = 2
+
+[node name="Inv_Slot4" parent="GridContainer" instance=ExtResource("3_kkty7")]
+layout_mode = 2
+index = 3
+
+[node name="Inv_Slot5" parent="GridContainer" instance=ExtResource("3_kkty7")]
+layout_mode = 2
+index = 4
+
+[node name="Inv_Slot6" parent="GridContainer" instance=ExtResource("3_kkty7")]
+layout_mode = 2
+index = 5
+
+[connection signal="double_clicked" from="GridContainer/Inv_Slot" to="." method="_on_slot_input"]
+[connection signal="double_clicked" from="GridContainer/Inv_Slot2" to="." method="_on_slot_input"]
+[connection signal="double_clicked" from="GridContainer/Inv_Slot3" to="." method="_on_slot_input"]
+[connection signal="double_clicked" from="GridContainer/Inv_Slot4" to="." method="_on_slot_input"]
+[connection signal="double_clicked" from="GridContainer/Inv_Slot5" to="." method="_on_slot_input"]
+[connection signal="double_clicked" from="GridContainer/Inv_Slot6" to="." method="_on_slot_input"]

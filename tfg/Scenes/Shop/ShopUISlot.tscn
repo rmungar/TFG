@@ -1,21 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://br6a2ysnd613v"]
+[gd_scene load_steps=3 format=3 uid="uid://ddjkvyucp14gm"]
 
-[ext_resource type="Script" uid="uid://dgpywwjdwr1r6" path="res://Scenes/Inventory/InvUISlot.gd" id="1_j2gsh"]
-[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_dork0"]
+[ext_resource type="Script" uid="uid://3uvhhln3b820" path="res://Scripts/Shop/ShopUISlot.gd" id="1_675un"]
+[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_mmd18"]
 
-[node name="Inv_Slot" type="Panel"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="ShopSlot" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -438.0
-offset_bottom = -228.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j2gsh")
+script = ExtResource("1_675un")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dork0")
+texture = ExtResource("1_mmd18")
 centered = false
 region_enabled = true
 region_rect = Rect2(66.8735, 66.9202, 42.2472, 42.1602)
@@ -38,5 +36,3 @@ offset_top = -1.0
 offset_right = 20.0
 offset_bottom = 22.0
 horizontal_alignment = 2
-
-[connection signal="gui_input" from="." to="." method="_on_gui_input"]

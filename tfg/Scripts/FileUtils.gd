@@ -32,7 +32,7 @@ func load_game(save_file: int) -> Dictionary:
 	var line = file.get_line()
 	file.close()
 	var result = JSON.parse_string(line)
-	if result is Dictionary:
+	if result is Dictionary and result.has("HP") and result.has("inventory"):
 		GameManager.hasLoadedGame = true
 		return result
 	else:

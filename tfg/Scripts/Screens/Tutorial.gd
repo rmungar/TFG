@@ -13,7 +13,7 @@ var aliveEnemies = 4
 signal tutorialDone()
 
 func _ready():
-	
+	print(GameManager.hasLoadedGame)
 	if GameManager.isLoadingGame:
 		var data = FileUtils.load_game(GameManager.currentSaveFile)
 		if data:

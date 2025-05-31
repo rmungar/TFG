@@ -1,4 +1,4 @@
-[gd_scene load_steps=227 format=4 uid="uid://b130u5hccfaed"]
+[gd_scene load_steps=225 format=4 uid="uid://b130u5hccfaed"]
 
 [ext_resource type="Script" uid="uid://g4vfgva1ekk2" path="res://Scripts/Screens/WorldMap.gd" id="1_4wmaq"]
 [ext_resource type="Texture2D" uid="uid://cfeicjulnadat" path="res://Assets/Tilesets/Forest Parallax/bg.png" id="1_56ksg"]
@@ -74,8 +74,6 @@
 [ext_resource type="Texture2D" uid="uid://xewk7alnuvm6" path="res://Assets/Characters/Moonstone_Keeper Eldermoon_Grove - By SUCART/Walk-MoonstoneKeeper-SUCART/No BG/frame0009.png" id="63_beije"]
 [ext_resource type="Texture2D" uid="uid://bnsr1vbm0udh6" path="res://Assets/Characters/Moonstone_Keeper Eldermoon_Grove - By SUCART/Walk-MoonstoneKeeper-SUCART/No BG/frame0010.png" id="64_ai8jn"]
 [ext_resource type="Texture2D" uid="uid://bfwxudfbercln" path="res://Assets/Characters/Moonstone_Keeper Eldermoon_Grove - By SUCART/Walk-MoonstoneKeeper-SUCART/No BG/frame0011.png" id="65_g5w38"]
-[ext_resource type="PackedScene" uid="uid://ddj8ogrp5hv41" path="res://Scenes/Interactables/Item.tscn" id="75_kxuis"]
-[ext_resource type="Texture2D" uid="uid://b4mugqg4dyueo" path="res://Assets/Tilesets/Simple Items/DashGem.png" id="76_kvn3m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jaxbp"]
 
@@ -8891,6 +8889,18 @@ position = Vector2(153.895, 190.603)
 scale = Vector2(1.4869, 1.33883)
 texture = ExtResource("9_7ro7r")
 
+[node name="Merchant" parent="." instance=ExtResource("16_u4y2d")]
+position = Vector2(1482, 237.5)
+merchantName = "GEM_Merchant"
+items = ExtResource("20_bms57")
+
+[node name="ShopUI" parent="Merchant" instance=ExtResource("21_uncob")]
+offset_left = -50.0
+offset_top = -89.5
+offset_right = -50.0
+offset_bottom = -89.5
+shopInventory = ExtResource("20_bms57")
+
 [node name="Chest" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(1881, 935)
 
@@ -9083,19 +9093,6 @@ collision_layer = 0
 position = Vector2(-6, 30)
 shape = SubResource("RectangleShape2D_dbvfh")
 
-[node name="Merchant" parent="." instance=ExtResource("16_u4y2d")]
-position = Vector2(1482, 237.5)
-merchantName = "GEM_Merchant"
-items = ExtResource("20_bms57")
-
-[node name="ShopUI" parent="Merchant" instance=ExtResource("21_uncob")]
-z_index = 1000
-offset_left = -49.0
-offset_top = -117.5
-offset_right = -49.0
-offset_bottom = -117.5
-shopInventory = ExtResource("20_bms57")
-
 [node name="Player" parent="." instance=ExtResource("10_4v0u4")]
 position = Vector2(453, 214)
 collision_mask = 537826
@@ -9119,11 +9116,6 @@ position = Vector2(1912, 263)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraChangeCamp"]
 position = Vector2(28, 5)
 shape = SubResource("RectangleShape2D_jaxbp")
-
-[node name="Item" parent="." instance=ExtResource("75_kxuis")]
-position = Vector2(735, 197)
-itemName = "Gem"
-itemTexture = ExtResource("76_kvn3m")
 
 [connection signal="body_entered" from="WorldCollsion" to="." method="_on_world_collsion_body_entered"]
 [connection signal="body_entered" from="ElevatorPlatform/Area2D" to="ElevatorPlatform" method="_on_area_2d_body_entered"]
