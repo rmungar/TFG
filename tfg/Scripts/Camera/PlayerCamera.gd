@@ -11,9 +11,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Detectar entrada hacia abajo
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") and get_parent().is_on_floor():
 		target_offset = look_offset
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_pressed("ui_up")and get_parent().is_on_floor():
 		target_offset = -look_offset
 	else:
 		target_offset = Vector2.ZERO

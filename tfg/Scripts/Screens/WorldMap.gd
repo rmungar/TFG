@@ -13,6 +13,11 @@ func _ready():
 	if !GameManager.hasLoadedGame:
 		player.apply_saved_data(GameManager.temporalPlayerData)
 		GameManager.temporalPlayerData = {}  
+	else:
+		if GameManager.isLoadingGame:
+			var data = FileUtils.load_game(GameManager.currentSaveFile)
+			if data:
+				player.apply_saved_data(data)
 	
 	$Chest/Sprite2D.flip_h = true
 	$Chest2/Sprite2D.flip_h = true
@@ -93,3 +98,14 @@ func _on_world_collsion_body_entered(body: Node2D) -> void:
 		body.teleport(body.lastSafePosition)
 	if body is Enemy:
 		body.teleport(body.lastSafePosition)
+
+
+func _on_camera_change_camp_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var camera: PlayerCamera = get_node("Player/Camera2D")
+		var background1: TileMapLayer = get_node("Camp")
+		var background2: TileMapLayer = get_node("FirstZone")
+		if camera.tileMap.name == "Camp":
+			camera.changeRect(background2)
+		else:
+			camera.changeRect(background1)

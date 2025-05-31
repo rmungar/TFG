@@ -41,7 +41,7 @@ func updateSlotsUi():
 func _on_slot_pressed(slot_index: int):
 	GameManager.currentSaveFile = slot_index
 	GameManager.isLoadingGame = true
-	get_tree().change_scene_to_file("res://scenes/World.tscn") 
+	get_tree().change_scene_to_file("res://Scenes/Screens/WorldMap.tscn") 
 
 
 
@@ -66,7 +66,7 @@ func _on_wants_to_play(saveFileNumber: int) -> void:
 	var data = FileUtils.load_game(saveFileNumber)
 	var tutorial_done = data.get("tutorialDone", false)
 	
-	var sceneToLoad := "res://Scenes/Screens/World.tscn" if tutorial_done else "res://Scenes/Screens/TutorialScreen.tscn"
+	var sceneToLoad := "res://Scenes/Screens/WorldMap.tscn" if tutorial_done else "res://Scenes/Screens/TutorialScreen.tscn"
 	
 	var loadingScreen = load("res://Scenes/Screens/LoadingScreen.tscn").instantiate()
 	loadingScreen.targetScene = sceneToLoad
