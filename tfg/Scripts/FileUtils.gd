@@ -33,6 +33,7 @@ func load_game(save_file: int) -> Dictionary:
 	file.close()
 	var result = JSON.parse_string(line)
 	if result is Dictionary:
+		GameManager.hasLoadedGame = true
 		return result
 	else:
 		push_error("Error al parsear el archivo de guardado.")

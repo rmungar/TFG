@@ -8617,6 +8617,7 @@ frame_progress = 0.301636
 flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("13_cgg28")]
 process_mode = 3
@@ -8715,7 +8716,7 @@ scale = Vector2(0.75, 0.78125)
 texture = ExtResource("27_4sgbt")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1939.5, 704)
+position = Vector2(453, 240)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -8743,7 +8744,6 @@ flip_v = true
 
 [node name="SavePoint" parent="." instance=ExtResource("28_u4y2d")]
 position = Vector2(1750, 246)
-tutorial_done = true
 
 [node name="CameraChangeBoss" type="Area2D" parent="."]
 position = Vector2(49, 496)

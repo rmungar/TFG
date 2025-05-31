@@ -33,7 +33,7 @@ func process(delta: float) -> State:
 func physics(delta: float) -> State:
 	
 	if player.is_on_floor():
-		return idleState if player.FACINGDIRECTION == 0 else runState
+		return idleState if player.facingDirection == 0 else runState
 	else:
 		return fallState if player.velocity.y > 0 else null
 

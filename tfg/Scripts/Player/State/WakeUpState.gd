@@ -11,7 +11,10 @@ func enter() -> void:
 	player.animationPlayer.play("WakeUp")
 	await player.animationPlayer.animation_finished
 	player.shouldWakeUp = false
-	WokenUp.emit()
+	if player.lastCheckPoint == null:
+		WokenUp.emit()
+	else:
+		pass
 
 # Llamado al salir del estado
 func exit() -> void:

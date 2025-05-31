@@ -140,7 +140,18 @@ func onPlayerInteract():
 	var ThirdDialog = Dialogic.VAR.get_variable("SwordMasterTutorial.ThirdDialog")
 	var FourthDialog = Dialogic.VAR.get_variable("SwordMasterTutorial.FourthDialog")
 	var FinalDialog = Dialogic.VAR.get_variable("SwordMasterTutorial.FinalTutorialDialog")
-	
+
+	if GameManager.hasLoadedGame and !FistDialog and !SecondDialog:
+		global_position = Vector2(1741,247)
+		Dialogic.VAR.set_variable("SwordMasterTutorial.FirstDialog", true)
+		Dialogic.VAR.set_variable("SwordMasterTutorial.SecondDialog", true)
+		FistDialog = true
+		SecondDialog = true
+		$AnimationPlayer.play("Idle_Left")
+		currentPathPoints = thirdPathPoints
+		GameManager.hasLoadedGame = false
+		
+
 	if !FistDialog and !SecondDialog and !ThirdDialog and !FourthDialog:
 		GameManager.isDialogInScreen = true
 		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterTutorialTimeline.dtl")
@@ -169,22 +180,21 @@ func onPlayerInteract():
 	if justPlayedDialog == 1:
 		startMovingOnReady = true
 		startMoving()
-	
 	elif justPlayedDialog == 2:
 		hasCompletedPath = false
 		isActive = true
 		isMoving = true
 		currentPathPoints = secondPathPoints
 		currentTargetIndex = 0
-	
 	elif justPlayedDialog == 3:
 		hasCompletedPath = false
 		isActive = true
 		isMoving = true
 		currentPathPoints = thirdPathPoints
 		currentTargetIndex = 0
-		
+	
 	GameManager.isDialogInScreen = false
+
 
 func _on_actionable_player_in_range(body: Node2D) -> void:
 	playerReference = body

@@ -116,7 +116,7 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 		isAlive = false
 		$AnimationPlayer.play("Death")
 		await $AnimationPlayer.animation_finished
-		queue_free()
+		respawn()
 
 func collectItem(item: Item):
 	var newItem = InventoryItem.new()
@@ -142,6 +142,13 @@ func _on_heal_charge_timer_timeout():
 func teleport(newPosition: Vector2):
 	global_position = newPosition
 
+func respawn():
+	HP = MaxHP
+	teleport(lastCheckPoint - Vector2(0,5))
+	stateMachine.configure(self)
+	isAlive = true
+	updateHealth.emit(HP, MaxHP)
+
 
 func WokenUp() -> void:
 	Awake.emit()
@@ -151,12 +158,19 @@ func apply_saved_data(data: Dictionary):
 		return
 	HP = data.get("HP", MaxHP)
 	money = data.get("money", 0)
-	lastCheckPoint = parse_vector2_from_string(data.get("lastCheckPoint", "(0,0)"))
+	
+	var checkpoint = data.get("lastCheckPoint", Vector2.ZERO)
+	if typeof(checkpoint) == TYPE_STRING:
+		checkpoint = parse_vector2_from_string(checkpoint)
+	if !GameManager.tutorial_done:
+		lastCheckPoint = checkpoint
+	else:
+		lastCheckPoint = Vector2(453, 240)
+
 	canHeal = data.get("canHeal", false)
 	canAttack = data.get("canAttack", false)
 	inventory.deserialize(data.get("inventory", []))
 	teleport(lastCheckPoint)
-
 
 
 func parse_vector2_from_string(pos_string: String) -> Vector2:
@@ -164,3 +178,15 @@ func parse_vector2_from_string(pos_string: String) -> Vector2:
 	if parts.size() == 2:
 		return Vector2(parts[0].to_float(), parts[1].to_float())
 	return Vector2.ZERO
+
+
+
+func serialize() -> Dictionary:
+	return {
+		"HP": HP,
+		"money": money,
+		"canHeal": canHeal,
+		"canAttack": canAttack,
+		"lastCheckPoint": lastCheckPoint,
+		"inventory": inventory.serialize()
+	}

@@ -1,7 +1,7 @@
 class_name WorldMap extends Node2D
 
 @onready var fadeRect: ColorRect = $CanvasLayer/FadeRect
-
+@onready var player: Player = $Player
 var fadeDuration := 4.0
 var isFading := false
 var fadeDirection := -1 
@@ -9,6 +9,10 @@ var fadeTime := 0.0
 
 
 func _ready():
+	
+	if !GameManager.hasLoadedGame:
+		player.apply_saved_data(GameManager.temporalPlayerData)
+		GameManager.temporalPlayerData = {}  
 	
 	$Chest/Sprite2D.flip_h = true
 	$Chest2/Sprite2D.flip_h = true

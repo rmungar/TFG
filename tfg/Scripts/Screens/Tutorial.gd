@@ -73,9 +73,12 @@ func onEnemyDead() -> void:
 		tutorialDone.emit()
 
 func _on_portal_teleport() -> void:
+	GameManager.temporalPlayerData = player.serialize()
+	GameManager.tutorial_done = true
+	print(GameManager.temporalPlayerData)
 	fadeOut()
 	$Portal/AnimatedSprite2D.play("Warp")
 	await get_tree().create_timer(0.2).timeout
 	$Player.visible = false
 	await get_tree().create_timer(2).timeout
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Scenes/Screens/WorldMap.tscn")

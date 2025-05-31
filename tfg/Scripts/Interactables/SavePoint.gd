@@ -6,7 +6,6 @@ signal save()
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var requiredItem = ""
 @export var alreadyInteracted: bool = false
-@export var tutorial_done: bool
 var playerReference: Player = null
 var interactable: bool = false
 var times = 0
@@ -27,13 +26,13 @@ func _process(delta: float) -> void:
 			alreadyInteracted = true
 			$Indicator.visible = false
 			save.emit()
-			GameManager.onSave(playerReference, tutorial_done)
+			GameManager.onSave(playerReference, GameManager.tutorial_done)
 			emit_signal("unlock")
 
 
 func inInteractionRange(body: Node2D) -> void:
 	interactable = true
-	if times == 0:
+	if times == 0 and !GameManager.hasLoadedGame:
 		Interactable.emit()
 		times += 1
 	if !alreadyInteracted:

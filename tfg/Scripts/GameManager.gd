@@ -1,10 +1,12 @@
 extends Node
 
 var isLoadingGame = false
+var hasLoadedGame = false
 var isDialogInScreen = false
 var isInventoryOpen = false
 var currentSaveFile: int = 1
-
+var temporalPlayerData: Dictionary
+var tutorial_done: bool = false
 
 func toTutorialScreen():
 	get_tree().change_scene_to_file(ScreenManager.tutorialScreen)

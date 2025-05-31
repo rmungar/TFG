@@ -1768,7 +1768,7 @@ shape = SubResource("RectangleShape2D_m5v5x")
 debug_color = Color(0.988767, 0, 0.298245, 0.42)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1084, 243)
+position = Vector2(1120, 243)
 
 [node name="DaggerBandit" parent="." instance=ExtResource("15_pu0ca")]
 position = Vector2(2242, 256)
