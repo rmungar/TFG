@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://iau7kl5jnyhc"]
+[gd_scene load_steps=7 format=3 uid="uid://iau7kl5jnyhc"]
 
 [ext_resource type="Script" uid="uid://dwj02he384hlu" path="res://Scripts/Screens/SaveSelect.gd" id="1_c58xf"]
 [ext_resource type="PackedScene" uid="uid://bbq5q8uce328t" path="res://Scenes/Screens/SaveSlot.tscn" id="2_fy82f"]
+[ext_resource type="Texture2D" uid="uid://b8jifuc2qqoq2" path="res://Assets/UI/UI - Words/Words without BG/UI - Words8.png" id="3_ml0o7"]
+[ext_resource type="Texture2D" uid="uid://dh5qo0l0066li" path="res://Assets/UI/UI - Words/Words With BG/UI - Words8.png" id="4_4sg0u"]
+[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="5_4sg0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0b1r"]
+atlas = ExtResource("5_4sg0u")
+region = Rect2(207, 40, 66, 12)
 
 [node name="SaveFilesMenu" type="Control"]
 layout_mode = 3
@@ -23,29 +30,60 @@ grow_vertical = 2
 
 [node name="Slot0" parent="." instance=ExtResource("2_fy82f")]
 layout_mode = 1
-offset_left = 30.0
-offset_top = -9.96
-offset_right = 30.0
-offset_bottom = -9.96
+offset_top = 21.04
+offset_right = 25.0
+offset_bottom = 21.04
 saveFileNumber = 1
 
 [node name="Slot1" parent="." instance=ExtResource("2_fy82f")]
 layout_mode = 1
-offset_left = 30.0
-offset_top = 73.04
-offset_right = 30.2
-offset_bottom = 73.04
+offset_top = 75.04
+offset_right = 25.2
+offset_bottom = 75.04
 saveFileNumber = 2
 
 [node name="Slot2" parent="." instance=ExtResource("2_fy82f")]
 layout_mode = 1
-offset_left = 30.0
-offset_top = 155.04
-offset_right = 30.0
-offset_bottom = 155.04
+offset_top = 131.04
+offset_right = 25.0
+offset_bottom = 131.04
 saveFileNumber = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.5
+offset_top = 7.0
+offset_right = 61.5
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "PROFILE"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -39.0
+offset_right = 100.0
+offset_bottom = -6.0
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("3_ml0o7")
+texture_pressed = ExtResource("4_4sg0u")
+texture_hover = ExtResource("4_4sg0u")
+texture_disabled = ExtResource("3_ml0o7")
+texture_focused = ExtResource("4_4sg0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(240, 35)
+texture = SubResource("AtlasTexture_d0b1r")
 
 [connection signal="wantsToDelete" from="Slot0" to="." method="_on_wants_to_delete"]
 [connection signal="wantsToPlay" from="Slot0" to="." method="_on_wants_to_play"]
@@ -53,3 +91,4 @@ saveFileNumber = 3
 [connection signal="wantsToPlay" from="Slot1" to="." method="_on_wants_to_play"]
 [connection signal="wantsToDelete" from="Slot2" to="." method="_on_wants_to_delete"]
 [connection signal="wantsToPlay" from="Slot2" to="." method="_on_wants_to_play"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_back_button_pressed"]

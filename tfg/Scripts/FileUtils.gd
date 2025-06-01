@@ -4,10 +4,11 @@ extends Node
 func save_game(save_file: int, player: Player, tutorial_done: bool):
 	var path := "user://gamefile" + str(save_file) + ".save"
 	var file := FileAccess.open(path, FileAccess.WRITE)
-	if not file:
-		push_error("No se pudo abrir el archivo.")
+	
+	if FileAccess.get_open_error() != OK:
+		push_error("Error al abrir o crear el archivo de guardado.")
 		return
-
+	
 	var data := {
 		"HP": player.HP,
 		"canHeal": player.canHeal,

@@ -6,6 +6,8 @@ var arrowScene: PackedScene = preload("res://Scenes/Enemies/ArcherBandit/arrow.t
 
 var isAlive = true
 @export var health = 100
+@export var reward: int
+
 
 signal Dead()
 
@@ -69,6 +71,9 @@ func isDead():
 		$AnimationPlayer.play("Death_Left")
 	await $AnimationPlayer.animation_finished
 	await get_tree().create_timer(0.1).timeout
+	var player: Player = get_tree().get_first_node_in_group("Player")
+	player.money += reward
+	player.updateMoney.emit(player.money)
 	Dead.emit()
 	queue_free()
 

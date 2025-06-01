@@ -39,7 +39,7 @@ func _set_input_mode(mode: InputMode):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 
 func _process(delta: float) -> void:
-	# $ParallaxBackground.scroll_offset.x -= 30 * delta
+	$ParallaxBackground.scroll_offset.x -= 30 * delta
 	if current_input_mode == InputMode.GAMEPAD:
 		var input_vector = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 		if input_vector.length() > 0.2:

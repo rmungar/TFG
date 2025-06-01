@@ -46,8 +46,9 @@ script = ExtResource("1_32wyn")
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 offset_left = 1.0
+offset_top = -2.0
 offset_right = 326.0
-offset_bottom = 43.0
+offset_bottom = 34.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -55,7 +56,7 @@ color = Color(0, 0, 0, 1)
 layout_mode = 1
 offset_top = -3.0
 offset_right = 327.0
-offset_bottom = 44.0
+offset_bottom = 35.0
 mouse_filter = 0
 texture = SubResource("AtlasTexture_32wyn")
 patch_margin_left = 1
@@ -70,10 +71,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 65.5
-offset_top = -40.0
-offset_right = 158.5
-offset_bottom = -7.0
+offset_left = 68.5
+offset_top = -35.0
+offset_right = 161.5
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("3_0lw1r")
@@ -85,9 +86,9 @@ texture_focused = ExtResource("3_0lw1r")
 [node name="Label" type="Label" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 2.0
+offset_top = 3.0
 offset_right = 269.0
-offset_bottom = 46.0
+offset_bottom = 37.0
 theme_override_font_sizes/font_size = 14
 text = "EMPTY"
 vertical_alignment = 1
@@ -95,17 +96,16 @@ vertical_alignment = 1
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 343.0
-offset_top = 7.0
+offset_top = 2.0
 offset_right = 434.0
-offset_bottom = 36.0
+offset_bottom = 31.0
 color = Color(0, 0, 0, 0.235294)
 
 [node name="DeleteButton" type="TextureButton" parent="."]
 layout_mode = 1
 offset_left = 342.0
-offset_top = 5.0
 offset_right = 435.0
-offset_bottom = 38.0
+offset_bottom = 33.0
 theme = SubResource("Theme_32wyn")
 texture_normal = ExtResource("4_n1kic")
 texture_pressed = ExtResource("6_cv286")

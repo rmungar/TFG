@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://b71wi8h7uu8bn"]
+
+[ext_resource type="Script" uid="uid://c2byfvy60w4u8" path="res://Scripts/Hazards/BearTrap.gd" id="1_6isim"]
+[ext_resource type="Texture2D" uid="uid://dou4hhtyvw7hn" path="res://Assets/Tilesets/Traps/Sprite Sheets/Bear trap 32x19.png" id="1_msod6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6isim"]
+atlas = ExtResource("1_msod6")
+region = Rect2(0, 57, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8ltk"]
+atlas = ExtResource("1_msod6")
+region = Rect2(0, 19, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qli7s"]
+atlas = ExtResource("1_msod6")
+region = Rect2(32, 19, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mclxc"]
+atlas = ExtResource("1_msod6")
+region = Rect2(64, 19, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl2iq"]
+atlas = ExtResource("1_msod6")
+region = Rect2(96, 19, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pqgn"]
+atlas = ExtResource("1_msod6")
+region = Rect2(128, 19, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20dvh"]
+atlas = ExtResource("1_msod6")
+region = Rect2(0, 38, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smxxr"]
+atlas = ExtResource("1_msod6")
+region = Rect2(32, 38, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd76n"]
+atlas = ExtResource("1_msod6")
+region = Rect2(64, 38, 32, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_el5pw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6isim")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8ltk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qli7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mclxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl2iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pqgn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20dvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smxxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd76n")
+}],
+"loop": false,
+"name": &"Trigger",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrncx"]
+size = Vector2(28, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qujco"]
+size = Vector2(38, 22)
+
+[node name="BearTrap" type="Area2D"]
+collision_layer = 1024
+collision_mask = 16
+script = ExtResource("1_6isim")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_el5pw")
+animation = &"Trigger"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_hrncx")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_qujco")
+debug_color = Color(0.990177, 0, 0.28155, 0.42)
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
