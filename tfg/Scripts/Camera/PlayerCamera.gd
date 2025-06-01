@@ -11,9 +11,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Detectar entrada hacia abajo
-	if Input.is_action_pressed("ui_down") and get_parent().is_on_floor():
+	if Input.is_action_pressed("ui_down") and get_parent().is_on_floor() and get_parent().velocity.x == 0:
 		target_offset = look_offset
-	elif Input.is_action_pressed("ui_up")and get_parent().is_on_floor():
+	elif Input.is_action_pressed("ui_up")and get_parent().is_on_floor() and get_parent().velocity.x == 0:
 		target_offset = -look_offset
 	else:
 		target_offset = Vector2.ZERO
@@ -28,6 +28,9 @@ func setCameraLimits(rect: Rect2i) -> void:
 	limit_right = (rect.position.x + rect.size.x) * cell_size.x
 	limit_top = rect.position.y * cell_size.y
 	limit_bottom = (rect.position.y + rect.size.y) * cell_size.y
+
+
+
 
 
 

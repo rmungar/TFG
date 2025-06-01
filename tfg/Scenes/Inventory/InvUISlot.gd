@@ -13,7 +13,7 @@ func update(slot: InventorySlot) -> void:
 	var reservedSlots := [
 		"HealthModule",
 		"AttackModule",
-		"SkillModule"
+		"Gem"
 	]
 	
 	if !slot.item:
@@ -22,9 +22,7 @@ func update(slot: InventorySlot) -> void:
 	else:
 		ItemVisuals.visible = true
 		ItemVisuals.texture = slot.item.texture
-		
-		# Si el nombre del objeto NO está en la lista reservada, mostramos cantidad
-		if slot.item.name in reservedSlots:
+		if slot.item.name in reservedSlots or slot.item.name.contains("Gem"):
 			label.visible = false
 		else:
 			label.visible = true

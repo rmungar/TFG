@@ -7,6 +7,7 @@ class_name Player extends CharacterBody2D
 @onready var heavyAttackHitbox: HeavyAttackHitbox = $HeavyAttackHitbox
 @onready var actionableFinder: Area2D = $ActionableFinder
 @onready var healChargeTimer: Timer = $HealChargeTimer
+@onready var dashTimer: Timer = $DashTimer
 
 ################################################################################
 
@@ -24,6 +25,11 @@ signal Awake()
 var lastSafePosition: Vector2
 var lastCheckPoint: Vector2
 
+var canDash: bool = false
+@export var dashSpeed: float = 600.0
+@export var dashDuration: float = 0.2
+var isDashing: bool = false
+var dashDirection: Vector2 = Vector2.ZERO
 ################################################################################
 
 @export_category("Health")
@@ -55,6 +61,7 @@ signal updateMoney(money: int)
 var shouldWakeUp: bool = true
 var canAttack: bool = false
 
+var lastTilemap: String
 
 
 func _ready() -> void:
@@ -63,11 +70,16 @@ func _ready() -> void:
 	updateHeals.emit(currentHeals, maxHeals)
 	stateMachine.configure(self)
 	healChargeTimer.timeout.connect(_on_heal_charge_timer_timeout)
+	dashTimer.one_shot = true
+	dashTimer.wait_time = dashDuration
+	dashTimer.timeout.connect(_on_dash_timeout)
+	inventory.update.emit()
 
 func _process(delta: float) -> void:
 	canAttack = inventory.search("AttackModule")
 	canHeal = inventory.search("HealthModule")
-	
+	canDash = inventory.search("Dash Gem")
+		
 	if isAlive and canMove and !GameManager.isDialogInScreen:
 		if Input.is_action_pressed("MoveLeft"):
 			facingDirection = -1.0
@@ -79,9 +91,15 @@ func _process(delta: float) -> void:
 			sprite.flip_h = false
 			normalAttackHitbox.position.x = 0
 			heavyAttackHitbox.position.x = 4
-			
-			
-	if Input.is_action_just_pressed("Heal") and canHeal and currentHeals > 0:
+		
+		if Input.is_action_just_pressed("Dash") and !isDashing and canMove:
+			var input_vector = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
+			if input_vector.length() > 0:
+				dashDirection = input_vector.normalized()
+				isDashing = true
+				dashTimer.start()
+		
+	if Input.is_action_just_pressed("Heal") and canDash and canHeal and currentHeals > 0:
 		onHeal()
 		currentHeals -= 1
 		updateHeals.emit(currentHeals, maxHeals)
@@ -93,11 +111,19 @@ func _physics_process(delta: float) -> void:
 	if isAlive:
 		if is_on_floor():
 			lastSafePosition = global_position
+		if isDashing:
+			velocity = dashDirection * dashSpeed
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		if not Input.is_action_pressed("MoveLeft") and not Input.is_action_pressed("MoveRight"):
 			facingDirection = 0
 		move_and_slide()
+
+
+func _on_dash_timeout():
+	isDashing = false
+	velocity = Vector2.ZERO
+
 
 func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 	if not $DamageCooldown.is_stopped():
@@ -156,9 +182,9 @@ func WokenUp() -> void:
 func apply_saved_data(data: Dictionary):
 	if data.is_empty():
 		return
+
 	HP = data.get("HP", MaxHP)
 	money = data.get("money", 0)
-	
 	var checkpoint = data.get("lastCheckPoint", Vector2.ZERO)
 	if typeof(checkpoint) == TYPE_STRING:
 		checkpoint = parse_vector2_from_string(checkpoint)
@@ -167,10 +193,13 @@ func apply_saved_data(data: Dictionary):
 	else:
 		lastCheckPoint = Vector2(453, 240)
 
+	lastTilemap = data.get("lastTileMap", "")
+
 	canHeal = data.get("canHeal", false)
 	canAttack = data.get("canAttack", false)
 	inventory.deserialize(data.get("inventory", []))
 	teleport(lastCheckPoint)
+
 
 
 func parse_vector2_from_string(pos_string: String) -> Vector2:
@@ -188,5 +217,6 @@ func serialize() -> Dictionary:
 		"canHeal": canHeal,
 		"canAttack": canAttack,
 		"lastCheckPoint": lastCheckPoint,
+		"lastTilemap":lastTilemap,
 		"inventory": inventory.serialize()
 	}

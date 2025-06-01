@@ -35,5 +35,8 @@ func isDead():
 	else:
 		animationPlayer.play("Death_Left")
 	await animationPlayer.animation_finished
+	var player: Player = get_tree().get_first_node_in_group("Player")
+	player.money += reward
+	player.updateMoney.emit(player.money)
 	Dead.emit()
 	queue_free()

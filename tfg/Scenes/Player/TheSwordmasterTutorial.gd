@@ -153,23 +153,23 @@ func onPlayerInteract():
 		
 
 	if !FistDialog and !SecondDialog and !ThirdDialog and !FourthDialog:
-		GameManager.isDialogInScreen = true
+		GameManager.setDialogState(true) 
 		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterTutorialTimeline.dtl")
 		justPlayedDialog = 1
 	elif FistDialog and !SecondDialog and !ThirdDialog and !FourthDialog:
-		GameManager.isDialogInScreen = true
+		GameManager.setDialogState(true) 
 		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterCheckpointExplanation.dtl")
 		justPlayedDialog = 2
 	elif FistDialog and SecondDialog and !ThirdDialog and !FourthDialog:
-		GameManager.isDialogInScreen = true
+		GameManager.setDialogState(true) 
 		Dialogic.start("res://Dialogues/Timelines/TheSwordmasterAMDialogue.dtl")
 		justPlayedDialog = 3
 	elif FistDialog and SecondDialog and ThirdDialog and !FourthDialog and enemiesDead:
-		GameManager.isDialogInScreen = true
+		GameManager.setDialogState(true) 
 		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterTutorialFinalDialog.dtl")
 		justPlayedDialog = 4
 	elif FistDialog and SecondDialog and ThirdDialog and FourthDialog and enemiesDead:
-		GameManager.isDialogInScreen = true
+		GameManager.setDialogState(true) 
 		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterTutorialFinale.dtl")
 		justPlayedDialog = 5
 	else:
@@ -193,7 +193,7 @@ func onPlayerInteract():
 		currentPathPoints = thirdPathPoints
 		currentTargetIndex = 0
 	
-	GameManager.isDialogInScreen = false
+	GameManager.setDialogState(false) 
 
 
 func _on_actionable_player_in_range(body: Node2D) -> void:

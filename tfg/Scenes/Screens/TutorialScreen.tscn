@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://d12rjverftlpl"]
+[gd_scene load_steps=42 format=4 uid="uid://d12rjverftlpl"]
 
 [ext_resource type="Texture2D" uid="uid://d3qwgfa1nceqq" path="res://Assets/Tilesets/DARK Edition/Tileset/DARK Edition Tileset No background.png" id="1_fn3i6"]
 [ext_resource type="Script" uid="uid://buonnb7fjqk3v" path="res://Scripts/Screens/Tutorial.gd" id="1_py00g"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://blwr6wxet1q1t" path="res://Scenes/Inventory/Inv_UI.tscn" id="21_e4dp3"]
 [ext_resource type="PackedScene" uid="uid://bkh25p3a8elca" path="res://Scenes/Player/PlayerUI.tscn" id="21_nvjkw"]
 [ext_resource type="Script" uid="uid://dmgbcya2wk8f6" path="res://Scripts/Helpers/DetectionArea.gd" id="22_njwji"]
+[ext_resource type="PackedScene" uid="uid://gt7gjlsr0hd8" path="res://Scenes/Screens/PauseMenu.tscn" id="24_74vp3"]
 [ext_resource type="Texture2D" uid="uid://b1gofqrbpe4nv" path="res://Assets/Tilesets/Assets/tree03.png" id="24_vvlti"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trx64"]
@@ -1805,6 +1806,8 @@ mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="PlayerUI" parent="Player/Camera2D" instance=ExtResource("21_nvjkw")]
+
+[node name="PauseMenu" parent="Player/Camera2D" instance=ExtResource("24_74vp3")]
 
 [node name="Node2D" type="StaticBody2D" parent="." groups=["WorldBundary"]]
 collision_layer = 2147483648

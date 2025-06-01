@@ -27,9 +27,6 @@ func _physics_process(delta: float) -> void:
 func _on_take_damage(amount: int) -> void:
 	currentHP -= amount
 	if currentHP <= 0:
-		var player: Player = get_tree().get_first_node_in_group("Player")
-		player.money += reward
-		player.updateMoney.emit(player.money)
 		queue_free()
 
 

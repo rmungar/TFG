@@ -1,6 +1,11 @@
 extends Node
 
 
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
 func save_game(save_file: int, player: Player, tutorial_done: bool):
 	var path := "user://gamefile" + str(save_file) + ".save"
 	var file := FileAccess.open(path, FileAccess.WRITE)
@@ -14,6 +19,7 @@ func save_game(save_file: int, player: Player, tutorial_done: bool):
 		"canHeal": player.canHeal,
 		"canAttack": player.canAttack,
 		"lastCheckPoint": player.lastCheckPoint,
+		"lastTileMap": player.lastTilemap,
 		"money": player.money,
 		"inventory": player.inventory.serialize(),  
 		"tutorialDone": tutorial_done

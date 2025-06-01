@@ -36,8 +36,10 @@ func _on_slot_input(event: InputEvent, index: int):
 
 func open():
 	visible = true
+	GameManager.setShopInScreenState(true)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func close():
 	visible = false
+	GameManager.setShopInScreenState(false)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

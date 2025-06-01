@@ -6,6 +6,7 @@ signal save()
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var requiredItem = ""
 @export var alreadyInteracted: bool = false
+@export var tilemap: TileMapLayer
 var playerReference: Player = null
 var interactable: bool = false
 var times = 0
@@ -22,6 +23,7 @@ func _process(delta: float) -> void:
 		self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	if playerReference and Input.is_action_just_pressed("Interact"):
 		playerReference.lastCheckPoint = global_position
+		playerReference.lastTilemap = tilemap.name
 		if requiredItem == "" or playerReference.has_item(requiredItem):
 			alreadyInteracted = true
 			$Indicator.visible = false

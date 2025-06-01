@@ -18,6 +18,11 @@ func _ready():
 			var data = FileUtils.load_game(GameManager.currentSaveFile)
 			if data:
 				player.apply_saved_data(data)
+				var camera = player.get_node_or_null("Camera2D")
+				if player.lastTilemap != "":
+					var tilemap = get_node_or_null(player.lastTilemap)
+					if tilemap and camera:
+						camera.changeRect(tilemap)
 	
 	$Chest/Sprite2D.flip_h = true
 	$Chest2/Sprite2D.flip_h = true

@@ -11,8 +11,8 @@ func _ready():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player and !spoken:
 		flip_h = true
-		GameManager.isDialogInScreen = true
+		GameManager.setDialogState(true) 
 		Dialogic.start("res://Dialogues/Timelines/IsilianTimeline.dtl")
 		await Dialogic.timeline_ended
-		GameManager.isDialogInScreen = false
+		GameManager.setDialogState(false) 
 		spoken = true

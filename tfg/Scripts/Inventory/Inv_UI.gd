@@ -73,5 +73,5 @@ func open() -> void:
 func close() -> void:
 	visible = false
 	isOpen = false
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	if !GameManager.isShopInScreen : Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	emit_signal("InventoryClosed")

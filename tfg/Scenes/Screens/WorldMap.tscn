@@ -1,4 +1,4 @@
-[gd_scene load_steps=274 format=4 uid="uid://b130u5hccfaed"]
+[gd_scene load_steps=275 format=4 uid="uid://b130u5hccfaed"]
 
 [ext_resource type="Script" uid="uid://g4vfgva1ekk2" path="res://Scripts/Screens/WorldMap.gd" id="1_4wmaq"]
 [ext_resource type="Texture2D" uid="uid://cfeicjulnadat" path="res://Assets/Tilesets/Forest Parallax/bg.png" id="1_56ksg"]
@@ -84,6 +84,7 @@
 [ext_resource type="PackedScene" uid="uid://cjvocbh47mhvf" path="res://Scenes/Traps/SpikeEjector.tscn" id="80_ftapf"]
 [ext_resource type="PackedScene" uid="uid://b25ij3gx6hvad" path="res://Scenes/Traps/Saw.tscn" id="81_u5jcl"]
 [ext_resource type="PackedScene" uid="uid://b71wi8h7uu8bn" path="res://Scenes/Traps/BearTrap.tscn" id="82_py03g"]
+[ext_resource type="PackedScene" uid="uid://gt7gjlsr0hd8" path="res://Scenes/Screens/PauseMenu.tscn" id="85_4lqcu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jaxbp"]
 
@@ -10134,8 +10135,29 @@ autoplay = "default"
 frame_progress = 0.217857
 flip_v = true
 
-[node name="SavePoint" parent="." instance=ExtResource("28_u4y2d")]
+[node name="SavePoint" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(1073, 246)
+tilemap = NodePath("../Camp")
+
+[node name="SavePoint2" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
+position = Vector2(2036, 693)
+tilemap = NodePath("../FirstZone")
+
+[node name="SavePoint3" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
+position = Vector2(202, 550)
+tilemap = NodePath("../FirstZone")
+
+[node name="SavePoint4" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
+position = Vector2(-1077, 694)
+tilemap = NodePath("../BossZone")
+
+[node name="SavePoint5" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
+position = Vector2(1267, 1061)
+tilemap = NodePath("../FirstZone")
+
+[node name="SavePoint6" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
+position = Vector2(3322, 1222)
+tilemap = NodePath("../CastleZone")
 
 [node name="CameraChangeBoss" type="Area2D" parent="."]
 position = Vector2(49, 496)
@@ -10327,7 +10349,7 @@ position = Vector2(623, 579)
 rotation = 1.5708
 
 [node name="Player" parent="." instance=ExtResource("10_4v0u4")]
-position = Vector2(1698, 176)
+position = Vector2(1053, 236)
 collision_mask = 537826
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tileMap")]
@@ -10343,10 +10365,23 @@ position = Vector2(3019, 1186)
 scale = Vector2(1.39157, 1.64545)
 texture = SubResource("AtlasTexture_3rbvj")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer2" instance=ExtResource("85_4lqcu")]
+offset_left = 816.0
+offset_top = 50.0
+offset_right = 816.0
+offset_bottom = 50.0
+
 [connection signal="body_entered" from="WorldCollsion" to="." method="_on_world_collsion_body_entered"]
 [connection signal="body_entered" from="ElevatorPlatform/Area2D" to="ElevatorPlatform" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ElevatorPlatform/Area2D" to="ElevatorPlatform" method="_on_area_2d_body_exited"]
 [connection signal="save" from="SavePoint" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
+[connection signal="save" from="SavePoint2" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
+[connection signal="save" from="SavePoint3" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
+[connection signal="save" from="SavePoint4" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
+[connection signal="save" from="SavePoint5" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
+[connection signal="save" from="SavePoint6" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
 [connection signal="body_entered" from="CameraChangeBoss" to="." method="_on_camera_change_boss_body_entered"]
 [connection signal="body_entered" from="Isilian/Area2D" to="Isilian" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="CameraChangeCastle" to="." method="_on_camera_change_castle_body_entered"]

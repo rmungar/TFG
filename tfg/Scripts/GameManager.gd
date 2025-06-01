@@ -7,11 +7,15 @@ var isInventoryOpen = false
 var currentSaveFile: int = 1
 var temporalPlayerData: Dictionary
 var tutorial_done: bool = false
+var isShopInScreen: bool = false
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 func toTutorialScreen():
 	get_tree().change_scene_to_file(ScreenManager.tutorialScreen)
 	
-
 
 func toSaveFilesScreen():
 	get_tree().change_scene_to_file(ScreenManager.saveFilesScreen)
@@ -30,7 +34,15 @@ func QuitGame():
 
 
 func setDialogState(newState: bool):
+	print(Input.mouse_mode)
 	isDialogInScreen = newState
+	if isDialogInScreen:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+func setShopInScreenState(newState: bool):
+	isShopInScreen = newState
 
 
 func inventoryOpen():
