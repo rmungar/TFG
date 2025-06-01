@@ -29,10 +29,12 @@ FileUtils="*res://Scripts/FileUtils.gd"
 
 directories/dch_directory={
 "GemMerchant": "res://Dialogues/Characters/GemMerchant.dch",
+"Isilian": "res://Dialogues/Characters/Isilian.dch",
 "TheSwordMasterTutorial": "res://Dialogues/Characters/TheSwordMasterTutorial.dch"
 }
 directories/dtl_directory={
 "GemMerchantFirstInteractionTimeline": "res://Dialogues/Timelines/GemMerchantFirstInteractionTimeline.dtl",
+"IsilianTimeline": "res://Dialogues/Timelines/IsilianTimeline.dtl",
 "TheSwordMasterCheckpointExplanation": "res://Dialogues/Timelines/TheSwordMasterCheckpointExplanation.dtl",
 "TheSwordMasterTutorialFinalDialog": "res://Dialogues/Timelines/TheSwordMasterTutorialFinalDialog.dtl",
 "TheSwordMasterTutorialFinale": "res://Dialogues/Timelines/TheSwordMasterTutorialFinale.dtl",
