@@ -272,7 +272,7 @@ tile_map_data = PackedByteArray("AAAAAA8AAAACAAIAAAABAA8AAAACAAIAAAACAA8AAAACAAI
 tile_set = SubResource("TileSet_8k7wh")
 
 [node name="BearTrap" parent="." instance=ExtResource("3_v6oop")]
-position = Vector2(186, 228)
+position = Vector2(186, 231)
 
-[node name="Area2D" parent="BearTrap" instance=ExtResource("4_urcy7")]
-position = Vector2(51, -4)
+[node name="Area2D" parent="." instance=ExtResource("4_urcy7")]
+position = Vector2(237, 227)

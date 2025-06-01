@@ -19,8 +19,8 @@ func _on_continue_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Screens/MainMenu.tscn")
 	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/Screens/MainMenu.tscn")
 
 
 func _on_save_pressed() -> void:

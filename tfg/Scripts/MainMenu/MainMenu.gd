@@ -43,7 +43,6 @@ func _process(delta: float) -> void:
 	if current_input_mode == InputMode.GAMEPAD:
 		var input_vector = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 		if input_vector.length() > 0.2:
-			
 			get_viewport().warp_mouse(round(get_global_mouse_position() * input_vector * gamepad_speed * delta))
 
 
