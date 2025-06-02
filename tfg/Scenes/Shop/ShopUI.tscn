@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://r7t4lgqyleda"]
+[gd_scene load_steps=5 format=3 uid="uid://r7t4lgqyleda"]
 
 [ext_resource type="Script" uid="uid://blwyhy6al1pgq" path="res://Scripts/Shop/ShopUI.gd" id="1_cy4hf"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_oxmpc"]
 [ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvUISlot.tscn" id="3_kkty7"]
+[ext_resource type="Script" uid="uid://p0xvk8pdx4ao" path="res://Scripts/Inventory/InvButton.gd" id="4_5shte"]
 
 [node name="ShopUI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,6 +73,7 @@ offset_right = 121.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 80
 columns = 3
@@ -78,22 +81,77 @@ columns = 3
 [node name="Inv_Slot" parent="GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 
+[node name="Button" type="Button" parent="GridContainer/Inv_Slot"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+action_mode = 0
+flat = true
+script = ExtResource("4_5shte")
+
 [node name="Inv_Slot2" parent="GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 1
+
+[node name="Button2" type="Button" parent="GridContainer/Inv_Slot2"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+action_mode = 0
+flat = true
+script = ExtResource("4_5shte")
 
 [node name="Inv_Slot3" parent="GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 2
 
+[node name="Button3" type="Button" parent="GridContainer/Inv_Slot3"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+action_mode = 0
+flat = true
+script = ExtResource("4_5shte")
+
 [node name="Inv_Slot4" parent="GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 3
+
+[node name="Button4" type="Button" parent="GridContainer/Inv_Slot4"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+action_mode = 0
+flat = true
+script = ExtResource("4_5shte")
 
 [node name="Inv_Slot5" parent="GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 4
 
+[node name="Button5" type="Button" parent="GridContainer/Inv_Slot5"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+action_mode = 0
+flat = true
+script = ExtResource("4_5shte")
+
 [node name="Inv_Slot6" parent="GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 5
+
+[node name="Button6" type="Button" parent="GridContainer/Inv_Slot6"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+action_mode = 0
+flat = true
+script = ExtResource("4_5shte")
+
+[connection signal="Pressed" from="GridContainer/Inv_Slot/Button" to="." method="_on_buy"]
+[connection signal="Pressed" from="GridContainer/Inv_Slot2/Button2" to="." method="_on_buy"]
+[connection signal="Pressed" from="GridContainer/Inv_Slot3/Button3" to="." method="_on_buy"]
+[connection signal="Pressed" from="GridContainer/Inv_Slot4/Button4" to="." method="_on_buy"]
+[connection signal="Pressed" from="GridContainer/Inv_Slot5/Button5" to="." method="_on_buy"]
+[connection signal="Pressed" from="GridContainer/Inv_Slot6/Button6" to="." method="_on_buy"]

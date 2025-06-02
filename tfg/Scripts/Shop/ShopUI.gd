@@ -4,36 +4,21 @@ class_name ShopUI
 @export var shopInventory: Inventory
 @onready var slots: Array = $GridContainer.get_children()
 signal itemPurchased(item: InventoryItem)
-
+var playerReference: Player
 var playerInventory: Inventory = preload("res://Scenes/Inventory/PlayerInv.tres")  
+var prices = [200, 200, 200, 400, 400, 400]
 
 func _ready():
+	playerReference = get_tree().get_first_node_in_group("Player")
 	center_on_screen()
 	visible = false
 	shopInventory.update.connect(update_slots)
 	update_slots()
-	connect_double_clicks()
 
 func update_slots():
 	for i in range(min(shopInventory.slots.size(), slots.size())):
 		slots[i].update(shopInventory.slots[i])
 
-func connect_double_clicks():
-	for i in range(slots.size()):
-		slots[i].connect("gui_input", Callable(self, "_on_slot_input").bind(i))
-
-func _on_slot_input(event: InputEvent, index: int):
-	print("Click")
-	if event is InputEventMouseButton and event.double_click and event.button_index == MOUSE_BUTTON_LEFT:
-		var item_slot = shopInventory.slots[index]
-		if item_slot and item_slot.item:
-			print("Comprando:", item_slot.item.name)
-			playerInventory.insert(item_slot.item)  
-			itemPurchased.emit(item_slot.item)
-			item_slot.amount -= 1
-			if item_slot.amount <= 0:
-				item_slot.item = null
-			shopInventory.update.emit()
 
 func open():
 	visible = true
@@ -49,3 +34,23 @@ func close():
 func center_on_screen():
 	var viewport_size = get_viewport_rect().size
 	position = (viewport_size - size) * 0.5
+
+func _on_buy(index: int) -> void:
+	print(index)
+	var item_slot = shopInventory.slots[index]
+	if item_slot and item_slot.item:
+		var item = item_slot.item
+		var price = prices[index]
+		if playerReference.money >= price:
+			playerReference.money -= price
+			playerInventory.insert(item)
+			itemPurchased.emit(item)
+
+			item_slot.amount -= 1
+			if item_slot.amount <= 0:
+				item_slot.item = null
+
+			shopInventory.update.emit()
+			playerReference.updateMoney.emit(playerReference.money)
+		else:
+			push_warning("No tienes suficiente dinero para comprar: %s" % item.name)
