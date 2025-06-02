@@ -30,5 +30,4 @@ func update(slot: InventorySlot) -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.double_click:
-		print("Input")
 		emit_signal("double_clicked", index)

@@ -63,7 +63,6 @@ func serialize() -> Array:
 
 func deserialize(data: Array) -> void:
 	slots.clear()
-	print(data)
 	for entry in data:
 		var slot = InventorySlot.new()
 		if entry != null:

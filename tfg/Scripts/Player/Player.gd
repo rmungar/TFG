@@ -74,12 +74,13 @@ func _ready() -> void:
 	dashTimer.wait_time = dashDuration
 	dashTimer.timeout.connect(_on_dash_timeout)
 	inventory.update.emit()
+	
 
 func _process(delta: float) -> void:
 	canAttack = inventory.search("AttackModule")
 	canHeal = inventory.search("HealthModule")
 	canDash = inventory.search("Dash Gem")
-		
+	
 	if isAlive and canMove and !GameManager.isDialogInScreen:
 		if Input.is_action_pressed("MoveLeft"):
 			facingDirection = -1.0
@@ -98,14 +99,14 @@ func _process(delta: float) -> void:
 				dashDirection = input_vector.normalized()
 				isDashing = true
 				dashTimer.start()
-		
-	if Input.is_action_just_pressed("Heal") and canDash and canHeal and currentHeals > 0:
-		onHeal()
-		currentHeals -= 1
-		updateHeals.emit(currentHeals, maxHeals)
-		if not isRechargingHeals:
-			isRechargingHeals = true
-			healChargeTimer.start(healingCD)
+				
+		if Input.is_action_just_pressed("Heal") and canHeal and currentHeals > 0:
+			onHeal()
+			currentHeals -= 1
+			updateHeals.emit(currentHeals, maxHeals)
+			if not isRechargingHeals:
+				isRechargingHeals = true
+				healChargeTimer.start(healingCD)
 
 func _physics_process(delta: float) -> void:
 	if isAlive:
@@ -151,6 +152,7 @@ func collectItem(item: Item):
 	inventory.insert(newItem)
 
 func onHeal():
+	print("HEAL")
 	if HP + 20 > MaxHP:
 		HP = MaxHP
 	else:
@@ -184,6 +186,8 @@ func apply_saved_data(data: Dictionary):
 		return
 
 	HP = data.get("HP", MaxHP)
+	updateHealth.emit(HP, MaxHP)
+	updateMoney.emit(money)
 	money = data.get("money", 0)
 	var checkpoint = data.get("lastCheckPoint", Vector2.ZERO)
 	if typeof(checkpoint) == TYPE_STRING:
