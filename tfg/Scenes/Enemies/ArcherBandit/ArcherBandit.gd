@@ -24,8 +24,6 @@ func spawnArrow(playerPosition: Vector2):
 
 func _ready():
 	$AnimationPlayer.connect("animation_finished", _on_animation_finished)
-	print("Hurtbox Layer: ", $Hurtbox.collision_layer)
-	print("Hurtbox Mask: ", $Hurtbox.collision_mask)
 	$Hurtbox.monitoring = true
 
 

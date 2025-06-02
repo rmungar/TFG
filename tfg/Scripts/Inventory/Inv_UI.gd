@@ -24,7 +24,6 @@ func _ready() -> void:
 	get_viewport().connect("size_changed", center_on_screen)
 	close()
 
-
 func center_on_screen():
 	var viewport_size = get_viewport_rect().size
 	position = (viewport_size - size) * 0.5
@@ -61,8 +60,6 @@ func _process(delta: float) -> void:
 			open()
 			GameManager.inventoryOpen()
 
-
-
 func open() -> void:
 	visible = true
 	isOpen = true
@@ -75,3 +72,7 @@ func close() -> void:
 	isOpen = false
 	if !GameManager.isShopInScreen : Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	emit_signal("InventoryClosed")
+
+
+func _on_inv_slot_pressed(index: int) -> void:
+	inventory.equip_gem_on_double_click(index)

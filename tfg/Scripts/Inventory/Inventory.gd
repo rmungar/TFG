@@ -73,3 +73,51 @@ func deserialize(data: Array) -> void:
 			slot.amount = entry.get("amount", 1)
 		slots.append(slot)
 	update.emit()
+
+
+
+func equip_gem_on_double_click(slotIndex: int) -> void:
+	if slotIndex < 0 or slotIndex >= slots.size():
+		push_warning("Índice de slot fuera de rango.")
+		return
+
+	var clickedSlot := slots[slotIndex]
+	var item := clickedSlot.item
+
+	var gemSlotIndex := 11
+
+	# Desequipar si se hace doble clic sobre el slot de la gema
+	if slotIndex == gemSlotIndex:
+		if item != null and item.name.contains("Gem"):
+			clickedSlot.item = null
+			clickedSlot.amount = 0
+			insert(item)  # Reinsertar en inventario general
+			update.emit()
+		return
+
+	# No es una gema, no hacer nada
+	if item == null or not item.name.contains("Gem"):
+		return
+
+	var gemSlot := slots[gemSlotIndex]
+
+	# Intercambiar si ya hay una gema en el slot de habilidad
+	if gemSlot.item != null:
+		# Swap de ítems y cantidades
+		var tempItem = gemSlot.item
+		var tempAmount = gemSlot.amount
+
+		gemSlot.item = item
+		gemSlot.amount = clickedSlot.amount
+
+		clickedSlot.item = tempItem
+		clickedSlot.amount = tempAmount
+	else:
+		# Mover directamente la gema
+		gemSlot.item = item
+		gemSlot.amount = clickedSlot.amount
+
+		clickedSlot.item = null
+		clickedSlot.amount = 0
+	print("CHANGE")
+	update.emit()

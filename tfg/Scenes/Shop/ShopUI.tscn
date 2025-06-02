@@ -97,10 +97,3 @@ index = 4
 [node name="Inv_Slot6" parent="GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 5
-
-[connection signal="double_clicked" from="GridContainer/Inv_Slot" to="." method="_on_slot_input"]
-[connection signal="double_clicked" from="GridContainer/Inv_Slot2" to="." method="_on_slot_input"]
-[connection signal="double_clicked" from="GridContainer/Inv_Slot3" to="." method="_on_slot_input"]
-[connection signal="double_clicked" from="GridContainer/Inv_Slot4" to="." method="_on_slot_input"]
-[connection signal="double_clicked" from="GridContainer/Inv_Slot5" to="." method="_on_slot_input"]
-[connection signal="double_clicked" from="GridContainer/Inv_Slot6" to="." method="_on_slot_input"]

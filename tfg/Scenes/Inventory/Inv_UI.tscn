@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://blwr6wxet1q1t"]
+[gd_scene load_steps=6 format=3 uid="uid://blwr6wxet1q1t"]
 
 [ext_resource type="Script" uid="uid://b1rqj0unbxj40" path="res://Scripts/Inventory/Inv_UI.gd" id="1_qky1y"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_ar5ic"]
 [ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvUISlot.tscn" id="3_38mmp"]
+[ext_resource type="Script" uid="uid://p0xvk8pdx4ao" path="res://Scripts/Inventory/InvButton.gd" id="4_6sx87"]
 [ext_resource type="Texture2D" uid="uid://bmi7up3mn4rkj" path="res://Assets/Characters/Samurai/Samurai.png" id="4_38mmp"]
 
 [node name="Inv_UI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("1_qky1y")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -28,9 +29,11 @@ offset_right = 215.0
 offset_bottom = 114.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,6 +54,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,6 +67,7 @@ offset_right = -26.0
 offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
 columns = 3
@@ -70,29 +75,127 @@ columns = 3
 [node name="Inv_Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
 
+[node name="Button2" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 43.0
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
+
 [node name="Inv_Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 1
+
+[node name="Button3" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 0.5
+offset_right = 43.0
+offset_bottom = 42.5
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Inv_Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 2
+
+[node name="Button4" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 0.5
+offset_right = 43.0
+offset_bottom = 42.5
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Inv_Slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 3
+
+[node name="Button5" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot4"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 0.5
+offset_right = 43.0
+offset_bottom = 42.5
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Inv_Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 4
+
+[node name="Button6" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot5"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 0.5
+offset_right = 43.0
+offset_bottom = 42.5
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Inv_Slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 5
+
+[node name="Button7" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot6"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 0.5
+offset_right = 43.0
+offset_bottom = 42.5
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Inv_Slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 6
+
+[node name="Button8" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot7"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 43.0
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Inv_Slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 7
+
+[node name="Button9" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot8"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 43.0
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Inv_Slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("3_38mmp")]
 layout_mode = 2
+index = 8
+
+[node name="Button10" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot9"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 43.0
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(323, 124)
@@ -108,6 +211,7 @@ offset_left = 380.0
 offset_top = 157.0
 offset_right = 380.0
 offset_bottom = 157.0
+index = 9
 
 [node name="AbilitySlot" parent="." instance=ExtResource("3_38mmp")]
 layout_mode = 2
@@ -118,6 +222,15 @@ offset_left = 380.0
 offset_top = 108.0
 offset_right = 380.0
 offset_bottom = 108.0
+index = 11
+
+[node name="Button11" type="Button" parent="AbilitySlot"]
+layout_mode = 2
+offset_right = 42.0
+offset_bottom = 42.0
+action_mode = 0
+flat = true
+script = ExtResource("4_6sx87")
 
 [node name="HealthSlot" parent="." instance=ExtResource("3_38mmp")]
 layout_mode = 2
@@ -128,6 +241,7 @@ offset_left = 380.0
 offset_top = 58.0
 offset_right = 380.0
 offset_bottom = 58.0
+index = 10
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
@@ -135,3 +249,25 @@ offset_left = 262.0
 offset_top = 29.0
 offset_right = 264.0
 offset_bottom = 241.0
+mouse_filter = 2
+
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button2" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button2" to="NinePatchRect/GridContainer/Inv_Slot/Button2" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button3" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button3" to="NinePatchRect/GridContainer/Inv_Slot2/Button3" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button4" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button4" to="NinePatchRect/GridContainer/Inv_Slot3/Button4" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button5" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button5" to="NinePatchRect/GridContainer/Inv_Slot4/Button5" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button6" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button6" to="NinePatchRect/GridContainer/Inv_Slot5/Button6" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button7" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button7" to="NinePatchRect/GridContainer/Inv_Slot6/Button7" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot7/Button8" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot7/Button8" to="NinePatchRect/GridContainer/Inv_Slot7/Button8" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot8/Button9" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot8/Button9" to="NinePatchRect/GridContainer/Inv_Slot8/Button9" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot9/Button10" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot9/Button10" to="NinePatchRect/GridContainer/Inv_Slot9/Button10" method="_on_pressed"]
+[connection signal="Pressed" from="AbilitySlot/Button11" to="." method="_on_inv_slot_pressed"]
+[connection signal="pressed" from="AbilitySlot/Button11" to="AbilitySlot/Button11" method="_on_pressed"]

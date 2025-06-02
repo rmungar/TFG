@@ -10011,14 +10011,16 @@ frame_progress = 0.301636
 flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+process_priority = -2000
 
 [node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("13_cgg28")]
-process_mode = 3
+process_priority = -3000
 
 [node name="FadeRect" type="ColorRect" parent="CanvasLayer"]
 offset_right = 480.0
 offset_bottom = 270.0
-mouse_filter = 1
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Portal1" type="StaticBody2D" parent="."]
@@ -10380,6 +10382,7 @@ offset_left = 816.0
 offset_top = 50.0
 offset_right = 816.0
 offset_bottom = 50.0
+mouse_filter = 2
 
 [connection signal="body_entered" from="WorldCollsion" to="." method="_on_world_collsion_body_entered"]
 [connection signal="body_entered" from="ElevatorPlatform/Area2D" to="ElevatorPlatform" method="_on_area_2d_body_entered"]

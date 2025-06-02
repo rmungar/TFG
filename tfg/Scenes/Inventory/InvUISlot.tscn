@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_dork0"]
 
 [node name="Inv_Slot" type="Panel"]
+process_mode = 3
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,11 +23,12 @@ region_rect = Rect2(66.8735, 66.9202, 42.2472, 42.1602)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 42.0
+offset_bottom = 42.0
 
 [node name="Panel" type="Panel" parent="CenterContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="itemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
 position = Vector2(1, 1)
@@ -38,5 +40,3 @@ offset_top = -1.0
 offset_right = 20.0
 offset_bottom = 22.0
 horizontal_alignment = 2
-
-[connection signal="gui_input" from="." to="." method="_on_gui_input"]

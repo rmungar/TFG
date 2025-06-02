@@ -9,7 +9,35 @@ func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		start_interaction()
 
+
+func _process(delta: float) -> void:
+	if playerReference and Input.is_action_just_pressed("Interact") and !shopUI.visible:
+		start_interaction()
+		if hasTalkedBefore: 
+			openShop()
+		else:
+			hasTalkedBefore = true
+	elif playerReference and Input.is_action_just_pressed("Interact") and shopUI.visible:
+		if hasTalkedBefore: endInteraction()
+
+
+
 func start_interaction():
 	if not hasTalkedBefore:
-		hasTalkedBefore = true
-		pass
+		GameManager.setDialogState(true)
+		Dialogic.start("res://Dialogues/Timelines/GemMerchantFirstInteractionTimeline.dtl")
+		await Dialogic.timeline_ended
+		GameManager.setDialogState(false)
+		
+	else:
+		GameManager.setDialogState(true)
+		Dialogic.start("res://Dialogues/Timelines/GemMerchantRegularTimeline.dtl")
+		await Dialogic.timeline_ended
+		GameManager.setDialogState(false)
+
+
+func endInteraction():
+	GameManager.setDialogState(true)
+	Dialogic.start("res://Dialogues/Timelines/GemMerchantEndTimeline.dtl")
+	await Dialogic.timeline_ended
+	GameManager.setDialogState(false)

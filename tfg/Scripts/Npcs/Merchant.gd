@@ -12,11 +12,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if playerReference and Input.is_action_just_pressed("Interact") and !shopUI.visible:
-		playerReference.canMove = false
-		shopUI.open()
+		openShop()
 	elif playerReference and Input.is_action_just_pressed("Interact") and shopUI.visible:
-		playerReference.canMove = true
-		shopUI.close()
+		closeShop()
 
 
 func _on_interaction_body_entered(body: Node2D):
@@ -29,3 +27,12 @@ func _on_interaction_body_exited(body:Node2D):
 	if body is Player:
 		$Indicator.visible = false
 		playerReference = null
+
+
+func openShop():
+	playerReference.canMove = false
+	shopUI.open()
+
+func closeShop():
+	playerReference.canMove = true
+	shopUI.close()
