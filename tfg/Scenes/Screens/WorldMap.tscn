@@ -10138,26 +10138,32 @@ flip_v = true
 [node name="SavePoint" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(1073, 246)
 tilemap = NodePath("../Camp")
+postTutorial = true
 
 [node name="SavePoint2" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(2036, 693)
 tilemap = NodePath("../FirstZone")
+postTutorial = true
 
 [node name="SavePoint3" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(202, 550)
 tilemap = NodePath("../FirstZone")
+postTutorial = true
 
 [node name="SavePoint4" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(-1077, 694)
 tilemap = NodePath("../BossZone")
+postTutorial = true
 
 [node name="SavePoint5" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(1267, 1061)
 tilemap = NodePath("../FirstZone")
+postTutorial = true
 
 [node name="SavePoint6" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(3322, 1222)
 tilemap = NodePath("../CastleZone")
+postTutorial = true
 
 [node name="CameraChangeBoss" type="Area2D" parent="."]
 position = Vector2(49, 496)

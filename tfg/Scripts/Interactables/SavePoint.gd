@@ -7,6 +7,7 @@ signal save()
 @export var requiredItem = ""
 @export var alreadyInteracted: bool = false
 @export var tilemap: TileMapLayer
+@export var postTutorial: bool
 var playerReference: Player = null
 var interactable: bool = false
 var times = 0
@@ -25,6 +26,8 @@ func _process(delta: float) -> void:
 		playerReference.lastCheckPoint = global_position
 		playerReference.lastTilemap = tilemap.name
 		if requiredItem == "" or playerReference.has_item(requiredItem):
+			if postTutorial:
+				GameManager.tutorial_done = true
 			alreadyInteracted = true
 			$Indicator.visible = false
 			save.emit()

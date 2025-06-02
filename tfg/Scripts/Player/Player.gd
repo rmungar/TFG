@@ -30,6 +30,7 @@ var canDash: bool = false
 @export var dashDuration: float = 0.2
 var isDashing: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
+var hasDashed: bool = false
 ################################################################################
 
 @export_category("Health")
@@ -93,13 +94,15 @@ func _process(delta: float) -> void:
 			normalAttackHitbox.position.x = 0
 			heavyAttackHitbox.position.x = 4
 		
-		if Input.is_action_just_pressed("Dash") and !isDashing and canMove:
+		if Input.is_action_just_pressed("Dash") and canDash and !isDashing and !hasDashed and canMove:
 			var input_vector = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
 			if input_vector.length() > 0:
 				dashDirection = input_vector.normalized()
 				isDashing = true
+				hasDashed = true
 				dashTimer.start()
-				
+				await dashTimer.timeout
+		
 		if Input.is_action_just_pressed("Heal") and canHeal and currentHeals > 0:
 			onHeal()
 			currentHeals -= 1
@@ -112,6 +115,7 @@ func _physics_process(delta: float) -> void:
 	if isAlive:
 		if is_on_floor():
 			lastSafePosition = global_position
+			hasDashed = false
 		if isDashing:
 			velocity = dashDirection * dashSpeed
 		if not is_on_floor():
