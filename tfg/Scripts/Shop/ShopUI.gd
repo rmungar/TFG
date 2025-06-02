@@ -8,6 +8,7 @@ signal itemPurchased(item: InventoryItem)
 var playerInventory: Inventory = preload("res://Scenes/Inventory/PlayerInv.tres")  
 
 func _ready():
+	center_on_screen()
 	visible = false
 	shopInventory.update.connect(update_slots)
 	update_slots()
@@ -43,3 +44,8 @@ func close():
 	visible = false
 	GameManager.setShopInScreenState(false)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+
+func center_on_screen():
+	var viewport_size = get_viewport_rect().size
+	position = (viewport_size - size) * 0.5

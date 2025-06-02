@@ -5,7 +5,7 @@ class_name Merchant extends Node
 @export var items: Inventory
 var playerReference: Player = null
 
-@onready var shopUI: ShopUI = $ShopUI
+@onready var shopUI: ShopUI = $Canvas/ShopUI
 
 func _ready() -> void:
 	$Indicator.visible = false

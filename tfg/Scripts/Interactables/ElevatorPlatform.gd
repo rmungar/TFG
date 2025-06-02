@@ -8,6 +8,7 @@ extends AnimatableBody2D
 var playerReference: Player = null
 var moving := false
 var goingDown := true
+var hasBeenCalled := false
 
 func _ready() -> void:
 	global_position = topPosition
@@ -33,7 +34,10 @@ func _physics_process(delta: float) -> void:
 			goingDown = !goingDown
 			$CollisionShape2D2.disabled = true
 			$CollisionShape2D3.disabled = true
-			playerReference.canMove = true
+			if !hasBeenCalled: 
+				playerReference.canMove = true
+			if hasBeenCalled: 
+				hasBeenCalled = false
 		else:
 			global_position += moveAmount
 
@@ -56,3 +60,17 @@ func startMoving():
 	$CollisionShape2D3.disabled = false
 	playerReference.canMove = false
 	moving = true
+
+
+func _on_call() -> void:
+	hasBeenCalled = true
+	if global_position == topPosition:
+		$CollisionShape2D2.disabled = false
+		$CollisionShape2D3.disabled = false
+		moving = true
+		goingDown = true
+	else:
+		$CollisionShape2D2.disabled = false
+		$CollisionShape2D3.disabled = false
+		moving = true
+		goingDown = false
