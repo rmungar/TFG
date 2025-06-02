@@ -14,7 +14,6 @@ func _ready() -> void:
 
 
 func updateHealth(current_hp: int, max_hp: int) -> void:
-	print("UPDATE")
 	var units = int(ceil(max_hp / HPPerHeart))
 	
 	# Limpiar los iconos existentes

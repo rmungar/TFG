@@ -156,7 +156,6 @@ func collectItem(item: Item):
 	inventory.insert(newItem)
 
 func onHeal():
-	print("HEAL")
 	if HP + 20 > MaxHP:
 		HP = MaxHP
 	else:

@@ -37,6 +37,11 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	if player.global_position.x < 0:
+		$ParallaxBackground.visible = false
+	else:
+		if !$ParallaxBackground.visible:
+			$ParallaxBackground.visible = true
 	
 	if isFading:
 		fadeTime += delta
