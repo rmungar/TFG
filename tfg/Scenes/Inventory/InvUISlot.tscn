@@ -31,7 +31,6 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="itemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
-position = Vector2(1, 1)
 
 [node name="Label" type="Label" parent="CenterContainer/Panel"]
 layout_mode = 0

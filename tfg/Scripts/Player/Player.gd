@@ -8,6 +8,8 @@ class_name Player extends CharacterBody2D
 @onready var actionableFinder: Area2D = $ActionableFinder
 @onready var healChargeTimer: Timer = $HealChargeTimer
 @onready var dashTimer: Timer = $DashTimer
+@onready var rayCastRight: RayCast2D = $RayCastRight
+@onready var rayCastLeft: RayCast2D = $RayCastLeft
 
 ################################################################################
 
@@ -21,16 +23,21 @@ class_name Player extends CharacterBody2D
 var facingDirection: float 
 var canMove: bool = true
 signal Awake()
-
+var jumpsLeft = 1
 var lastSafePosition: Vector2
 var lastCheckPoint: Vector2
-
+var isAnyRayCastColliding: bool = false
 var canDash: bool = false
+var canDoubleJump: bool = false
+var hasDoubleJumped: bool = false
+var canWallJump: bool = false
+var isWallJumping: bool = false
 @export var dashSpeed: float = 600.0
 @export var dashDuration: float = 0.2
 var isDashing: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
 var hasDashed: bool = false
+
 ################################################################################
 
 @export_category("Health")
@@ -80,7 +87,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	canAttack = inventory.search("AttackModule")
 	canHeal = inventory.search("HealthModule")
-	canDash = inventory.search("Dash Gem")
+	canDash = (inventory.isGemEquipped("Dash Gem") or inventory.isGemEquipped("DW Gem"))
+	canDoubleJump = (inventory.isGemEquipped("Double Jump Gem") or inventory.isGemEquipped("DD Gem"))
+	canWallJump = (inventory.isGemEquipped("Wall Jump Gem") or inventory.isGemEquipped("WD Gem"))
+	
+	isAnyRayCastColliding = rayCastLeft.is_colliding() or rayCastRight.is_colliding()
 	
 	if isAlive and canMove and !GameManager.isDialogInScreen:
 		if Input.is_action_pressed("MoveLeft"):
@@ -113,9 +124,13 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if isAlive:
+		handleWallJump()
+		handleDoubleJump()
 		if is_on_floor():
+			isWallJumping = false
 			lastSafePosition = global_position
 			hasDashed = false
+			hasDoubleJumped = false
 		if isDashing:
 			velocity = dashDirection * dashSpeed
 		if not is_on_floor():
@@ -150,6 +165,12 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 		respawn()
 
 func collectItem(item: Item):
+	
+	if item.itemName == "Credits":
+		money += randi() % 100 + 20
+		updateMoney.emit(money)
+		return
+	
 	var newItem = InventoryItem.new()
 	newItem.name = item.itemName
 	newItem.texture = item.itemTexture
@@ -214,6 +235,31 @@ func parse_vector2_from_string(pos_string: String) -> Vector2:
 	if parts.size() == 2:
 		return Vector2(parts[0].to_float(), parts[1].to_float())
 	return Vector2.ZERO
+
+
+func handleWallJump():
+	if canWallJump and !isWallJumping and Input.is_action_just_pressed("Jump") and isAnyRayCastColliding:
+		isWallJumping = true
+		if rayCastLeft.is_colliding():
+			$Sprite2D.flip_h = true
+			facingDirection = -1
+			velocity.x = -jumpStrength
+			velocity.y = jumpStrength
+		else:
+			$Sprite2D.flip_h = true
+			facingDirection = 1
+			velocity.x = jumpStrength
+			velocity.y = jumpStrength
+		
+		await get_tree().create_timer(0.3).timeout
+
+func handleDoubleJump():
+	if !is_on_floor() and canDoubleJump and !hasDoubleJumped and Input.is_action_just_pressed("Jump"):
+		hasDoubleJumped = true
+		if facingDirection == 0:
+			velocity.x = 0
+		velocity.y = jumpStrength
+		animationPlayer.play("Jump")
 
 
 

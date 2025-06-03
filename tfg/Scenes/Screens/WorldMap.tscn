@@ -1,4 +1,4 @@
-[gd_scene load_steps=275 format=4 uid="uid://b130u5hccfaed"]
+[gd_scene load_steps=273 format=4 uid="uid://b130u5hccfaed"]
 
 [ext_resource type="Script" uid="uid://g4vfgva1ekk2" path="res://Scripts/Screens/WorldMap.gd" id="1_4wmaq"]
 [ext_resource type="Texture2D" uid="uid://cfeicjulnadat" path="res://Assets/Tilesets/Forest Parallax/bg.png" id="1_56ksg"]
@@ -76,8 +76,6 @@
 [ext_resource type="Texture2D" uid="uid://bnsr1vbm0udh6" path="res://Assets/Characters/Moonstone_Keeper Eldermoon_Grove - By SUCART/Walk-MoonstoneKeeper-SUCART/No BG/frame0010.png" id="64_ai8jn"]
 [ext_resource type="Texture2D" uid="uid://bfwxudfbercln" path="res://Assets/Characters/Moonstone_Keeper Eldermoon_Grove - By SUCART/Walk-MoonstoneKeeper-SUCART/No BG/frame0011.png" id="65_g5w38"]
 [ext_resource type="Script" uid="uid://6h54thm3740e" path="res://Scripts/Npcs/Isilian.gd" id="69_kvn3m"]
-[ext_resource type="PackedScene" uid="uid://ddj8ogrp5hv41" path="res://Scenes/Interactables/Item.tscn" id="75_kxuis"]
-[ext_resource type="Texture2D" uid="uid://b4mugqg4dyueo" path="res://Assets/Tilesets/Simple Items/DashGem.png" id="76_kvn3m"]
 [ext_resource type="PackedScene" uid="uid://cblh5gshohu4y" path="res://Scenes/Enemies/Widow/Widow.tscn" id="78_1edt2"]
 [ext_resource type="PackedScene" uid="uid://diekjk3ddagdh" path="res://Scenes/Enemies/DaggerBandit/DaggerBandit.tscn" id="79_8xhgs"]
 [ext_resource type="PackedScene" uid="uid://nt70xpo04560" path="res://Scenes/Enemies/ArcherBandit/ArcherBandit.tscn" id="80_8xhgs"]
@@ -9933,15 +9931,23 @@ texture = ExtResource("9_7ro7r")
 
 [node name="Chest" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(1881, 935)
+itemName = "Money"
+itemTexture = "NoAsset"
 
 [node name="Chest2" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(-944, 146)
+itemName = "Money"
+itemTexture = "NoAsset"
 
 [node name="Chest3" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(-1897, 343)
+itemName = "Money"
+itemTexture = "NoAsset"
 
 [node name="Chest4" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(3936, 1287)
+itemName = "Money"
+itemTexture = "NoAsset"
 
 [node name="Sprite2D6" type="Sprite2D" parent="."]
 position = Vector2(3121.72, 1187.3)
@@ -9969,16 +9975,19 @@ frame_progress = 0.826599
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1180, 319)
 sprite_frames = SubResource("SpriteFrames_hmi8e")
+autoplay = "default"
 frame_progress = 0.238079
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1006, 655)
 sprite_frames = SubResource("SpriteFrames_hmi8e")
+autoplay = "default"
 frame_progress = 0.172194
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="."]
 position = Vector2(-234, 655)
 sprite_frames = SubResource("SpriteFrames_hmi8e")
+autoplay = "default"
 frame_progress = 0.172194
 
 [node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="."]
@@ -10018,6 +10027,7 @@ process_priority = -2000
 process_priority = -3000
 
 [node name="FadeRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 offset_right = 480.0
 offset_bottom = 270.0
 mouse_filter = 2
@@ -10148,8 +10158,8 @@ tilemap = NodePath("../FirstZone")
 postTutorial = true
 
 [node name="SavePoint3" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
-position = Vector2(202, 550)
-tilemap = NodePath("../FirstZone")
+position = Vector2(18, 550)
+tilemap = NodePath("../BossZone")
 postTutorial = true
 
 [node name="SavePoint4" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
@@ -10207,7 +10217,7 @@ shape = SubResource("RectangleShape2D_dbvfh")
 
 [node name="Merchant" parent="." instance=ExtResource("16_u4y2d")]
 process_mode = 3
-position = Vector2(1482, 237.5)
+position = Vector2(1482, 236.5)
 merchantName = "GEM_Merchant"
 items = ExtResource("20_bms57")
 
@@ -10227,11 +10237,6 @@ position = Vector2(1912, 263)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraChangeCamp"]
 position = Vector2(28, 5)
 shape = SubResource("RectangleShape2D_jaxbp")
-
-[node name="Item" parent="." instance=ExtResource("75_kxuis")]
-position = Vector2(735, 197)
-itemName = "Gem"
-itemTexture = ExtResource("76_kvn3m")
 
 [node name="Widow" parent="." instance=ExtResource("78_1edt2")]
 position = Vector2(-488, 658)

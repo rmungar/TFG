@@ -120,3 +120,11 @@ func equip_gem_on_double_click(slotIndex: int) -> void:
 		clickedSlot.item = null
 		clickedSlot.amount = 0
 	update.emit()
+
+
+
+func isGemEquipped(name: String) -> bool:
+	var skillSlot := slots[11]  
+	if skillSlot.item and skillSlot.item.name.contains("Gem"):
+		return skillSlot.item.name == name
+	return false

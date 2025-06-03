@@ -13,6 +13,14 @@ func _ready():
 	center_on_screen()
 	visible = false
 	shopInventory.update.connect(update_slots)
+	
+	$Label.text = str(prices[0])
+	$Label2.text = str(prices[1])
+	$Label3.text = str(prices[2])
+	$Label4.text = str(prices[3])
+	$Label5.text = str(prices[4])
+	$Label6.text = str(prices[5])
+	
 	update_slots()
 
 func update_slots():

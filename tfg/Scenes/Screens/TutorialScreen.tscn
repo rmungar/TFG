@@ -1751,6 +1751,8 @@ position = Vector2(2702, 236)
 
 [node name="Chest" parent="." instance=ExtResource("12_y4516")]
 position = Vector2(1681, 168)
+itemName = "HealthModule"
+itemTexture = "res://Assets/Tilesets/Simple Items/HealingModuleSprite.png"
 
 [node name="TheSwordMaster" parent="." instance=ExtResource("13_ar0ii")]
 position = Vector2(162, 245)
@@ -1798,7 +1800,6 @@ tileMap = NodePath("../../BackGround")
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
 [node name="Inv_UI" parent="Player/Camera2D/CanvasLayer" instance=ExtResource("21_e4dp3")]
-process_mode = 3
 
 [node name="FadeRect" type="ColorRect" parent="Player/Camera2D/CanvasLayer"]
 offset_right = 480.0

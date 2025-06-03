@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=16 format=3 uid="uid://byhetp5le4sin"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=22 format=3 uid="uid://byhetp5le4sin"]
 
 [ext_resource type="Script" uid="uid://c70ennkklo3ul" path="res://Scripts/Inventory/Inventory.gd" id="1_oi4ys"]
 [ext_resource type="Script" uid="uid://q4fcmbp7u80m" path="res://InvSlot.gd" id="2_4jsgq"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b4mugqg4dyueo" path="res://Assets/Tilesets/Simple Items/DashGem.png" id="4_lhxak"]
 [ext_resource type="Texture2D" uid="uid://dijbkl7h483wj" path="res://Assets/Tilesets/Simple Items/DoubleJumpGem.png" id="5_7y5pr"]
 [ext_resource type="Texture2D" uid="uid://bf8riguuiyrpy" path="res://Assets/Tilesets/Simple Items/WallJumpGem.png" id="6_i25ax"]
+[ext_resource type="Texture2D" uid="uid://dw62yg8t30qup" path="res://Assets/Tilesets/Simple Items/DoubleJumpAndDashGem.png" id="7_i25ax"]
+[ext_resource type="Texture2D" uid="uid://b4heekcttly67" path="res://Assets/Tilesets/Simple Items/DoubleJumpAndWallJumpGem.png" id="8_ag5e7"]
+[ext_resource type="Texture2D" uid="uid://bphcy5wab8frx" path="res://Assets/Tilesets/Simple Items/WallJumpAndDashGem.png" id="9_iwjrs"]
 
 [sub_resource type="Resource" id="Resource_ag5e7"]
 script = ExtResource("3_qt5j6")
@@ -43,22 +46,43 @@ item = SubResource("Resource_j1pk8")
 amount = 1
 metadata/_custom_type_script = "uid://q4fcmbp7u80m"
 
+[sub_resource type="Resource" id="Resource_q0w5e"]
+script = ExtResource("3_qt5j6")
+name = "DD Gem"
+texture = ExtResource("7_i25ax")
+metadata/_custom_type_script = "uid://dspkg2rgl3u7p"
+
 [sub_resource type="Resource" id="Resource_6171l"]
 script = ExtResource("2_4jsgq")
-amount = 0
+item = SubResource("Resource_q0w5e")
+amount = 1
 metadata/_custom_type_script = "uid://q4fcmbp7u80m"
+
+[sub_resource type="Resource" id="Resource_ccr5u"]
+script = ExtResource("3_qt5j6")
+name = "DW Gem"
+texture = ExtResource("8_ag5e7")
+metadata/_custom_type_script = "uid://dspkg2rgl3u7p"
 
 [sub_resource type="Resource" id="Resource_qt5j6"]
 script = ExtResource("2_4jsgq")
-amount = 0
+item = SubResource("Resource_ccr5u")
+amount = 1
 metadata/_custom_type_script = "uid://q4fcmbp7u80m"
 
-[sub_resource type="Resource" id="Resource_lhxak"]
+[sub_resource type="Resource" id="Resource_t05d1"]
+script = ExtResource("3_qt5j6")
+name = "WD Gem"
+texture = ExtResource("9_iwjrs")
+metadata/_custom_type_script = "uid://dspkg2rgl3u7p"
+
+[sub_resource type="Resource" id="Resource_c4u3g"]
 script = ExtResource("2_4jsgq")
-amount = 0
+item = SubResource("Resource_t05d1")
+amount = 1
 metadata/_custom_type_script = "uid://q4fcmbp7u80m"
 
 [resource]
 script = ExtResource("1_oi4ys")
-slots = Array[ExtResource("2_4jsgq")]([SubResource("Resource_oi4ys"), SubResource("Resource_4jsgq"), SubResource("Resource_sw55w"), SubResource("Resource_6171l"), SubResource("Resource_qt5j6"), SubResource("Resource_lhxak")])
+slots = Array[ExtResource("2_4jsgq")]([SubResource("Resource_oi4ys"), SubResource("Resource_4jsgq"), SubResource("Resource_sw55w"), SubResource("Resource_6171l"), SubResource("Resource_qt5j6"), SubResource("Resource_c4u3g")])
 metadata/_custom_type_script = "uid://c70ennkklo3ul"

@@ -6,6 +6,7 @@ class_name Item extends RigidBody2D
 @export var pickupDelay: float = 0.5
 @export var magnetStrength: float = 0.0  # 0 = no magnet effect
 @export var lifetime: float = 0 # Seconds before auto-removal (0 = infinite)
+@export var quantity: int
 
 var gravity = 980.0
 var canPickUp: bool = false

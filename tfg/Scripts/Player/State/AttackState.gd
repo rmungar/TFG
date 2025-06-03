@@ -7,7 +7,6 @@ class_name AttackState extends State
 @onready var heavyAttackState: HeavyAttackState = $"../HeavyAttackState"
 
 func enter() -> void:
-	print("Ataca")
 	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
 	normalAttackHitbox.monitoring = true
 	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")

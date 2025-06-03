@@ -470,6 +470,16 @@ debug_color = Color(0.631739, 0.344739, 1, 0.42)
 
 [node name="DashTimer" type="Timer" parent="."]
 
+[node name="RayCastRight" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(-4.80825e-07, 11)
+collision_mask = 524288
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(4.80825e-07, 11)
+collision_mask = 524288
+
 [connection signal="WokenUp" from="StateMachine/WakingUpState" to="." method="WokenUp"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="damageTaken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]
