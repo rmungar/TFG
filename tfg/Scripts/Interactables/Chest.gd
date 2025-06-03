@@ -33,7 +33,7 @@ func spawnItems():
 	var item = drop.instantiate()
 	item.itemName = itemName
 	
-	if itemName != "Money":
+	if itemName != "Credits":
 		item.itemTexture = load(itemTexture)
 	
 	var parent = get_parent()
