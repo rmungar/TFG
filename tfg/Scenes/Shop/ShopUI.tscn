@@ -150,8 +150,14 @@ flat = true
 script = ExtResource("4_5shte")
 
 [connection signal="Pressed" from="GridContainer/Inv_Slot/Button" to="." method="_on_buy"]
+[connection signal="pressed" from="GridContainer/Inv_Slot/Button" to="GridContainer/Inv_Slot/Button" method="_on_pressed"]
 [connection signal="Pressed" from="GridContainer/Inv_Slot2/Button2" to="." method="_on_buy"]
+[connection signal="pressed" from="GridContainer/Inv_Slot2/Button2" to="GridContainer/Inv_Slot2/Button2" method="_on_pressed"]
 [connection signal="Pressed" from="GridContainer/Inv_Slot3/Button3" to="." method="_on_buy"]
+[connection signal="pressed" from="GridContainer/Inv_Slot3/Button3" to="GridContainer/Inv_Slot3/Button3" method="_on_pressed"]
 [connection signal="Pressed" from="GridContainer/Inv_Slot4/Button4" to="." method="_on_buy"]
+[connection signal="pressed" from="GridContainer/Inv_Slot4/Button4" to="GridContainer/Inv_Slot4/Button4" method="_on_pressed"]
 [connection signal="Pressed" from="GridContainer/Inv_Slot5/Button5" to="." method="_on_buy"]
+[connection signal="pressed" from="GridContainer/Inv_Slot5/Button5" to="GridContainer/Inv_Slot5/Button5" method="_on_pressed"]
 [connection signal="Pressed" from="GridContainer/Inv_Slot6/Button6" to="." method="_on_buy"]
+[connection signal="pressed" from="GridContainer/Inv_Slot6/Button6" to="GridContainer/Inv_Slot6/Button6" method="_on_pressed"]

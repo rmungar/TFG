@@ -10206,6 +10206,7 @@ position = Vector2(-6, 30)
 shape = SubResource("RectangleShape2D_dbvfh")
 
 [node name="Merchant" parent="." instance=ExtResource("16_u4y2d")]
+process_mode = 3
 position = Vector2(1482, 237.5)
 merchantName = "GEM_Merchant"
 items = ExtResource("20_bms57")

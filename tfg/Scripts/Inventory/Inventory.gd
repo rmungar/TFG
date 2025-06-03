@@ -119,5 +119,4 @@ func equip_gem_on_double_click(slotIndex: int) -> void:
 
 		clickedSlot.item = null
 		clickedSlot.amount = 0
-	print("CHANGE")
 	update.emit()
