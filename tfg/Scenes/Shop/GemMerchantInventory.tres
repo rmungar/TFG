@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b4mugqg4dyueo" path="res://Assets/Tilesets/Simple Items/DashGem.png" id="4_lhxak"]
 [ext_resource type="Texture2D" uid="uid://dijbkl7h483wj" path="res://Assets/Tilesets/Simple Items/DoubleJumpGem.png" id="5_7y5pr"]
 [ext_resource type="Texture2D" uid="uid://bf8riguuiyrpy" path="res://Assets/Tilesets/Simple Items/WallJumpGem.png" id="6_i25ax"]
-[ext_resource type="Texture2D" uid="uid://dw62yg8t30qup" path="res://Assets/Tilesets/Simple Items/DoubleJumpAndDashGem.png" id="7_i25ax"]
-[ext_resource type="Texture2D" uid="uid://b4heekcttly67" path="res://Assets/Tilesets/Simple Items/DoubleJumpAndWallJumpGem.png" id="8_ag5e7"]
-[ext_resource type="Texture2D" uid="uid://bphcy5wab8frx" path="res://Assets/Tilesets/Simple Items/WallJumpAndDashGem.png" id="9_iwjrs"]
+[ext_resource type="Texture2D" uid="uid://dw62yg8t30qup" path="res://Assets/Tilesets/Simple Items/DDGem.png" id="7_i25ax"]
+[ext_resource type="Texture2D" uid="uid://b4heekcttly67" path="res://Assets/Tilesets/Simple Items/DWGEM.png" id="8_ag5e7"]
+[ext_resource type="Texture2D" uid="uid://bphcy5wab8frx" path="res://Assets/Tilesets/Simple Items/WDGem.png" id="9_iwjrs"]
 
 [sub_resource type="Resource" id="Resource_ag5e7"]
 script = ExtResource("3_qt5j6")

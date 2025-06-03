@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4heekcttly67"
-path="res://.godot/imported/DoubleJumpAndWallJumpGem.png-ea2a37eb212518edc3466322658d1269.ctex"
+uid="uid://bphcy5wab8frx"
+path="res://.godot/imported/WDGem.png-f4c7f334016c6773218e13eaa1b90108.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/Simple Items/DoubleJumpAndWallJumpGem.png"
-dest_files=["res://.godot/imported/DoubleJumpAndWallJumpGem.png-ea2a37eb212518edc3466322658d1269.ctex"]
+source_file="res://Assets/Tilesets/Simple Items/WDGem.png"
+dest_files=["res://.godot/imported/WDGem.png-f4c7f334016c6773218e13eaa1b90108.ctex"]
 
 [params]
 

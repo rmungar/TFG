@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bphcy5wab8frx"
-path="res://.godot/imported/WallJumpAndDashGem.png-c6cc1e33b378c77d68824e721603c736.ctex"
+uid="uid://b4heekcttly67"
+path="res://.godot/imported/DWGEM.png-62a1300b9dda7f85d8d702c9ebee4f90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/Simple Items/WallJumpAndDashGem.png"
-dest_files=["res://.godot/imported/WallJumpAndDashGem.png-c6cc1e33b378c77d68824e721603c736.ctex"]
+source_file="res://Assets/Tilesets/Simple Items/DWGEM.png"
+dest_files=["res://.godot/imported/DWGEM.png-62a1300b9dda7f85d8d702c9ebee4f90.ctex"]
 
 [params]
 

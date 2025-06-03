@@ -87,9 +87,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	canAttack = inventory.search("AttackModule")
 	canHeal = inventory.search("HealthModule")
-	canDash = (inventory.isGemEquipped("Dash Gem") or inventory.isGemEquipped("DW Gem"))
-	canDoubleJump = (inventory.isGemEquipped("Double Jump Gem") or inventory.isGemEquipped("DD Gem"))
-	canWallJump = (inventory.isGemEquipped("Wall Jump Gem") or inventory.isGemEquipped("WD Gem"))
+	canDash = (inventory.isGemEquipped("Dash Gem") or inventory.isGemEquipped("WD Gem") or inventory.isGemEquipped("DD Gem"))   
+	canDoubleJump = (inventory.isGemEquipped("Double Jump Gem") or inventory.isGemEquipped("DD Gem") or inventory.isGemEquipped("DW Gem"))  
+	canWallJump = (inventory.isGemEquipped("Wall Jump Gem") or inventory.isGemEquipped("WD Gem") or inventory.isGemEquipped("DW Gem")) 
 	
 	isAnyRayCastColliding = rayCastLeft.is_colliding() or rayCastRight.is_colliding()
 	

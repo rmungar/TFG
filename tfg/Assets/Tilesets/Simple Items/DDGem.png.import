@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw62yg8t30qup"
-path="res://.godot/imported/DoubleJumpAndDashGem.png-20cc1803c9d250d21609afbf97d7eecd.ctex"
+path="res://.godot/imported/DDGem.png-4074409df029990263bbe0dfe471ee1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/Simple Items/DoubleJumpAndDashGem.png"
-dest_files=["res://.godot/imported/DoubleJumpAndDashGem.png-20cc1803c9d250d21609afbf97d7eecd.ctex"]
+source_file="res://Assets/Tilesets/Simple Items/DDGem.png"
+dest_files=["res://.godot/imported/DDGem.png-4074409df029990263bbe0dfe471ee1c.ctex"]
 
 [params]
 
