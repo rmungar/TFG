@@ -6,7 +6,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
-func save_game(save_file: int, player: Player, tutorial_done: bool):
+func save_game(save_file: int, player: Player, tutorial_done: bool, talkedToMerchant: bool, talkedToIsilian: bool):
 	var path := "user://gamefile" + str(save_file) + ".save"
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	
@@ -22,7 +22,9 @@ func save_game(save_file: int, player: Player, tutorial_done: bool):
 		"lastTileMap": player.lastTilemap,
 		"money": player.money,
 		"inventory": player.inventory.serialize(),  
-		"tutorialDone": tutorial_done
+		"tutorialDone": tutorial_done,
+		"spokenToIsilian": talkedToIsilian,
+		"spokenToMerchant": talkedToMerchant
 	}
 	file.store_line(JSON.stringify(data))
 	file.close()
@@ -41,6 +43,8 @@ func load_game(save_file: int) -> Dictionary:
 	var result = JSON.parse_string(line)
 	if result is Dictionary and result.has("HP") and result.has("inventory"):
 		GameManager.hasLoadedGame = true
+		GameManager.talkedToIsilian = result.get("spokenToIsilian", false)
+		GameManager.talkedToMerchant = result.get("spokenToMerchant", false)
 		return result
 	else:
 		push_error("Error al parsear el archivo de guardado.")

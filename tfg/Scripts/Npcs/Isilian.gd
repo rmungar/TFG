@@ -6,6 +6,7 @@ var spoken = false
 
 func _ready():
 	play("default")
+	spoken = GameManager.talkedToIsilian
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -16,3 +17,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		await Dialogic.timeline_ended
 		GameManager.setDialogState(false) 
 		spoken = true
+		GameManager.talkedToIsilian = true

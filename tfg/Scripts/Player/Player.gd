@@ -124,8 +124,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if isAlive:
-		handleWallJump()
-		handleDoubleJump()
+		
+		if canMove:
+			handleWallJump()
+			handleDoubleJump()
 		if is_on_floor():
 			isWallJumping = false
 			lastSafePosition = global_position

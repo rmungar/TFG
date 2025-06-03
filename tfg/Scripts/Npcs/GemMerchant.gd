@@ -3,7 +3,7 @@ class_name GemMerchant extends Merchant
 var hasTalkedBefore := false
 
 func _ready():
-	pass
+	hasTalkedBefore = GameManager.talkedToMerchant
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 			openShop()
 		else:
 			hasTalkedBefore = true
+			GameManager.talkedToMerchant = true
 	elif playerReference and Input.is_action_just_pressed("Interact") and shopUI.visible:
 		closeShop()
 		if hasTalkedBefore: endInteraction()

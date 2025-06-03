@@ -9931,22 +9931,22 @@ texture = ExtResource("9_7ro7r")
 
 [node name="Chest" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(1881, 935)
-itemName = "Money"
+itemName = "Credits"
 itemTexture = "NoAsset"
 
 [node name="Chest2" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(-944, 146)
-itemName = "Money"
+itemName = "Credits"
 itemTexture = "NoAsset"
 
 [node name="Chest3" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(-1897, 343)
-itemName = "Money"
+itemName = "Credits"
 itemTexture = "NoAsset"
 
 [node name="Chest4" parent="." instance=ExtResource("36_8ud1h")]
 position = Vector2(3936, 1287)
-itemName = "Money"
+itemName = "Credits"
 itemTexture = "NoAsset"
 
 [node name="Sprite2D6" type="Sprite2D" parent="."]

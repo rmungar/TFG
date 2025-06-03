@@ -8,6 +8,10 @@ var currentSaveFile: int = 1
 var temporalPlayerData: Dictionary
 var tutorial_done: bool = false
 var isShopInScreen: bool = false
+var talkedToMerchant: bool = false
+var talkedToIsilian: bool = false
+
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -56,4 +60,4 @@ func inventoryClosed():
 
 
 func onSave(player: Player, tutorialDone: bool):
-	FileUtils.save_game(currentSaveFile, player, tutorialDone)
+	FileUtils.save_game(currentSaveFile, player, tutorialDone, talkedToMerchant, talkedToIsilian)
