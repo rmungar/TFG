@@ -10,11 +10,22 @@ var tutorial_done: bool = false
 var isShopInScreen: bool = false
 var talkedToMerchant: bool = false
 var talkedToIsilian: bool = false
+var counting: bool = true
+var totalPlayTime: float = 0.0
+var playerDataById: Dictionary = {}
 
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	ApiHelper.connect("requestCompleted", onApiResponse)
+	ApiHelper.get_all_players()
+
+
+
+func _process(delta: float) -> void:
+	if counting:
+		totalPlayTime += delta
 
 
 func toTutorialScreen():
@@ -34,6 +45,7 @@ func toOptionsScreen():
 
 
 func QuitGame():
+	print("Total Play Time: ", formatPlayTime())
 	get_tree().quit()
 
 
@@ -60,4 +72,33 @@ func inventoryClosed():
 
 
 func onSave(player: Player, tutorialDone: bool):
+	print(playerDataById)
 	FileUtils.save_game(currentSaveFile, player, tutorialDone, talkedToMerchant, talkedToIsilian)
+	if GameManager.playerDataById.has("2"):
+		ApiHelper.update_player()
+	else: 
+		ApiHelper.create_player()
+
+
+func onApiResponse(result: bool, body):
+	if result and body is Array:
+		playerDataById.clear()
+		for player in body:
+			var id = player.get("PlayerId", null)
+			if id != null:
+				playerDataById[id] = player
+	else:
+		print(body)
+		if result:
+			ApiHelper.get_all_players()
+		else:
+			print("NO FUE EXITOSA LA PETICIÓN")
+			
+	print(playerDataById)
+
+
+
+func formatPlayTime():
+	var minutes = int(totalPlayTime) / 60
+	var seconds = int(totalPlayTime) % 60
+	return "%02d:%02d" % [minutes, seconds]

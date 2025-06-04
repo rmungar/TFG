@@ -19,20 +19,28 @@ func _ready():
 
 
 func updateSlotsUi():
-	for i in range(1,4):
+	for i in range(1, 4):
+		var label = slotButtons[i-1].get_node("NinePatchRect/Label")
+		var playTimeText := ""
 		if FileAccess.file_exists("user://gamefile%d.save" % i):
 			var data = FileUtils.load_game(i)
 			var tutorial_done = data.get("tutorialDone", false)
-			slotButtons[i-1].get_node("NinePatchRect").get_node("Label").text = "Partida %d - Tutorial: %s" % [i, "✔" if tutorial_done else "❌"]
+			var id := str(i)
+			if GameManager.playerDataById.has(id):
+				var time = GameManager.playerDataById[id].get("TotalPlayTime", 0.0)
+				var totalMinutes := int(time * 60)
+				var hours := totalMinutes / 60
+				var minutes := totalMinutes % 60
+				playTimeText = " | Playtime: %d:%02d" % [hours, minutes]
+			label.text = "Tutorial: %s%s" % ["✔️" if tutorial_done else "❌", playTimeText]
 		else:
-			slotButtons[i-1].get_node("NinePatchRect").get_node("Label").text = "Empty"
-			var textureButton: TextureButton = slotButtons[i-1].get_node("NinePatchRect").get_node("PlayButton")
+			label.text = "Empty"
+			var textureButton: TextureButton = slotButtons[i-1].get_node("NinePatchRect/PlayButton")
 			textureButton.texture_normal = NewGameTextureNoBG
 			textureButton.texture_pressed = NewGameTextureBG
 			textureButton.texture_hover = NewGameTextureBG
 			textureButton.texture_focused = NewGameTextureNoBG
 	GameManager.hasLoadedGame = false
-
 
 
 func _on_slot_pressed(slot_index: int):
@@ -48,6 +56,7 @@ func _on_wants_to_delete(saveFileNumber: int) -> void:
 		var dir := DirAccess.open("user://")
 		if dir:
 			dir.remove("gamefile%d.save" % saveFileNumber)
+			ApiHelper.delete_player(saveFileNumber)
 			print("Partida %d borrada" % saveFileNumber)
 		else:
 			push_error("No se pudo abrir el directorio para borrar.")
@@ -64,6 +73,9 @@ func _on_wants_to_play(saveFileNumber: int) -> void:
 	var tutorial_done = data.get("tutorialDone", false)
 	
 	var sceneToLoad := "res://Scenes/Screens/WorldMap.tscn" if tutorial_done else "res://Scenes/Screens/TutorialScreen.tscn"
+	
+	if !GameManager.playerDataById.has(str(saveFileNumber)):
+		ApiHelper.create_player()
 	
 	var loadingScreen = load("res://Scenes/Screens/LoadingScreen.tscn").instantiate()
 	loadingScreen.targetScene = sceneToLoad
