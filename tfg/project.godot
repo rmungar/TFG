@@ -24,6 +24,7 @@ BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 FileUtils="*res://Scripts/FileUtils.gd"
 ApiHelper="*res://Scripts/APIHelper.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
 
 [dialogic]
 
