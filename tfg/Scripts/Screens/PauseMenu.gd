@@ -19,6 +19,7 @@ func _on_continue_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
+	GameManager.counting = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Screens/MainMenu.tscn")
 

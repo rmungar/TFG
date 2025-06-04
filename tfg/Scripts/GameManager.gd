@@ -10,7 +10,7 @@ var tutorial_done: bool = false
 var isShopInScreen: bool = false
 var talkedToMerchant: bool = false
 var talkedToIsilian: bool = false
-var counting: bool = true
+var counting: bool = false
 var totalPlayTime: float = 0.0
 var playerDataById: Dictionary = {}
 
@@ -74,7 +74,7 @@ func inventoryClosed():
 func onSave(player: Player, tutorialDone: bool):
 	print(playerDataById)
 	FileUtils.save_game(currentSaveFile, player, tutorialDone, talkedToMerchant, talkedToIsilian)
-	if GameManager.playerDataById.has("2"):
+	if GameManager.playerDataById.has(str(GameManager.currentSaveFile)):
 		ApiHelper.update_player()
 	else: 
 		ApiHelper.create_player()

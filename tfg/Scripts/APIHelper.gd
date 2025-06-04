@@ -56,12 +56,12 @@ func create_player():
 	_send_request(HTTPClient.METHOD_POST, "/api/PlayerInfo", playerData)
 
 func update_player():
+	print("Update TPT: ", GameManager.totalPlayTime)
+	var roundedPlayTime = round(GameManager.totalPlayTime * 100.0) / 100.0
 	var playerData: Dictionary = {
-		"updatedPlayerInfo": {
-			"PlayerId" : str(GameManager.currentSaveFile),
-			"TotalPlayTime" : GameManager.totalPlayTime,
-			"LastSession": Time.get_datetime_string_from_unix_time(Time.get_unix_time_from_system()) + "Z"
-		}
+		"PlayerId" : str(GameManager.currentSaveFile),
+		"TotalPlayTime" : roundedPlayTime,
+		"LastSession": Time.get_datetime_string_from_unix_time(Time.get_unix_time_from_system()) + "Z"
 	}
 	_send_request(HTTPClient.METHOD_PUT, "/api/PlayerInfo/%s" % GameManager.currentSaveFile, playerData)
 

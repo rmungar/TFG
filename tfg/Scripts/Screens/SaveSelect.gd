@@ -28,9 +28,8 @@ func updateSlotsUi():
 			var id := str(i)
 			if GameManager.playerDataById.has(id):
 				var time = GameManager.playerDataById[id].get("TotalPlayTime", 0.0)
-				var totalMinutes := int(time * 60)
-				var hours := totalMinutes / 60
-				var minutes := totalMinutes % 60
+				var hours = time / 60
+				var minutes = int(time) % int(60)
 				playTimeText = " | Playtime: %d:%02d" % [hours, minutes]
 			label.text = "Tutorial: %s%s" % ["✔️" if tutorial_done else "❌", playTimeText]
 		else:
@@ -77,6 +76,7 @@ func _on_wants_to_play(saveFileNumber: int) -> void:
 	if !GameManager.playerDataById.has(str(saveFileNumber)):
 		ApiHelper.create_player()
 	
+	GameManager.counting = true
 	var loadingScreen = load("res://Scenes/Screens/LoadingScreen.tscn").instantiate()
 	loadingScreen.targetScene = sceneToLoad
 	get_tree().root.add_child(loadingScreen)
