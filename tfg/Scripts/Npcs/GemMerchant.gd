@@ -5,13 +5,10 @@ var hasTalkedBefore := false
 func _ready():
 	hasTalkedBefore = GameManager.talkedToMerchant
 
-func _on_Area2D_body_entered(body):
-	if body.name == "Player":
-		start_interaction()
-
 
 func _process(delta: float) -> void:
 	if playerReference and Input.is_action_just_pressed("Interact") and !shopUI.visible:
+		print(hasTalkedBefore)
 		start_interaction()
 		if hasTalkedBefore: 
 			await Dialogic.timeline_ended

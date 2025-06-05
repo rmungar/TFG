@@ -16,8 +16,6 @@ func _ready():
 	updateSlotsUi()
 	pass
 
-
-
 func updateSlotsUi():
 	for i in range(1, 4):
 		var label = slotButtons[i-1].get_node("NinePatchRect/Label")
@@ -42,13 +40,6 @@ func updateSlotsUi():
 	GameManager.hasLoadedGame = false
 
 
-func _on_slot_pressed(slot_index: int):
-	GameManager.currentSaveFile = slot_index
-	GameManager.isLoadingGame = true
-	get_tree().change_scene_to_file("res://Scenes/Screens/WorldMap.tscn") 
-
-
-
 func _on_wants_to_delete(saveFileNumber: int) -> void:
 	var path = "user://gamefile%d.save" % saveFileNumber
 	if FileAccess.file_exists(path):
@@ -70,7 +61,8 @@ func _on_wants_to_play(saveFileNumber: int) -> void:
 	
 	var data = FileUtils.load_game(saveFileNumber)
 	var tutorial_done = data.get("tutorialDone", false)
-	
+	GameManager.talkedToIsilian = data.get("spokenToIsilian", false)
+	GameManager.talkedToMerchant = data.get("spokenToMerchant", false)
 	var sceneToLoad := "res://Scenes/Screens/WorldMap.tscn" if tutorial_done else "res://Scenes/Screens/TutorialScreen.tscn"
 	
 	if !GameManager.playerDataById.has(str(saveFileNumber)):

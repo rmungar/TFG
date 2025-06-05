@@ -22,10 +22,15 @@ func _ready() -> void:
 	ApiHelper.get_all_players()
 
 
-
 func _process(delta: float) -> void:
 	if counting:
 		totalPlayTime += delta
+		
+	if talkedToIsilian:
+		print("AQUI")
+	
+	if talkedToMerchant:
+		print("ALLI")
 
 
 func toTutorialScreen():
@@ -78,6 +83,7 @@ func onSave(player: Player, tutorialDone: bool):
 		ApiHelper.update_player()
 	else: 
 		ApiHelper.create_player()
+	ApiHelper.get_all_players()
 
 
 func onApiResponse(result: bool, body):

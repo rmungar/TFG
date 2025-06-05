@@ -57,7 +57,7 @@ func create_player():
 
 func update_player():
 	print("Update TPT: ", GameManager.totalPlayTime)
-	var roundedPlayTime = round(GameManager.totalPlayTime * 100.0) / 100.0
+	var roundedPlayTime = GameManager.totalPlayTime
 	var playerData: Dictionary = {
 		"PlayerId" : str(GameManager.currentSaveFile),
 		"TotalPlayTime" : roundedPlayTime,

@@ -43,8 +43,6 @@ func load_game(save_file: int) -> Dictionary:
 	var result = JSON.parse_string(line)
 	if result is Dictionary and result.has("HP") and result.has("inventory"):
 		GameManager.hasLoadedGame = true
-		GameManager.talkedToIsilian = result.get("spokenToIsilian", false)
-		GameManager.talkedToMerchant = result.get("spokenToMerchant", false)
 		return result
 	else:
 		push_error("Error al parsear el archivo de guardado.")
