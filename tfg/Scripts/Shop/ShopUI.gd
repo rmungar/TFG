@@ -8,12 +8,14 @@ var playerReference: Player
 var playerInventory: Inventory = preload("res://Scenes/Inventory/PlayerInv.tres")  
 var prices = [200, 200, 200, 400, 400, 400]
 
+signal ReturnItem(item: InventoryItem)
+
 func _ready():
 	playerReference = get_tree().get_first_node_in_group("Player")
 	center_on_screen()
 	visible = false
 	shopInventory.update.connect(update_slots)
-	
+	$NinePatchRect2.visible = false
 	$Label.text = str(prices[0])
 	$Label2.text = str(prices[1])
 	$Label3.text = str(prices[2])
@@ -33,10 +35,12 @@ func open():
 	GameManager.setShopInScreenState(true)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+
 func close():
 	visible = false
 	GameManager.setShopInScreenState(false)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	$NinePatchRect2.visible = false
 
 
 func center_on_screen():
@@ -62,3 +66,9 @@ func _on_buy(index: int) -> void:
 			playerReference.updateMoney.emit(playerReference.money)
 		else:
 			push_warning("No tienes suficiente dinero para comprar: %s" % item.name)
+
+
+func getItem(index: int):
+	$NinePatchRect2.visible = true
+	var item = shopInventory.getItemName(index)
+	ReturnItem.emit(item)

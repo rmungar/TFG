@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://r7t4lgqyleda"]
+[gd_scene load_steps=6 format=3 uid="uid://r7t4lgqyleda"]
 
 [ext_resource type="Script" uid="uid://blwyhy6al1pgq" path="res://Scripts/Shop/ShopUI.gd" id="1_cy4hf"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="1_oxmpc"]
 [ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvUISlot.tscn" id="3_kkty7"]
 [ext_resource type="Script" uid="uid://p0xvk8pdx4ao" path="res://Scripts/Inventory/InvButton.gd" id="4_5shte"]
+[ext_resource type="Script" uid="uid://dxsmfqxygo5k2" path="res://Scripts/Inventory/ItemDescriptionBox.gd" id="5_e3j0k"]
 
 [node name="ShopUI" type="Control"]
 process_mode = 3
@@ -33,10 +34,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 164.0
-offset_top = 20.0
-offset_right = 256.0
-offset_bottom = 43.0
+offset_left = 165.0
+offset_top = 7.0
+offset_right = 257.0
+offset_bottom = 30.0
 text = "SHOP"
 horizontal_alignment = 1
 
@@ -68,9 +69,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -121.0
-offset_top = -47.0
+offset_top = -77.0
 offset_right = 121.0
-offset_bottom = 75.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -152,60 +153,110 @@ script = ExtResource("4_5shte")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 120.0
-offset_top = 131.0
+offset_top = 101.0
 offset_right = 160.0
-offset_bottom = 154.0
+offset_bottom = 124.0
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
 offset_left = 220.0
-offset_top = 131.0
+offset_top = 101.0
 offset_right = 260.0
-offset_bottom = 154.0
+offset_bottom = 124.0
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
 offset_left = 320.0
-offset_top = 131.0
+offset_top = 101.0
 offset_right = 360.0
-offset_bottom = 154.0
+offset_bottom = 124.0
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 0
 offset_left = 120.0
-offset_top = 210.0
+offset_top = 180.0
 offset_right = 160.0
-offset_bottom = 233.0
+offset_bottom = 203.0
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
 layout_mode = 0
 offset_left = 220.0
-offset_top = 211.0
+offset_top = 181.0
 offset_right = 260.0
-offset_bottom = 234.0
+offset_bottom = 204.0
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="."]
 layout_mode = 0
 offset_left = 320.0
-offset_top = 210.0
+offset_top = 180.0
 offset_right = 360.0
-offset_bottom = 233.0
+offset_bottom = 203.0
 horizontal_alignment = 1
 
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_oxmpc")
+region_rect = Rect2(19, 67, 42, 42)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ItemDescriptionBox" type="ColorRect" parent="NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -29.0
+offset_right = -3.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.111197, 0.111197, 0.111197, 1)
+script = ExtResource("5_e3j0k")
+
+[node name="ItemDescription" type="Label" parent="NinePatchRect2/ItemDescriptionBox"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[connection signal="ReturnItem" from="." to="NinePatchRect2/ItemDescriptionBox" method="_on_shop_ui_return_item"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot/Button" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button" to="." method="_on_buy"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button" to="NinePatchRect/GridContainer/Inv_Slot/Button" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot2/Button2" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button2" to="." method="_on_buy"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button2" to="NinePatchRect/GridContainer/Inv_Slot2/Button2" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot3/Button3" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button3" to="." method="_on_buy"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button3" to="NinePatchRect/GridContainer/Inv_Slot3/Button3" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot4/Button4" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button4" to="." method="_on_buy"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button4" to="NinePatchRect/GridContainer/Inv_Slot4/Button4" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot5/Button5" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button5" to="." method="_on_buy"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button5" to="NinePatchRect/GridContainer/Inv_Slot5/Button5" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot6/Button6" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button6" to="." method="_on_buy"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button6" to="NinePatchRect/GridContainer/Inv_Slot6/Button6" method="_on_pressed"]
