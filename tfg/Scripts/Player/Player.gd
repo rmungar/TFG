@@ -214,8 +214,8 @@ func apply_saved_data(data: Dictionary):
 
 	HP = data.get("HP", MaxHP)
 	updateHealth.emit(HP, MaxHP)
-	updateMoney.emit(money)
 	money = data.get("money", 0)
+	updateMoney.emit(money)
 	var checkpoint = data.get("lastCheckPoint", Vector2.ZERO)
 	if typeof(checkpoint) == TYPE_STRING:
 		checkpoint = parse_vector2_from_string(checkpoint)

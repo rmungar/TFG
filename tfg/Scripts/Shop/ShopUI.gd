@@ -48,7 +48,7 @@ func center_on_screen():
 	position = (viewport_size - size) * 0.5
 
 func _on_buy(index: int) -> void:
-	print(index)
+	
 	var item_slot = shopInventory.slots[index]
 	if item_slot and item_slot.item:
 		var item = item_slot.item
@@ -61,11 +61,11 @@ func _on_buy(index: int) -> void:
 			item_slot.amount -= 1
 			if item_slot.amount <= 0:
 				item_slot.item = null
-
+			AudioManager.play_sound("res://Assets/Sounds/buy.mp3", -30.0)
 			shopInventory.update.emit()
 			playerReference.updateMoney.emit(playerReference.money)
 		else:
-			push_warning("No tienes suficiente dinero para comprar: %s" % item.name)
+			AudioManager.play_sound("res://Assets/Sounds/buyDenied.mp3", -30.0)
 
 
 func getItem(index: int):
