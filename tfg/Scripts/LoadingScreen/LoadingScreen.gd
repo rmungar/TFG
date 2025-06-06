@@ -4,6 +4,7 @@ var targetScene: String
 
 func _ready():
 	
+	AudioManager.stop_music()
 	
 	var animation = randi_range(1,3)
 	var animationName = "default" + str(animation)

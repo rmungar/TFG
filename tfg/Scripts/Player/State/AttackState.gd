@@ -7,16 +7,18 @@ class_name AttackState extends State
 @onready var heavyAttackState: HeavyAttackState = $"../HeavyAttackState"
 
 func enter() -> void:
+	
 	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
 	normalAttackHitbox.monitoring = true
 	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
 	normalAttackCollisionShape.disabled = false
 	
 	player.velocity.x = 0
+	AudioManager.play_sound("res://Assets/Sounds/Sword Woosh B.wav", -40.0)
 	player.animationPlayer.play("Attack")
 	
 	await player.animationPlayer.animation_finished
-	await get_tree().create_timer(0.2).timeout 
+	await get_tree().create_timer(0.1).timeout 
 	
 	normalAttackHitbox.monitoring = false
 	normalAttackCollisionShape.disabled = true

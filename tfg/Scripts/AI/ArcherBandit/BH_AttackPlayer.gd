@@ -37,6 +37,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		anim_player.animation_finished.disconnect(_on_animation_finished)
 	
 	anim_player.animation_finished.connect(_on_animation_finished.bind(actor, blackboard))
+	AudioManager.play_sound("res://Assets/Sounds/Heavy Arrow B.wav", -40.0)
 	anim_player.play(animName)
 	
 	attack_completed = false

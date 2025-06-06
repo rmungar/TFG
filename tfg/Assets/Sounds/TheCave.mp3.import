@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/TheCave.mp3-6e4855a3f6c651986fd3c23eba7a48c2.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

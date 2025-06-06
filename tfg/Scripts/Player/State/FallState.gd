@@ -10,6 +10,7 @@ func enter() -> void:
 
 # What happens whenever our character leaves a state
 func exit() -> void:
+	AudioManager.play_sound("res://Assets/Sounds/fall.mp3", -50.0)
 	pass
 	
 

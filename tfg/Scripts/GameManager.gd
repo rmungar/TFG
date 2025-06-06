@@ -25,13 +25,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if counting:
 		totalPlayTime += delta
-		
-	if talkedToIsilian:
-		print("AQUI")
-	
-	if talkedToMerchant:
-		print("ALLI")
-
 
 func toTutorialScreen():
 	get_tree().change_scene_to_file(ScreenManager.tutorialScreen)
@@ -39,10 +32,6 @@ func toTutorialScreen():
 
 func toSaveFilesScreen():
 	get_tree().change_scene_to_file(ScreenManager.saveFilesScreen)
-
-
-func toCreditsScreen():
-	pass
 
 
 func toOptionsScreen():

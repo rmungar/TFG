@@ -7,12 +7,14 @@ class_name AerialAttackState extends State
 
 # What happens whenever our character enters the state
 func enter() -> void:
+	
 	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
 	normalAttackHitbox.monitoring = true
 	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
 	normalAttackCollisionShape.disabled = false
 	
 	player.velocity.x *= 0.7
+	AudioManager.play_sound("res://Assets/Sounds/Sword Woosh B.wav", -40.0)
 	player.animationPlayer.play("Attack")
 	
 	await player.animationPlayer.animation_finished

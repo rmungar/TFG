@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 	else:
 		self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	if playerReference and Input.is_action_just_pressed("Interact"):
+		AudioManager.play_sound("res://Assets/Sounds/Computer Ok.mp3", -30.0)
 		playerReference.lastCheckPoint = global_position
 		playerReference.lastTilemap = tilemap.name
 		if requiredItem == "" or playerReference.has_item(requiredItem):

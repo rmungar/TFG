@@ -13,6 +13,7 @@ var aliveEnemies = 4
 signal tutorialDone()
 
 func _ready():
+	AudioManager.play_sound("res://Assets/Sounds/TheCave.mp3", -47.0)
 	print(GameManager.hasLoadedGame)
 	if GameManager.isLoadingGame:
 		var data = FileUtils.load_game(GameManager.currentSaveFile)

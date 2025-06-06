@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cijmjm2ulth6e"
+path="res://.godot/imported/Massive Strike.wav-49b4c2a84c01ec04b9720d434cfa76ef.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Massive Strike.wav"
+dest_files=["res://.godot/imported/Massive Strike.wav-49b4c2a84c01ec04b9720d434cfa76ef.sample"]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -15,25 +15,20 @@ func _process(delta: float) -> void:
 
 
 func _on_continue_pressed() -> void:
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.wav")
 	close()
 
 
 func _on_main_menu_pressed() -> void:
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.wav")
 	GameManager.counting = false
 	ApiHelper.get_all_players()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Screens/MainMenu.tscn")
 
 
-func _on_save_pressed() -> void:
-	var player: Player = get_tree().get_first_node_in_group("Player")
-	$Sprite2D.visible = true
-	GameManager.onSave(player, GameManager.tutorial_done)
-	await get_tree().create_timer(1).timeout
-	$Sprite2D.visible = false
-
-
 func _on_quit_pressed() -> void:
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.wav")
 	get_tree().quit()
 
 

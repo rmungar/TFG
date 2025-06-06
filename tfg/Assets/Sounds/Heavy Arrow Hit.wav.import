@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://boel7s6mvywxv"
+path="res://.godot/imported/Heavy Arrow Hit.wav-19d102362f9e593901506e4e696c5da0.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Heavy Arrow Hit.wav"
+dest_files=["res://.godot/imported/Heavy Arrow Hit.wav-19d102362f9e593901506e4e696c5da0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

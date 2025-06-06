@@ -242,6 +242,7 @@ func parse_vector2_from_string(pos_string: String) -> Vector2:
 func handleWallJump():
 	if canWallJump and !isWallJumping and Input.is_action_just_pressed("Jump") and isAnyRayCastColliding:
 		isWallJumping = true
+		AudioManager.play_sound("res://Assets/Sounds/jump.wav",-40.0)
 		if rayCastLeft.is_colliding():
 			$Sprite2D.flip_h = true
 			facingDirection = -1
@@ -261,6 +262,7 @@ func handleDoubleJump():
 		if facingDirection == 0:
 			velocity.x = 0
 		velocity.y = jumpStrength
+		AudioManager.play_sound("res://Assets/Sounds/jump.wav",-40.0)
 		animationPlayer.play("Jump")
 
 

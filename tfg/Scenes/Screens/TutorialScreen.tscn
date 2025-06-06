@@ -1831,6 +1831,10 @@ shape = SubResource("RectangleShape2D_e4dp3")
 position = Vector2(72, 219)
 texture = ExtResource("24_vvlti")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("24_74vp3")]
+
 [connection signal="tutorialDone" from="." to="TheSwordMaster" method="_on_tutorial_scene_tutorial_done"]
 [connection signal="Interactable" from="SavePoint" to="TheSwordMaster" method="onPlayerInteract"]
 [connection signal="save" from="SavePoint" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]

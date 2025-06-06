@@ -13,6 +13,7 @@ func _ready():
 	# Launch arrow
 	gravity_scale = 3.0
 	apply_central_impulse(Vector2.DOWN * launchForce)
+	AudioManager.play_sound("res://Assets/Sounds/Heavy Arrow Hit.wav", -30.0)
 	
 	# Auto-delete after 5 seconds if nothing hit
 	await get_tree().create_timer(5.0).timeout

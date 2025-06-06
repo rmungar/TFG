@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://c6i4eguqa32h4"]
+[gd_scene load_steps=69 format=3 uid="uid://c6i4eguqa32h4"]
 
 [ext_resource type="Script" uid="uid://caj8fxiqx77gm" path="res://Scripts/MainMenu/MainMenu.gd" id="1_3oy6j"]
 [ext_resource type="Texture2D" uid="uid://l10w704tc4jx" path="res://Assets/Tilesets/Peaks Of Lightning/1- Background - Sky (1).png" id="2_cc4ve"]
@@ -13,9 +13,7 @@
 [ext_resource type="Theme" uid="uid://bk03gqon2xhhq" path="res://Themes/MainMenuButtons.tres" id="12_io8hu"]
 [ext_resource type="Texture2D" uid="uid://dffm61t5pgw6b" path="res://Assets/UI/UI - Words/Words With BG/UI - Words5.png" id="12_ug8uf"]
 [ext_resource type="Texture2D" uid="uid://sg5b31gbsi8k" path="res://Assets/UI/UI - Words/Words without BG/UI - Words9.png" id="14_ug8uf"]
-[ext_resource type="Texture2D" uid="uid://bl7v4tjhcye28" path="res://Assets/UI/UI - Words/Words without BG/UI - Words6.png" id="15_4ice4"]
 [ext_resource type="Texture2D" uid="uid://qik72clutd8u" path="res://Assets/UI/UI - Words/Words With BG/UI - Words9.png" id="17_q8f6b"]
-[ext_resource type="Texture2D" uid="uid://cc5ntnapakix3" path="res://Assets/UI/UI - Words/Words With BG/UI - Words6.png" id="19_io8hu"]
 [ext_resource type="Texture2D" uid="uid://14iy6ef0f6u" path="res://Assets/UI/UI - Words/Words without BG/UI - Words3.png" id="20_ag6gj"]
 [ext_resource type="Texture2D" uid="uid://wcsh4w1lwjk8" path="res://Assets/UI/UI - Words/Words With BG/UI - Words3.png" id="21_mqkvh"]
 
@@ -458,7 +456,7 @@ motion_mirroring = Vector2(480, 0)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Moon"]
-position = Vector2(280, 97)
+position = Vector2(355, 70)
 texture = ExtResource("8_ag6gj")
 flip_h = true
 metadata/_edit_lock_ = true
@@ -527,24 +525,6 @@ collision_mask = 1073741824
 position = Vector2(46.4286, 16.4286)
 shape = SubResource("RectangleShape2D_4efst")
 
-[node name="Credits" type="TextureButton" parent="CharacterBody2D/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("12_io8hu")
-texture_normal = ExtResource("15_4ice4")
-texture_pressed = ExtResource("19_io8hu")
-texture_hover = ExtResource("19_io8hu")
-texture_focused = ExtResource("19_io8hu")
-stretch_mode = 6
-
-[node name="Area2D" type="Area2D" parent="CharacterBody2D/Buttons/Credits"]
-collision_layer = 536870912
-collision_mask = 1073741824
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Buttons/Credits/Area2D"]
-position = Vector2(46.4286, 16.4286)
-shape = SubResource("RectangleShape2D_4efst")
-
 [node name="Quit" type="TextureButton" parent="CharacterBody2D/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -569,9 +549,6 @@ shape = SubResource("RectangleShape2D_4efst")
 [connection signal="pressed" from="CharacterBody2D/Buttons/Options" to="." method="onOptionsButtonPressed"]
 [connection signal="area_entered" from="CharacterBody2D/Buttons/Options/Area2D" to="." method="_on_play_options_2d_area_entered"]
 [connection signal="area_exited" from="CharacterBody2D/Buttons/Options/Area2D" to="." method="_on_play_options_2d_area_exited"]
-[connection signal="pressed" from="CharacterBody2D/Buttons/Credits" to="." method="onCreditsButtonPressed"]
-[connection signal="area_entered" from="CharacterBody2D/Buttons/Credits/Area2D" to="." method="_on_play_credits_2d_area_entered"]
-[connection signal="area_exited" from="CharacterBody2D/Buttons/Credits/Area2D" to="." method="_on_credits_area_2d_area_exited"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Quit" to="." method="onQuitButtonPressed"]
 [connection signal="area_entered" from="CharacterBody2D/Buttons/Quit/Area2D" to="." method="_on_play_quit_2d_area_entered"]
 [connection signal="area_exited" from="CharacterBody2D/Buttons/Quit/Area2D" to="." method="_on_quit_area_2d_area_exited"]

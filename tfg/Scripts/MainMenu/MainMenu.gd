@@ -2,7 +2,6 @@ extends Control
 
 @onready var playButton: TextureButton = $CharacterBody2D/Buttons/Play
 @onready var optionsButton: TextureButton = $CharacterBody2D/Buttons/Options
-@onready var creditsButton: TextureButton = $CharacterBody2D/Buttons/Credits
 @onready var quitButton: TextureButton = $CharacterBody2D/Buttons/Quit
 
 # Cursor Management
@@ -21,7 +20,6 @@ func _ready() -> void:
 func _update_button_visibility():
 	playButton.visible = not playButton.disabled
 	optionsButton.visible = not optionsButton.disabled
-	creditsButton.visible = not creditsButton.disabled
 	quitButton.visible = not quitButton.disabled
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -48,17 +46,13 @@ func _process(delta: float) -> void:
 
 
 func onPlayButtonPressed():
-	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.wav")
 	GameManager.toSaveFilesScreen()
 
 func onOptionsButtonPressed():
-	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.wav")
 	GameManager.toOptionsScreen()
 
-func onCreditsButtonPressed():
-	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
-	GameManager.toCreditsScreen()
-
 func onQuitButtonPressed():
-	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.wav")
 	GameManager.QuitGame()

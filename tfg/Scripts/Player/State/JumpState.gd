@@ -8,6 +8,7 @@ func enter() -> void:
 	if player.facingDirection == 0:
 		player.velocity.x = 0
 	player.velocity.y = player.jumpStrength
+	AudioManager.play_sound("res://Assets/Sounds/jump.wav",-40.0)
 	player.animationPlayer.play("Jump")
 
 # What happens whenever our character leaves a state

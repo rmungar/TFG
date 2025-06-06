@@ -14,6 +14,9 @@ var musicPlayer: AudioStreamPlayer
 var musicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
 var currentTrackIndex: int = 0
 
+# Sonidos únicos por etiqueta (como correr)
+var taggedPlayers: Dictionary = {}
+
 func _ready():
 	# Crear pool de sonido
 	for i in initial_pool_size:
@@ -36,6 +39,8 @@ func _process(delta):
 			entry.player.queue_free()
 			pool.erase(entry)
 
+# --- EFECTOS DE SONIDO ---
+
 func play_sound(sound_path: String, volume_db: float = 0.0):
 	var sound = load(sound_path)
 	if not sound:
@@ -48,6 +53,36 @@ func play_sound(sound_path: String, volume_db: float = 0.0):
 	player_entry.player.volume_db = volume_db
 	player_entry.player.play()
 	player_entry.last_play_time = Time.get_ticks_msec() / 1000.0
+
+func play_tagged_sound(tag: String, sound_path: String, volume_db: float = 0.0):
+	# Si ya hay uno con ese tag, no hagas nada si sigue sonando
+	if taggedPlayers.has(tag):
+		var current_player: AudioStreamPlayer = taggedPlayers[tag]
+		if current_player.playing:
+			return  # Ya está sonando
+
+	# Si ya estaba guardado pero no sonaba, lo limpiamos
+	taggedPlayers.erase(tag)
+
+	var sound = load(sound_path)
+	if not sound:
+		push_error("No se pudo cargar el sonido: " + sound_path)
+		return
+
+	var player_entry = _get_available_player()
+	player_entry.player.stop()
+	player_entry.player.stream = sound
+	player_entry.player.volume_db = volume_db
+	player_entry.player.play()
+	player_entry.last_play_time = Time.get_ticks_msec() / 1000.0
+
+	taggedPlayers[tag] = player_entry.player
+
+func stop_tagged_sound(tag: String):
+	if taggedPlayers.has(tag):
+		var player: AudioStreamPlayer = taggedPlayers[tag]
+		player.stop()
+		taggedPlayers.erase(tag)
 
 func _get_available_player() -> PlayerEntry:
 	for entry in pool:
@@ -63,7 +98,7 @@ func _get_available_player() -> PlayerEntry:
 	pool.append(new_entry)
 	return new_entry
 
-# ---- Música en ciclo (solo si se llama) ----
+# --- MÚSICA EN CICLO ---
 
 func cycle_music(tracks: Array[String] = musicTracks):
 	musicTracks = tracks

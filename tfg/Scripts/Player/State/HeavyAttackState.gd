@@ -5,6 +5,7 @@ class_name HeavyAttackState extends State
 @onready var fallState: FallState = $"../FallState"
 
 func enter() -> void:
+	AudioManager.play_sound("res://Assets/Sounds/Massive Strike.wav", -40.0)
 	var heavyAttackHitbox: Area2D = player.get_node("HeavyAttackHitbox")
 	var normalAttackHitbox: Area2D = player.get_node("NormalAttackHitbox")
 	normalAttackHitbox.monitoring = false
@@ -14,6 +15,7 @@ func enter() -> void:
 	heavyAttackCollisionShape.disabled = false
 	normalAttackCollisionShape.disabled = true
 	player.velocity.x = 0
+	
 	player.animationPlayer.play("HeavyAttack")
 	await player.animationPlayer.animation_finished
 	await get_tree().create_timer(0.1).timeout
