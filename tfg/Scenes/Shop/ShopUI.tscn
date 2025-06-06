@@ -60,7 +60,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,10 +78,10 @@ theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 80
 columns = 3
 
-[node name="Inv_Slot" parent="GridContainer" instance=ExtResource("3_kkty7")]
+[node name="Inv_Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="GridContainer/Inv_Slot"]
+[node name="Button" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot"]
 layout_mode = 0
 offset_right = 42.0
 offset_bottom = 42.0
@@ -89,11 +89,11 @@ action_mode = 0
 flat = true
 script = ExtResource("4_5shte")
 
-[node name="Inv_Slot2" parent="GridContainer" instance=ExtResource("3_kkty7")]
+[node name="Inv_Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 1
 
-[node name="Button2" type="Button" parent="GridContainer/Inv_Slot2"]
+[node name="Button2" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot2"]
 layout_mode = 0
 offset_right = 42.0
 offset_bottom = 42.0
@@ -101,11 +101,11 @@ action_mode = 0
 flat = true
 script = ExtResource("4_5shte")
 
-[node name="Inv_Slot3" parent="GridContainer" instance=ExtResource("3_kkty7")]
+[node name="Inv_Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 2
 
-[node name="Button3" type="Button" parent="GridContainer/Inv_Slot3"]
+[node name="Button3" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot3"]
 layout_mode = 0
 offset_right = 42.0
 offset_bottom = 42.0
@@ -113,11 +113,11 @@ action_mode = 0
 flat = true
 script = ExtResource("4_5shte")
 
-[node name="Inv_Slot4" parent="GridContainer" instance=ExtResource("3_kkty7")]
+[node name="Inv_Slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 3
 
-[node name="Button4" type="Button" parent="GridContainer/Inv_Slot4"]
+[node name="Button4" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot4"]
 layout_mode = 0
 offset_right = 42.0
 offset_bottom = 42.0
@@ -125,11 +125,11 @@ action_mode = 0
 flat = true
 script = ExtResource("4_5shte")
 
-[node name="Inv_Slot5" parent="GridContainer" instance=ExtResource("3_kkty7")]
+[node name="Inv_Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 4
 
-[node name="Button5" type="Button" parent="GridContainer/Inv_Slot5"]
+[node name="Button5" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot5"]
 layout_mode = 0
 offset_right = 42.0
 offset_bottom = 42.0
@@ -137,11 +137,11 @@ action_mode = 0
 flat = true
 script = ExtResource("4_5shte")
 
-[node name="Inv_Slot6" parent="GridContainer" instance=ExtResource("3_kkty7")]
+[node name="Inv_Slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_kkty7")]
 layout_mode = 2
 index = 5
 
-[node name="Button6" type="Button" parent="GridContainer/Inv_Slot6"]
+[node name="Button6" type="Button" parent="NinePatchRect/GridContainer/Inv_Slot6"]
 layout_mode = 0
 offset_right = 42.0
 offset_bottom = 42.0
@@ -197,15 +197,15 @@ offset_right = 360.0
 offset_bottom = 233.0
 horizontal_alignment = 1
 
-[connection signal="Pressed" from="GridContainer/Inv_Slot/Button" to="." method="_on_buy"]
-[connection signal="pressed" from="GridContainer/Inv_Slot/Button" to="GridContainer/Inv_Slot/Button" method="_on_pressed"]
-[connection signal="Pressed" from="GridContainer/Inv_Slot2/Button2" to="." method="_on_buy"]
-[connection signal="pressed" from="GridContainer/Inv_Slot2/Button2" to="GridContainer/Inv_Slot2/Button2" method="_on_pressed"]
-[connection signal="Pressed" from="GridContainer/Inv_Slot3/Button3" to="." method="_on_buy"]
-[connection signal="pressed" from="GridContainer/Inv_Slot3/Button3" to="GridContainer/Inv_Slot3/Button3" method="_on_pressed"]
-[connection signal="Pressed" from="GridContainer/Inv_Slot4/Button4" to="." method="_on_buy"]
-[connection signal="pressed" from="GridContainer/Inv_Slot4/Button4" to="GridContainer/Inv_Slot4/Button4" method="_on_pressed"]
-[connection signal="Pressed" from="GridContainer/Inv_Slot5/Button5" to="." method="_on_buy"]
-[connection signal="pressed" from="GridContainer/Inv_Slot5/Button5" to="GridContainer/Inv_Slot5/Button5" method="_on_pressed"]
-[connection signal="Pressed" from="GridContainer/Inv_Slot6/Button6" to="." method="_on_buy"]
-[connection signal="pressed" from="GridContainer/Inv_Slot6/Button6" to="GridContainer/Inv_Slot6/Button6" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button" to="." method="_on_buy"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button" to="NinePatchRect/GridContainer/Inv_Slot/Button" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button2" to="." method="_on_buy"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button2" to="NinePatchRect/GridContainer/Inv_Slot2/Button2" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button3" to="." method="_on_buy"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button3" to="NinePatchRect/GridContainer/Inv_Slot3/Button3" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button4" to="." method="_on_buy"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button4" to="NinePatchRect/GridContainer/Inv_Slot4/Button4" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button5" to="." method="_on_buy"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button5" to="NinePatchRect/GridContainer/Inv_Slot5/Button5" method="_on_pressed"]
+[connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button6" to="." method="_on_buy"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button6" to="NinePatchRect/GridContainer/Inv_Slot6/Button6" method="_on_pressed"]

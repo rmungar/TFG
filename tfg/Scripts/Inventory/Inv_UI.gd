@@ -8,6 +8,7 @@ class_name InventoryUI extends Control
 
 signal InventoryOpen
 signal InventoryClosed
+signal returnItem(item: InventoryItem)
 
 var isOpen = false
 var cursor_texture = preload("res://Assets/Mouse/PNG/Basic/Default/pointer_b.png")
@@ -65,14 +66,23 @@ func open() -> void:
 	isOpen = true
 	z_index = 2
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$NinePatchRect2.visible = false
 	emit_signal("InventoryOpen")
 
 func close() -> void:
 	visible = false
 	isOpen = false
 	if !GameManager.isShopInScreen : Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	$NinePatchRect2.visible = false
 	emit_signal("InventoryClosed")
 
 
 func _on_inv_slot_pressed(index: int) -> void:
+	AudioManager.play_sound("res://Assets/Sounds/inventory.mp3", -10.0)
 	inventory.equip_gem_on_double_click(index)
+
+
+func getItem(index: int):
+	$NinePatchRect2.visible = true
+	var item = inventory.getItemName(index)
+	returnItem.emit(item)

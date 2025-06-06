@@ -2,7 +2,7 @@ extends Control
 class_name ShopUI
 
 @export var shopInventory: Inventory
-@onready var slots: Array = $GridContainer.get_children()
+@onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 signal itemPurchased(item: InventoryItem)
 var playerReference: Player
 var playerInventory: Inventory = preload("res://Scenes/Inventory/PlayerInv.tres")  

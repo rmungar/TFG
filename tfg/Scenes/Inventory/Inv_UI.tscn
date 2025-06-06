@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://blwr6wxet1q1t"]
+[gd_scene load_steps=7 format=3 uid="uid://blwr6wxet1q1t"]
 
 [ext_resource type="Script" uid="uid://b1rqj0unbxj40" path="res://Scripts/Inventory/Inv_UI.gd" id="1_qky1y"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_ar5ic"]
 [ext_resource type="PackedScene" uid="uid://br6a2ysnd613v" path="res://Scenes/Inventory/InvUISlot.tscn" id="3_38mmp"]
 [ext_resource type="Script" uid="uid://p0xvk8pdx4ao" path="res://Scripts/Inventory/InvButton.gd" id="4_6sx87"]
 [ext_resource type="Texture2D" uid="uid://bmi7up3mn4rkj" path="res://Assets/Characters/Samurai/Samurai.png" id="4_38mmp"]
+[ext_resource type="Script" uid="uid://dxsmfqxygo5k2" path="res://Scripts/Inventory/ItemDescriptionBox.gd" id="6_nq7i4"]
 
 [node name="Inv_UI" type="Control"]
 process_mode = 3
@@ -207,10 +208,10 @@ layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 380.0
-offset_top = 157.0
-offset_right = 380.0
-offset_bottom = 157.0
+offset_left = 387.0
+offset_top = 164.0
+offset_right = 387.0
+offset_bottom = 164.0
 index = 9
 
 [node name="AbilitySlot" parent="." instance=ExtResource("3_38mmp")]
@@ -218,10 +219,10 @@ layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 380.0
-offset_top = 108.0
-offset_right = 380.0
-offset_bottom = 108.0
+offset_left = 387.0
+offset_top = 114.0
+offset_right = 387.0
+offset_bottom = 114.0
 index = 11
 
 [node name="Button11" type="Button" parent="AbilitySlot"]
@@ -237,10 +238,10 @@ layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 380.0
-offset_top = 58.0
-offset_right = 380.0
-offset_bottom = 58.0
+offset_left = 387.0
+offset_top = 64.0
+offset_right = 387.0
+offset_bottom = 64.0
 index = 10
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -251,23 +252,77 @@ offset_right = 264.0
 offset_bottom = 241.0
 mouse_filter = 2
 
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_ar5ic")
+region_rect = Rect2(19, 67, 42, 42)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ItemDescriptionBox" type="ColorRect" parent="NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -29.0
+offset_right = -3.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.111197, 0.111197, 0.111197, 1)
+script = ExtResource("6_nq7i4")
+
+[node name="ItemDescription" type="Label" parent="NinePatchRect2/ItemDescriptionBox"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[connection signal="returnItem" from="." to="NinePatchRect2/ItemDescriptionBox" method="_on_inv_ui_return_item"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot/Button2" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button2" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot/Button2" to="NinePatchRect/GridContainer/Inv_Slot/Button2" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot2/Button3" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button3" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot2/Button3" to="NinePatchRect/GridContainer/Inv_Slot2/Button3" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot3/Button4" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button4" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot3/Button4" to="NinePatchRect/GridContainer/Inv_Slot3/Button4" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot4/Button5" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button5" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot4/Button5" to="NinePatchRect/GridContainer/Inv_Slot4/Button5" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot5/Button6" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button6" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot5/Button6" to="NinePatchRect/GridContainer/Inv_Slot5/Button6" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot6/Button7" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button7" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot6/Button7" to="NinePatchRect/GridContainer/Inv_Slot6/Button7" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot7/Button8" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot7/Button8" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot7/Button8" to="NinePatchRect/GridContainer/Inv_Slot7/Button8" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot8/Button9" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot8/Button9" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot8/Button9" to="NinePatchRect/GridContainer/Inv_Slot8/Button9" method="_on_pressed"]
+[connection signal="GetItem" from="NinePatchRect/GridContainer/Inv_Slot9/Button10" to="." method="getItem"]
 [connection signal="Pressed" from="NinePatchRect/GridContainer/Inv_Slot9/Button10" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Inv_Slot9/Button10" to="NinePatchRect/GridContainer/Inv_Slot9/Button10" method="_on_pressed"]
+[connection signal="GetItem" from="AbilitySlot/Button11" to="." method="getItem"]
 [connection signal="Pressed" from="AbilitySlot/Button11" to="." method="_on_inv_slot_pressed"]
 [connection signal="pressed" from="AbilitySlot/Button11" to="AbilitySlot/Button11" method="_on_pressed"]

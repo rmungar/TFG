@@ -108,6 +108,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("Dash") and canDash and !isDashing and !hasDashed and canMove:
 			var input_vector = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
 			if input_vector.length() > 0:
+				AudioManager.play_sound("res://Assets/Sounds/dash.wav", -45.0)
 				dashDirection = input_vector.normalized()
 				isDashing = true
 				hasDashed = true
