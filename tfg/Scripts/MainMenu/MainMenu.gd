@@ -12,6 +12,7 @@ enum InputMode { MOUSE, GAMEPAD }
 @export var gamepad_speed: float = 500.0
 
 func _ready() -> void:
+	AudioManager.cycle_music()
 	_update_button_visibility()
 	# Usamos el cursor nativo con imagen personalizada
 	#Input.set_custom_mouse_cursor(cursor_texture)
@@ -47,13 +48,17 @@ func _process(delta: float) -> void:
 
 
 func onPlayButtonPressed():
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
 	GameManager.toSaveFilesScreen()
 
 func onOptionsButtonPressed():
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
 	GameManager.toOptionsScreen()
 
 func onCreditsButtonPressed():
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
 	GameManager.toCreditsScreen()
 
 func onQuitButtonPressed():
+	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.mp3")
 	GameManager.QuitGame()
