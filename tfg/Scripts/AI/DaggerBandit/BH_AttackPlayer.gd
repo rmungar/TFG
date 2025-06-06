@@ -18,7 +18,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		var basicAttackHitbox = actor.get_node("BasicAttackHitbox")
 		var basicAttackHitboxCollisionShape: CollisionShape2D = basicAttackHitbox.get_node("CollisionShape2D")
 		basicAttackHitboxCollisionShape.disabled = false
-		
+		AudioManager.play_sound("res://Assets/Sounds/Double Swing.wav", -40.0)
 		if direction < 0:
 			actor.get_node("AnimationPlayer").play("Attack_Left")
 		else:

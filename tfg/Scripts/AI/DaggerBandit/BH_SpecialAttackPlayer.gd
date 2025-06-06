@@ -14,7 +14,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if distance > specialAttackRange:
 		return FAILURE  
 	else:
-
+		AudioManager.play_sound("res://Assets/Sounds/enemySpecial.mp3", -30.0)
 		if directionToPlayer < 0:
 			actor.get_node("AnimationPlayer").play("SpecialAttack_Left")
 		else:
