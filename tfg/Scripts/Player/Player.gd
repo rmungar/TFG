@@ -88,7 +88,7 @@ func _ready() -> void:
 	dashTimer.timeout.connect(_on_dash_timeout)
 	inventory.update.emit()
 	
-	AudioManager.play_tagged_sound("AmbientSound", OnRespawnSong, -40.0)
+	
 	
 
 func _process(delta: float) -> void:
@@ -228,6 +228,7 @@ func apply_saved_data(data: Dictionary):
 	money = data.get("money", 0)
 	updateMoney.emit(money)
 	OnRespawnSong = data.get("lastSavedSong", "")
+	AudioManager.play_tagged_sound("AmbientSound", OnRespawnSong, -40.0)
 	var checkpoint = data.get("lastCheckPoint", Vector2.ZERO)
 	if typeof(checkpoint) == TYPE_STRING:
 		checkpoint = parse_vector2_from_string(checkpoint)

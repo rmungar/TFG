@@ -78,6 +78,7 @@ func _on_portal_teleport() -> void:
 	GameManager.tutorial_done = true
 	print(GameManager.temporalPlayerData)
 	fadeOut()
+	AudioManager.play_sound("res://Assets/Sounds/teleport.mp3", -40.0)
 	$Portal/AnimatedSprite2D.play("Warp")
 	await get_tree().create_timer(0.2).timeout
 	$Player.visible = false

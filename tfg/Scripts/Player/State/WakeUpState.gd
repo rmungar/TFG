@@ -11,7 +11,7 @@ func enter() -> void:
 	
 	player.animationPlayer.play("WakeUp")
 	await get_tree().create_timer(0.9).timeout
-	AudioManager.play_sound("res://Assets/Sounds/playerWakeUp.wav", -30.0)
+	AudioManager.play_sound("res://Assets/Sounds/playerWakeUp.wav", -40.0)
 	await player.animationPlayer.animation_finished
 	player.shouldWakeUp = false
 	if player.lastCheckPoint == Vector2(0.0, 0.0):

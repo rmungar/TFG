@@ -63,7 +63,7 @@ func _on_hurtbox_damage_taken(damageTaken: int) -> void:
 		return
 	$ArcherBanditBeehaveTree.blackboard.set_value("justTookDamage", true)
 	$ArcherBanditBeehaveTree.blackboard.set_value("damageTime", Time.get_ticks_msec())
-	AudioManager.play_sound("res://Assets/Sounds/enemyHit2.wav", -30.0)
+	AudioManager.play_sound("res://Assets/Sounds/enemyHit2.wav", -40.0)
 	health -= damageTaken
 	$DamageTimer.start()
 	if health <= 0:
@@ -71,7 +71,7 @@ func _on_hurtbox_damage_taken(damageTaken: int) -> void:
 		isDead()
 
 func isDead():
-	AudioManager.play_sound("res://Assets/Sounds/EnemyDeath.wav", -30.0)
+	AudioManager.play_sound("res://Assets/Sounds/EnemyDeath.wav", -40.0)
 	if directionTowardsPlayer == 1:
 		$AnimationPlayer.play("Death_Right")
 	else:

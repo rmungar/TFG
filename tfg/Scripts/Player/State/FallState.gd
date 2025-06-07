@@ -6,6 +6,10 @@ class_name FallState extends State
 
 # What happens whenever our character enters the state
 func enter() -> void:
+	var normalAttackHitbox = player.get_node("NormalAttackHitbox")
+	var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
+	normalAttackHitbox.monitoring = false
+	normalAttackCollisionShape.disabled = true
 	player.animationPlayer.play("Fall")	
 
 # What happens whenever our character leaves a state

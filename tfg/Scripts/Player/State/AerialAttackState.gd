@@ -35,6 +35,10 @@ func process(delta: float) -> State:
 func physics(delta: float) -> State:
 	
 	if player.is_on_floor():
+		var normalAttackHitbox = player.get_node("NormalAttackHitbox")
+		var normalAttackCollisionShape: CollisionShape2D = normalAttackHitbox.get_node("CollisionShape2D")
+		normalAttackHitbox.monitoring = false
+		normalAttackCollisionShape.disabled = true
 		return idleState if player.facingDirection == 0 else runState
 	else:
 		return fallState if player.velocity.y > 0 else null
