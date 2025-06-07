@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csnnvr358p1xd"
+path="res://.godot/imported/industrial.mp3-4d1bc79de020a5380e3d6ccb4b6528fb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Tilesets/Industry Parallax/Assets/Industrial Theme Music/industrial.mp3"
+dest_files=["res://.godot/imported/industrial.mp3-4d1bc79de020a5380e3d6ccb4b6528fb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
