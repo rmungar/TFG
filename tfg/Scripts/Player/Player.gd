@@ -153,6 +153,7 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 		return 
 	if knockback == null:
 		pass
+	AudioManager.play_sound("res://Assets/Sounds/playerHit.mp3", -30.0)
 	velocity = knockback
 	self.modulate = Color.RED
 	$ModulateTimer.start()
@@ -164,6 +165,7 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 	if HP <= 0:
 		isAlive = false
 		$AnimationPlayer.play("Death")
+		AudioManager.play_sound("res://Assets/Sounds/playerDeath.mp3", -20.0)
 		await $AnimationPlayer.animation_finished
 		respawn()
 

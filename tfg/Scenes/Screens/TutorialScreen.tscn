@@ -1809,8 +1809,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="PlayerUI" parent="Player/Camera2D" instance=ExtResource("21_nvjkw")]
 
-[node name="PauseMenu" parent="Player/Camera2D" instance=ExtResource("24_74vp3")]
-
 [node name="Node2D" type="StaticBody2D" parent="." groups=["WorldBundary"]]
 collision_layer = 2147483648
 collision_mask = 0
@@ -1832,9 +1830,11 @@ position = Vector2(72, 219)
 texture = ExtResource("24_vvlti")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("24_74vp3")]
 
+[connection signal="tutorialDone" from="." to="Portal" method="showIndicator"]
 [connection signal="tutorialDone" from="." to="TheSwordMaster" method="_on_tutorial_scene_tutorial_done"]
 [connection signal="Interactable" from="SavePoint" to="TheSwordMaster" method="onPlayerInteract"]
 [connection signal="save" from="SavePoint" to="Player/Camera2D/PlayerUI" method="_on_save_point_save"]
