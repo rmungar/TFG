@@ -10121,7 +10121,7 @@ scale = Vector2(0.75, 0.78125)
 texture = ExtResource("27_4sgbt")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(2624, 255)
+position = Vector2(559, 935)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -10243,27 +10243,33 @@ position = Vector2(-488, 658)
 
 [node name="DaggerBandit" parent="." instance=ExtResource("79_8xhgs")]
 position = Vector2(859, 623)
+spawnPosition = Vector2(859, 615)
 reward = 30
 
 [node name="DaggerBandit2" parent="." instance=ExtResource("79_8xhgs")]
 position = Vector2(1605, 655)
+spawnPosition = Vector2(1605, 646)
 reward = 30
 
 [node name="DaggerBandit3" parent="." instance=ExtResource("79_8xhgs")]
 position = Vector2(1173, 591)
+spawnPosition = Vector2(1173, 582)
 reward = 30
 
 [node name="DaggerBandit4" parent="." instance=ExtResource("79_8xhgs")]
 position = Vector2(559, 943)
+spawnPosition = Vector2(559, 935)
 reward = 30
 
 [node name="ArcherBandit" parent="." instance=ExtResource("80_8xhgs")]
 position = Vector2(1423, 623)
 reward = 40
+spawnPosition = Vector2(1423, 615)
 
 [node name="ArcherBandit2" parent="." instance=ExtResource("80_8xhgs")]
 position = Vector2(594, 783)
 reward = 40
+spawnPosition = Vector2(594, 774)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 524288
@@ -10404,5 +10410,11 @@ mouse_filter = 2
 [connection signal="body_entered" from="Isilian/Area2D" to="Isilian" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="CameraChangeCastle" to="." method="_on_camera_change_castle_body_entered"]
 [connection signal="body_entered" from="CameraChangeCamp" to="." method="_on_camera_change_camp_body_entered"]
+[connection signal="AddToRespawnList" from="DaggerBandit" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="DaggerBandit2" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="DaggerBandit3" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="DaggerBandit4" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="ArcherBandit" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="ArcherBandit2" to="." method="onEnemyDeath"]
 [connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]
 [connection signal="updateMoney" from="Player" to="Player/Camera2D/PlayerUI" method="updateMoney"]

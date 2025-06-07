@@ -6,7 +6,11 @@ class_name DaggerBandit extends Enemy
 @export var health = 200
 @export var isAlive = true
 
+@export var Scene: PackedScene = preload("res://Scenes/Enemies/DaggerBandit/DaggerBandit.tscn")
+
 signal Dead()
+signal AddToRespawnList(enemyScene: PackedScene, spawnPoint: Vector2)
+
 
 var directionTowardsPlayer = 0
 
@@ -41,5 +45,6 @@ func isDead():
 	var player: Player = get_tree().get_first_node_in_group("Player")
 	player.money += reward
 	player.updateMoney.emit(player.money)
+	AddToRespawnList.emit(Scene, spawnPosition)
 	Dead.emit()
 	queue_free()

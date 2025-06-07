@@ -7,10 +7,11 @@ var arrowScene: PackedScene = preload("res://Scenes/Enemies/ArcherBandit/arrow.t
 var isAlive = true
 @export var health = 100
 @export var reward: int
-
+@export var spawnPosition: Vector2
+@export var Scene: PackedScene = preload("res://Scenes/Enemies/ArcherBandit/ArcherBandit.tscn")
 
 signal Dead()
-
+signal AddToRespawnList(enemyScene: PackedScene, spawnPoint: Vector2)
 var directionTowardsPlayer = 0
 
 func spawnArrow(playerPosition: Vector2):
@@ -25,6 +26,13 @@ func spawnArrow(playerPosition: Vector2):
 func _ready():
 	$AnimationPlayer.connect("animation_finished", _on_animation_finished)
 	$Hurtbox.monitoring = true
+
+
+func _physics_process(delta: float) -> void:
+	if !is_on_floor():
+		velocity.y += 980 * delta
+		
+	move_and_slide()
 
 
 func is_animation_locked(blackboard: Blackboard) -> bool:
@@ -75,6 +83,7 @@ func isDead():
 	var player: Player = get_tree().get_first_node_in_group("Player")
 	player.money += reward
 	player.updateMoney.emit(player.money)
+	AddToRespawnList.emit(Scene, spawnPosition)
 	Dead.emit()
 	queue_free()
 

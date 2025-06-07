@@ -6,7 +6,7 @@ var fadeDuration := 4.0
 var isFading := false
 var fadeDirection := -1 
 var fadeTime := 0.0
-
+var deadEnemies: Array = []
 
 func _ready():
 	
@@ -88,6 +88,7 @@ func _on_camera_change_boss_body_entered(body: Node2D) -> void:
 			camera.changeRect(background2)
 		else:
 			camera.changeRect(background1)
+		respawn_dead_enemies()
 		
 
 
@@ -100,6 +101,7 @@ func _on_camera_change_castle_body_entered(body: Node2D) -> void:
 			camera.changeRect(background2)
 		else:
 			camera.changeRect(background1)
+		respawn_dead_enemies()
 
 
 func _on_world_collsion_body_entered(body: Node2D) -> void:
@@ -108,6 +110,7 @@ func _on_world_collsion_body_entered(body: Node2D) -> void:
 		body.teleport(body.lastSafePosition)
 	if body is Enemy:
 		body.teleport(body.lastSafePosition)
+	
 
 
 func _on_camera_change_camp_body_entered(body: Node2D) -> void:
@@ -119,3 +122,18 @@ func _on_camera_change_camp_body_entered(body: Node2D) -> void:
 			camera.changeRect(background2)
 		else:
 			camera.changeRect(background1)
+		respawn_dead_enemies()
+
+
+
+func onEnemyDeath(enemyScene: PackedScene, spawnPosition: Vector2):
+	deadEnemies.append({"scene" : enemyScene, "pos" : spawnPosition})
+
+func respawn_dead_enemies():
+	for info in deadEnemies:
+		var new_enemy = info["scene"].instantiate()
+		new_enemy.set_deferred("spawnPosition", info["pos"])
+		new_enemy.set_deferred("global_position", info["pos"])
+		call_deferred("add_child", new_enemy)
+		new_enemy.AddToRespawnList.connect(onEnemyDeath)
+	deadEnemies.clear()

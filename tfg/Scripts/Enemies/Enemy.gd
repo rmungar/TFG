@@ -12,6 +12,8 @@ class_name Enemy extends CharacterBody2D
 @export var maxHP = 3
 @export var currentHP = 3
 
+@export var spawnPosition: Vector2
+
 var lastSafePosition: Vector2
 
 @export var reward: int
