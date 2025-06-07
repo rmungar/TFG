@@ -8,6 +8,7 @@ signal save()
 @export var alreadyInteracted: bool = false
 @export var tilemap: TileMapLayer
 @export var postTutorial: bool
+@export var OnSaveSong: String
 var playerReference: Player = null
 var interactable: bool = false
 var times = 0
@@ -26,6 +27,7 @@ func _process(delta: float) -> void:
 		AudioManager.play_sound("res://Assets/Sounds/Computer Ok.mp3", -30.0)
 		playerReference.lastCheckPoint = global_position
 		playerReference.lastTilemap = tilemap.name
+		playerReference.OnRespawnSong = OnSaveSong
 		if requiredItem == "" or playerReference.has_item(requiredItem):
 			if postTutorial:
 				GameManager.tutorial_done = true

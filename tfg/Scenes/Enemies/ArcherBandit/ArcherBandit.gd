@@ -86,8 +86,3 @@ func isDead():
 	AddToRespawnList.emit(Scene, spawnPosition)
 	Dead.emit()
 	queue_free()
-
-
-func _input(event):
-	if event.is_action_pressed("debug"):  # Assign a key in Input Map
-		_on_hurtbox_damage_taken(10)  # Force damage

@@ -56,19 +56,20 @@ func play_sound(sound_path: String, volume_db: float = 0.0):
 	player_entry.last_play_time = Time.get_ticks_msec() / 1000.0
 
 func play_tagged_sound(tag: String, sound_path: String, volume_db: float = 0.0):
-	# Si ya hay uno con ese tag, no hagas nada si sigue sonando
-	if taggedPlayers.has(tag):
-		var current_player: AudioStreamPlayer = taggedPlayers[tag]
-		if current_player.playing:
-			return  # Ya está sonando
-
-	# Si ya estaba guardado pero no sonaba, lo limpiamos
-	taggedPlayers.erase(tag)
-
 	var sound = load(sound_path)
 	if not sound:
 		push_error("No se pudo cargar el sonido: " + sound_path)
 		return
+
+	if taggedPlayers.has(tag):
+		var current_player: AudioStreamPlayer = taggedPlayers[tag]
+		# Si ya está reproduciendo exactamente ese mismo sonido, no hagas nada
+		if current_player.playing and current_player.stream.resource_path == sound.resource_path:
+			return  # Ya está sonando ese mismo sonido exacto
+
+		# Si es diferente o ha parado, lo reemplazamos
+		current_player.stop()
+		taggedPlayers.erase(tag)
 
 	var player_entry = _get_available_player()
 	player_entry.player.stop()
@@ -78,6 +79,7 @@ func play_tagged_sound(tag: String, sound_path: String, volume_db: float = 0.0):
 	player_entry.last_play_time = Time.get_ticks_msec() / 1000.0
 
 	taggedPlayers[tag] = player_entry.player
+
 
 func stop_tagged_sound(tag: String):
 	if taggedPlayers.has(tag):

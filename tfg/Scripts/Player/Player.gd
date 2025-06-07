@@ -13,6 +13,9 @@ class_name Player extends CharacterBody2D
 
 ################################################################################
 
+var OnRespawnSong: String = ""
+
+
 @export_category("Movement")
 @export var speed: float = 200.0
 @export var airSpeed: float = -150.0
@@ -37,6 +40,8 @@ var isWallJumping: bool = false
 var isDashing: bool = false
 var dashDirection: Vector2 = Vector2.ZERO
 var hasDashed: bool = false
+
+
 
 ################################################################################
 
@@ -82,6 +87,8 @@ func _ready() -> void:
 	dashTimer.wait_time = dashDuration
 	dashTimer.timeout.connect(_on_dash_timeout)
 	inventory.update.emit()
+	
+	AudioManager.play_tagged_sound("AmbientSound", OnRespawnSong, -40.0)
 	
 
 func _process(delta: float) -> void:
@@ -202,6 +209,7 @@ func teleport(newPosition: Vector2):
 func respawn():
 	HP = MaxHP
 	$Camera2D.changeRect(get_parent().get_node(lastTilemap))
+	AudioManager.play_tagged_sound("AmbientSound", OnRespawnSong, -40.0)
 	teleport(lastCheckPoint - Vector2(0,5))
 	stateMachine.configure(self)
 	isAlive = true
@@ -219,6 +227,7 @@ func apply_saved_data(data: Dictionary):
 	updateHealth.emit(HP, MaxHP)
 	money = data.get("money", 0)
 	updateMoney.emit(money)
+	OnRespawnSong = data.get("lastSavedSong", "")
 	var checkpoint = data.get("lastCheckPoint", Vector2.ZERO)
 	if typeof(checkpoint) == TYPE_STRING:
 		checkpoint = parse_vector2_from_string(checkpoint)
@@ -279,5 +288,6 @@ func serialize() -> Dictionary:
 		"canAttack": canAttack,
 		"lastCheckPoint": lastCheckPoint,
 		"lastTilemap":lastTilemap,
+		"lastSavedSong":OnRespawnSong,
 		"inventory": inventory.serialize()
 	}

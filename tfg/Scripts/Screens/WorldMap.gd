@@ -87,6 +87,8 @@ func _on_camera_change_boss_body_entered(body: Node2D) -> void:
 			camera.changeRect(background2)
 		else:
 			camera.changeRect(background1)
+			AudioManager.stop_tagged_sound("AmbientSound")
+			AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/ForestOfShiningShadows.mp3", -40.0)
 		respawn_dead_enemies()
 		
 
@@ -98,8 +100,12 @@ func _on_camera_change_castle_body_entered(body: Node2D) -> void:
 		var background2: TileMapLayer = get_node("CastleZone")
 		if camera.tileMap.name == "FirstZone":
 			camera.changeRect(background2)
+			AudioManager.stop_tagged_sound("AmbientSound")
+			AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/InfiniteDesolation.mp3", -40.0)
 		else:
 			camera.changeRect(background1)
+			AudioManager.stop_tagged_sound("AmbientSound")
+			AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/ForestOfShiningShadows.mp3", -40.0)
 		respawn_dead_enemies()
 
 
@@ -119,8 +125,12 @@ func _on_camera_change_camp_body_entered(body: Node2D) -> void:
 		var background2: TileMapLayer = get_node("FirstZone")
 		if camera.tileMap.name == "Camp":
 			camera.changeRect(background2)
+			AudioManager.stop_tagged_sound("AmbientSound")
+			AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/ForestOfShiningShadows.mp3", -40.0)
 		else:
 			camera.changeRect(background1)
+			AudioManager.stop_tagged_sound("AmbientSound")
+			AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/ForestOfStars.mp3", -40.0)
 		respawn_dead_enemies()
 
 

@@ -21,7 +21,8 @@ func save_game(save_file: int, player: Player, tutorial_done: bool, talkedToMerc
 		"lastCheckPoint": player.lastCheckPoint,
 		"lastTileMap": player.lastTilemap,
 		"money": player.money,
-		"inventory": player.inventory.serialize(),  
+		"inventory": player.inventory.serialize(),
+		"lastSavedSong": player.OnRespawnSong,
 		"tutorialDone": tutorial_done,
 		"spokenToIsilian": talkedToIsilian,
 		"spokenToMerchant": talkedToMerchant

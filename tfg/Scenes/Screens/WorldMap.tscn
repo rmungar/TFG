@@ -10151,11 +10151,13 @@ flip_v = true
 position = Vector2(1073, 246)
 tilemap = NodePath("../Camp")
 postTutorial = true
+OnSaveSong = "res://Assets/Sounds/ForestOfStars.mp3"
 
 [node name="SavePoint2" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(2036, 693)
 tilemap = NodePath("../FirstZone")
 postTutorial = true
+OnSaveSong = "res://Assets/Sounds/ForestOfShiningShadows.mp3"
 
 [node name="SavePoint3" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(18, 550)
@@ -10171,11 +10173,13 @@ postTutorial = true
 position = Vector2(1267, 1061)
 tilemap = NodePath("../FirstZone")
 postTutorial = true
+OnSaveSong = "res://Assets/Sounds/ForestOfShiningShadows.mp3"
 
 [node name="SavePoint6" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("28_u4y2d")]
 position = Vector2(3322, 1222)
 tilemap = NodePath("../CastleZone")
 postTutorial = true
+OnSaveSong = "res://Assets/Sounds/InfiniteDesolation.mp3"
 
 [node name="CameraChangeBoss" type="Area2D" parent="."]
 position = Vector2(49, 496)
