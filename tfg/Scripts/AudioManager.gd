@@ -12,6 +12,7 @@ var pool: Array[PlayerEntry] = []
 # Música
 var musicPlayer: AudioStreamPlayer
 var musicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
+var mainMenuMusicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
 var currentTrackIndex: int = 0
 
 # Sonidos únicos por etiqueta (como correr)
@@ -100,13 +101,14 @@ func _get_available_player() -> PlayerEntry:
 
 # --- MÚSICA EN CICLO ---
 
-func cycle_music(tracks: Array[String] = musicTracks):
+func cycle_music(tracks: Array[String] = mainMenuMusicTracks):
 	musicTracks = tracks
 	currentTrackIndex = 0
 	_play_current_track()
 
 func _play_current_track():
 	if musicTracks.is_empty():
+
 		return
 	var path = musicTracks[currentTrackIndex]
 	var stream = load(path)
@@ -125,6 +127,7 @@ func stop_music():
 	if musicPlayer.playing:
 		musicPlayer.stop()
 	musicTracks.clear()
+	musicTracks = mainMenuMusicTracks
 	currentTrackIndex = 0
 
 func play_music_once(path: String):

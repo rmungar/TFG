@@ -9,7 +9,6 @@ var fadeTime := 0.0
 var deadEnemies: Array = []
 
 func _ready():
-	
 	if !GameManager.hasLoadedGame:
 		player.apply_saved_data(GameManager.temporalPlayerData)
 		GameManager.temporalPlayerData = {}  

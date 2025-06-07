@@ -9,9 +9,9 @@ var cursor_texture = preload("res://Assets/Mouse/PNG/Basic/Default/pointer_b.png
 var current_input_mode := InputMode.MOUSE
 enum InputMode { MOUSE, GAMEPAD }
 @export var gamepad_speed: float = 500.0
-
+var mainMenuMusicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
 func _ready() -> void:
-	AudioManager.cycle_music()
+	AudioManager.cycle_music(mainMenuMusicTracks)
 	_update_button_visibility()
 	# Usamos el cursor nativo con imagen personalizada
 	#Input.set_custom_mouse_cursor(cursor_texture)
