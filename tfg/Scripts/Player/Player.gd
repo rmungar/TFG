@@ -201,6 +201,7 @@ func teleport(newPosition: Vector2):
 
 func respawn():
 	HP = MaxHP
+	$Camera2D.changeRect(get_parent().get_node(lastTilemap))
 	teleport(lastCheckPoint - Vector2(0,5))
 	stateMachine.configure(self)
 	isAlive = true

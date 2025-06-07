@@ -31,9 +31,6 @@ func setCameraLimits(rect: Rect2i) -> void:
 
 
 
-
-
-
 func changeRect(newTileMap: TileMapLayer):
 	setCameraLimits(newTileMap.get_used_rect())
 	tileMap = newTileMap
