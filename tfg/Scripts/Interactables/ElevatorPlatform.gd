@@ -18,7 +18,6 @@ func _ready() -> void:
 	$Indicator.visible = false
 
 func _process(delta: float) -> void:
-	#print("Elevator pos: ", global_position)
 	pass	
 
 

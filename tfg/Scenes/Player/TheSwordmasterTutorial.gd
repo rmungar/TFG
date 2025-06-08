@@ -123,7 +123,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func onPathCompleted() -> void:
-	print("NPC has completed its path")
 	if currentPathPoints == firstPathPoints:
 		global_position = Vector2(1120,246)
 		$AnimationPlayer.play("Idle_Left")
@@ -173,7 +172,7 @@ func onPlayerInteract():
 		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterTutorialFinale.dtl")
 		justPlayedDialog = 5
 	else:
-		print("Failure")
+		pass
 	
 	await Dialogic.timeline_ended
 	

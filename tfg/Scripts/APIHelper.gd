@@ -11,9 +11,7 @@ func _ready() -> void:
 
 
 func _send_request(method: HTTPClient.Method, endpoint: String, data = null):
-	print("Data: ",data)
 	var url = APIURL + endpoint
-	print(url)
 	var body = JSON.stringify(data) if data != null else ""
 	var headers = ["Content-Type: application/json"]
 	if method in [HTTPClient.METHOD_POST, HTTPClient.METHOD_PUT]:
@@ -27,17 +25,14 @@ func _send_request(method: HTTPClient.Method, endpoint: String, data = null):
 func _on_request_completed(result, response_code, headers, body):
 	if response_code == 200 or response_code == 201:
 		var text = body.get_string_from_utf8()
-		print("Texto recibido: ", text)
 		
 		var json = JSON.parse_string(text)
 		if json is Dictionary or json is Array:
 			requestCompleted.emit(true, json)
 		else:
-			print("Respuesta JSON no válida: no es ni un diccionario ni un array")
 			requestCompleted.emit(false, null)
 	else:
 		var text = body.get_string_from_utf8()
-		print("Error en API: código %s " % response_code, text)
 		requestCompleted.emit(false, null)
 
 
@@ -56,7 +51,6 @@ func create_player():
 	_send_request(HTTPClient.METHOD_POST, "/api/PlayerInfo", playerData)
 
 func update_player():
-	print("Update TPT: ", GameManager.totalPlayTime)
 	var roundedPlayTime = GameManager.totalPlayTime
 	var playerData: Dictionary = {
 		"PlayerId" : str(GameManager.currentSaveFile),

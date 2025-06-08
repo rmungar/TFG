@@ -8,7 +8,6 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if playerReference and Input.is_action_just_pressed("Interact") and !shopUI.visible and !GameManager.pauseMenuOpen and !GameManager.isInventoryOpen:
-		print(hasTalkedBefore)
 		start_interaction()
 		if hasTalkedBefore: 
 			await Dialogic.timeline_ended

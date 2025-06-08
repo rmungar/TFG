@@ -48,12 +48,9 @@ func _on_wants_to_delete(saveFileNumber: int) -> void:
 		if dir:
 			dir.remove("gamefile%d.save" % saveFileNumber)
 			ApiHelper.delete_player(saveFileNumber)
-			print("Partida %d borrada" % saveFileNumber)
 		else:
 			push_error("No se pudo abrir el directorio para borrar.")
 		updateSlotsUi()
-	else:
-		print("No hay partida para borrar en slot %d" % saveFileNumber)
 
 
 func _on_wants_to_play(saveFileNumber: int) -> void:

@@ -31,13 +31,10 @@ func _process(delta: float) -> void:
 		match currentDoorReference:
 			1: 
 				targetPosition = door2Coordinates
-				print("Teleporting to Door2 pos: ", targetPosition)
 			2: 
 				targetPosition = playerReference.global_position
-				print("Teleporting to pos: ", targetPosition)
 			3: 
 				targetPosition = door4Coordinates
-				print("Teleporting to Door4 pos: ", targetPosition)
 			4: 
 				targetPosition = playerReference.global_position
 		

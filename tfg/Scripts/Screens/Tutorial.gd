@@ -14,7 +14,6 @@ signal tutorialDone()
 
 func _ready():
 	AudioManager.play_sound("res://Assets/Sounds/TheCave.mp3", -47.0)
-	print(GameManager.hasLoadedGame)
 	if GameManager.isLoadingGame:
 		var data = FileUtils.load_game(GameManager.currentSaveFile)
 		if data:
@@ -69,14 +68,12 @@ func onEnemyDead() -> void:
 	
 	if aliveEnemies > 0:
 		aliveEnemies -= 1
-	print(aliveEnemies)
 	if aliveEnemies == 0:
 		tutorialDone.emit()
 
 func _on_portal_teleport() -> void:
 	GameManager.temporalPlayerData = player.serialize()
 	GameManager.tutorial_done = true
-	print(GameManager.temporalPlayerData)
 	fadeOut()
 	AudioManager.play_sound("res://Assets/Sounds/teleport.mp3", -40.0)
 	$Portal/AnimatedSprite2D.play("Warp")

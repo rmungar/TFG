@@ -40,12 +40,10 @@ func toOptionsScreen():
 
 
 func QuitGame():
-	print("Total Play Time: ", formatPlayTime())
 	get_tree().quit()
 
 
 func setDialogState(newState: bool):
-	print(Input.mouse_mode)
 	isDialogInScreen = newState
 	if isDialogInScreen:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -67,7 +65,6 @@ func inventoryClosed():
 
 
 func onSave(player: Player, tutorialDone: bool):
-	print(playerDataById)
 	FileUtils.save_game(currentSaveFile, player, tutorialDone, talkedToMerchant, talkedToIsilian)
 	if GameManager.playerDataById.has(str(GameManager.currentSaveFile)):
 		ApiHelper.update_player()
@@ -84,13 +81,8 @@ func onApiResponse(result: bool, body):
 			if id != null:
 				playerDataById[id] = player
 	else:
-		print(body)
 		if result:
 			ApiHelper.get_all_players()
-		else:
-			print("NO FUE EXITOSA LA PETICIÓN")
-			
-	print(playerDataById)
 
 
 
