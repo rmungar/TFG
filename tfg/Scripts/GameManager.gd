@@ -3,6 +3,7 @@ extends Node
 var isLoadingGame = false
 var hasLoadedGame = false
 var isDialogInScreen = false
+var pauseMenuOpen = false
 var isInventoryOpen = false
 var currentSaveFile: int = 1
 var temporalPlayerData: Dictionary

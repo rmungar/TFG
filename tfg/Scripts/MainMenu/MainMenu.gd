@@ -10,23 +10,17 @@ var current_input_mode := InputMode.MOUSE
 enum InputMode { MOUSE, GAMEPAD }
 @export var gamepad_speed: float = 500.0
 var mainMenuMusicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
+
 func _ready() -> void:
 	AudioManager.cycle_music(mainMenuMusicTracks)
 	_update_button_visibility()
-	# Usamos el cursor nativo con imagen personalizada
-	#Input.set_custom_mouse_cursor(cursor_texture)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	playButton.grab_focus()
 
 func _update_button_visibility():
 	playButton.visible = not playButton.disabled
 	optionsButton.visible = not optionsButton.disabled
 	quitButton.visible = not quitButton.disabled
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		_set_input_mode(InputMode.MOUSE)
-	elif event is InputEventJoypadMotion or event is InputEventJoypadButton:
-		_set_input_mode(InputMode.GAMEPAD)
 
 func _set_input_mode(mode: InputMode):
 	if current_input_mode == mode:

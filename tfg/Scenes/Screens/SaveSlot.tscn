@@ -81,7 +81,7 @@ texture_normal = ExtResource("3_0lw1r")
 texture_pressed = ExtResource("4_cv286")
 texture_hover = ExtResource("4_cv286")
 texture_disabled = ExtResource("3_0lw1r")
-texture_focused = ExtResource("3_0lw1r")
+texture_focused = ExtResource("4_cv286")
 
 [node name="Label" type="Label" parent="NinePatchRect"]
 layout_mode = 0
@@ -111,7 +111,7 @@ texture_normal = ExtResource("4_n1kic")
 texture_pressed = ExtResource("6_cv286")
 texture_hover = ExtResource("6_cv286")
 texture_disabled = ExtResource("4_n1kic")
-texture_focused = ExtResource("4_n1kic")
+texture_focused = ExtResource("6_cv286")
 
 [connection signal="pressed" from="NinePatchRect/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]

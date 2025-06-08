@@ -100,7 +100,7 @@ func _process(delta: float) -> void:
 	
 	isAnyRayCastColliding = rayCastLeft.is_colliding() or rayCastRight.is_colliding()
 	
-	if isAlive and canMove and !GameManager.isDialogInScreen:
+	if isAlive and canMove and !GameManager.isDialogInScreen and !GameManager.pauseMenuOpen and !GameManager.isShopInScreen and !GameManager.isInventoryOpen:
 		if Input.is_action_pressed("MoveLeft"):
 			facingDirection = -1.0
 			sprite.flip_h = true

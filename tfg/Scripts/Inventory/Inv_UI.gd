@@ -23,6 +23,8 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	center_on_screen()
 	get_viewport().connect("size_changed", center_on_screen)
+	await get_tree().process_frame
+	$NinePatchRect/GridContainer/Inv_Slot/Button2.grab_focus()
 	close()
 
 func center_on_screen():
@@ -53,7 +55,7 @@ func _set_input_mode(mode: InputMode):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Inventory"):
+	if Input.is_action_just_pressed("Inventory") and !GameManager.isShopInScreen and !GameManager.pauseMenuOpen:
 		if isOpen:
 			close()
 			GameManager.inventoryClosed()
@@ -66,6 +68,7 @@ func open() -> void:
 	isOpen = true
 	z_index = 2
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$NinePatchRect/GridContainer/Inv_Slot/Button2.grab_focus()
 	$NinePatchRect2.visible = false
 	emit_signal("InventoryOpen")
 

@@ -18,3 +18,7 @@ func _on_delete_button_pressed() -> void:
 func _on_play_button_pressed() -> void:
 	AudioManager.play_sound("res://Assets/Sounds/ButtonClick.wav")
 	wantsToPlay.emit(saveFileNumber)
+
+
+func getFocusableButton():
+	return $NinePatchRect/PlayButton

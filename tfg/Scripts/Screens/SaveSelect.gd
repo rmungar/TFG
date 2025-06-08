@@ -14,6 +14,7 @@ enum InputMode { MOUSE, GAMEPAD }
 
 func _ready():
 	updateSlotsUi()
+	$Slot0.getFocusableButton().grab_focus()
 	pass
 
 func updateSlotsUi():
@@ -36,7 +37,7 @@ func updateSlotsUi():
 			textureButton.texture_normal = NewGameTextureNoBG
 			textureButton.texture_pressed = NewGameTextureBG
 			textureButton.texture_hover = NewGameTextureBG
-			textureButton.texture_focused = NewGameTextureNoBG
+			textureButton.texture_focused = NewGameTextureBG
 	GameManager.hasLoadedGame = false
 
 

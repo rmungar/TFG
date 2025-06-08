@@ -20,7 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_c58xf")
 
 [node name="Panel" type="Panel" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.691357, 0.691357, 0.691357, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

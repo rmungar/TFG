@@ -22,7 +22,7 @@ func _ready():
 	$Label4.text = str(prices[3])
 	$Label5.text = str(prices[4])
 	$Label6.text = str(prices[5])
-	
+	$NinePatchRect/GridContainer/Inv_Slot/Button.grab_focus()
 	update_slots()
 
 func update_slots():

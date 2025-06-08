@@ -2,6 +2,7 @@ class_name PauseMenu extends Control
 
 
 func _ready() -> void:
+	$VBoxContainer/Continue.grab_focus()
 	visible = false
 	center_on_screen()
 
@@ -40,10 +41,13 @@ func center_on_screen():
 func open():
 	visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	GameManager.pauseMenuOpen = true
+	$VBoxContainer/Continue.grab_focus()
 	get_tree().paused = true
 
 
 func close():
 	visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	GameManager.pauseMenuOpen = false
 	get_tree().paused = false
