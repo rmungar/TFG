@@ -172,6 +172,7 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 	if HP <= 0:
 		isAlive = false
 		$AnimationPlayer.play("Death")
+		$Hurtbox.monitoring = false
 		AudioManager.play_sound("res://Assets/Sounds/playerDeath.mp3", -20.0)
 		await $AnimationPlayer.animation_finished
 		respawn()
@@ -209,6 +210,7 @@ func teleport(newPosition: Vector2):
 func respawn():
 	HP = MaxHP
 	$Camera2D.changeRect(get_parent().get_node(lastTilemap))
+	$Hurtbox.monitoring = true
 	AudioManager.play_tagged_sound("AmbientSound", OnRespawnSong, -40.0)
 	teleport(lastCheckPoint - Vector2(0,5))
 	stateMachine.configure(self)

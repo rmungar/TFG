@@ -85,6 +85,11 @@ func _on_camera_change_boss_body_entered(body: Node2D) -> void:
 		var background2: TileMapLayer = get_node("BossZone")
 		if camera.tileMap.name == "FirstZone":
 			camera.changeRect(background2)
+			AudioManager.stop_tagged_sound("AmbientSound")
+			if GameManager.bossDefeated:
+				AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/DanceInSteel'sShadows.mp3", -40.0)
+			else:
+				AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/DanceInSteel'sShadowsBossFight.mp3", -40.0)
 		else:
 			camera.changeRect(background1)
 			AudioManager.stop_tagged_sound("AmbientSound")

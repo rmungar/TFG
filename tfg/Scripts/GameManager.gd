@@ -13,7 +13,7 @@ var talkedToIsilian: bool = false
 var counting: bool = false
 var totalPlayTime: float = 0.0
 var playerDataById: Dictionary = {}
-
+var bossDefeated: bool = false
 
 
 func _ready() -> void:

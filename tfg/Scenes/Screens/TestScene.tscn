@@ -2,8 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://k7dan74tnrbw" path="res://Scenes/Player/Player.tscn" id="1_v6oop"]
 [ext_resource type="Texture2D" uid="uid://dwmnfss63bpui" path="res://Assets/Tilesets/Blood Temple/Blood Temple Tileset.png" id="2_urcy7"]
-[ext_resource type="PackedScene" uid="uid://b71wi8h7uu8bn" path="res://Scenes/Traps/BearTrap.tscn" id="3_v6oop"]
-[ext_resource type="PackedScene" uid="uid://cjvocbh47mhvf" path="res://Scenes/Traps/SpikeEjector.tscn" id="4_urcy7"]
+[ext_resource type="PackedScene" uid="uid://cblh5gshohu4y" path="res://Scenes/Enemies/Widow/Widow.tscn" id="3_v6oop"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lt6y"]
 resource_name = "Blood Temple"
@@ -262,6 +261,9 @@ texture = ExtResource("2_urcy7")
 physics_layer_0/collision_layer = 524288
 sources/0 = SubResource("TileSetAtlasSource_5lt6y")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6oop"]
+size = Vector2(480, 240)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_v6oop")]
@@ -271,8 +273,16 @@ position = Vector2(324, 218)
 tile_map_data = PackedByteArray("AAAAAA8AAAACAAIAAAABAA8AAAACAAIAAAACAA8AAAACAAIAAAADAA8AAAACAAIAAAAEAA8AAAACAAIAAAAFAA8AAAACAAIAAAAGAA8AAAACAAIAAAAHAA8AAAACAAIAAAAIAA8AAAACAAIAAAAJAA8AAAACAAIAAAAKAA8AAAACAAIAAAALAA8AAAACAAIAAAAMAA8AAAACAAIAAAANAA8AAAACAAIAAAAOAA8AAAACAAIAAAAPABAAAAACAAMAAAAQABAAAAACAAMAAAARABAAAAACAAMAAAASABAAAAACAAMAAAATAA8AAAACAAIAAAAUAA8AAAACAAIAAAAPAA8AAAACAAIAAAAQAA8AAAACAAIAAAARAA8AAAACAAIAAAASAA8AAAACAAIAAAAVAA8AAAACAAIAAAAWAA8AAAACAAIAAAAXAA8AAAACAAIAAAAYAA8AAAACAAIAAAAZAA8AAAACAAIAAAAaAA8AAAACAAIAAAAbAA8AAAACAAIAAAAcAA8AAAACAAIAAAAdAA8AAAACAAIAAAAAABAAAAACAAMAAAABABAAAAACAAMAAAACABAAAAACAAMAAAADABAAAAACAAMAAAAEABAAAAACAAMAAAAFABAAAAACAAMAAAAGABAAAAACAAMAAAAHABAAAAACAAMAAAAIABAAAAACAAMAAAAJABAAAAACAAMAAAAKABAAAAACAAMAAAALABAAAAACAAMAAAAMABAAAAACAAMAAAANABAAAAACAAMAAAAOABAAAAACAAMAAAATABAAAAACAAMAAAAUABAAAAACAAMAAAAVABAAAAACAAMAAAAWABAAAAACAAMAAAAXABAAAAACAAMAAAAYABAAAAACAAMAAAAZABAAAAACAAMAAAAaABAAAAACAAMAAAAbABAAAAACAAMAAAAcABAAAAACAAMAAAAdABAAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_8k7wh")
 
-[node name="BearTrap" parent="." instance=ExtResource("3_v6oop")]
-position = Vector2(186, 231)
+[node name="Widow" parent="." instance=ExtResource("3_v6oop")]
+position = Vector2(175, 174)
 
-[node name="Area2D" parent="." instance=ExtResource("4_urcy7")]
-position = Vector2(237, 227)
+[node name="BossArena" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossArena"]
+position = Vector2(240, 120)
+shape = SubResource("RectangleShape2D_v6oop")
+debug_color = Color(0.460081, 0.569401, 0.47279, 0.42)
+
+[node name="Marker2D" type="Marker2D" parent="."]

@@ -1,167 +1,169 @@
 extends CharacterBody2D
+# Referencias a nodos
+@onready var sprite = $Sprite2D
+@onready var animation_player = $AnimationPlayer
+@onready var attack_timer = $AttackTimer
+# Estados básicos
+enum WidowState { IDLE, CHASING, ATTACKING }
+# Variables principales
+var isAlive: bool = true
+@export var speed: float = 100.0
+@export var health: int = 200
+@export var maxHealth: int = 200
+@export var damage: int = 25
+@export var detection_range: float = 300.0
+@export var attack_range: float = 60.0
+var current_state: WidowState = WidowState.IDLE
+var player: Player = null
+var gravity = 980.0
+var can_attack: bool = true
+var reward: int = 400
+signal Defeated()
 
-enum WidowState { IDLE, PATROLLING, CHASING, ATTACKING }
-
-@export var speed := 50.0
-@export var chaseSpeed := 100.0
-@export var gravity := 980.0
-@export var attackRange := 48.0
-@export var detectionRange := 180.0
-@export var jumpForce := -350.0
-@export var fallOffset := 32.0
-
-var state: WidowState = WidowState.IDLE
-var player: Node2D = null
-var hasLanded := false
-
-@onready var sprite := $Sprite2D
-@onready var anim := $AnimationPlayer
 
 func _ready():
+	$AttackHitboxLeft.monitoring = false
+	$AttackHitboxRight.monitoring = false
+	$SpitHitboxLeft.monitoring = false
+	$SpitHitboxRight.monitoring = false
+	health = maxHealth
 	player = get_tree().get_first_node_in_group("Player")
+	attack_timer.timeout.connect(_on_attack_finished)
 
 func _physics_process(delta):
-	velocity.y += gravity * delta
-
-	if not is_on_floor():
-		hasLanded = false
-		if velocity.y < 0:
-			if anim.current_animation != "Jump":
-				anim.play("Jump")
-		else:
-			if anim.current_animation != "Fall":
-				anim.play("Fall")
-	else:
-		if not hasLanded and state == WidowState.CHASING:
-			_check_impact()
-			hasLanded = true
-
-	match state:
-		WidowState.IDLE:
-			anim.play("Idle")
-			_check_for_player()
-
-		WidowState.PATROLLING:
-			anim.play("Walk")
-			_patrol()
-			_check_for_player()
-
-		WidowState.CHASING:
-			if is_on_floor():
-				anim.play("Walk")
-			_chase_player()
-
-		WidowState.ATTACKING:
-			velocity.x = 0
-
-	if player and abs(position.x - player.position.x) < 10 and abs(position.y - player.position.y) < 30:
-		velocity.x += 40 * sign(position.x - player.position.x)
-
-	_check_spit_attack()
-	_check_buff()
-
-	move_and_slide()
-
-func _check_for_player():
-	if not player:
-		return
-
-	var horizontalDist = abs(position.x - player.position.x)
-	var verticalDist = abs(position.y - player.position.y)
-
-	if horizontalDist <= detectionRange and verticalDist <= 80:
-		var space = get_world_2d().direct_space_state
-		var ray = PhysicsRayQueryParameters2D.create(position, player.position)
-		ray.exclude = [self]
-		ray.collision_mask = collision_mask
-		var result = space.intersect_ray(ray)
-		if result and result.collider == player:
-			state = WidowState.CHASING
-
-func _patrol():
-	velocity.x = speed if sprite.flip_h else -speed
-	if is_on_wall():
-		sprite.flip_h = !sprite.flip_h
-
-func _chase_player():
-	if not player:
-		state = WidowState.IDLE
-		return
-
-	var dir = sign(player.position.x - position.x)
-
-	if dir != 0:
-		sprite.flip_h = dir < 0
-
-	velocity.x = dir * chaseSpeed
-
-	if is_on_wall() and is_on_floor():
-		velocity.y = jumpForce
-		velocity.x = dir * (chaseSpeed * 0.5)
-
-	if not is_on_floor() and abs(position.x - player.position.x) < 16:
-		velocity.x += 40 * sign(position.x - player.position.x)
-
-	if position.distance_to(player.position) <= attackRange:
-		state = WidowState.ATTACKING
-		_do_attack()
-
-func _do_attack():
-	anim.play("Attack")
-	await anim.animation_finished
-	if player and position.distance_to(player.position) <= attackRange:
-		if player.has_method("take_damage"):
-			player.take_damage(10)
-	state = WidowState.CHASING
-
-func _do_spit():
-	anim.play("Spit")
-	await anim.animation_finished
-	if player and position.distance_to(player.position) <= 40:
-		if player.has_method("take_damage"):
-			player.take_damage(8)
-	state = WidowState.CHASING
-
-func _do_buff():
-	anim.play("Buff")
-	await anim.animation_finished
-
-	if player:
-		if player.has_method("take_damage"):
-			player.take_damage(5)
+	if isAlive:
+		if not is_on_floor():
+			velocity.y += gravity * delta
 		
-		# Intentamos empujar al jugador
-		if player.has_method("apply_central_impulse"):
-			var repelForce = Vector2(sign(player.position.x - position.x) * 150, -200)
-			player.apply_central_impulse(repelForce)
+		# Lógica de estados
+		match current_state:
+			WidowState.IDLE:
+				handle_idle()
+			WidowState.CHASING:
+				handle_chasing()
+			WidowState.ATTACKING:
+				handle_attacking()
+		
+		move_and_slide()
 
-	state = WidowState.CHASING
+func handle_idle():
+	velocity.x = 0
+	animation_player.play("Idle")
+	if player and distance_to_player() <= detection_range:
+		current_state = WidowState.CHASING
 
-func _check_impact():
-	if not player:
-		return
-	if position.distance_to(player.position) <= 48:
-		if player.has_method("take_damage"):
-			player.take_damage(5)
-
-func _check_spit_attack():
-	if not player or state == WidowState.ATTACKING:
+func handle_chasing():
+	if not player or distance_to_player() > detection_range:
+		current_state = WidowState.IDLE
 		return
 	
-	var distance = position.distance_to(player.position)
-	var verticalDifference = abs(player.position.y - position.y)
-
-	if player.is_on_floor() and distance > 120 and distance < 160 and verticalDifference < 48:
-		state = WidowState.ATTACKING
-		_do_spit()
-
-func _check_buff():
-	if not player or state == WidowState.ATTACKING:
+	# Atacar si está cerca
+	if distance_to_player() <= attack_range and can_attack:
+		current_state = WidowState.ATTACKING
 		return
+	
+	# Perseguir jugador
+	var direction = (player.global_position - global_position).normalized()
+	velocity.x = direction.x * speed
+	
+	# Voltear sprite
+	if direction.x > 0:
+		sprite.scale.x = abs(sprite.scale.x)
+	elif direction.x < 0:
+		sprite.scale.x = -abs(sprite.scale.x)
+	
+	if animation_player:
+		animation_player.play("Walk")
+		AudioManager.play_tagged_sound("widowWalk", "res://Assets/Sounds/widowWalk.mp3", -40.0)
 
-	var horizontalDistance = abs(player.position.x - position.x)
-	var verticalDistance = player.position.y - position.y
+func handle_attacking():
+	velocity.x = 0
 
-	if verticalDistance < -40 and horizontalDistance < 32:
-		state = WidowState.ATTACKING
-		_do_buff()
+	if can_attack:
+		AudioManager.stop_tagged_sound("widowWalk")
+		can_attack = false
+		attack_timer.start(1.0)
+		var player_is_to_right = player.global_position.x > global_position.x
+		var dist = distance_to_player()
+		if health < 50 and dist > attack_range:
+			if animation_player:
+				animation_player.play("Spit")
+			if player_is_to_right:
+				$SpitHitboxRight.monitoring = true
+				if $SpitHitboxRight.has_overlapping_bodies():
+					for body in $SpitHitboxRight.get_overlapping_bodies():
+						if body == player:
+							damage_player()
+							break
+			else:
+				$SpitHitboxLeft.monitoring = true
+				if $SpitHitboxLeft.has_overlapping_bodies():
+					for body in $SpitHitboxLeft.get_overlapping_bodies():
+						if body == player:
+							damage_player()
+							break
+			await animation_player.animation_finished
+			$SpitHitboxLeft.monitoring = false
+			$SpitHitboxRight.monitoring = false
+		else:
+			if animation_player:
+				animation_player.play("Attack")
+			if player_is_to_right:
+				$AttackHitboxRight.monitoring = true
+				if $AttackHitboxRight.has_overlapping_bodies():
+					for body in $AttackHitboxRight.get_overlapping_bodies():
+						if body == player:
+							damage_player()
+							break
+			else:
+				$AttackHitboxLeft.monitoring = true
+				if $AttackHitboxLeft.has_overlapping_bodies():
+					for body in $AttackHitboxLeft.get_overlapping_bodies():
+						if body == player:
+							damage_player()
+							break
+			await animation_player.animation_finished
+			$AttackHitboxLeft.monitoring = false
+			$AttackHitboxRight.monitoring = false
+		current_state = WidowState.CHASING
+
+
+func distance_to_player() -> float:
+	if not player:
+		return 999.0
+	return global_position.distance_to(player.global_position)
+
+func damage_player():
+	if player and player.has_method("_on_hurtbox_damage_taken"):
+		player._on_hurtbox_damage_taken(30, Vector2(10,-20) if player.global_position.x > global_position.x else Vector2(-10,-20))
+
+func take_damage(amount: int):
+	AudioManager.play_sound("res://Assets/Sounds/widowHit.wav", -35.0)
+	health -= amount
+	modulate = Color.SKY_BLUE
+	await  get_tree().create_timer(0.3).timeout
+	modulate = Color.WHITE
+	if health <= 0:
+		die()
+
+func die():
+	if animation_player:
+		isAlive = false
+		$Hurtbox.monitoring = false
+		animation_player.play("Death")
+		AudioManager.play_sound("res://Assets/Sounds/widowDeath.wav", -35.0)
+		await animation_player.animation_finished
+		GameManager.bossDefeated = true
+		var player: Player = get_tree().get_first_node_in_group("Player")
+		player.money += reward
+		player.updateMoney.emit(player.money)
+		Defeated.emit()
+	queue_free()
+
+func _on_attack_finished():
+	can_attack = true
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area is NormalAttackHitBox or area is HeavyAttackHitbox:
+		take_damage(area.getDamage())
