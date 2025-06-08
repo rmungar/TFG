@@ -10165,7 +10165,7 @@ scale = Vector2(0.75, 0.78125)
 texture = ExtResource("27_4sgbt")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(559, 935)
+position = Vector2(4831, 1158)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -10313,6 +10313,26 @@ position = Vector2(559, 943)
 spawnPosition = Vector2(559, 935)
 reward = 30
 
+[node name="DaggerBandit5" parent="." instance=ExtResource("79_8xhgs")]
+position = Vector2(4103, 1215)
+spawnPosition = Vector2(4103, 1215)
+reward = 30
+
+[node name="DaggerBandit6" parent="." instance=ExtResource("79_8xhgs")]
+position = Vector2(4314, 1167)
+spawnPosition = Vector2(4314, 1158)
+reward = 30
+
+[node name="DaggerBandit7" parent="." instance=ExtResource("79_8xhgs")]
+position = Vector2(4587, 1231)
+spawnPosition = Vector2(4587, 1222)
+reward = 30
+
+[node name="DaggerBandit8" parent="." instance=ExtResource("79_8xhgs")]
+position = Vector2(4839, 1231)
+spawnPosition = Vector2(4839, 1222)
+reward = 30
+
 [node name="ArcherBandit" parent="." instance=ExtResource("80_8xhgs")]
 position = Vector2(1423, 623)
 reward = 40
@@ -10322,6 +10342,21 @@ spawnPosition = Vector2(1423, 615)
 position = Vector2(594, 783)
 reward = 40
 spawnPosition = Vector2(594, 774)
+
+[node name="ArcherBandit3" parent="." instance=ExtResource("80_8xhgs")]
+position = Vector2(4151, 1119)
+reward = 40
+spawnPosition = Vector2(4151, 1110)
+
+[node name="ArcherBandit4" parent="." instance=ExtResource("80_8xhgs")]
+position = Vector2(4593, 1167)
+reward = 40
+spawnPosition = Vector2(4593, 1158)
+
+[node name="ArcherBandit5" parent="." instance=ExtResource("80_8xhgs")]
+position = Vector2(4831, 1167)
+reward = 40
+spawnPosition = Vector2(4831, 1158)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 524288
@@ -10495,8 +10530,15 @@ mouse_filter = 2
 [connection signal="AddToRespawnList" from="DaggerBandit2" to="." method="onEnemyDeath"]
 [connection signal="AddToRespawnList" from="DaggerBandit3" to="." method="onEnemyDeath"]
 [connection signal="AddToRespawnList" from="DaggerBandit4" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="DaggerBandit5" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="DaggerBandit6" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="DaggerBandit7" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="DaggerBandit8" to="." method="onEnemyDeath"]
 [connection signal="AddToRespawnList" from="ArcherBandit" to="." method="onEnemyDeath"]
 [connection signal="AddToRespawnList" from="ArcherBandit2" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="ArcherBandit3" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="ArcherBandit4" to="." method="onEnemyDeath"]
+[connection signal="AddToRespawnList" from="ArcherBandit5" to="." method="onEnemyDeath"]
 [connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]
 [connection signal="updateMoney" from="Player" to="Player/Camera2D/PlayerUI" method="updateMoney"]
 [connection signal="body_entered" from="Area2D2" to="ArenaLock" method="_on_area_2d_2_body_entered"]

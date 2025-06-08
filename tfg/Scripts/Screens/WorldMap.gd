@@ -119,7 +119,7 @@ func _on_world_collsion_body_entered(body: Node2D) -> void:
 		body._on_hurtbox_damage_taken(body.MaxHP/5, Vector2(0,0))
 		body.teleport(body.lastSafePosition)
 	if body is Enemy:
-		body.teleport(body.lastSafePosition)
+		body.teleport(body.spawnPosition)
 	
 
 
