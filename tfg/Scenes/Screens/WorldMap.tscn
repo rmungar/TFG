@@ -1,4 +1,4 @@
-[gd_scene load_steps=284 format=4 uid="uid://b130u5hccfaed"]
+[gd_scene load_steps=290 format=4 uid="uid://b130u5hccfaed"]
 
 [ext_resource type="Script" uid="uid://g4vfgva1ekk2" path="res://Scripts/Screens/WorldMap.gd" id="1_4wmaq"]
 [ext_resource type="Texture2D" uid="uid://cfeicjulnadat" path="res://Assets/Tilesets/Forest Parallax/bg.png" id="1_56ksg"]
@@ -86,7 +86,11 @@
 [ext_resource type="PackedScene" uid="uid://nt70xpo04560" path="res://Scenes/Enemies/ArcherBandit/ArcherBandit.tscn" id="80_8xhgs"]
 [ext_resource type="PackedScene" uid="uid://cjvocbh47mhvf" path="res://Scenes/Traps/SpikeEjector.tscn" id="80_ftapf"]
 [ext_resource type="PackedScene" uid="uid://b25ij3gx6hvad" path="res://Scenes/Traps/Saw.tscn" id="81_u5jcl"]
+[ext_resource type="Texture2D" uid="uid://ldvg28yl24uk" path="res://Assets/Tilesets/Bodies/Body5.png" id="82_beije"]
+[ext_resource type="Texture2D" uid="uid://bi1rta1txnh1v" path="res://Assets/Tilesets/Bodies/Body3.png" id="82_g5w38"]
 [ext_resource type="PackedScene" uid="uid://b71wi8h7uu8bn" path="res://Scenes/Traps/BearTrap.tscn" id="82_py03g"]
+[ext_resource type="Script" uid="uid://cggkpblmtvspy" path="res://Scripts/Npcs/AlmostDeadEnemy.gd" id="83_ai8jn"]
+[ext_resource type="Script" uid="uid://cxivei55r1fld" path="res://Scripts/Npcs/AlmostDeadEnemy2.gd" id="83_h181b"]
 [ext_resource type="PackedScene" uid="uid://gt7gjlsr0hd8" path="res://Scenes/Screens/PauseMenu.tscn" id="85_4lqcu"]
 [ext_resource type="Script" uid="uid://cavaphk8og7mv" path="res://Scripts/Screens/ArenaLock.gd" id="88_3op15"]
 
@@ -10014,6 +10018,12 @@ size = Vector2(56, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xhgs"]
 size = Vector2(20, 436.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h181b"]
+size = Vector2(70, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5w38"]
+size = Vector2(48, 40)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rbvj"]
 atlas = ExtResource("17_gr518")
 region = Rect2(21, 0, 62, 55)
@@ -10557,6 +10567,39 @@ shape = SubResource("RectangleShape2D_8xhgs")
 position = Vector2(5738, 837)
 shape = SubResource("RectangleShape2D_8xhgs")
 
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(211, 539)
+texture = ExtResource("82_g5w38")
+flip_h = true
+script = ExtResource("83_h181b")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D10/Area2D"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_h181b")
+
+[node name="Indicator" type="Sprite2D" parent="Sprite2D10"]
+position = Vector2(0, -17)
+scale = Vector2(0.71875, 0.75)
+texture = ExtResource("27_4sgbt")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(5217, 1211)
+texture = ExtResource("82_beije")
+script = ExtResource("83_ai8jn")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D9"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D9/Area2D"]
+shape = SubResource("RectangleShape2D_g5w38")
+
+[node name="Indicator" type="Sprite2D" parent="Sprite2D9"]
+position = Vector2(0, -17)
+scale = Vector2(0.65625, 0.6875)
+texture = ExtResource("27_4sgbt")
+
 [node name="Traps" type="Node2D" parent="."]
 
 [node name="Trap" parent="Traps" instance=ExtResource("81_u5jcl")]
@@ -10732,6 +10775,10 @@ mouse_filter = 2
 [connection signal="AddToRespawnList" from="ArcherBandit3" to="." method="onEnemyDeath"]
 [connection signal="AddToRespawnList" from="ArcherBandit4" to="." method="onEnemyDeath"]
 [connection signal="AddToRespawnList" from="ArcherBandit5" to="." method="onEnemyDeath"]
+[connection signal="body_entered" from="Sprite2D10/Area2D" to="Sprite2D10" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D10/Area2D" to="Sprite2D10" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Sprite2D9/Area2D" to="Sprite2D9" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D9/Area2D" to="Sprite2D9" method="_on_area_2d_body_exited"]
 [connection signal="enableCharges" from="Player" to="Player/Camera2D/PlayerUI" method="updateChargesVisibility"]
 [connection signal="updateCharges" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealingCharges"]
 [connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]

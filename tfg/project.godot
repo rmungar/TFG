@@ -34,6 +34,8 @@ directories/dch_directory={
 "TheSwordMasterTutorial": "res://Dialogues/Characters/TheSwordMasterTutorial.dch"
 }
 directories/dtl_directory={
+"AlmostDeadNPC": "res://Dialogues/Timelines/AlmostDeadNPC.dtl",
+"AlmostDeadNPC2": "res://Dialogues/Timelines/AlmostDeadNPC2.dtl",
 "GemMerchantEndTimeline": "res://Dialogues/Timelines/GemMerchantEndTimeline.dtl",
 "GemMerchantFirstInteractionTimeline": "res://Dialogues/Timelines/GemMerchantFirstInteractionTimeline.dtl",
 "GemMerchantRegularTimeline": "res://Dialogues/Timelines/GemMerchantRegularTimeline.dtl",
