@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dfdngald38hki"]
 
-[ext_resource type="Script" uid="uid://djhdymxro7ete" path="res://Scenes/Player/TheSwordmasterTutorial.gd" id="1_jx3wf"]
+[ext_resource type="Script" uid="uid://djhdymxro7ete" path="res://Scripts/Npcs/TheSwordmasterTutorial.gd" id="1_jx3wf"]
 [ext_resource type="Texture2D" uid="uid://y4dshib2nrai" path="res://Assets/Characters/The SwordMaster/Sword Master Sprite Sheet 90x37 without VFX.png" id="1_voisq"]
 [ext_resource type="PackedScene" uid="uid://cwehx5pt81pse" path="res://Scenes/Helpers/Actionable.tscn" id="2_mqvjp"]
 [ext_resource type="Texture2D" uid="uid://bidjilhoskuby" path="res://Assets/Mouse/PNG/Basic/Default/mark_question.png" id="4_jx3wf"]

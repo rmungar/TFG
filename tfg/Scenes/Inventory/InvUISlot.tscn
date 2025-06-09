@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://br6a2ysnd613v"]
 
-[ext_resource type="Script" uid="uid://dgpywwjdwr1r6" path="res://Scenes/Inventory/InvUISlot.gd" id="1_j2gsh"]
+[ext_resource type="Script" uid="uid://bcdvdsgox87gq" path="res://Scripts/Inventory/InvUISlot.gd" id="1_j2gsh"]
 [ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="2_dork0"]
 
 [node name="Inv_Slot" type="Panel"]

@@ -718,7 +718,7 @@ stretch_mode = 6
 position = Vector2(237, 46)
 sprite_frames = SubResource("SpriteFrames_ty55h")
 autoplay = "default"
-frame_progress = 0.65078
+frame_progress = 0.752627
 
 [connection signal="pressed" from="CharacterBody2D/Buttons/Play" to="." method="onPlayButtonPressed"]
 [connection signal="pressed" from="CharacterBody2D/Buttons/Options" to="." method="onOptionsButtonPressed"]

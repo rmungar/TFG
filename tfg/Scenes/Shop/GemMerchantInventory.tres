@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=22 format=3 uid="uid://byhetp5le4sin"]
 
 [ext_resource type="Script" uid="uid://c70ennkklo3ul" path="res://Scripts/Inventory/Inventory.gd" id="1_oi4ys"]
-[ext_resource type="Script" uid="uid://q4fcmbp7u80m" path="res://InvSlot.gd" id="2_4jsgq"]
+[ext_resource type="Script" uid="uid://q4fcmbp7u80m" path="res://Scripts/Inventory/InvSlot.gd" id="2_4jsgq"]
 [ext_resource type="Script" uid="uid://dspkg2rgl3u7p" path="res://Scripts/Inventory/InvItem.gd" id="3_qt5j6"]
 [ext_resource type="Texture2D" uid="uid://b4mugqg4dyueo" path="res://Assets/Tilesets/Simple Items/DashGem.png" id="4_lhxak"]
 [ext_resource type="Texture2D" uid="uid://dijbkl7h483wj" path="res://Assets/Tilesets/Simple Items/DoubleJumpGem.png" id="5_7y5pr"]
