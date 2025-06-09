@@ -57,3 +57,5 @@ offset_left = 391.0
 offset_top = 24.0
 offset_right = 473.0
 offset_bottom = 47.0
+
+[node name="HealthCD" type="Sprite2D" parent="CanvasLayer"]
