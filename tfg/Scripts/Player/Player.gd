@@ -50,6 +50,9 @@ var hasDashed: bool = false
 @export var HP: int = 100
 @export var isAlive: bool = true
 signal updateHealth(currentHp: int, maxHp: int)
+signal updateCharges(charge: int)
+var healthChargesVisible: bool = false
+signal enableCharges()
 
 ################################################################################
 
@@ -100,6 +103,10 @@ func _process(delta: float) -> void:
 	
 	isAnyRayCastColliding = rayCastLeft.is_colliding() or rayCastRight.is_colliding()
 	
+	if canHeal and !healthChargesVisible:
+		enableCharges.emit()
+		healthChargesVisible = true
+	
 	if isAlive and canMove and !GameManager.isDialogInScreen and !GameManager.pauseMenuOpen and !GameManager.isShopInScreen and !GameManager.isInventoryOpen:
 		if Input.is_action_pressed("MoveLeft"):
 			facingDirection = -1.0
@@ -125,6 +132,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("Heal") and canHeal and currentHeals > 0:
 			onHeal()
 			currentHeals -= 1
+			updateCharges.emit(-1)
+			AudioManager.play_sound("res://Assets/Sounds/heal.mp3", -35.0)
 			updateHeals.emit(currentHeals, maxHeals)
 			if not isRechargingHeals:
 				isRechargingHeals = true
@@ -180,10 +189,11 @@ func _on_hurtbox_damage_taken(damage: int, knockback: Vector2) -> void:
 func collectItem(item: Item):
 	
 	if item.itemName == "Credits":
+		AudioManager.play_sound("res://Assets/Sounds/coins.wav",-30.0)
 		money += randi() % 100 + 20
 		updateMoney.emit(money)
 		return
-	
+	AudioManager.play_sound("res://Assets/Sounds/itemPickup.mp3", -25.0)
 	var newItem = InventoryItem.new()
 	newItem.name = item.itemName
 	newItem.texture = item.itemTexture
@@ -194,12 +204,17 @@ func onHeal():
 		HP = MaxHP
 	else:
 		HP += 20
+	modulate = Color.PALE_GREEN
+	await get_tree().create_timer(0.5).timeout
+	modulate = Color.WHITE
 	updateHealth.emit(HP, MaxHP)
 
 func _on_heal_charge_timer_timeout():
 	if currentHeals < maxHeals:
 		currentHeals += 1
+		AudioManager.play_sound("res://Assets/Sounds/healthChargeRecovered.wav", -35.0)
 		updateHeals.emit(currentHeals, maxHeals)
+		updateCharges.emit(1)
 		healChargeTimer.start(healingCD)
 	else:
 		isRechargingHeals = false

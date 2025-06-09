@@ -1680,6 +1680,7 @@ tile_set = SubResource("TileSet_8u8ny")
 [node name="SavePoint" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("7_vvlti")]
 position = Vector2(986, 247)
 tilemap = NodePath("../BackGround")
+OnSaveSong = "res://Assets/Sounds/TheCave.mp3"
 
 [node name="MechanicalDoor" parent="." instance=ExtResource("8_py00g")]
 position = Vector2(1053, 137)
@@ -1848,6 +1849,9 @@ process_mode = 3
 [connection signal="Dead" from="DaggerBandit3" to="." method="onEnemyDead"]
 [connection signal="Dead" from="ArcherBandit" to="." method="onEnemyDead"]
 [connection signal="Awake" from="Player" to="TheSwordMaster" method="_on_player_awake"]
+[connection signal="enableCharges" from="Player" to="TheSwordMaster" method="playerGotHealingModule"]
+[connection signal="enableCharges" from="Player" to="Player/Camera2D/PlayerUI" method="updateChargesVisibility"]
+[connection signal="updateCharges" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealingCharges"]
 [connection signal="updateHealth" from="Player" to="Player/Camera2D/PlayerUI" method="updateHealth"]
 [connection signal="updateMoney" from="Player" to="Player/Camera2D/PlayerUI" method="updateMoney"]
 [connection signal="Detected" from="Area2D" to="TheSwordMaster" method="onPlayerInteract"]

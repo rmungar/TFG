@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkh25p3a8elca"]
+[gd_scene load_steps=15 format=3 uid="uid://bkh25p3a8elca"]
 
 [ext_resource type="Script" uid="uid://dv3lw4h8jmnaa" path="res://Scripts/Camera/PlayerHUD.gd" id="1_uyejk"]
 [ext_resource type="Texture2D" uid="uid://ckkjpxl4vlnpw" path="res://Assets/UI/UI - Ammo/UI - Full Heart.png" id="2_b22dx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://carb7ns0cwkf1" path="res://Assets/UI/UI - Ammo/UI - Empty Heart.png" id="4_27bup"]
 [ext_resource type="Texture2D" uid="uid://0ek0vwas4wmp" path="res://Assets/UI/UI - ICONS/UI - Icons13.png" id="6_0t1lg"]
 [ext_resource type="Texture2D" uid="uid://csyoi3sma1g1" path="res://Assets/Tilesets/Simple Items/MoneySprite.png" id="7_27bup"]
+[ext_resource type="Texture2D" uid="uid://ck8540pcr6w2s" path="res://Assets/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png" id="8_gvfdd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b22dx"]
 atlas = ExtResource("2_b22dx")
@@ -15,6 +16,22 @@ region = Rect2(14, 12, 4, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0t1lg"]
 atlas = ExtResource("3_0t1lg")
 region = Rect2(14, 12, 2, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4cyq"]
+atlas = ExtResource("8_gvfdd")
+region = Rect2(98, 200, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvfdd"]
+atlas = ExtResource("8_gvfdd")
+region = Rect2(114, 224, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk7d2"]
+atlas = ExtResource("8_gvfdd")
+region = Rect2(114, 224, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xpsu"]
+atlas = ExtResource("8_gvfdd")
+region = Rect2(114, 224, 12, 16)
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -59,3 +76,19 @@ offset_right = 473.0
 offset_bottom = 47.0
 
 [node name="HealthCD" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(36.5, 62)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_p4cyq")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HealthCD"]
+position = Vector2(0, 8)
+texture = SubResource("AtlasTexture_gvfdd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/HealthCD"]
+position = Vector2(0, -2)
+texture = SubResource("AtlasTexture_dk7d2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/HealthCD"]
+position = Vector2(4.57764e-05, -6)
+rotation = 3.14159
+texture = SubResource("AtlasTexture_7xpsu")

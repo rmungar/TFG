@@ -1,0 +1,14 @@
+[style name="NovelStyle"]
+TheSwordMasterTutorial: That thing is very useful
+TheSwordMasterTutorial: What you just picked up allows you to heal
+TheSwordMasterTutorial: Make sure you have it equipped
+TheSwordMasterTutorial: And press "Q" or the "Y" button to heal yourself.
+TheSwordMasterTutorial: Once you do, you'll hear a sound
+TheSwordMasterTutorial: Like this
+do AudioManager.play_sound("res://Assets/Sounds/heal.mp3", -35.0)
+TheSwordMasterTutorial: And that little meter at the top means how many times you can heal
+TheSwordMasterTutorial: But they are not infinite, you can only heal 3 times in a row
+TheSwordMasterTutorial: Once you heal one time, a bar will dissapear
+TheSwordMasterTutorial: And a sound will be played when it comes back up
+do AudioManager.play_sound("res://Assets/Sounds/healthChargeRecovered.wav", -35.0)
+TheSwordMasterTutorial: Got it?

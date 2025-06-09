@@ -226,3 +226,10 @@ func _on_portal_teleport() -> void:
 
 func _on_player_awake() -> void:
 	onPlayerInteract()
+
+func playerGotHealingModule():
+	if !GameManager.tutorial_done:
+		GameManager.setDialogState(true)
+		Dialogic.start("res://Dialogues/Timelines/TheSwordMasterTutorialAboutHealing.dtl")
+		await Dialogic.timeline_ended
+		GameManager.setDialogState(false)

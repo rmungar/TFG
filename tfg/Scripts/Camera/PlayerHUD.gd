@@ -2,6 +2,8 @@ class_name PlayerHUD extends Control
 
 @onready var healthContainer: HBoxContainer = $CanvasLayer/HealthContainer
 @onready var moneyLabel: Label = $CanvasLayer/MoneyLabel
+@onready var healthCharges: Sprite2D = $CanvasLayer/HealthCD
+
 
 @export var HPPerHeart: int = 20
 @export var fullTexture: Texture2D
@@ -11,6 +13,7 @@ class_name PlayerHUD extends Control
 
 func _ready() -> void:
 	$CanvasLayer/SaveIcon.visible = false
+	$CanvasLayer/HealthCD.visible = false
 
 
 func updateHealth(current_hp: int, max_hp: int) -> void:
@@ -42,6 +45,31 @@ func updateHealth(current_hp: int, max_hp: int) -> void:
 func queueFreeChildren():
 	for child in healthContainer.get_children():
 		child.queue_free()
+
+func updateChargesVisibility():
+	$CanvasLayer/HealthCD.visible = true
+
+func updateHealingCharges(charge: int):
+	if charge == 1:
+		if !$CanvasLayer/HealthCD/Sprite2D.visible:
+			$CanvasLayer/HealthCD/Sprite2D.visible = true
+		elif $CanvasLayer/HealthCD/Sprite2D.visible and !$CanvasLayer/HealthCD/Sprite2D2.visible:
+			$CanvasLayer/HealthCD/Sprite2D2.visible = true
+		elif !$CanvasLayer/HealthCD/Sprite2D3.visible:
+			$CanvasLayer/HealthCD/Sprite2D3.visible = true
+		else:
+			pass
+	elif charge == -1:
+		if $CanvasLayer/HealthCD/Sprite2D3.visible:
+			$CanvasLayer/HealthCD/Sprite2D3.visible = false
+		elif !$CanvasLayer/HealthCD/Sprite2D3.visible and $CanvasLayer/HealthCD/Sprite2D2.visible:
+			$CanvasLayer/HealthCD/Sprite2D2.visible = false
+		elif $CanvasLayer/HealthCD/Sprite2D.visible:
+			$CanvasLayer/HealthCD/Sprite2D.visible = false
+		else:
+			pass
+	else:
+		pass
 
 
 func _on_save_point_save() -> void:

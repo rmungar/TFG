@@ -39,6 +39,7 @@ directories/dtl_directory={
 "GemMerchantRegularTimeline": "res://Dialogues/Timelines/GemMerchantRegularTimeline.dtl",
 "IsilianTimeline": "res://Dialogues/Timelines/IsilianTimeline.dtl",
 "TheSwordMasterCheckpointExplanation": "res://Dialogues/Timelines/TheSwordMasterCheckpointExplanation.dtl",
+"TheSwordMasterTutorialAboutHealing": "res://Dialogues/Timelines/TheSwordMasterTutorialAboutHealing.dtl",
 "TheSwordMasterTutorialFinalDialog": "res://Dialogues/Timelines/TheSwordMasterTutorialFinalDialog.dtl",
 "TheSwordMasterTutorialFinale": "res://Dialogues/Timelines/TheSwordMasterTutorialFinale.dtl",
 "TheSwordMasterTutorialTimeline": "res://Dialogues/Timelines/TheSwordMasterTutorialTimeline.dtl",

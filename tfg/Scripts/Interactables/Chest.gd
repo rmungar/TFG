@@ -39,7 +39,7 @@ func spawnItems():
 	var parent = get_parent()
 	if not parent:
 		return
-	
+	AudioManager.play_sound("res://Assets/Sounds/openChest.wav", -35.0)
 	parent.add_child(item)
 	
 	item.global_position = global_position + Vector2(0, -16)
