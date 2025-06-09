@@ -3,5 +3,5 @@ TheSwordMasterTutorial: That little thing in front of you is a terminal.
 TheSwordMasterTutorial: You will find a lot of those laying around.
 TheSwordMasterTutorial: Usually, they open doors.
 TheSwordMasterTutorial: And generate a molecular-level copy of you.
-TheSwordMasterTutorial: You can interact with the by pressing "E" or the "A" button.
+TheSwordMasterTutorial: You can interact with the by pressing "E" or the "B" button.
 set {SwordMasterTutorial.SecondDialog} = true
