@@ -12,7 +12,6 @@ func _ready():
 	
 	await $AnimationPlayer.animation_finished
 	
-	
 	await get_tree().create_timer(1.0).timeout
 	
 	$AnimationPlayer.play("endLoad")

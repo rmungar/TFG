@@ -11,7 +11,6 @@ class_name DaggerBandit extends Enemy
 signal Dead()
 signal AddToRespawnList(enemyScene: PackedScene, spawnPoint: Vector2)
 
-
 var directionTowardsPlayer = 0
 
 func _on_hurt_box_damage_taken(damageTaken: int) -> void:
@@ -35,7 +34,6 @@ func isDead():
 		return
 	isAlive = false
 	$HurtBox.set_deferred("monitoring", false)
-	#$CollisionShape2D.set_deferred("disabled", true)
 	AudioManager.play_sound("res://Assets/Sounds/EnemyDeath.wav", -40.0)
 	if directionTowardsPlayer == 1:
 		animationPlayer.play("Death_Right")
