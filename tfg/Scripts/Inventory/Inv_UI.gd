@@ -70,7 +70,6 @@ func open() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$NinePatchRect/GridContainer/Inv_Slot/Button2.grab_focus()
 	$NinePatchRect2.visible = false
-	AudioManager.play_tagged_sound("AmbientSound", get_tree().get_first_node_in_group("Player").OnRespawnSong, -40.0)
 	emit_signal("InventoryOpen")
 
 func close() -> void:
@@ -78,6 +77,7 @@ func close() -> void:
 	isOpen = false
 	if !GameManager.isShopInScreen : Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$NinePatchRect2.visible = false
+	AudioManager.play_tagged_sound("AmbientSound", get_tree().get_first_node_in_group("Player").OnRespawnSong, -40.0)
 	emit_signal("InventoryClosed")
 
 
