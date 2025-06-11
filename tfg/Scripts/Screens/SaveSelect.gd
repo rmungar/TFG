@@ -56,7 +56,7 @@ func _on_wants_to_delete(saveFileNumber: int) -> void:
 func _on_wants_to_play(saveFileNumber: int) -> void:
 	GameManager.currentSaveFile = saveFileNumber
 	GameManager.isLoadingGame = true
-	
+	GameManager.isInMainMenu = false
 	var data = FileUtils.load_game(saveFileNumber)
 	var tutorial_done = data.get("tutorialDone", false)
 	GameManager.talkedToIsilian = data.get("spokenToIsilian", false)

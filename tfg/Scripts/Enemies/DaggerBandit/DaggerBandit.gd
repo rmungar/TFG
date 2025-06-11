@@ -10,7 +10,6 @@ class_name DaggerBandit extends Enemy
 
 signal Dead()
 signal AddToRespawnList(enemyScene: PackedScene, spawnPoint: Vector2)
-
 var directionTowardsPlayer = 0
 
 func _on_hurt_box_damage_taken(damageTaken: int) -> void:

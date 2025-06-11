@@ -13,17 +13,14 @@ var aliveEnemies = 4
 signal tutorialDone()
 
 func _ready():
-	AudioManager.play_sound("res://Assets/Sounds/TheCave.mp3", -47.0)
+	AudioManager.play_tagged_sound("AmbientSound","res://Assets/Sounds/TheCave.mp3", -47.0)
 	if GameManager.isLoadingGame:
 		var data = FileUtils.load_game(GameManager.currentSaveFile)
 		if data:
 			player.apply_saved_data(data)
-	
-	# Empezamos con fade-in (pantalla negra)
 	fadeIn()
 	await fadeFinished()
 	
-	# Espera 2.5 segundos antes de despertar al jugador
 	await get_tree().create_timer(2.5).timeout
 	
 
@@ -80,4 +77,6 @@ func _on_portal_teleport() -> void:
 	await get_tree().create_timer(0.2).timeout
 	$Player.visible = false
 	await get_tree().create_timer(2).timeout
+	AudioManager.stop_tagged_sound("AmbientSound")
+	AudioManager.play_tagged_sound("AmbientSound", "res://Assets/Sounds/ForestOfStars.mp3", -40.0)
 	get_tree().change_scene_to_file("res://Scenes/Screens/WorldMap.tscn")

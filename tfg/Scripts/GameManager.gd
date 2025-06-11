@@ -15,6 +15,7 @@ var counting: bool = false
 var totalPlayTime: float = 0.0
 var playerDataById: Dictionary = {}
 var bossDefeated: bool = false
+var isInMainMenu: bool = false
 
 
 func _ready() -> void:
@@ -26,6 +27,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if counting:
 		totalPlayTime += delta
+	if !isDialogInScreen and !isInventoryOpen and !isShopInScreen and !pauseMenuOpen and !isInMainMenu:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func toTutorialScreen():
 	get_tree().change_scene_to_file(ScreenManager.tutorialScreen)
