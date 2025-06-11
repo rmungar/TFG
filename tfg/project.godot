@@ -14,6 +14,7 @@ config/name="Tfg"
 run/main_scene="uid://c6i4eguqa32h4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://dmyxm07ss62vt"
+config/windows_native_icon="res://Assets/icon.ico"
 
 [autoload]
 

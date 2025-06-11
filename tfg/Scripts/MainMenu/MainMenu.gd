@@ -4,7 +4,7 @@ extends Control
 @onready var optionsButton: TextureButton = $CharacterBody2D/Buttons/Options
 @onready var quitButton: TextureButton = $CharacterBody2D/Buttons/Quit
 
-# Cursor Management
+
 var cursor_texture = preload("res://Assets/Mouse/PNG/Basic/Default/pointer_b.png")
 var current_input_mode := InputMode.MOUSE
 enum InputMode { MOUSE, GAMEPAD }
@@ -12,9 +12,10 @@ enum InputMode { MOUSE, GAMEPAD }
 var mainMenuMusicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
 
 func _ready() -> void:
+	GameManager.isInMainMenu = true
 	AudioManager.cycle_music(mainMenuMusicTracks)
 	_update_button_visibility()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	playButton.grab_focus()
 
 func _update_button_visibility():

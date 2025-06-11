@@ -1,7 +1,7 @@
 extends Node
 
 @export var initial_pool_size: int = 3
-@export var max_idle_time: float = 10.0 
+@export var max_idle_time: float = 5.0 
 
 class PlayerEntry:
 	var player: AudioStreamPlayer
@@ -9,17 +9,16 @@ class PlayerEntry:
 
 var pool: Array[PlayerEntry] = []
 
-# Música
+
 var musicPlayer: AudioStreamPlayer
 var musicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
 var mainMenuMusicTracks: Array[String] = ["res://Assets/Sounds/EchoesFromTheFutureV1.mp3","res://Assets/Sounds/EchoesFromTheFutureV2.mp3"]
 var currentTrackIndex: int = 0
 
-# Sonidos únicos por etiqueta (como correr)
+
 var taggedPlayers: Dictionary = {}
 
 func _ready():
-	# Crear pool de sonido
 	for i in initial_pool_size:
 		var player = AudioStreamPlayer.new()
 		add_child(player)
@@ -27,10 +26,10 @@ func _ready():
 		pool[i].player = player
 		pool[i].last_play_time = 0.0
 
-	# Crear reproductor de música dedicado
+
 	musicPlayer = AudioStreamPlayer.new()
 	add_child(musicPlayer)
-	musicPlayer.bus = "Music"  # Opcional: tu bus de audio
+	musicPlayer.bus = "Music"  
 	musicPlayer.connect("finished", Callable(self, "_on_music_finished"))
 
 func _process(delta):
@@ -40,7 +39,6 @@ func _process(delta):
 			entry.player.queue_free()
 			pool.erase(entry)
 
-# --- EFECTOS DE SONIDO ---
 
 func play_sound(sound_path: String, volume_db: float = 0.0):
 	var sound = load(sound_path)
@@ -63,11 +61,9 @@ func play_tagged_sound(tag: String, sound_path: String, volume_db: float = 0.0):
 
 	if taggedPlayers.has(tag):
 		var current_player: AudioStreamPlayer = taggedPlayers[tag]
-		# Si ya está reproduciendo exactamente ese mismo sonido, no hagas nada
 		if current_player.playing and current_player.stream.resource_path == sound.resource_path:
-			return  # Ya está sonando ese mismo sonido exacto
+			return  
 
-		# Si es diferente o ha parado, lo reemplazamos
 		current_player.stop()
 		taggedPlayers.erase(tag)
 
@@ -92,7 +88,6 @@ func _get_available_player() -> PlayerEntry:
 		if not entry.player.playing:
 			return entry
 
-	# Si no hay libres, crear uno nuevo
 	var new_player = AudioStreamPlayer.new()
 	add_child(new_player)
 	var new_entry = PlayerEntry.new()
@@ -101,7 +96,6 @@ func _get_available_player() -> PlayerEntry:
 	pool.append(new_entry)
 	return new_entry
 
-# --- MÚSICA EN CICLO ---
 
 func cycle_music(tracks: Array[String] = mainMenuMusicTracks):
 	musicTracks = tracks
