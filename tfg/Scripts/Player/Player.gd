@@ -90,9 +90,6 @@ func _ready() -> void:
 	dashTimer.wait_time = dashDuration
 	dashTimer.timeout.connect(_on_dash_timeout)
 	inventory.update.emit()
-	
-	
-	
 
 func _process(delta: float) -> void:
 	canAttack = inventory.search("AttackModule")
