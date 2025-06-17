@@ -16,7 +16,7 @@ class_name Enemy extends CharacterBody2D
 
 var lastSafePosition: Vector2
 
-@export var reward: int
+@export var reward: int = 30
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor(): 
